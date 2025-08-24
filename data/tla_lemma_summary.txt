@@ -1,0 +1,37 @@
+🏺 TLA (Thesaurus Linguae Aegyptiae) Summary
+==================================================
+📊 Total lemmas: 587
+🔤 Lemmas with hieroglyphs: 545
+📝 Unique hieroglyphic signs: 265
+
+🔝 Top 15 Most Frequent Lemmas:
+------------------------------------------------------------
+Rank Freq   Transliteration Translation
+------------------------------------------------------------
+1    228    =f              He; him; his (suffix pron., 3r
+2    107    ꜥḥꜥ.n           [particle]
+3    104    n.j             Belonging to; [genitive]
+4    101    ḏd              To say; to tell
+5    98     n               To; for; at; [dative]
+6    93     =s              She; her; hers (suffix pron. 3
+7    74     =j              I; me; my, mine (suffix pron.,
+8    70     jri̯            To do; to make; to create; to 
+9    66     =k              You; your; yours (suffix pron.
+10   61     pꜣ              The (def. article, masc. sing.
+11   55     1...n           [cardinal number in writing wh
+12   54     ḥm              Majesty (of the king, of a god
+13   52     =sn             They; them; their (suffix pron
+14   48     m               In; to; on; from (spatial)
+15   46     pw              [part. as subj. in nom. senten
+
+📈 Coverage by Hieroglyphic Signs:
+   𓏏 (EGYPTIAN HIEROGLYPH X001): 129 lemmas
+   𓈖 (EGYPTIAN HIEROGLYPH N035): 100 lemmas
+   𓂋 (EGYPTIAN HIEROGLYPH D021): 90 lemmas
+   𓅱 (EGYPTIAN HIEROGLYPH G043): 78 lemmas
+   𓇋 (EGYPTIAN HIEROGLYPH M017): 77 lemmas
+   𓄿 (EGYPTIAN HIEROGLYPH G001): 72 lemmas
+   𓋴 (EGYPTIAN HIEROGLYPH S029): 71 lemmas
+   𓅓 (EGYPTIAN HIEROGLYPH G017): 54 lemmas
+   𓏛 (EGYPTIAN HIEROGLYPH Y001): 52 lemmas
+   𓂝 (EGYPTIAN HIEROGLYPH D036): 45 lemmas

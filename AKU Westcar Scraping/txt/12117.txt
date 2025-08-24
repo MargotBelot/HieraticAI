@@ -1,0 +1,23 @@
+AKU-Nr.: L0280
+Manuel de Codage (MdC): M26
+Kategorie: L - Pflanzen
+Subkategorie: „Südpflanze“
+Beschreibung: Riedgras
+Text: Berlin, Ägyptisches Museum und Papyrussammlung, P. 3033
+Kolumne: 12
+Zeile: 1
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 8,9
+Höhe: 6,9
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Erzählung
+Kommentar: nicht spezifiziert
+Retro-Digitalisat: Möller 1927a, p. 28, no. 291.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: 5.08.2024

@@ -1,0 +1,23 @@
+AKU-Nr.: T0150
+Manuel de Codage (MdC): U15
+Kategorie: T - Landwirtschaft und Handwerk
+Subkategorie: Schlitten
+Beschreibung: Schlitten
+Text: Moskau, State Pushkin Museum of Fine Arts, 314
+Kolumne: 11
+Zeile: 4
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 9,9
+Höhe: 13,7
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Hymne im Königskult
+Kommentar: nicht spezifiziert
+Retro-Digitalisat: Möller 1927a, p. 46, no. 489.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: 6.08.2024

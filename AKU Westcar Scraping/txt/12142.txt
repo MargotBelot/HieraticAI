@@ -1,0 +1,23 @@
+AKU-Nr.: M0140
+Manuel de Codage (MdC): N28
+Kategorie: M - Himmel, Erde, Wasser
+Subkategorie: Gestirn
+Beschreibung: Sonne über Hügel, Sonnenaufgang
+Text: Berlin, Ägyptisches Museum und Papyrussammlung, P. 3033
+Kolumne: 11
+Zeile: 13
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 6,1
+Höhe: 10
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Erzählung
+Kommentar: nicht spezifiziert
+Retro-Digitalisat: Möller 1927a, p. 29, no. 307.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: 5.08.2024

@@ -1,0 +1,23 @@
+AKU-Nr.: G0320
+Manuel de Codage (MdC): G43
+Kategorie: G - Vögel
+Subkategorie: Wachtel
+Beschreibung: Wachtelküken
+Text: Moskau, State Pushkin Museum of Fine Arts, 314
+Kolumne: 9b
+Zeile: 2
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 5,8
+Höhe: 8,7
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Hymne im Königskult
+Kommentar: nicht spezifiziert
+Retro-Digitalisat: Möller 1927a, p. 19, no. 200B.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: 6.08.2024

@@ -1,0 +1,72 @@
+# ===================================================================
+# 🏺 HieraticAI - Ancient Egyptian Hieratic Script Detection
+# Production Dependencies
+# ===================================================================
+# 
+# Install Instructions:
+# 1. pip install -r requirements.txt
+# 2. pip install 'git+https://github.com/facebookresearch/detectron2.git'
+#
+# For CUDA 11.8: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+# For CPU only:   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+# ===================================================================
+# 🧠 Core Deep Learning Framework
+# ===================================================================
+torch==2.0.1
+torchvision==0.15.2
+torchaudio==2.0.2
+
+# Detectron2 (install separately after PyTorch)
+# Note: Install with specific command after torch installation
+# pip install 'git+https://github.com/facebookresearch/detectron2.git'
+
+# ===================================================================
+# 🖼️ Computer Vision and Image Processing  
+# ===================================================================
+opencv-python==4.8.1.78
+Pillow==10.0.0
+albumentations==1.3.1
+scikit-image==0.21.0
+
+# ===================================================================
+# 📊 Data Science and Analysis
+# ===================================================================
+numpy==1.24.3
+pandas==2.0.3
+scipy==1.11.1
+scikit-learn==1.3.0
+
+# ===================================================================
+# 📈 Visualization and Plotting
+# ===================================================================
+matplotlib==3.7.2
+seaborn==0.12.2
+plotly==5.15.0
+
+# ===================================================================
+# 🏺 COCO Dataset and Evaluation Tools
+# ===================================================================
+pycocotools==2.0.6
+
+# ===================================================================
+# ⚙️ Utilities and Configuration
+# ===================================================================
+tqdm==4.65.0
+PyYAML==6.0.1
+json5==0.9.14
+psutil==5.9.5
+
+# ===================================================================
+# 📓 Jupyter Notebook Support
+# ===================================================================
+jupyter==1.0.0
+ipykernel==6.25.0
+nbformat==5.9.2
+ipywidgets==8.0.7
+
+# ===================================================================
+# 🧪 Testing Framework  
+# ===================================================================
+pytest==7.4.0
+pytest-cov==4.1.0

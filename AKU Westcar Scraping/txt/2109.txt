@@ -1,0 +1,23 @@
+AKU-Nr.: K0030
+Manuel de Codage (MdC): L2
+Kategorie: K - Gliederfüßer
+Subkategorie: Biene (Apis melifica)
+Beschreibung: Biene
+Text: Moskau, State Pushkin Museum of Fine Arts, 314
+Kolumne: 15b
+Zeile: 1
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 10,1
+Höhe: 15,5
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Hymne im Königskult
+Kommentar: Phonogramm
+Retro-Digitalisat: Ꜣḫ-bj.t: Chemmis; [Name des Pehu-Gebietes im 19. o.äg. Gau] (TLA WCN: 211)
+Publikation: Möller 1927a, p. 25, no. 260.
+Publikationsdatum: Retro-Digitalisat
+Autor: Publikation
+Lizenz: übernommen wie publiziert

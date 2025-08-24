@@ -1,0 +1,23 @@
+AKU-Nr.: K0090
+Manuel de Codage (MdC): L7
+Kategorie: K - Gliederfüßer
+Subkategorie: Skorpion
+Beschreibung: Skorpion ohne Stachelschwanz (früher: Nepa)
+Text: Moskau, State Pushkin Museum of Fine Arts, 314
+Kolumne: 8
+Zeile: 2
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 14,1
+Höhe: 7,1
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Hymne im Königskult
+Kommentar: Logogramm
+Retro-Digitalisat: Srq.t: Selqet (TLA WCN: 139850)
+Publikation: Möller 1927a, p. 25, no. 262.
+Publikationsdatum: Retro-Digitalisat
+Autor: Publikation
+Lizenz: erste Überprüfung
