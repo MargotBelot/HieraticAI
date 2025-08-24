@@ -6,7 +6,8 @@ AKU Database Indexer
 Index AKU Westcar database signs by Gardiner codes to enrich prediction validation.
 Creates a searchable index linking SVGs and metadata for similar hieroglyphs.
 
-Author: HieraticAI Project
+Authors: Margot Belot <margotbelot@icloud.com>
+         Domino Colyer <dominic23@zedat.fu-berlin.de>
 Date: August 2025
 """
 

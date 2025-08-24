@@ -9,7 +9,8 @@ description = "AI-powered hieratic character recognition and validation for anci
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [
-    {name = "Margot Belot", email = "margot.belot@example.edu"},
+    {name = "Margot Belot", email = "margotbelot@icloud.com"},
+    {name = "Domino Colyer", email = "dominic23@zedat.fu-berlin.de"},
 ]
 keywords = ["egyptology", "hieratic", "ai", "computer-vision", "digital-humanities"]
 classifiers = [

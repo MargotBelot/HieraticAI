@@ -5,7 +5,8 @@ Setup Enhanced Validation App
 
 Script to prepare data and run the enhanced validation app with AKU database integration.
 
-Author: HieraticAI Project
+Authors: Margot Belot <margotbelot@icloud.com>
+         Domino Colyer <dominic23@zedat.fu-berlin.de>
 Date: August 2025
 """
 

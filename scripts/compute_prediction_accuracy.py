@@ -5,7 +5,8 @@ Compute prediction accuracy metrics by comparing model predictions against groun
 This script provides complementary metrics to mAP by computing direct prediction accuracy,
 which is more interpretable from an Egyptological perspective.
 
-Author: HieraticAI Project
+Authors: Margot Belot <margotbelot@icloud.com>
+         Domino Colyer <dominic23@zedat.fu-berlin.de>
 Date: August 2025
 """
 

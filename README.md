@@ -194,7 +194,7 @@ If you use HieraticAI in your research, please cite:
 ```bibtex
 @software{belot2024hieraticai,
   title={HieraticAI: AI-powered hieratic character recognition for ancient Egyptian manuscripts},
-  author={Belot, Margot},
+  author={Belot, Margot and Colyer, Domino},
   year={2024},
   url={https://github.com/MargotBelot/HieraticAI}
 }

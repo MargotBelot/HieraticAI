@@ -13,7 +13,8 @@ This script extracts lemma information including:
 - Frequency in corpus
 - Lemma ID
 
-Author: HieraticAI Project
+Authors: Margot Belot <margotbelot@icloud.com>
+         Domino Colyer <dominic23@zedat.fu-berlin.de>
 Date: August 2025
 """
 
