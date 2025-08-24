@@ -1,0 +1,23 @@
+AKU-Nr.: L0030
+Manuel de Codage (MdC): M1A
+Kategorie: L - Pflanzen
+Subkategorie: Baum
+Beschreibung: Laubbaum mit Ast
+Text: Moskau, State Pushkin Museum of Fine Arts, 314
+Kolumne: 3
+Zeile: 1
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 12,5
+Höhe: 7,5
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Hymne im Königskult
+Kommentar: nicht spezifiziert
+Retro-Digitalisat: Möller 1927a, p. 25, no. 266.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: 6.08.2024

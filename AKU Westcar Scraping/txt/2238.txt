@@ -1,0 +1,23 @@
+AKU-Nr.: R0390
+Manuel de Codage (MdC): S23
+Kategorie: R - Kronen, Kleidung und Accessoires
+Subkategorie: Stoff
+Beschreibung: geknoteter Stoffstreifen
+Text: Moskau, State Pushkin Museum of Fine Arts, 314
+Kolumne: 18
+Zeile: 15
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 4,8
+Höhe: 14,5
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Hymne im Königskult
+Kommentar: nicht spezifiziert
+Retro-Digitalisat: Möller 1927a, p. 39, no. 421.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: 6.08.2024

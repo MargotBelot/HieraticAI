@@ -1,0 +1,23 @@
+AKU-Nr.: L0380
+Manuel de Codage (MdC): M44
+Kategorie: L - Pflanzen
+Subkategorie: unbestimmt
+Beschreibung: Dorn
+Text: Berlin, Ägyptisches Museum und Papyrussammlung, P. 3033
+Kolumne: 11
+Zeile: 20
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 10,1
+Höhe: 6,3
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Erzählung
+Kommentar: nicht spezifiziert
+Retro-Digitalisat: Möller 1927a, p. 54, no. 567.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: 5.08.2024

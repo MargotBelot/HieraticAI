@@ -189,9 +189,9 @@ output/*/log.txt
 output/*/metrics.json
 output/*/last_checkpoint
 
-# Large model files (models are too large for git)
-output/*/model_*.pth
-*.pth
+# Large model files (now tracked with Git LFS)
+# output/*/model_*.pth  # Now tracked with LFS
+# *.pth  # Now tracked with LFS
 
 # Validation results (these can be regenerated)
 output/validation_results.json
@@ -213,5 +213,5 @@ logs/
 # Streamlit cache
 .streamlit/
 
-# AKU Westcar Scraping folder - contains too many files
-AKU Westcar Scraping/
+# AKU Westcar Scraping folder - now included
+# AKU Westcar Scraping/  # Now included in repository

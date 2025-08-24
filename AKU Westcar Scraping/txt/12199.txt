@@ -1,0 +1,23 @@
+AKU-Nr.: R0630
+Manuel de Codage (MdC): S43
+Kategorie: R - Kronen, Kleidung und Accessoires
+Subkategorie: Stäbe; Zepter (Szepter)
+Beschreibung: Wanderstab, Spazierstock
+Text: Berlin, Ägyptisches Museum und Papyrussammlung, P. 3033
+Kolumne: 4
+Zeile: 18
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 10,4
+Höhe: 5,2
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Erzählung
+Kommentar: nicht spezifiziert
+Retro-Digitalisat: Möller 1927a, p. 43, no. 456.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: 5.08.2024

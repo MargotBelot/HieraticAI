@@ -1,0 +1,23 @@
+AKU-Nr.: E0220
+Manuel de Codage (MdC): E14
+Kategorie: E - Säugetiere
+Subkategorie: Hundeartige (Kaniden)
+Beschreibung: stehend, Schwanz nach oben
+Text: Hatnub, Kalzitalabastersteinbruch, 52
+Kolumne: 9
+Zeile: unspezifiziert
+Schriftrichtung: Hieratisch
+Schriftart: Tusche
+Material: vollständig
+Zustand: 9,5
+Breite: 12,8
+Höhe: ja
+Lesbarkeit: Zweite Zwischenzeit, 17. Dynastie
+Zeitraum: Textart:  Biographischer Text
+Textart: Klassifikator
+Kommentar: ṯzm: Windhund (TLA WCN: 177290)
+Retro-Digitalisat: Möller 1927a, p. 11, no. 127.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: Positionsangabe (Möller) korrigiert.

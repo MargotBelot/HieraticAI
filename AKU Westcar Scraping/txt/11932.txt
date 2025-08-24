@@ -1,0 +1,23 @@
+AKU-Nr.: F0530
+Manuel de Codage (MdC): F46
+Kategorie: F - Teile von Säugetieren
+Subkategorie: unbestimmt
+Beschreibung: Gedärm
+Text: Berlin, Ägyptisches Museum und Papyrussammlung, P. 3033
+Kolumne: 12
+Zeile: 3
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 7
+Höhe: 6,4
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Erzählung
+Kommentar: Phonogramm
+Retro-Digitalisat: dbn: (um einen Ort) herumgehen; umrunden; (etwas) umgeben (TLA WCN: 178560)
+Publikation: Möller 1927a, p. 50, no. 526.
+Publikationsdatum: Retro-Digitalisat
+Autor: Publikation
+Lizenz: übernommen wie publiziert

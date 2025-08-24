@@ -1,0 +1,23 @@
+AKU-Nr.: A0350
+Manuel de Codage (MdC): A32
+Kategorie: A - Männer und anthropomorphe Götter
+Subkategorie: sitzend od. stehend – ohne Attribut
+Beschreibung: Tanzender Mann
+Text: Berlin, Ägyptisches Museum und Papyrussammlung, P. 3033
+Kolumne: 12
+Zeile: 1
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: schwarz
+Breite: vollständig
+Höhe: 10
+Lesbarkeit: 7,8
+Zeitraum: ja
+Textart: Zweite Zwischenzeit, 17. Dynastie
+Kommentar: Textart:  Erzählung
+Retro-Digitalisat: nicht spezifiziert
+Publikation: Möller 1927a, p. 1, no. 6.
+Publikationsdatum: Retro-Digitalisat
+Autor: Publikation
+Lizenz: übernommen wie publiziert

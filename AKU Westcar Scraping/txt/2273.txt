@@ -1,0 +1,23 @@
+AKU-Nr.: N0420
+Manuel de Codage (MdC): Aa11
+Kategorie: N - Gebäude und Gebäudeteile
+Subkategorie: Gebäudeteile
+Beschreibung: Sockel, seitlich abgeschrägt
+Text: Moskau, State Pushkin Museum of Fine Arts, 314
+Kolumne: 10
+Zeile: 4
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 2,8
+Höhe: 12,4
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Hymne im Königskult
+Kommentar: nicht spezifiziert
+Retro-Digitalisat: Möller 1927a, p. 45, no. 477.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: 6.08.2024

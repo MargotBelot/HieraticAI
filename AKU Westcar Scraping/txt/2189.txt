@@ -1,0 +1,23 @@
+AKU-Nr.: M0430
+Manuel de Codage (MdC): N23
+Kategorie: M - Himmel, Erde, Wasser
+Subkategorie: Land
+Beschreibung: Bewässerungskanal
+Text: Moskau, State Pushkin Museum of Fine Arts, 314
+Kolumne: 16
+Zeile: 5
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 3,3
+Höhe: 4
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Hymne im Königskult
+Kommentar: nicht spezifiziert
+Retro-Digitalisat: Möller 1927a, p. 31, no. 314.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: 6.08.2024

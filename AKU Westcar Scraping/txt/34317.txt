@@ -1,0 +1,23 @@
+AKU-Nr.: L0245
+Manuel de Codage (MdC): M22-M22
+Kategorie: L - Pflanzen
+Subkategorie: Binse
+Beschreibung: zwei Binsen
+Text: Berlin, Ägyptisches Museum und Papyrussammlung, P. 3033
+Kolumne: 9
+Zeile: 27
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 8,8
+Höhe: 9,6
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Erzählung
+Kommentar: nicht spezifiziert
+Retro-Digitalisat: Möller 1927a, p. 27, no. 288.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: 5.08.2024

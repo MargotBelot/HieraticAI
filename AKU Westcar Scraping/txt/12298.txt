@@ -1,0 +1,23 @@
+AKU-Nr.: Y0040
+Manuel de Codage (MdC): Z9
+Kategorie: Y - Striche und geometrische Zeichen
+Subkategorie: gekreuzte Striche
+Beschreibung: zwei diagonal gekreuzte Striche
+Text: Berlin, Ägyptisches Museum und Papyrussammlung, P. 3033
+Kolumne: 6
+Zeile: 4
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 3,6
+Höhe: 3,7
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Erzählung
+Kommentar: nicht spezifiziert
+Retro-Digitalisat: Möller 1927a, p. 54, no. 565.
+Publikation: Retro-Digitalisat
+Publikationsdatum: Publikation
+Autor: übernommen wie publiziert
+Lizenz: 5.08.2024
