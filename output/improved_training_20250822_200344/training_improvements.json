@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-08-22T21:03:44.947614",
+  "model_path": "./output/improved_training_20250822_200344",
+  "improvements_made": [
+    "Lowered confidence threshold from 0.5 to 0.3",
+    "Implemented Focal Loss for hard examples",
+    "Enhanced data augmentation",
+    "Longer training with early stopping",
+    "Increased max detections per image to 300"
+  ],
+  "configuration": {
+    "confidence_threshold": 0.3,
+    "max_detections": 300,
+    "training_iterations": 15000,
+    "learning_rate": 0.0005,
+    "batch_size": 4
+  }
+}

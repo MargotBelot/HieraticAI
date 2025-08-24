@@ -1,0 +1,43 @@
+name: hieratic-ai
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  
+  # Core ML and Computer Vision
+  - pytorch>=2.0.0
+  - torchvision>=0.15.0
+  - opencv>=4.8.0
+  
+  # Data Science and Analysis
+  - numpy>=1.24.0
+  - pandas>=2.0.0
+  - matplotlib>=3.7.0
+  - pillow>=10.0.0
+  
+  # Web Interface
+  - streamlit>=1.25.0
+  
+  # Visualization
+  - plotly>=5.15.0
+  
+  # Database and File Handling
+  - requests>=2.31.0
+  - beautifulsoup4>=4.12.0
+  - lxml>=4.9.0
+  - tqdm>=4.65.0
+  
+  # Development Tools
+  - black>=23.7.0
+  - flake8>=6.0.0
+  
+  # Testing
+  - pytest>=7.4.0
+  
+  # Additional pip dependencies not available in conda
+  - pip
+  - pip:
+    - ultralytics>=8.0.0
+    - streamlit-mermaid>=0.1.0
