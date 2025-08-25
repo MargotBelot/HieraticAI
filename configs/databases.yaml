@@ -1,0 +1,53 @@
+# HieraticAI Database Configuration
+# Settings for external database integrations
+
+# AKU Westcar Database Configuration
+aku:
+  name: "AKU Westcar Scraping"
+  base_path: "./external_data/AKU Westcar Scraping"
+  json_dir: "json"
+  svg_dir: "svg"  
+  index_file: "./data/aku_gardiner_index.json"
+  enabled: true
+  
+  # Indexing settings
+  indexing:
+    include_metadata: true
+    include_images: true
+    quality_threshold: 0.7
+    
+# TLA (Thesaurus Linguae Aegyptiae) Configuration  
+tla:
+  name: "Thesaurus Linguae Aegyptiae"
+  data_file: "./external_data/TLA_Data/TLA_Scraping.txt"
+  index_file: "./data/tla_lemma_index.json"
+  enabled: true
+  
+  # Processing settings
+  processing:
+    include_hieroglyphs: true
+    include_transliteration: true  
+    include_translation: true
+    frequency_threshold: 1
+    
+# Gardiner Code Mapping
+gardiner:
+  unicode_mapping_file: "./data/gardiner_unicode_map.json"
+  category_definitions: "./data/gardiner_categories.json"
+  
+  # Mapping settings
+  mapping:
+    strict_matching: false
+    fallback_enabled: true
+    include_variants: true
+
+# Database Integration Settings
+integration:
+  cache_enabled: true
+  cache_dir: "./data/cache"
+  cache_ttl: 86400  # 24 hours
+  
+  # API settings (if applicable)
+  timeout: 30
+  retry_attempts: 3
+  retry_delay: 1.0

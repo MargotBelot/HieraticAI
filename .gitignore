@@ -215,3 +215,38 @@ logs/
 
 # AKU Westcar Scraping folder - now included
 # AKU Westcar Scraping/  # Now included in repository
+
+# IDE history and backup files
+.history/
+*.orig
+*.rej
+
+# Mac specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE cache and settings
+.vscode/settings.json
+.vscode/launch.json
+
+# Python cache
+*.pyc
+__pycache__/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Temporary and backup files
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+*.backup
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/

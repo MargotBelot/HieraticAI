@@ -1,0 +1,55 @@
+# HieraticAI Training Configuration
+# Default settings for hieratic character detection training
+
+# Model Configuration
+model:
+  name: "COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml"
+  weights: "COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml"
+  num_classes: 634  # Number of Gardiner code classes
+
+# Dataset Configuration  
+dataset:
+  name: "hieroglyphs"
+  path: "./hieroglyphs_dataset"
+  train_split: "train"
+  val_split: "val" 
+  test_split: "test"
+  category_offset: -1  # Convert from 1-based to 0-based IDs
+
+# Training Parameters
+training:
+  batch_size: 2
+  num_workers: 4
+  learning_rate: 0.00025
+  max_iter: 15000
+  eval_period: 1000
+  checkpoint_period: 1000
+  warmup_iters: 1000
+  warmup_factor: 0.001
+
+# Data Augmentation
+augmentation:
+  horizontal_flip: 0.5
+  rotation_angle: 5.0
+  brightness: 0.1
+  contrast: 0.1
+
+# Validation
+validation:
+  confidence_threshold: 0.3
+  nms_threshold: 0.5
+  max_detections_per_image: 100
+
+# Output Configuration  
+output:
+  base_dir: "./output"
+  save_predictions: true
+  save_visualizations: true
+  export_format: ["json", "csv"]
+
+# Logging
+logging:
+  level: "INFO"
+  log_file: "training.log"
+  tensorboard: true
+  wandb: false

@@ -1,0 +1,23 @@
+AKU-Nr.: H0020
+Manuel de Codage (MdC): H2
+Kategorie: H - Teile von Vögeln
+Subkategorie: Kopf
+Beschreibung: Vogelkopf mit Schopf
+Text: Berlin, Ägyptisches Museum und Papyrussammlung, P. 3033
+Kolumne: 12
+Zeile: 4
+Schriftrichtung: Zeilen, linksläufig prograd
+Schriftart: Hieratisch
+Material: Tusche
+Zustand: vollständig
+Breite: 5,3
+Höhe: 9,9
+Lesbarkeit: ja
+Zeitraum: Zweite Zwischenzeit, 17. Dynastie
+Textart: Textart:  Erzählung
+Kommentar: Klassifikator
+Retro-Digitalisat: m: Schläfe (TLA WCN: 66530)
+Publikation: Möller 1927a, p. 22, no. 232.
+Publikationsdatum: Retro-Digitalisat
+Autor: Publikation
+Lizenz: übernommen wie publiziert

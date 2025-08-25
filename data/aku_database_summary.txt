@@ -1,9 +1,9 @@
-🏺 AKU Westcar Database Summary
+ AKU Westcar Database Summary
 ==================================================
-📊 Total records: 781
-📚 Unique Gardiner codes: 303
+ Total records: 781
+ Unique Gardiner codes: 303
 
-🔝 Top 20 Most Common Gardiner Codes:
+ Top 20 Most Common Gardiner Codes:
 --------------------------------------------------
 Code     Total  SVG   Read  Comp  Description
 --------------------------------------------------
@@ -28,7 +28,7 @@ D46      6      6     6     6     Hand
 N35      6      6     6     6     Wasseroberfläche, Wasserlinie
 O1       6      6     6     6     Hausgrundriss
 
-📈 Coverage Statistics:
+ Coverage Statistics:
    Records with SVG: 781
    Records readable: 750
    Records complete: 746

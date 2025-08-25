@@ -1,8 +1,8 @@
-# Getting Started with HieraticAI 🚀
+# Getting Started with HieraticAI
 
 Welcome to HieraticAI! This guide will walk you through the complete setup process, from installation to your first validation session.
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before starting, ensure you have:
 
@@ -25,17 +25,17 @@ conda --version
 pip --version
 ```
 
-## 🔧 Installation
+## Installation
 
 ### Method 1: Using Conda (Recommended)
 
 ```mermaid
 graph TD
-    A[📥 Clone Repository] --> B[🐍 Create Conda Environment]
-    B --> C[📦 Install Dependencies] 
-    C --> D[🗄️ Setup Databases]
-    D --> E[✅ Verify Installation]
-    E --> F[🚀 Launch Interface]
+    A[Clone Repository] --> B[Create Conda Environment]
+    B --> C[Install Dependencies] 
+    C --> D[Setup Databases]
+    D --> E[Verify Installation]
+    E --> F[Launch Interface]
     
     style A fill:#3498db
     style F fill:#27ae60
@@ -59,9 +59,9 @@ conda activate hieratic-ai
 #### Step 3: Verify Installation
 ```bash
 # Check key dependencies
-python -c "import streamlit; print(f'✅ Streamlit: {streamlit.__version__}')"
-python -c "import torch; print(f'✅ PyTorch: {torch.__version__}')"
-python -c "import cv2; print(f'✅ OpenCV: {cv2.__version__}')"
+python -c "import streamlit; print(f'Streamlit: {streamlit.__version__}')"
+python -c "import torch; print(f'PyTorch: {torch.__version__}')"
+python -c "import cv2; print(f'OpenCV: {cv2.__version__}')"
 ```
 
 ### Method 2: Using pip
@@ -87,7 +87,7 @@ source hieratic_env/bin/activate
 pip install -r requirements.txt
 ```
 
-## 🗄️ Database Setup
+## Database Setup
 
 HieraticAI integrates with two key databases for linguistic and paleographic context:
 
@@ -98,7 +98,7 @@ HieraticAI integrates with two key databases for linguistic and paleographic con
 python -c "
 from scripts.prediction_validator import PredictionValidator
 validator = PredictionValidator()
-print('✅ TLA integration ready')
+print('TLA integration ready')
 "
 ```
 
@@ -107,15 +107,15 @@ print('✅ TLA integration ready')
 # Check if AKU data is accessible
 python -c "
 from pathlib import Path
-aku_path = Path('./AKU Westcar Scraping')
+aku_path = Path('./external_data/AKU Westcar Scraping')
 if aku_path.exists():
-    print('✅ AKU database found')
+    print('AKU database found')
 else:
-    print('⚠️ AKU database not found - some reference features unavailable')
+    print('AKU database not found - some reference features unavailable')
 "
 ```
 
-## 🚀 First Launch
+## First Launch
 
 ### Launch the Validation Interface
 
@@ -127,8 +127,12 @@ cd HieraticAI
 conda activate hieratic-ai
 # or: source hieratic_env/bin/activate
 
-# Launch the interface
-streamlit run scripts/prediction_validator.py
+# Option 1: Direct script execution
+streamlit run tools/validation/prediction_validator.py
+
+# Option 2: Install package and use CLI (recommended)
+pip install -e .
+hieratic-validate
 ```
 
 ### Expected Output
@@ -141,29 +145,38 @@ streamlit run scripts/prediction_validator.py
 
 ### Interface Tour
 
-When the interface loads, you'll see:
+When the interface loads, you'll see a clean, intuitive layout:
 
 ```
-🏠 HieraticAI Prediction Validator
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ HieraticAI Validator 
+                                                                    
+  INTERFACE OVERVIEW                              🟢 Status: Ready 
+    
+                                                                    
+   CONTROL PANEL      VALIDATION WORKSPACE  
+                                                                 
+    Database Status           Papyrus Image Display        
+     TLA: Active               • Westcar manuscript           
+     AKU: Connected            • Colored bounding boxes       
+                                 • Click to select signs        
+    Settings                                                   
+     Confidence: []        Sign Review Panel           
+     Threshold: 0.30              • Cropped sign image           
+                                 • Gardiner code info           
+    Navigation                 • TLA linguistic data          
+     Prev  Next              • AKU reference signs          
+     Refresh                                                  
+                                Validation Actions            
+    Progress                   Correct  Wrong  Unsure  
+      67%                                                
+       
+                                                                    
+  LIVE STATISTICS                                                 
+  • Reviewed: 45/67 predictions  • Accuracy: 89%  • Session: 23min  
 
-📖 How to use this interface                    [Expand ▼]
-
-┌─────────────────────────────┐  ┌─────────────────────────┐
-│        📊 Sidebar           │  │      📜 Main Interface   │
-│                             │  │                         │
-│  🗄️ Database Status         │  │  📷 Manuscript Image    │
-│   ✅ TLA: Connected         │  │  with bounding boxes    │
-│   ✅ AKU: Connected         │  │                         │
-│                             │  │  🔍 Validation Panel    │
-│  🎚️ Confidence Threshold    │  │  with detailed review  │
-│   [     0.3     ]           │  │                         │
-│                             │  │  📊 Statistics          │
-│  📱 Navigation Controls     │  │  and progress tracking  │
-└─────────────────────────────┘  └─────────────────────────┘
 ```
 
-## 📚 Your First Validation Session
+## Your First Validation Session
 
 ### Step 1: Understand the Interface
 
@@ -188,17 +201,17 @@ Start with the default threshold (0.3) to see all predictions:
 ### Step 4: Review the Sign Context
 
 For the selected prediction, examine:
-- **📷 Cropped Image**: Isolated view of the detected sign
-- **📝 Gardiner Info**: Code, Unicode character, description  
-- **📚 TLA Data**: Transliteration, translation, frequency
-- **🏛️ AKU References**: Similar signs from the database
+- **Cropped Image**: Isolated view of the detected sign
+- **Gardiner Info**: Code, Unicode character, description  
+- **TLA Data**: Transliteration, translation, frequency
+- **AKU References**: Similar signs from the database
 
 ### Step 5: Make Your First Validation
 
 Based on your expert assessment:
-- Click **✅ Correct** if the AI prediction is accurate
-- Click **❌ Incorrect** if wrong classification or bounding box
-- Click **❓ Uncertain** for ambiguous or damaged signs
+- Click **Correct** if the AI prediction is accurate
+- Click **Incorrect** if wrong classification or bounding box
+- Click **Uncertain** for ambiguous or damaged signs
 
 ### Step 6: Track Your Progress
 
@@ -207,7 +220,7 @@ Watch the statistics update in real-time:
 - **Accuracy Metrics**: Running accuracy percentage
 - **Distribution Chart**: Breakdown of validation outcomes
 
-## 🎯 Best Practices for Validation
+## Best Practices for Validation
 
 ### Academic Validation Approach
 
@@ -218,9 +231,9 @@ graph TD
     C --> D[Review TLA Linguistic Context]
     D --> E[Compare AKU References]
     E --> F{Expert Assessment}
-    F -->|Match| G[✅ Mark Correct]
-    F -->|Wrong| H[❌ Mark Incorrect]  
-    F -->|Unclear| I[❓ Mark Uncertain]
+    F -->Match G[Mark Correct]
+    F -->Wrong H[Mark Incorrect]  
+    F -->Unclear I[Mark Uncertain]
     G --> J[Move to Next Sign]
     H --> J
     I --> J
@@ -234,7 +247,7 @@ graph TD
 4. **Take Breaks**: Maintain concentration for accurate validation
 5. **Export Regularly**: Save your progress with CSV exports
 
-## 🔧 Customization Options
+## Customization Options
 
 ### Adjust Interface Settings
 
@@ -256,15 +269,15 @@ graph TD
 # - validation_status, bbox_coordinates, timestamp
 ```
 
-## ⚠️ Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
 #### Interface Won't Load
 ```bash
 # Check if all dependencies installed
-pip list | grep streamlit
-pip list | grep torch
+pip list  grep streamlit
+pip list  grep torch
 
 # Try clearing Streamlit cache
 streamlit cache clear
@@ -303,23 +316,20 @@ If you encounter issues:
 4. **Update Dependencies**: Try `pip install --upgrade -r requirements.txt`
 5. **GitHub Issues**: Report bugs at [GitHub Issues](https://github.com/MargotBelot/HieraticAI/issues)
 
-## 🎉 Next Steps
+## Next Steps
 
 Congratulations! You now have HieraticAI running. Next, explore:
 
 - **[Technical Guide](TECHNICAL_GUIDE.md)**: Advanced features and customization
 - **Validation Best Practices**: Develop systematic validation workflows
-- **Research Applications**: Integrate results into your Egyptological research
+- **Research Applications**: Integrate results into your research
 - **Contributing**: Help improve HieraticAI for the academic community
 
-## 📞 Support
+## Support
 
 Need additional help?
-- 📖 **Documentation**: Check the Technical Guide for advanced topics
-- 🐛 **Bug Reports**: Use GitHub Issues with detailed error information
-- 💡 **Feature Requests**: Suggest improvements through GitHub Discussions
-- 📧 **Academic Collaboration**: Contact for research partnerships
-
+- **Documentation**: Check the Technical Guide for advanced topics
+- **Bug Reports**: Use GitHub Issues with detailed error information
+- **Feature Requests**: Suggest improvements through GitHub Discussions
+  
 ---
-
-**🎯 Ready to advance digital paleography? Start validating your first hieratic signs!**

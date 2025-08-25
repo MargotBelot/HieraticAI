@@ -1,0 +1,5880 @@
+Text corpus: J4EXGHLCL5DR7JHSPDWTVEKMDY
+
+It has 41 page(s).
+
+With 3382 lemma code(s) used.
+
+There is 587 unique lemma(s).
+
+Vocab:
+
+1) /lemma/185810:
+
+	
+
+	ḏd
+
+	To say; to tell
+
+	Frequency: 101
+
+2) /lemma/104690:
+
+	
+
+	ḥm
+
+	Majesty (of the king, of a god)
+
+	Frequency: 54
+
+3) /lemma/79800:
+
+	
+
+	n.j
+
+	Belonging to; [genitive]
+
+	Frequency: 104
+
+4) /lemma/88060:
+
+	
+
+	nswt-bj.tj
+
+	King of upper and lower egypt
+
+	Frequency: 17
+
+5) /lemma/400277:
+
+	Hieroglyph not found
+
+	Ḫwi̯=f-wj
+
+	Cheops
+
+	Frequency: 9
+
+6) /lemma/66750:
+
+	
+
+	m-ḫrw
+
+	Justified person; the deceased
+
+	Frequency: 23
+
+7) /lemma/550022:
+
+	
+
+	jmi̯
+
+	Cause (that)!
+
+	Frequency: 10
+
+8) /lemma/96700:
+
+	
+
+	rḏi̯
+
+	To give; to put; to place
+
+	Frequency: 36
+
+9) /lemma/170100:
+
+	
+
+	=tw
+
+	One; one's (suffix pron., 3rd per. sing.)
+
+	Frequency: 19
+
+10) /lemma/66780:
+
+	
+
+	m.w
+
+	Products (of foreign lands); presentation
+
+	Frequency: 3
+
+11) /lemma/168810:
+
+	
+
+	tʾ
+
+	Bread (gen.)
+
+	Frequency: 5
+
+12) /lemma/850814:
+
+	Hieroglyph not found
+
+	1...n
+
+	[cardinal number in writing whole numbers and fractions]
+
+	Frequency: 55
+
+13) /lemma/110300:
+
+	
+
+	ḥnq.t
+
+	Beer
+
+	Frequency: 8
+
+14) /lemma/180600:
+
+	
+
+	ds
+
+	[a jug]; [a measure of volume for liquids]
+
+	Frequency: 5
+
+15) /lemma/22160:
+
+	
+
+	jw
+
+	Steer; ox; cattle
+
+	Frequency: 7
+
+16) /lemma/138670:
+
+	
+
+	snṯr
+
+	Incense
+
+	Frequency: 6
+
+17) /lemma/59470:
+
+	
+
+	pḏ
+
+	Pellet (or cone) (of incense)
+
+	Frequency: 6
+
+18) /lemma/400055:
+
+	
+
+	n
+
+	To; for; at; [dative]
+
+	Frequency: 98
+
+19) /lemma/853625:
+
+	Hieroglyph not found
+
+	Ḏsr
+
+	English translation not found
+
+	Frequency: 1
+
+20) /lemma/550300:
+
+	
+
+	ḥn
+
+	And
+
+	Frequency: 6
+
+21) /lemma/550028:
+
+	
+
+	rḏi̯
+
+	To cause; to allow
+
+	Frequency: 20
+
+22) /lemma/156230:
+
+	
+
+	šns
+
+	[a kind of baked goods]
+
+	Frequency: 3
+
+23) /lemma/183020:
+
+	
+
+	ḏwj.w
+
+	[a pottery jar]
+
+	Frequency: 3
+
+24) /lemma/22520:
+
+	
+
+	jwf
+
+	Meat; flesh
+
+	Frequency: 3
+
+25) /lemma/47320:
+
+	
+
+	wr
+
+	Large amount of; quantity of
+
+	Frequency: 2
+
+26) /lemma/850117:
+
+	
+
+	ẖr.j-ḥb.t-ḥr.j-tp
+
+	Chief lector priest
+
+	Frequency: 14
+
+27) /lemma/851515:
+
+	
+
+	jw
+
+	[as sentence marker and in complex verbal forms]
+
+	Frequency: 41
+
+28) /lemma/66270:
+
+	
+
+	m
+
+	To see; to look
+
+	Frequency: 9
+
+29) /lemma/10030:
+
+	
+
+	=j
+
+	I; me; my, mine (suffix pron., 1st per. sing.)
+
+	Frequency: 74
+
+30) /lemma/132300:
+
+	
+
+	zp
+
+	Matter; affair; conduct
+
+	Frequency: 4
+
+31) /lemma/10050:
+
+	
+
+	=f
+
+	He; him; his (suffix pron., 3rd. per. masc. sing.)
+
+	Frequency: 228
+
+32) /lemma/95640:
+
+	
+
+	rḫ
+
+	Knowledge; opinion
+
+	Frequency: 3
+
+33) /lemma/28550:
+
+	
+
+	jri̯
+
+	To do; to make; to create; to act as
+
+	Frequency: 70
+
+34) /lemma/67820:
+
+	
+
+	mj
+
+	Like; according as
+
+	Frequency: 9
+
+35) /lemma/51970:
+
+	
+
+	wḏ
+
+	To command; to commit
+
+	Frequency: 6
+
+36) /lemma/81660:
+
+	
+
+	nb
+
+	Every; all
+
+	Frequency: 14
+
+37) /lemma/40110:
+
+	
+
+	ḥ
+
+	To stand; to stand up
+
+	Frequency: 10
+
+38) /lemma/59741:
+
+	
+
+	pw
+
+	[part. as subj. in nom. sentences]; [copula]
+
+	Frequency: 46
+
+39) /lemma/450223:
+
+	
+
+	z-nswt
+
+	King's son
+
+	Frequency: 12
+
+40) /lemma/401252:
+
+	Hieroglyph not found
+
+	Ḫi̯=f-Rw
+
+	Chephren
+
+	Frequency: 1
+
+41) /lemma/91909:
+
+	
+
+	r
+
+	In order to
+
+	Frequency: 17
+
+42) /lemma/78140:
+
+	
+
+	mdwi̯
+
+	To speak; to claim
+
+	Frequency: 3
+
+43) /lemma/150560:
+
+	
+
+	sḏm
+
+	To hear; to listen
+
+	Frequency: 4
+
+44) /lemma/10110:
+
+	
+
+	=k
+
+	You; your; yours (suffix pron., 2nd per. masc. sing.)
+
+	Frequency: 66
+
+45) /lemma/54480:
+
+	
+
+	bj.yt
+
+	Wonders; marvels
+
+	Frequency: 7
+
+46) /lemma/116230:
+
+	
+
+	ḫpr
+
+	To come into being; to become; to occur
+
+	Frequency: 14
+
+47) /lemma/64365:
+
+	
+
+	m
+
+	In; on (temp.)
+
+	Frequency: 9
+
+48) /lemma/96390:
+
+	
+
+	rk
+
+	Time
+
+	Frequency: 5
+
+49) /lemma/32820:
+
+	
+
+	jtj
+
+	Father
+
+	Frequency: 9
+
+50) /lemma/853626:
+
+	Hieroglyph not found
+
+	Nb-k
+
+	English translation not found
+
+	Frequency: 8
+
+51) /lemma/52130:
+
+	
+
+	wḏ
+
+	To proceed; to go in procession
+
+	Frequency: 10
+
+52) /lemma/91901:
+
+	
+
+	r
+
+	To; at (spatial)
+
+	Frequency: 42
+
+53) /lemma/99940:
+
+	
+
+	ḥw.t-nṯr
+
+	Temple
+
+	Frequency: 2
+
+54) /lemma/62980:
+
+	
+
+	Ptḥ
+
+	Ptah
+
+	Frequency: 3
+
+55) /lemma/400617:
+
+	Hieroglyph not found
+
+	nb-nḫ-T.wj
+
+	Lord of ankh-tawy (ptah-sokar-osiris)
+
+	Frequency: 1
+
+56) /lemma/31830:
+
+	
+
+	jsṯ
+
+	Now; while (part., introductory)
+
+	Frequency: 8
+
+57) /lemma/28170:
+
+	
+
+	jr
+
+	[emphatic enclitic part.]
+
+	Frequency: 12
+
+58) /lemma/26670:
+
+	
+
+	jn
+
+	Indeed (emphatic part.)
+
+	Frequency: 6
+
+59) /lemma/154340:
+
+	
+
+	šmi̯
+
+	To go; to traverse
+
+	Frequency: 8
+
+60) /lemma/46140:
+
+	
+
+	wn.t
+
+	Sanctuary (of a temple)
+
+	Frequency: 5
+
+61) /lemma/106000:
+
+	
+
+	ḥn.t
+
+	Orders; command
+
+	Frequency: 1
+
+62) /lemma/711494:
+
+	
+
+	Wb-jnr
+
+	English translation not found
+
+	Frequency: 23
+
+63) /lemma/106200:
+
+	
+
+	ḥn
+
+	Together with
+
+	Frequency: 14
+
+64) /lemma/72470:
+
+	
+
+	mri̯
+
+	To love; to wish
+
+	Frequency: 6
+
+65) /lemma/104730:
+
+	
+
+	ḥm.t
+
+	Woman; wife
+
+	Frequency: 11
+
+66) /lemma/91770:
+
+	
+
+	nḏs
+
+	Junior; commoner
+
+	Frequency: 16
+
+67) /lemma/40111:
+
+	
+
+	ḥ.n
+
+	[particle]
+
+	Frequency: 107
+
+68) /lemma/97580:
+
+	
+
+	hb
+
+	To send
+
+	Frequency: 4
+
+69) /lemma/168850:
+
+	
+
+	t
+
+	The (def. art., fem. sing.]
+
+	Frequency: 23
+
+70) /lemma/45030:
+
+	
+
+	wb.yt
+
+	Female butler; servant
+
+	Frequency: 9
+
+71) /lemma/10090:
+
+	
+
+	=s
+
+	She; her; hers (suffix pron. 3rd per. fem. sing.)
+
+	Frequency: 93
+
+72) /lemma/33560:
+
+	
+
+	jṯi̯
+
+	To take; to seize
+
+	Frequency: 9
+
+73) /lemma/63110:
+
+	
+
+	pds
+
+	Box (for clothing, for documents)
+
+	Frequency: 2
+
+74) /lemma/73290:
+
+	
+
+	mḥ
+
+	To fill; to be full
+
+	Frequency: 1
+
+75) /lemma/400082:
+
+	
+
+	m
+
+	In; of; (consisting) of
+
+	Frequency: 14
+
+76) /lemma/851898:
+
+	Hieroglyph not found
+
+	ḥbs.w
+
+	Clothing (coll.)
+
+	Frequency: 1
+
+77) /lemma/153940:
+
+	
+
+	špss
+
+	Riches; wealth; precious things
+
+	Frequency: 2
+
+78) /lemma/54240:
+
+	
+
+	bj.tj
+
+	King of lower egypt
+
+	Frequency: 1
+
+79) /lemma/21930:
+
+	
+
+	jwi̯
+
+	To come; to return
+
+	Frequency: 20
+
+80) /lemma/119740:
+
+	
+
+	ḫr-m-ḫt
+
+	After
+
+	Frequency: 10
+
+81) /lemma/99060:
+
+	
+
+	hrw
+
+	Day
+
+	Frequency: 12
+
+82) /lemma/129740:
+
+	
+
+	swi̯
+
+	To pass
+
+	Frequency: 4
+
+83) /lemma/400091:
+
+	
+
+	ḥr
+
+	At (the time of); in (temp., duration)
+
+	Frequency: 1
+
+84) /lemma/84570:
+
+	
+
+	nn
+
+	This (demons. pron.)
+
+	Frequency: 1
+
+85) /lemma/46050:
+
+	
+
+	wnn
+
+	To exist; to become
+
+	Frequency: 9
+
+86) /lemma/157250:
+
+	
+
+	šzp.t
+
+	Chamber; summer house
+
+	Frequency: 6
+
+87) /lemma/400007:
+
+	
+
+	m
+
+	In; to; on; from (spatial)
+
+	Frequency: 48
+
+88) /lemma/151010:
+
+	
+
+	š
+
+	Lake; district; garden (with pool)
+
+	Frequency: 17
+
+89) /lemma/58770:
+
+	
+
+	p
+
+	The (def. article, masc. sing.)
+
+	Frequency: 61
+
+90) /lemma/74800:
+
+	
+
+	ms
+
+	Surely; indeed
+
+	Frequency: 3
+
+91) /lemma/64440:
+
+	
+
+	m
+
+	Behold!
+
+	Frequency: 14
+
+92) /lemma/10130:
+
+	
+
+	=ṯn
+
+	You; your; yours (suffix pron., 2nd per. pl.)
+
+	Frequency: 15
+
+93) /lemma/10070:
+
+	
+
+	=n
+
+	We; us; our (suffix pron., 1st per. pl.)
+
+	Frequency: 7
+
+94) /lemma/5:
+
+	
+
+	.t
+
+	Moment; instant; time (gen.)
+
+	Frequency: 1
+
+95) /lemma/400392:
+
+	
+
+	ḥr.j-pr
+
+	Major-domo
+
+	Frequency: 7
+
+96) /lemma/89850:
+
+	
+
+	n.tj
+
+	The one who; which (relative pron.)
+
+	Frequency: 14
+
+97) /lemma/65430:
+
+	
+
+	m-s
+
+	(take care) of; (watch) over (jur.)
+
+	Frequency: 2
+
+98) /lemma/92540:
+
+	
+
+	r-ḏd
+
+	With the words; that (introducing direct speech)
+
+	Frequency: 5
+
+99) /lemma/143970:
+
+	
+
+	sspd
+
+	To make ready; to supply
+
+	Frequency: 6
+
+100) /lemma/64364:
+
+	
+
+	m
+
+	By means of; through (instrumental)
+
+	Frequency: 15
+
+101) /lemma/851129:
+
+	Hieroglyph not found
+
+	bw-nb-nfr
+
+	Best of all
+
+	Frequency: 4
+
+102) /lemma/151900:
+
+	
+
+	šs
+
+	To travel; to go; to tread on
+
+	Frequency: 12
+
+103) /lemma/48130:
+
+	
+
+	wršu̯
+
+	To spend the day; to be awake
+
+	Frequency: 3
+
+104) /lemma/24640:
+
+	
+
+	jm
+
+	There
+
+	Frequency: 7
+
+105) /lemma/107529:
+
+	
+
+	ḥr
+
+	[with infinitive]
+
+	Frequency: 31
+
+106) /lemma/130360:
+
+	
+
+	zwr
+
+	To drink
+
+	Frequency: 2
+
+107) /lemma/91910:
+
+	
+
+	r
+
+	So that; until
+
+	Frequency: 3
+
+108) /lemma/111230:
+
+	
+
+	ḥtp
+
+	To be pleased; to be content; to make content; to set (of the sun)
+
+	Frequency: 1
+
+109) /lemma/10100:
+
+	
+
+	=sn
+
+	They; them; their (suffix pron., 3rd per. pl.)
+
+	Frequency: 52
+
+110) /lemma/76470:
+
+	Hieroglyph not found
+
+	mšr.w
+
+	Evening; (evening) twilight
+
+	Frequency: 2
+
+111) /lemma/650007:
+
+	
+
+	wn.jn
+
+	[particle]
+
+	Frequency: 19
+
+112) /lemma/97350:
+
+	
+
+	hi̯
+
+	To descend; to fall; to strike
+
+	Frequency: 4
+
+113) /lemma/78870:
+
+	
+
+	n
+
+	[preposition]
+
+	Frequency: 1
+
+114) /lemma/91907:
+
+	
+
+	r
+
+	[to form the future tense]
+
+	Frequency: 9
+
+115) /lemma/168860:
+
+	
+
+	t
+
+	Earth; land; ground
+
+	Frequency: 4
+
+116) /lemma/112301:
+
+	
+
+	ḥḏ
+
+	To be white; to be bright
+
+	Frequency: 1
+
+117) /lemma/851318:
+
+	
+
+	wḥm
+
+	To repeat (doing); [aux./modal]
+
+	Frequency: 1
+
+118) /lemma/78030:
+
+	
+
+	mdw.t
+
+	Word; speech; matter
+
+	Frequency: 5
+
+119) /lemma/172360:
+
+	
+
+	tn
+
+	This (demons. pron., fem. sing.)
+
+	Frequency: 4
+
+120) /lemma/550046:
+
+	
+
+	ty=
+
+	[poss. adj., fem. sing.]
+
+	Frequency: 4
+
+121) /lemma/127770:
+
+	
+
+	sj
+
+	She; her; it (depen. pron., 3rd per. fem. sing.)
+
+	Frequency: 19
+
+122) /lemma/91900:
+
+	
+
+	r
+
+	[preposition]
+
+	Frequency: 1
+
+123) /lemma/132310:
+
+	
+
+	zp
+
+	Time; occasion
+
+	Frequency: 1
+
+124) /lemma/10060:
+
+	
+
+	=fj
+
+	His; its (suffix pron., 3rd per. masc. sing. after dual nouns)
+
+	Frequency: 3
+
+125) /lemma/550021:
+
+	
+
+	py=
+
+	[poss. adj., masc. sing.]
+
+	Frequency: 9
+
+126) /lemma/129490:
+
+	
+
+	sw
+
+	He; him; it (depen. pron., 3rd per. masc. sing.)
+
+	Frequency: 22
+
+127) /lemma/81650:
+
+	
+
+	nb
+
+	Lord; master; possessor (owner)
+
+	Frequency: 8
+
+128) /lemma/100770:
+
+	
+
+	ḥy.t
+
+	Sheet of shallow inundation water overlying the ground
+
+	Frequency: 1
+
+129) /lemma/69000:
+
+	
+
+	mw
+
+	Water
+
+	Frequency: 12
+
+130) /lemma/26870:
+
+	
+
+	jni̯
+
+	To bring; to bring away; to buy
+
+	Frequency: 27
+
+131) /lemma/34360:
+
+	
+
+	
+
+	Portion; piece
+
+	Frequency: 1
+
+132) /lemma/98180:
+
+	
+
+	hbnj
+
+	Ebony
+
+	Frequency: 3
+
+133) /lemma/400093:
+
+	
+
+	ḥr
+
+	And (to coordinate nouns); with
+
+	Frequency: 3
+
+134) /lemma/182710:
+
+	
+
+	ḏm
+
+	Fine gold; white gold; electrum
+
+	Frequency: 2
+
+135) /lemma/74950:
+
+	
+
+	msi̯
+
+	To give birth; to fashion; to create
+
+	Frequency: 8
+
+136) /lemma/45760:
+
+	
+
+	wpw.tj
+
+	Messenger
+
+	Frequency: 1
+
+137) /lemma/75590:
+
+	
+
+	mzḥ
+
+	Crocodile
+
+	Frequency: 13
+
+138) /lemma/73330:
+
+	
+
+	mḥ
+
+	Cubit; cubit rod
+
+	Frequency: 8
+
+139) /lemma/158740:
+
+	
+
+	šdi̯
+
+	To read; to recite
+
+	Frequency: 4
+
+140) /lemma/101930:
+
+	
+
+	ḥjḥj
+
+	To seek
+
+	Frequency: 4
+
+141) /lemma/107520:
+
+	
+
+	ḥr
+
+	[preposition]
+
+	Frequency: 3
+
+142) /lemma/44430:
+
+	
+
+	wb
+
+	To purify; to be pure
+
+	Frequency: 2
+
+143) /lemma/64360:
+
+	
+
+	m
+
+	[preposition]
+
+	Frequency: 6
+
+144) /lemma/28160:
+
+	
+
+	jr
+
+	As to (emphatic part.)
+
+	Frequency: 2
+
+145) /lemma/400151:
+
+	
+
+	m-ḫt
+
+	After; when
+
+	Frequency: 2
+
+146) /lemma/89770:
+
+	
+
+	n.t-
+
+	Rule; custom; ceremony; ritual
+
+	Frequency: 2
+
+147) /lemma/93290:
+
+	
+
+	rw
+
+	Sun
+
+	Frequency: 2
+
+148) /lemma/400415:
+
+	
+
+	k
+
+	[element of word formation for verbal forms]
+
+	Frequency: 2
+
+149) /lemma/113560:
+
+	
+
+	ḫ
+
+	To throw; to abandon; to dispatch
+
+	Frequency: 2
+
+150) /lemma/70920:
+
+	
+
+	mnḥ
+
+	Wax
+
+	Frequency: 4
+
+151) /lemma/92330:
+
+	
+
+	r-s
+
+	After (spatial)
+
+	Frequency: 2
+
+152) /lemma/34320:
+
+	
+
+	
+
+	Arm; hand
+
+	Frequency: 6
+
+153) /lemma/44000:
+
+	
+
+	wj
+
+	I; me (depen. pron., 1st per. sing.)
+
+	Frequency: 2
+
+154) /lemma/105780:
+
+	
+
+	ḥmsi̯
+
+	To sit; to sit down; to occupy
+
+	Frequency: 5
+
+155) /lemma/550034:
+
+	
+
+	nfr
+
+	Good; beautiful; perfect; finished
+
+	Frequency: 5
+
+156) /lemma/500292:
+
+	
+
+	m
+
+	Like; as; as (predication)
+
+	Frequency: 19
+
+157) /lemma/73300:
+
+	
+
+	mḥ
+
+	To hold; to seize
+
+	Frequency: 1
+
+158) /lemma/135110:
+
+	
+
+	smn
+
+	To take station; to remain
+
+	Frequency: 1
+
+159) /lemma/78875:
+
+	
+
+	n
+
+	Within; in (temp.)
+
+	Frequency: 1
+
+160) /lemma/181810:
+
+	
+
+	ḏ.ywt
+
+	Offence; wrongdoing
+
+	Frequency: 1
+
+161) /lemma/84550:
+
+	
+
+	nn
+
+	[negative word, distinct from n]
+
+	Frequency: 7
+
+162) /lemma/144080:
+
+	
+
+	ssn
+
+	To breathe; to smell
+
+	Frequency: 1
+
+163) /lemma/600046:
+
+	
+
+	m-bḥ
+
+	In front
+
+	Frequency: 1
+
+164) /lemma/150940:
+
+	
+
+	sḏd
+
+	To recount; to talk
+
+	Frequency: 1
+
+165) /lemma/89330:
+
+	
+
+	nkn
+
+	To wound
+
+	Frequency: 1
+
+166) /lemma/177670:
+
+	
+
+	dw.t
+
+	Abyss
+
+	Frequency: 2
+
+167) /lemma/60920:
+
+	
+
+	pri̯
+
+	To go forth; to come forth
+
+	Frequency: 2
+
+168) /lemma/25180:
+
+	
+
+	jmi̯
+
+	Give!
+
+	Frequency: 1
+
+169) /lemma/135040:
+
+	
+
+	smwn
+
+	Probably; surely
+
+	Frequency: 1
+
+170) /lemma/85950:
+
+	
+
+	nḥ
+
+	To be fierce; to be unruly; abnormal
+
+	Frequency: 1
+
+171) /lemma/165430:
+
+	
+
+	ksi̯
+
+	To bow down; to bend down; to be prostrate
+
+	Frequency: 1
+
+172) /lemma/174260:
+
+	
+
+	ṯi̯
+
+	To take; to seize; to don (clothing)
+
+	Frequency: 2
+
+173) /lemma/184630:
+
+	
+
+	ḏr.t
+
+	Hand; handful (as a measure of volume)
+
+	Frequency: 1
+
+174) /lemma/48440:
+
+	
+
+	wḥm
+
+	To repeat
+
+	Frequency: 4
+
+175) /lemma/60220:
+
+	
+
+	pr
+
+	House (gen.); temple; tomb; container
+
+	Frequency: 7
+
+176) /lemma/78890:
+
+	
+
+	n
+
+	[negative word]
+
+	Frequency: 11
+
+177) /lemma/95620:
+
+	
+
+	rḫ
+
+	To know; to learn
+
+	Frequency: 10
+
+178) /lemma/55110:
+
+	
+
+	bw
+
+	Place
+
+	Frequency: 4
+
+179) /lemma/851508:
+
+	
+
+	ẖr
+
+	(to be) under (sth.) (carrying sth.); have (sth.)
+
+	Frequency: 4
+
+180) /lemma/158860:
+
+	
+
+	šd.w
+
+	Field; meadow; parcel of land
+
+	Frequency: 1
+
+181) /lemma/73560:
+
+	
+
+	mḥ.tj
+
+	Northern
+
+	Frequency: 2
+
+182) /lemma/123280:
+
+	
+
+	ẖnw
+
+	Home; abode
+
+	Frequency: 2
+
+183) /lemma/113020:
+
+	
+
+	ḫ.t
+
+	Fire; flame
+
+	Frequency: 1
+
+184) /lemma/853627:
+
+	Hieroglyph not found
+
+	qm.w
+
+	Things thrown (into water); handed over (to the river)
+
+	Frequency: 1
+
+185) /lemma/33370:
+
+	
+
+	jtr.w
+
+	River; the nile; canal
+
+	Frequency: 1
+
+186) /lemma/28590:
+
+	
+
+	jr.yt
+
+	Act; ceremony
+
+	Frequency: 3
+
+187) /lemma/711857:
+
+	
+
+	B.w=f-Rw
+
+	Bauef-re
+
+	Frequency: 1
+
+188) /lemma/650011:
+
+	Hieroglyph not found
+
+	Snfr.w
+
+	Snofru
+
+	Frequency: 4
+
+189) /lemma/709664:
+
+	‌‌‌‌‌‌‌
+
+	Ḏḏ-m-nḫ
+
+	English translation not found
+
+	Frequency: 9
+
+190) /lemma/112300:
+
+	
+
+	ḥḏ
+
+	White; bright
+
+	Frequency: 1
+
+191) /lemma/133440:
+
+	
+
+	sf
+
+	Yesterday
+
+	Frequency: 1
+
+192) /lemma/600304:
+
+	
+
+	wḏ
+
+	Green; fresh; young
+
+	Frequency: 1
+
+193) /lemma/141690:
+
+	
+
+	sḫ.w
+
+	Remembrance; memory; memorial
+
+	Frequency: 1
+
+194) /lemma/109620:
+
+	
+
+	ḥzi̯
+
+	To praise; to favor
+
+	Frequency: 3
+
+195) /lemma/79530:
+
+	
+
+	n
+
+	These (demons. pron., pl.)
+
+	Frequency: 4
+
+196) /lemma/171990:
+
+	
+
+	tm
+
+	[negative verb]
+
+	Frequency: 5
+
+197) /lemma/178560:
+
+	
+
+	dbn
+
+	To go round (a place); to travel round; to encircle
+
+	Frequency: 3
+
+198) /lemma/34540:
+
+	
+
+	.t
+
+	Room; department; dwelling
+
+	Frequency: 11
+
+199) /lemma/400419:
+
+	
+
+	pr-nswt
+
+	King's house; palace; royal administration
+
+	Frequency: 3
+
+200) /lemma/400004:
+
+	
+
+	nḫ-wḏ-snb
+
+	Living, prosperous, healthy (abbrev. lph)
+
+	Frequency: 13
+
+201) /lemma/125490:
+
+	
+
+	s.t-qb.t
+
+	Entertainment
+
+	Frequency: 2
+
+202) /lemma/167210:
+
+	
+
+	gmi̯
+
+	To find; to discover
+
+	Frequency: 9
+
+203) /lemma/127740:
+
+	
+
+	zj
+
+	To go
+
+	Frequency: 3
+
+204) /lemma/144470:
+
+	
+
+	zẖ.w-mḏ.t
+
+	Document scribe
+
+	Frequency: 3
+
+205) /lemma/107860:
+
+	
+
+	ḥr-.wj
+
+	Straightaway
+
+	Frequency: 2
+
+206) /lemma/100160:
+
+	
+
+	ḥ
+
+	Would that!
+
+	Frequency: 3
+
+207) /lemma/60430:
+
+	
+
+	pr-
+
+	Palace; pharaoh (lit. great house)
+
+	Frequency: 2
+
+208) /lemma/37090:
+
+	
+
+	pr
+
+	To equip; to be equipped
+
+	Frequency: 1
+
+209) /lemma/53310:
+
+	
+
+	b.w
+
+	Cargo-boat
+
+	Frequency: 1
+
+210) /lemma/83670:
+
+	
+
+	nfr.t
+
+	Maiden
+
+	Frequency: 1
+
+211) /lemma/123270:
+
+	
+
+	ẖnw
+
+	Interior
+
+	Frequency: 1
+
+212) /lemma/39850:
+
+	
+
+	ḥ
+
+	Palace
+
+	Frequency: 2
+
+213) /lemma/23290:
+
+	
+
+	jb
+
+	Heart; mind; wish; character
+
+	Frequency: 10
+
+214) /lemma/160170:
+
+	
+
+	qbb
+
+	To be cool; to be calm
+
+	Frequency: 3
+
+215) /lemma/78874:
+
+	
+
+	n
+
+	Because of (reason)
+
+	Frequency: 4
+
+216) /lemma/66280:
+
+	
+
+	m
+
+	Sight
+
+	Frequency: 3
+
+217) /lemma/123230:
+
+	
+
+	ẖni̯
+
+	To convey by water; to row
+
+	Frequency: 12
+
+218) /lemma/123160:
+
+	
+
+	ẖn.t
+
+	Water-procession
+
+	Frequency: 2
+
+219) /lemma/65350:
+
+	
+
+	m-ḫd
+
+	Downstream; northwards
+
+	Frequency: 3
+
+220) /lemma/850635:
+
+	
+
+	m-ḫnt.yt
+
+	Upstream; southwards
+
+	Frequency: 2
+
+221) /lemma/144360:
+
+	
+
+	zš
+
+	Marsh land; pond; nest
+
+	Frequency: 1
+
+222) /lemma/141480:
+
+	
+
+	sḫ.t
+
+	Marshland; country
+
+	Frequency: 1
+
+223) /lemma/116620:
+
+	
+
+	ḫf.t
+
+	Riverbank
+
+	Frequency: 1
+
+224) /lemma/83470:
+
+	
+
+	nfr
+
+	To be good; to be beautiful; to be perfect
+
+	Frequency: 3
+
+225) /lemma/851509:
+
+	
+
+	ẖr
+
+	As a result, consequence; due to (cause); (causal)
+
+	Frequency: 1
+
+226) /lemma/104600:
+
+	
+
+	ḥm
+
+	However; truly; [enclitic particle]
+
+	Frequency: 1
+
+227) /lemma/49620:
+
+	
+
+	wsr
+
+	Oar
+
+	Frequency: 1
+
+228) /lemma/53800:
+
+	
+
+	bk
+
+	To work; to render (services)
+
+	Frequency: 3
+
+229) /lemma/81680:
+
+	
+
+	nbw
+
+	Gold
+
+	Frequency: 5
+
+230) /lemma/117130:
+
+	
+
+	ḫm.t
+
+	Blade (or handle?) (of an oar)
+
+	Frequency: 1
+
+231) /lemma/850583:
+
+	
+
+	jr.j
+
+	Thereof; thereto
+
+	Frequency: 5
+
+232) /lemma/853628:
+
+	Hieroglyph not found
+
+	sqb
+
+	[a kind of wood]
+
+	Frequency: 1
+
+233) /lemma/125370:
+
+	
+
+	z.t-ḥm.t
+
+	Woman
+
+	Frequency: 1
+
+234) /lemma/83680:
+
+	
+
+	nfr.t
+
+	What is good
+
+	Frequency: 1
+
+235) /lemma/101950:
+
+	
+
+	ḥ.w
+
+	Flesh; limbs; body; self
+
+	Frequency: 2
+
+236) /lemma/55550:
+
+	
+
+	bn.tj
+
+	Nipples; breasts
+
+	Frequency: 1
+
+237) /lemma/107050:
+
+	
+
+	ḥnk.yt
+
+	With braided hair
+
+	Frequency: 1
+
+238) /lemma/45640:
+
+	
+
+	wpi̯
+
+	To divide; to open; to judge
+
+	Frequency: 1
+
+239) /lemma/75070:
+
+	
+
+	msw.t
+
+	Birth; birthing
+
+	Frequency: 4
+
+240) /lemma/21190:
+
+	Hieroglyph not found
+
+	jd.t
+
+	Net (gen.)
+
+	Frequency: 2
+
+241) /lemma/851273:
+
+	
+
+	nn
+
+	These [dem. pron. pl. c.]
+
+	Frequency: 8
+
+242) /lemma/43010:
+
+	
+
+	wḥ
+
+	To lay down; to offer; to endure
+
+	Frequency: 3
+
+243) /lemma/103750:
+
+	
+
+	ḥbs
+
+	Garment; clothing
+
+	Frequency: 1
+
+244) /lemma/600041:
+
+	
+
+	w
+
+	One (of many); sole
+
+	Frequency: 7
+
+245) /lemma/158220:
+
+	
+
+	štj.w
+
+	Stroke oar (?)
+
+	Frequency: 2
+
+246) /lemma/111000:
+
+	
+
+	ḥt
+
+	[verb describing an activity related to the hair]
+
+	Frequency: 1
+
+247) /lemma/107220:
+
+	
+
+	ḥnk.t
+
+	Braided lock of hair
+
+	Frequency: 1
+
+248) /lemma/86850:
+
+	Hieroglyph not found
+
+	nḫ.w
+
+	Fish-shaped pendant
+
+	Frequency: 5
+
+249) /lemma/69410:
+
+	
+
+	mfk.t
+
+	Turquoise
+
+	Frequency: 4
+
+250) /lemma/66150:
+
+	
+
+	mw
+
+	New
+
+	Frequency: 4
+
+251) /lemma/119610:
+
+	
+
+	ḫr
+
+	To fall; to fell
+
+	Frequency: 5
+
+252) /lemma/400090:
+
+	
+
+	ḥr
+
+	On; upon; up
+
+	Frequency: 18
+
+253) /lemma/167750:
+
+	
+
+	gr
+
+	To be silent
+
+	Frequency: 4
+
+254) /lemma/94260:
+
+	
+
+	rmn
+
+	Side (of rowing women)
+
+	Frequency: 2
+
+255) /lemma/26680:
+
+	
+
+	jn
+
+	[interrogative particle]
+
+	Frequency: 5
+
+256) /lemma/158200:
+
+	
+
+	šty.t
+
+	Leader; stroke (of a bank of oarswomen)
+
+	Frequency: 2
+
+257) /lemma/10120:
+
+	
+
+	=ṯ
+
+	[suffix pron. sing. 2. f.]
+
+	Frequency: 7
+
+258) /lemma/400092:
+
+	
+
+	ḥr
+
+	On account of; concerning
+
+	Frequency: 7
+
+259) /lemma/64430:
+
+	
+
+	m
+
+	Who?; what?
+
+	Frequency: 4
+
+260) /lemma/136180:
+
+	
+
+	zn.tj
+
+	Likeness
+
+	Frequency: 3
+
+261) /lemma/91903:
+
+	
+
+	r
+
+	Concerning; according to
+
+	Frequency: 4
+
+262) /lemma/183350:
+
+	
+
+	ḏb.w
+
+	Compensation; payments
+
+	Frequency: 2
+
+263) /lemma/106280:
+
+	
+
+	ḥn.w
+
+	Jar; chattel(s)
+
+	Frequency: 3
+
+264) /lemma/91904:
+
+	
+
+	r
+
+	More than (comparative)
+
+	Frequency: 4
+
+265) /lemma/136230:
+
+	
+
+	sn
+
+	Brother
+
+	Frequency: 4
+
+266) /lemma/851688:
+
+	
+
+	jwi̯
+
+	To come (to do); [aux./modal]
+
+	Frequency: 1
+
+267) /lemma/112660:
+
+	
+
+	ḥḏi̯
+
+	To injure; to destroy; to be lacking
+
+	Frequency: 1
+
+268) /lemma/27940:
+
+	
+
+	jnk
+
+	I [indepen. pron., 1st per. sing.]
+
+	Frequency: 2
+
+269) /lemma/183170:
+
+	
+
+	ḏb
+
+	To replace; to reimburse; to repay
+
+	Frequency: 1
+
+270) /lemma/110661:
+
+	
+
+	ḥk.w
+
+	Magic spell
+
+	Frequency: 4
+
+271) /lemma/94250:
+
+	
+
+	rmn
+
+	Side; half
+
+	Frequency: 2
+
+272) /lemma/59350:
+
+	Hieroglyph not found
+
+	pq.t
+
+	Potsherd; flake (of stone); carapace (also metaph., for the skull)
+
+	Frequency: 1
+
+273) /lemma/106350:
+
+	
+
+	ḥn.wt
+
+	Mistress; lady
+
+	Frequency: 5
+
+274) /lemma/20090:
+
+	
+
+	j.t
+
+	Spine; back (of a human being, of an animal)
+
+	Frequency: 1
+
+275) /lemma/184560:
+
+	
+
+	ḏr
+
+	To end up as
+
+	Frequency: 1
+
+276) /lemma/600324:
+
+	
+
+	r-s
+
+	After
+
+	Frequency: 1
+
+277) /lemma/52620:
+
+	
+
+	wḏb
+
+	To turn back; to fold over; to revert
+
+	Frequency: 1
+
+278) /lemma/79540:
+
+	
+
+	n
+
+	The (def. article, pl.)
+
+	Frequency: 7
+
+279) /lemma/40410:
+
+	
+
+	ḥ.w
+
+	Station; position
+
+	Frequency: 1
+
+280) /lemma/68110:
+
+	
+
+	mj-qj
+
+	All; whole (with suffix pron.) 
+
+	Frequency: 1
+
+281) /lemma/401169:
+
+	
+
+	pri̯.n
+
+	[particle]
+
+	Frequency: 1
+
+282) /lemma/64010:
+
+	
+
+	fq
+
+	To reward
+
+	Frequency: 1
+
+283) /lemma/709870:
+
+	‌‌‌
+
+	Ḏd=f-Ḥr.w
+
+	English translation not found
+
+	Frequency: 12
+
+284) /lemma/66620:
+
+	
+
+	m.t
+
+	Right order; truth
+
+	Frequency: 2
+
+285) /lemma/851659:
+
+	
+
+	r
+
+	(separate, differ etc.) from; (far) from; (beware) of; (hide) from; [separation]
+
+	Frequency: 1
+
+286) /lemma/168040:
+
+	
+
+	grg
+
+	Lie; falsehood
+
+	Frequency: 1
+
+287) /lemma/400036:
+
+	
+
+	ḫr
+
+	Under (the majesty of (temp.)); for (eternity)
+
+	Frequency: 1
+
+288) /lemma/97470:
+
+	
+
+	hw
+
+	Time; life-time
+
+	Frequency: 1
+
+289) /lemma/185370:
+
+	
+
+	ḏs
+
+	Self
+
+	Frequency: 3
+
+290) /lemma/95630:
+
+	
+
+	rḫ
+
+	Wise man
+
+	Frequency: 1
+
+291) /lemma/116920:
+
+	
+
+	ḫm
+
+	Ignorant man
+
+	Frequency: 1
+
+292) /lemma/32050:
+
+	
+
+	jšst
+
+	What? [interrog. pron.]
+
+	Frequency: 1
+
+293) /lemma/125510:
+
+	
+
+	z
+
+	Son
+
+	Frequency: 4
+
+294) /lemma/450047:
+
+	‌‌
+
+	Ḏdj
+
+	Djedi
+
+	Frequency: 21
+
+295) /lemma/94700:
+
+	
+
+	rn
+
+	Name
+
+	Frequency: 5
+
+296) /lemma/450191:
+
+	Hieroglyph not found
+
+	Ḏd-Snfr.w
+
+	Snefru-endures (pyramid complex of snefru)
+
+	Frequency: 2
+
+297) /lemma/94920:
+
+	
+
+	rnp.t
+
+	Year
+
+	Frequency: 1
+
+298) /lemma/46710:
+
+	
+
+	wnm
+
+	To eat
+
+	Frequency: 2
+
+299) /lemma/92020:
+
+	
+
+	r-mn-m
+
+	Until
+
+	Frequency: 1
+
+300) /lemma/59920:
+
+	
+
+	pn
+
+	This (demons. pron., masc. sing.)
+
+	Frequency: 11
+
+301) /lemma/852475:
+
+	Hieroglyph not found
+
+	rḫ
+
+	Know how to do; be able to do
+
+	Frequency: 5
+
+302) /lemma/176800:
+
+	
+
+	ṯz
+
+	To tie; to join to
+
+	Frequency: 2
+
+303) /lemma/170860:
+
+	
+
+	tp
+
+	Head; beginning (of a region)
+
+	Frequency: 7
+
+304) /lemma/110200:
+
+	
+
+	ḥsq
+
+	To cut off (the head); to cut out (the heart)
+
+	Frequency: 3
+
+305) /lemma/66370:
+
+	
+
+	mj
+
+	Lion
+
+	Frequency: 1
+
+306) /lemma/108150:
+
+	
+
+	ḥr-s
+
+	After; following
+
+	Frequency: 2
+
+307) /lemma/145860:
+
+	
+
+	sšd
+
+	Bandage (for mummies, also med.)
+
+	Frequency: 2
+
+308) /lemma/175830:
+
+	
+
+	ṯnw
+
+	Number; quantity
+
+	Frequency: 3
+
+309) /lemma/24130:
+
+	
+
+	jp.t
+
+	[(secret? lockable?) chamber]
+
+	Frequency: 3
+
+310) /lemma/185290:
+
+	
+
+	Ḏḥw.tj
+
+	Thoth
+
+	Frequency: 3
+
+311) /lemma/852476:
+
+	Hieroglyph not found
+
+	wršu̯
+
+	Spend much time on (a quest); [auxiliary]
+
+	Frequency: 1
+
+312) /lemma/67960:
+
+	
+
+	mj.tjt
+
+	The like; the same
+
+	Frequency: 1
+
+313) /lemma/232:
+
+	Hieroglyph not found
+
+	ḫ.t
+
+	Horizon (metaph. for palace, temple, tomb)
+
+	Frequency: 1
+
+314) /lemma/40210:
+
+	
+
+	ḥ
+
+	Boat (gen.)
+
+	Frequency: 2
+
+315) /lemma/118970:
+
+	
+
+	Ḫnt.j-ẖ.tj
+
+	Khentekhtai
+
+	Frequency: 1
+
+316) /lemma/70060:
+
+	
+
+	mjni̯
+
+	To moor; to steer; to die (metaph.)
+
+	Frequency: 2
+
+317) /lemma/72540:
+
+	
+
+	mr.yt
+
+	Bank; shore; quay
+
+	Frequency: 2
+
+318) /lemma/64369:
+
+	
+
+	m
+
+	In (with infinitive)
+
+	Frequency: 1
+
+319) /lemma/107720:
+
+	
+
+	ḥrti̯
+
+	To travel overland
+
+	Frequency: 1
+
+320) /lemma/138820:
+
+	
+
+	snḏm
+
+	To make pleasant; to revive
+
+	Frequency: 1
+
+321) /lemma/161290:
+
+	
+
+	qnj.w
+
+	Chair; throne; carrying chair
+
+	Frequency: 2
+
+322) /lemma/82430:
+
+	
+
+	nb
+
+	Carrying pole
+
+	Frequency: 1
+
+323) /lemma/850595:
+
+	Hieroglyph not found
+
+	ssḏm
+
+	[a costly wood]
+
+	Frequency: 1
+
+324) /lemma/167620:
+
+	
+
+	gnẖ
+
+	To mount
+
+	Frequency: 1
+
+325) /lemma/132830:
+
+	
+
+	spr
+
+	To arrive at; to reach
+
+	Frequency: 4
+
+326) /lemma/50700:
+
+	
+
+	wšd
+
+	To address (someone); to question; to greet
+
+	Frequency: 1
+
+327) /lemma/150740:
+
+	Hieroglyph not found
+
+	sḏr
+
+	To lie; to sleep; spend the night
+
+	Frequency: 2
+
+328) /lemma/172150:
+
+	
+
+	tm
+
+	Mat (gen.)
+
+	Frequency: 1
+
+329) /lemma/144310:
+
+	
+
+	zš
+
+	Threshold
+
+	Frequency: 1
+
+330) /lemma/400493:
+
+	
+
+	s.t
+
+	Residence
+
+	Frequency: 1
+
+331) /lemma/104680:
+
+	
+
+	ḥm
+
+	Servant; slave
+
+	Frequency: 1
+
+332) /lemma/37780:
+
+	
+
+	mm
+
+	To rub (feet)
+
+	Frequency: 1
+
+333) /lemma/400645:
+
+	
+
+	ky
+
+	Another
+
+	Frequency: 1
+
+334) /lemma/128320:
+
+	
+
+	zjn
+
+	To rub (in); to rub (out)
+
+	Frequency: 1
+
+335) /lemma/96600:
+
+	
+
+	rd
+
+	Foot; footprint
+
+	Frequency: 1
+
+336) /lemma/119650:
+
+	
+
+	ḫr.t
+
+	Affairs; condition; requirements; products
+
+	Frequency: 3
+
+337) /lemma/400614:
+
+	
+
+	nḫ
+
+	Living person; inhabitant; member (of a group); soldier
+
+	Frequency: 1
+
+338) /lemma/550100:
+
+	
+
+	tp-m
+
+	In front of; in the direction of
+
+	Frequency: 3
+
+339) /lemma/172420:
+
+	
+
+	tnj
+
+	To grow old; to be old
+
+	Frequency: 1
+
+340) /lemma/119600:
+
+	
+
+	ḫr
+
+	So; however; then; and afterwards (conjunction); [particle]
+
+	Frequency: 1
+
+341) /lemma/20390:
+
+	
+
+	jw.t
+
+	Old age
+
+	Frequency: 1
+
+342) /lemma/125140:
+
+	Hieroglyph not found
+
+	s.t
+
+	[for formation of abstractions]
+
+	Frequency: 3
+
+343) /lemma/161940:
+
+	
+
+	qrs
+
+	To bury
+
+	Frequency: 1
+
+344) /lemma/401127:
+
+	
+
+	zm-t
+
+	Burial; interment
+
+	Frequency: 1
+
+345) /lemma/400030:
+
+	
+
+	r
+
+	Until (temp.); for (extending over, temp.)
+
+	Frequency: 1
+
+346) /lemma/144860:
+
+	
+
+	sšp
+
+	Light
+
+	Frequency: 1
+
+347) /lemma/152670:
+
+	
+
+	šwi̯
+
+	To be empty; to be devoid of
+
+	Frequency: 1
+
+348) /lemma/64366:
+
+	
+
+	m
+
+	Concerning; because of; according as (idom.)
+
+	Frequency: 2
+
+349) /lemma/113480:
+
+	
+
+	ḫ.t
+
+	Disease; illness
+
+	Frequency: 1
+
+350) /lemma/883265:
+
+	Hieroglyph not found
+
+	kḥkḥ.t
+
+	Hacking cough
+
+	Frequency: 1
+
+351) /lemma/139220:
+
+	
+
+	sry.t
+
+	Cough
+
+	Frequency: 1
+
+352) /lemma/550108:
+
+	
+
+	nḏ
+
+	To greet; to inquire after
+
+	Frequency: 2
+
+353) /lemma/25090:
+
+	
+
+	jmḫ.w
+
+	Revered one; one who is provided for (the deceased)
+
+	Frequency: 1
+
+354) /lemma/34790:
+
+	
+
+	
+
+	Here; there; yonder
+
+	Frequency: 3
+
+355) /lemma/80210:
+
+	
+
+	njs
+
+	To call upon; to reckon (math.)
+
+	Frequency: 3
+
+356) /lemma/45750:
+
+	
+
+	wpw.t
+
+	Message; task
+
+	Frequency: 1
+
+357) /lemma/88040:
+
+	
+
+	nswt
+
+	King; king of upper egypt
+
+	Frequency: 6
+
+358) /lemma/183850:
+
+	
+
+	ḏf
+
+	Provision; sustenance
+
+	Frequency: 1
+
+359) /lemma/500158:
+
+	
+
+	jm.j-šms.w
+
+	One in the following (of someone)
+
+	Frequency: 1
+
+360) /lemma/131460:
+
+	
+
+	zbi̯
+
+	To go; to conduct; to send; to attain
+
+	Frequency: 1
+
+361) /lemma/174900:
+
+	
+
+	ṯw
+
+	You (depen. pron., 2nd per. masc. sing.)
+
+	Frequency: 3
+
+362) /lemma/40480:
+
+	
+
+	ḥ.w
+
+	Lifetime; duration
+
+	Frequency: 1
+
+363) /lemma/25130:
+
+	
+
+	jm.j
+
+	Being in
+
+	Frequency: 1
+
+364) /lemma/500066:
+
+	Hieroglyph not found
+
+	ẖr.t-nṯr
+
+	Necropolis; hereafter
+
+	Frequency: 1
+
+365) /lemma/500371:
+
+	
+
+	m-ḥtp
+
+	In peace; welcome!
+
+	Frequency: 1
+
+366) /lemma/70011:
+
+	
+
+	zp-2
+
+	Twice
+
+	Frequency: 2
+
+367) /lemma/400042:
+
+	
+
+	n
+
+	Through, by; on the part of; [introduction to the agent for the passive]
+
+	Frequency: 1
+
+368) /lemma/142720:
+
+	
+
+	sḫnti̯
+
+	To advance; to promote
+
+	Frequency: 1
+
+369) /lemma/125100:
+
+	
+
+	s.t
+
+	Place; seat; position (rank)
+
+	Frequency: 1
+
+370) /lemma/20380:
+
+	
+
+	jw
+
+	Old man
+
+	Frequency: 1
+
+371) /lemma/156440:
+
+	
+
+	šnṯ
+
+	To vent anger
+
+	Frequency: 2
+
+372) /lemma/162870:
+
+	
+
+	k
+
+	Ka; spirit; essence
+
+	Frequency: 1
+
+373) /lemma/30750:
+
+	
+
+	jḫ.t
+
+	Thing; goods; offerings
+
+	Frequency: 4
+
+374) /lemma/91902:
+
+	
+
+	r
+
+	Against (someone); (to guard) against (something); (far) from
+
+	Frequency: 5
+
+375) /lemma/116800:
+
+	
+
+	ḫft.j
+
+	Enemy
+
+	Frequency: 1
+
+376) /lemma/52840:
+
+	
+
+	b
+
+	Ba(-soul); manifestation; might
+
+	Frequency: 1
+
+377) /lemma/42490:
+
+	
+
+	w.t
+
+	Road; way; path; side
+
+	Frequency: 1
+
+378) /lemma/37460:
+
+	
+
+	fd
+
+	To lead
+
+	Frequency: 1
+
+379) /lemma/131970:
+
+	
+
+	sbḫ.t
+
+	Portal; portico (with a screen-wall)
+
+	Frequency: 1
+
+380) /lemma/103740:
+
+	
+
+	ḥbs
+
+	To clothe; to cover
+
+	Frequency: 1
+
+381) /lemma/53990:
+
+	
+
+	bgi̯
+
+	To be weary
+
+	Frequency: 1
+
+382) /lemma/51:
+
+	
+
+	wi̯
+
+	To extend; to present (something)
+
+	Frequency: 1
+
+383) /lemma/129190:
+
+	
+
+	sḥ
+
+	To erect; to set up; to make stand
+
+	Frequency: 1
+
+384) /lemma/600043:
+
+	
+
+	w
+
+	A; an (indef. article)
+
+	Frequency: 1
+
+385) /lemma/159600:
+
+	
+
+	qq.w
+
+	[a river boat (travelling barge?)]
+
+	Frequency: 2
+
+386) /lemma/124480:
+
+	
+
+	ẖrd
+
+	Child
+
+	Frequency: 14
+
+387) /lemma/450097:
+
+	
+
+	zẖ.w
+
+	Writing; record; depiction
+
+	Frequency: 1
+
+388) /lemma/31080:
+
+	
+
+	jz.t
+
+	Crew; gang (of workmen)
+
+	Frequency: 1
+
+389) /lemma/49840:
+
+	
+
+	wsḫ
+
+	Barge
+
+	Frequency: 1
+
+390) /lemma/41180:
+
+	
+
+	q
+
+	To enter; to have entrée; to usher (someone) in; to set (of sun)
+
+	Frequency: 2
+
+391) /lemma/134820:
+
+	
+
+	smj
+
+	To report; to complain
+
+	Frequency: 2
+
+392) /lemma/20030:
+
+	
+
+	j
+
+	Oh! (vocative interjection)
+
+	Frequency: 7
+
+393) /lemma/32930:
+
+	
+
+	jty
+
+	Sovereign; ruler; lord
+
+	Frequency: 7
+
+394) /lemma/43270:
+
+	
+
+	wḫy
+
+	Pillared hall; columned forecourt
+
+	Frequency: 3
+
+395) /lemma/148720:
+
+	
+
+	sṯ
+
+	To drag; to pull; to usher in
+
+	Frequency: 1
+
+396) /lemma/500027:
+
+	
+
+	pw-tr
+
+	Who is?; what is?
+
+	Frequency: 5
+
+397) /lemma/147350:
+
+	
+
+	st
+
+	It (depen. pron., 3rd per. sing.)
+
+	Frequency: 8
+
+398) /lemma/169950:
+
+	
+
+	tjw
+
+	Yes; indeed
+
+	Frequency: 1
+
+399) /lemma/118330:
+
+	
+
+	ḫnr
+
+	Prisoner
+
+	Frequency: 1
+
+400) /lemma/118470:
+
+	
+
+	ḫnr.tj
+
+	Prison; fortress; council chamber
+
+	Frequency: 1
+
+401) /lemma/51510:
+
+	
+
+	wdi̯
+
+	To put; to place
+
+	Frequency: 1
+
+402) /lemma/89340:
+
+	
+
+	nkn
+
+	Harm; injury
+
+	Frequency: 1
+
+403) /lemma/850807:
+
+	
+
+	n-js
+
+	[compound particle of negation]
+
+	Frequency: 1
+
+404) /lemma/94530:
+
+	
+
+	rmṯ
+
+	Human being; man
+
+	Frequency: 2
+
+405) /lemma/69760:
+
+	
+
+	mn.t
+
+	The like; contents (of a receptacle)
+
+	Frequency: 1
+
+406) /lemma/35870:
+
+	Hieroglyph not found
+
+	w.t
+
+	Herds (gen.); flocks
+
+	Frequency: 1
+
+407) /lemma/400546:
+
+	
+
+	šps.j
+
+	Splendid; noble
+
+	Frequency: 1
+
+408) /lemma/135180:
+
+	
+
+	smn
+
+	Nile goose
+
+	Frequency: 4
+
+409) /lemma/52360:
+
+	
+
+	wḏ
+
+	To separate; to judge; to appoint
+
+	Frequency: 1
+
+410) /lemma/166910:
+
+	
+
+	gb
+
+	Side (of a room)
+
+	Frequency: 2
+
+411) /lemma/26150:
+
+	
+
+	jmn.tj
+
+	Western
+
+	Frequency: 1
+
+412) /lemma/182330:
+
+	
+
+	ḏḏ
+
+	Head; tip
+
+	Frequency: 2
+
+413) /lemma/20570:
+
+	
+
+	jb.tj
+
+	Eastern; left
+
+	Frequency: 1
+
+414) /lemma/103550:
+
+	
+
+	ḥbb
+
+	To waddle
+
+	Frequency: 1
+
+415) /lemma/64830:
+
+	
+
+	m-mj.tjt
+
+	Likewise; similarly; thus
+
+	Frequency: 2
+
+416) /lemma/166600:
+
+	
+
+	gg
+
+	To cackle
+
+	Frequency: 1
+
+417) /lemma/121320:
+
+	
+
+	ḫt-
+
+	[an edible bird (duck?)]; poultry (gen.)
+
+	Frequency: 1
+
+418) /lemma/142780:
+
+	
+
+	sḫr
+
+	To overthrow; to cast down
+
+	Frequency: 1
+
+419) /lemma/130840:
+
+	
+
+	swt
+
+	[enclitic particle]
+
+	Frequency: 1
+
+420) /lemma/175740:
+
+	
+
+	ṯnj
+
+	Where? whence? whither?
+
+	Frequency: 2
+
+421) /lemma/37490:
+
+	Hieroglyph not found
+
+	fḏ.t
+
+	Chest; cabin (of a ship)
+
+	Frequency: 2
+
+422) /lemma/180610:
+
+	
+
+	ds
+
+	Flint
+
+	Frequency: 1
+
+423) /lemma/128160:
+
+	
+
+	sjp.tj
+
+	Inspection; inventory
+
+	Frequency: 1
+
+424) /lemma/22850:
+
+	
+
+	Jwn.w
+
+	Heliopolis
+
+	Frequency: 2
+
+425) /lemma/400261:
+
+	
+
+	n
+
+	[particle in discontinuous negation n ... js (but not n-js!)]
+
+	Frequency: 1
+
+426) /lemma/850805:
+
+	
+
+	js
+
+	[particle of the discontinuous negation n … js]
+
+	Frequency: 1
+
+427) /lemma/27410:
+
+	
+
+	jn-m
+
+	Who? (interrog. pron.)
+
+	Frequency: 1
+
+428) /lemma/135720:
+
+	
+
+	sms.w
+
+	Oldest; older
+
+	Frequency: 3
+
+429) /lemma/122080:
+
+	
+
+	ẖ.t
+
+	Body; belly; womb
+
+	Frequency: 5
+
+430) /lemma/704148:
+
+	‌‌‌‌
+
+	Rwḏ-ḏd.t
+
+	English translation not found
+
+	Frequency: 15
+
+431) /lemma/850804:
+
+	
+
+	js
+
+	[(enclitic) particle]
+
+	Frequency: 2
+
+432) /lemma/168840:
+
+	
+
+	t
+
+	This (demons. pron., fem. sing.)
+
+	Frequency: 2
+
+433) /lemma/44460:
+
+	
+
+	wb
+
+	Wab-priest
+
+	Frequency: 1
+
+434) /lemma/400015:
+
+	
+
+	Rw
+
+	Re
+
+	Frequency: 4
+
+435) /lemma/853629:
+
+	Hieroglyph not found
+
+	nb-Zẖb.w
+
+	Lord of sakhebu
+
+	Frequency: 4
+
+436) /lemma/22930:
+
+	
+
+	jwr
+
+	To conceive; to become pregnant
+
+	Frequency: 1
+
+437) /lemma/20430:
+
+	
+
+	jw.t
+
+	Office; rank; function
+
+	Frequency: 2
+
+438) /lemma/170301:
+
+	
+
+	twy
+
+	[demonstrative pron., fem. sing. and dual]
+
+	Frequency: 2
+
+439) /lemma/400110:
+
+	
+
+	mnḫ
+
+	Effective; splendid
+
+	Frequency: 2
+
+440) /lemma/400096:
+
+	
+
+	t
+
+	Land (with geo-political reference); egypt
+
+	Frequency: 5
+
+441) /lemma/92500:
+
+	
+
+	r-ḏr
+
+	All; entire
+
+	Frequency: 5
+
+442) /lemma/400984:
+
+	Hieroglyph not found
+
+	n=
+
+	Belonging
+
+	Frequency: 1
+
+443) /lemma/25160:
+
+	
+
+	jm.y
+
+	Belonging to
+
+	Frequency: 1
+
+444) /lemma/47600:
+
+	
+
+	wr-m.w
+
+	Greatest of seers (a priest)
+
+	Frequency: 1
+
+445) /lemma/42560:
+
+	
+
+	wi̯
+
+	To fall into (a condition); to come to
+
+	Frequency: 1
+
+446) /lemma/182900:
+
+	
+
+	ḏw.t
+
+	Evil; dirt
+
+	Frequency: 1
+
+447) /lemma/58760:
+
+	
+
+	p
+
+	This (demons. pron., masc. sing.)
+
+	Frequency: 3
+
+448) /lemma/162840:
+
+	
+
+	k
+
+	So; then
+
+	Frequency: 5
+
+449) /lemma/127760:
+
+	
+
+	zy
+
+	Who? what?
+
+	Frequency: 1
+
+450) /lemma/80840:
+
+	
+
+	nw
+
+	Time; moment
+
+	Frequency: 1
+
+451) /lemma/93:
+
+	
+
+	bd
+
+	Month
+
+	Frequency: 1
+
+452) /lemma/60300:
+
+	
+
+	pr.t
+
+	Peret-season (winter)
+
+	Frequency: 1
+
+453) /lemma/129460:
+
+	
+
+	sw
+
+	Day (of the month, in dates)
+
+	Frequency: 1
+
+454) /lemma/172720:
+
+	
+
+	tr
+
+	[enclitic particle]
+
+	Frequency: 1
+
+455) /lemma/176840:
+
+	
+
+	ṯz
+
+	Sandbank
+
+	Frequency: 2
+
+456) /lemma/852713:
+
+	Hieroglyph not found
+
+	ḏ.wj
+
+	English translation not found
+
+	Frequency: 2
+
+457) /lemma/850151:
+
+	
+
+	t
+
+	To enter (?) (a place)
+
+	Frequency: 2
+
+458) /lemma/600354:
+
+	
+
+	rḏi̯
+
+	To appoint; to call (someone's) attention to
+
+	Frequency: 1
+
+459) /lemma/107510:
+
+	
+
+	ḥr
+
+	Face; sight
+
+	Frequency: 1
+
+460) /lemma/41470:
+
+	
+
+	q.w
+
+	Loaves (of bread); income
+
+	Frequency: 1
+
+461) /lemma/20990:
+
+	
+
+	jq.t
+
+	Leeks; vegetables (gen.)
+
+	Frequency: 1
+
+462) /lemma/120460:
+
+	Hieroglyph not found
+
+	ḫrš
+
+	Bundle(s)
+
+	Frequency: 1
+
+463) /lemma/155480:
+
+	
+
+	šni̯
+
+	To suffer
+
+	Frequency: 1
+
+464) /lemma/162230:
+
+	
+
+	qsn
+
+	Painful; irksome; difficult
+
+	Frequency: 2
+
+465) /lemma/271:
+
+	
+
+	s.t
+
+	Isis
+
+	Frequency: 8
+
+466) /lemma/82260:
+
+	
+
+	Nb.t-ḥw.t
+
+	Nephthys
+
+	Frequency: 4
+
+467) /lemma/75730:
+
+	Hieroglyph not found
+
+	Msḫn.t
+
+	Meskhenet (goddess associated with birth)
+
+	Frequency: 4
+
+468) /lemma/110310:
+
+	
+
+	Ḥq.t
+
+	Hekat (frog goddess)
+
+	Frequency: 4
+
+469) /lemma/123590:
+
+	
+
+	H̱nm.w
+
+	Khnum
+
+	Frequency: 6
+
+470) /lemma/102710:
+
+	
+
+	ḥwj
+
+	Oh!; [particle (of wishing)]
+
+	Frequency: 1
+
+471) /lemma/2:
+
+	
+
+	
+
+	[enclitic particle with exclamatory force]
+
+	Frequency: 1
+
+472) /lemma/135700:
+
+	
+
+	smsi̯
+
+	To deliver (a woman of a baby)
+
+	Frequency: 3
+
+473) /lemma/162420:
+
+	
+
+	qd
+
+	To form; to fashion; to build
+
+	Frequency: 1
+
+474) /lemma/92870:
+
+	
+
+	rʾ-pr
+
+	Temple; chapel
+
+	Frequency: 1
+
+475) /lemma/150510:
+
+	
+
+	sḏf
+
+	To provide with (food, e.g.); to endow
+
+	Frequency: 1
+
+476) /lemma/113720:
+
+	
+
+	ḫw.t
+
+	Altar
+
+	Frequency: 1
+
+477) /lemma/129930:
+
+	
+
+	swḏ
+
+	To make green; to make prosper
+
+	Frequency: 1
+
+478) /lemma/400433:
+
+	
+
+	wdḥ.w
+
+	Altar; offering stand
+
+	Frequency: 1
+
+479) /lemma/128660:
+
+	
+
+	si̯
+
+	To make great; to increase
+
+	Frequency: 1
+
+480) /lemma/111480:
+
+	
+
+	ḥtp-nṯr
+
+	God's offering
+
+	Frequency: 1
+
+481) /lemma/90260:
+
+	
+
+	nṯr
+
+	God
+
+	Frequency: 3
+
+482) /lemma/29210:
+
+	
+
+	jri̯
+
+	To assume the form of; to manifest (oneself) as
+
+	Frequency: 1
+
+483) /lemma/116300:
+
+	
+
+	ḫpr.w
+
+	Mode of being; form; transformation
+
+	Frequency: 1
+
+484) /lemma/117700:
+
+	
+
+	ḫn.yt
+
+	Music makers
+
+	Frequency: 2
+
+485) /lemma/161300:
+
+	Hieroglyph not found
+
+	qnj
+
+	Sheaf; bundle
+
+	Frequency: 1
+
+486) /lemma/400822:
+
+	‌‌‌‌
+
+	Rw-wsr.w
+
+	Re-weseru
+
+	Frequency: 4
+
+487) /lemma/600206:
+
+	
+
+	dj.w
+
+	[a linen garment]
+
+	Frequency: 1
+
+488) /lemma/143250:
+
+	
+
+	sḫd
+
+	To be upside down; to be in disorder
+
+	Frequency: 1
+
+489) /lemma/74700:
+
+	
+
+	mz
+
+	To bring; to betake (oneself)
+
+	Frequency: 4
+
+490) /lemma/70170:
+
+	
+
+	mnj.t
+
+	Menat-necklace
+
+	Frequency: 1
+
+491) /lemma/142190:
+
+	
+
+	sḫm
+
+	Sistrum
+
+	Frequency: 1
+
+492) /lemma/125040:
+
+	
+
+	z.t
+
+	Woman
+
+	Frequency: 1
+
+493) /lemma/69660:
+
+	
+
+	mn
+
+	To be ill; to suffer
+
+	Frequency: 1
+
+494) /lemma/80016:
+
+	
+
+	n
+
+	We (depen. pron., 1st per. pl.)
+
+	Frequency: 1
+
+495) /lemma/121710:
+
+	
+
+	ḫtm
+
+	To seal; to put a seal on
+
+	Frequency: 4
+
+496) /lemma/116790:
+
+	
+
+	ḫft-ḥr
+
+	In front of; opposite (spatial)
+
+	Frequency: 3
+
+497) /lemma/100130:
+
+	
+
+	ḥ
+
+	Behind; around
+
+	Frequency: 3
+
+498) /lemma/141760:
+
+	
+
+	sḫḫ
+
+	To hasten
+
+	Frequency: 3
+
+499) /lemma/25170:
+
+	
+
+	jmi̯
+
+	Not be (negative verb)
+
+	Frequency: 3
+
+500) /lemma/500010:
+
+	
+
+	wsr
+
+	To be strong; to be powerful
+
+	Frequency: 1
+
+501) /lemma/64362:
+
+	
+
+	m
+
+	In (condition); as
+
+	Frequency: 3
+
+502) /lemma/59770:
+
+	
+
+	pwy
+
+	That (demons. pron., masc. sing.)
+
+	Frequency: 3
+
+503) /lemma/44680:
+
+	
+
+	wr
+
+	To flee; to move quickly
+
+	Frequency: 3
+
+504) /lemma/170900:
+
+	
+
+	tp
+
+	Upon; at the head of
+
+	Frequency: 3
+
+505) /lemma/127780:
+
+	
+
+	=sj
+
+	[suffix pron. sing. 3. f. after the dual]
+
+	Frequency: 3
+
+506) /lemma/400633:
+
+	
+
+	rwḏ
+
+	Strong; firm
+
+	Frequency: 3
+
+507) /lemma/162200:
+
+	
+
+	qs
+
+	Bone
+
+	Frequency: 3
+
+508) /lemma/87100:
+
+	
+
+	nḫb.t
+
+	Titulary (of the king); designation
+
+	Frequency: 3
+
+509) /lemma/34550:
+
+	
+
+	.t
+
+	Limb; member
+
+	Frequency: 5
+
+510) /lemma/37400:
+
+	Hieroglyph not found
+
+	fn.t
+
+	Headcloth
+
+	Frequency: 3
+
+511) /lemma/120700:
+
+	
+
+	ḫsbḏ
+
+	Lapis lazuli; substitutes for lapis lazuli (faience, glass)
+
+	Frequency: 3
+
+512) /lemma/66460:
+
+	
+
+	m
+
+	Just; correct; true
+
+	Frequency: 3
+
+513) /lemma/21550:
+
+	
+
+	ji̯
+
+	To wash
+
+	Frequency: 3
+
+514) /lemma/450452:
+
+	Hieroglyph not found
+
+	šḏ
+
+	To cut off
+
+	Frequency: 3
+
+515) /lemma/122880:
+
+	
+
+	ẖp
+
+	Navel
+
+	Frequency: 3
+
+516) /lemma/24590:
+
+	
+
+	jfd.j
+
+	Sheet; garment (of linen)
+
+	Frequency: 3
+
+517) /lemma/183120:
+
+	
+
+	ḏb.t
+
+	Brick; sheet; ingot (also as a unit of measure)
+
+	Frequency: 3
+
+518) /lemma/851172:
+
+	
+
+	=fj
+
+	[suffix pron. sing. 3. m. (verbal adj.)]
+
+	Frequency: 3
+
+519) /lemma/88090:
+
+	
+
+	nsw.yt
+
+	Kingship
+
+	Frequency: 3
+
+520) /lemma/130960:
+
+	
+
+	swḏ
+
+	To make whole; to heal
+
+	Frequency: 3
+
+521) /lemma/126980:
+
+	
+
+	sḥ
+
+	To reach; to arrive (at a place)
+
+	Frequency: 1
+
+522) /lemma/400280:
+
+	Hieroglyph not found
+
+	Sḥ.w-Rw
+
+	Sahure
+
+	Frequency: 1
+
+523) /lemma/165620:
+
+	Hieroglyph not found
+
+	kki̯
+
+	To be dark
+
+	Frequency: 1
+
+524) /lemma/450027:
+
+	Hieroglyph not found
+
+	Kkj
+
+	Neferirkare-kakai
+
+	Frequency: 1
+
+525) /lemma/91490:
+
+	
+
+	nḏm
+
+	To be happy; to be joyful
+
+	Frequency: 1
+
+526) /lemma/32830:
+
+	
+
+	jt
+
+	Barley; grain (gen.)
+
+	Frequency: 6
+
+527) /lemma/124190:
+
+	
+
+	ẖr.j-qnj
+
+	Pack carrier
+
+	Frequency: 1
+
+528) /lemma/400084:
+
+	
+
+	r
+
+	For (idom.)
+
+	Frequency: 1
+
+529) /lemma/130160:
+
+	
+
+	swn.t
+
+	Trade; price
+
+	Frequency: 1
+
+530) /lemma/175970:
+
+	
+
+	ṯnm
+
+	[a kind of beer]
+
+	Frequency: 1
+
+531) /lemma/22990:
+
+	
+
+	jwh
+
+	To load; to carry
+
+	Frequency: 1
+
+532) /lemma/550018:
+
+	
+
+	n.tjt
+
+	That (conj.)
+
+	Frequency: 1
+
+533) /lemma/114850:
+
+	
+
+	ḫ.w
+
+	Crowns
+
+	Frequency: 1
+
+534) /lemma/400960:
+
+	
+
+	st
+
+	They; them (depen. pron., 3rd per. pl.)
+
+	Frequency: 2
+
+535) /lemma/58710:
+
+	
+
+	p.t
+
+	Heaven(s)
+
+	Frequency: 1
+
+536) /lemma/182480:
+
+	
+
+	ḏ
+
+	Storm; wind
+
+	Frequency: 1
+
+537) /lemma/102400:
+
+	
+
+	ḥw.t
+
+	Rain; flood
+
+	Frequency: 1
+
+538) /lemma/38040:
+
+	
+
+	nn
+
+	To return; to turn back
+
+	Frequency: 1
+
+539) /lemma/117690:
+
+	
+
+	ḫni̯
+
+	To make music
+
+	Frequency: 1
+
+540) /lemma/44440:
+
+	
+
+	wb
+
+	Purity; purification
+
+	Frequency: 1
+
+541) /lemma/600336:
+
+	
+
+	wpw-ḥr
+
+	Except
+
+	Frequency: 2
+
+542) /lemma/98700:
+
+	
+
+	hnw
+
+	[a jar]; hin (unit of measure, ca. 1/2 liter)
+
+	Frequency: 2
+
+543) /lemma/83780:
+
+	
+
+	nfr-pw
+
+	Not (negative construction)
+
+	Frequency: 1
+
+544) /lemma/135360:
+
+	
+
+	smnḫ
+
+	To make distinguished; to make effective; to embellish; to endow
+
+	Frequency: 1
+
+545) /lemma/851507:
+
+	Hieroglyph not found
+
+	ḥr
+
+	With (something) on it (marking); on; per (distributive)
+
+	Frequency: 1
+
+546) /lemma/121690:
+
+	
+
+	ḫtm
+
+	Seal; sealing; sealing cylinder
+
+	Frequency: 1
+
+547) /lemma/46060:
+
+	
+
+	wn
+
+	To open
+
+	Frequency: 1
+
+548) /lemma/120010:
+
+	
+
+	ḫrw
+
+	Voice; sound; quarrel
+
+	Frequency: 1
+
+549) /lemma/109680:
+
+	
+
+	ḥsi̯
+
+	To sing; to make music
+
+	Frequency: 1
+
+550) /lemma/154730:
+
+	
+
+	šm
+
+	To make music
+
+	Frequency: 1
+
+551) /lemma/115560:
+
+	
+
+	ḫbi̯
+
+	To dance
+
+	Frequency: 1
+
+552) /lemma/43500:
+
+	
+
+	wg
+
+	To shout (for joy)
+
+	Frequency: 1
+
+553) /lemma/66530:
+
+	
+
+	m
+
+	Temple (of the head)
+
+	Frequency: 1
+
+554) /lemma/122580:
+
+	
+
+	ẖr
+
+	[a dry measure (for grain)]; sack; bag (of leather)
+
+	Frequency: 1
+
+555) /lemma/65370:
+
+	Hieroglyph not found
+
+	m-ẖnw
+
+	In the interior of; within; out of (spatial)
+
+	Frequency: 2
+
+556) /lemma/163760:
+
+	
+
+	ky
+
+	Another
+
+	Frequency: 1
+
+557) /lemma/121720:
+
+	
+
+	ḫtm
+
+	Chest (that can be sealed shut); storehouse (sealed)
+
+	Frequency: 1
+
+558) /lemma/31800:
+
+	
+
+	jstn
+
+	To strap up; to bind
+
+	Frequency: 1
+
+559) /lemma/185270:
+
+	
+
+	ḏḥ
+
+	Leather; (leather) lacings
+
+	Frequency: 1
+
+560) /lemma/151110:
+
+	
+
+	š
+
+	Marsh; meadow
+
+	Frequency: 1
+
+561) /lemma/853212:
+
+	Hieroglyph not found
+
+	n
+
+	[idiomatically joined with the verb]
+
+	Frequency: 2
+
+562) /lemma/650004:
+
+	
+
+	ḫsf
+
+	To punish
+
+	Frequency: 1
+
+563) /lemma/102730:
+
+	
+
+	ḥwi̯
+
+	To strike; to drive; to tread
+
+	Frequency: 1
+
+564) /lemma/69040:
+
+	
+
+	mw.t
+
+	Mother
+
+	Frequency: 1
+
+565) /lemma/71880:
+
+	
+
+	mr
+
+	To bind (med.)
+
+	Frequency: 1
+
+566) /lemma/450266:
+
+	Hieroglyph not found
+
+	mḥ.w
+
+	Flax
+
+	Frequency: 2
+
+567) /lemma/81010:
+
+	
+
+	nw.t
+
+	Bundle (of flax)
+
+	Frequency: 1
+
+568) /lemma/121610:
+
+	
+
+	ḫt.w
+
+	Threshing floor
+
+	Frequency: 1
+
+569) /lemma/33910:
+
+	
+
+	jdy.t
+
+	Girl
+
+	Frequency: 1
+
+570) /lemma/600257:
+
+	
+
+	šrj
+
+	Little
+
+	Frequency: 1
+
+571) /lemma/138150:
+
+	
+
+	snsn
+
+	To associate with; to fraternize
+
+	Frequency: 1
+
+572) /lemma/853631:
+
+	Hieroglyph not found
+
+	wṯz.wt
+
+	Betrayal; accusations
+
+	Frequency: 1
+
+573) /lemma/151360:
+
+	
+
+	šj.w
+
+	Bundle (?) (of flax)
+
+	Frequency: 1
+
+574) /lemma/141420:
+
+	
+
+	zḫ.t
+
+	Blow
+
+	Frequency: 2
+
+575) /lemma/54605:
+
+	
+
+	bjn
+
+	Bad; evil
+
+	Frequency: 2
+
+576) /lemma/32610:
+
+	
+
+	jkn
+
+	Cup; jar
+
+	Frequency: 1
+
+577) /lemma/26660:
+
+	
+
+	jn
+
+	By (of agent)
+
+	Frequency: 1
+
+578) /lemma/67370:
+
+	
+
+	ms.t
+
+	Knee (of a human); hock (of an animal)
+
+	Frequency: 1
+
+579) /lemma/600472:
+
+	
+
+	ḏwi̯
+
+	To be bad; to be evil
+
+	Frequency: 1
+
+580) /lemma/169320:
+
+	
+
+	kt.t
+
+	Little girl
+
+	Frequency: 1
+
+581) /lemma/51340:
+
+	
+
+	wṯz
+
+	To announce; to extol; to denounce
+
+	Frequency: 1
+
+582) /lemma/65390:
+
+	
+
+	m-ẖr.w
+
+	Downcast
+
+	Frequency: 1
+
+583) /lemma/117530:
+
+	
+
+	ḫn
+
+	[non-enclitic particle]
+
+	Frequency: 1
+
+584) /lemma/600080:
+
+	
+
+	jri̯
+
+	[aux. (as conjugation auxiliary/light verb with an infinitive)]
+
+	Frequency: 1
+
+585) /lemma/92390:
+
+	
+
+	r-gs
+
+	Beside
+
+	Frequency: 1
+
+586) /lemma/32590:
+
+	
+
+	jkn
+
+	To draw (water)
+
+	Frequency: 1
+
+587) /lemma/85370:
+
+	
+
+	nhj
+
+	Some; a little
+
+	Frequency: 1
+

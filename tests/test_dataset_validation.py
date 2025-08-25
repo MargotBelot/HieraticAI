@@ -395,31 +395,31 @@ def run_tests():
     return result
 
 if __name__ == "__main__":
-    print("🧪 Running Automated Tests for Dataset Validation and Training Pipeline")
+    print(" Running Automated Tests for Dataset Validation and Training Pipeline")
     print("=" * 80)
     
     result = run_tests()
     
     print("\n" + "=" * 80)
-    print("🎯 TEST SUMMARY")
+    print(" TEST SUMMARY")
     print("=" * 80)
     
     if result.wasSuccessful():
-        print("✅ All tests passed!")
+        print(" All tests passed!")
         print("   Dataset validation and training pipeline are working correctly")
         print("   Category mapping issues are prevented")
     else:
-        print("❌ Some tests failed!")
+        print(" Some tests failed!")
         print(f"   Failures: {len(result.failures)}")
         print(f"   Errors: {len(result.errors)}")
         
         if result.failures:
-            print("\n🚨 Failures:")
+            print("\n Failures:")
             for test, traceback in result.failures:
                 print(f"   - {test}: {traceback}")
         
         if result.errors:
-            print("\n💥 Errors:")
+            print("\n Errors:")
             for test, traceback in result.errors:
                 print(f"   - {test}: {traceback}")
     

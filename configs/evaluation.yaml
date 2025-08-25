@@ -1,0 +1,74 @@
+# HieraticAI Evaluation Configuration
+# Settings for model evaluation and accuracy computation
+
+# Evaluation Dataset
+dataset:
+  test_split: "test"
+  ground_truth_file: "./hieroglyphs_dataset/test/annotations.json"
+  predictions_file: "./output/latest/coco_instances_results.json"
+
+# Metrics Configuration
+metrics:
+  # Detection metrics
+  detection:
+    iou_thresholds: [0.5, 0.75]  # IoU thresholds for mAP computation
+    area_ranges: ["all", "small", "medium", "large"]
+    max_detections: [1, 10, 100]
+    
+  # Classification metrics  
+  classification:
+    confidence_thresholds: [0.3, 0.5, 0.7]
+    top_k_accuracy: [1, 3, 5]
+    
+  # Category-specific analysis
+  category_analysis:
+    enabled: true
+    min_samples: 5  # Minimum samples required for category analysis
+    include_rare_categories: false
+
+# Visualization Settings
+visualization:
+  enabled: true
+  output_dir: "./output/evaluation"
+  
+  # Plot settings
+  plots:
+    confidence_histogram: true
+    category_distribution: true
+    precision_recall_curves: true
+    confusion_matrix: true
+    bbox_size_distribution: true
+    
+  # Image settings
+  sample_images:
+    enabled: true
+    num_samples: 20
+    include_predictions: true
+    include_ground_truth: true
+
+# Accuracy Computation  
+accuracy:
+  # Category mapping fixes
+  apply_category_offset: true
+  category_offset: 1  # Add 1 to predicted categories
+  
+  # Filtering
+  confidence_threshold: 0.3
+  remove_background: true
+  
+  # IoU computation
+  iou_threshold: 0.5
+  
+# Export Settings
+export:
+  formats: ["json", "csv", "xlsx"]
+  detailed_results: true
+  include_per_category: true
+  include_per_image: false
+
+# Comparison Settings (for before/after analysis)
+comparison:
+  enabled: false
+  baseline_file: null
+  improved_file: null
+  comparison_metrics: ["mAP", "accuracy", "precision", "recall"]

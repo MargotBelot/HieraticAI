@@ -1,10 +1,10 @@
-# 📓 Hieroglyph Detection Notebooks
+# Hieroglyph Detection Notebooks
 
 This directory contains comprehensive Jupyter notebooks that walk through the complete hieroglyph detection pipeline. Each notebook focuses on a specific aspect of the project and can be run independently.
 
-## 📚 Notebook Overview
+## Notebook Overview
 
-### 🏗️ [01_Data_Preparation.ipynb](01_Data_Preparation.ipynb)
+### [01_Data_Preparation.ipynb](01_Data_Preparation.ipynb)
 **Data Leakage Prevention & Dataset Creation**
 
 - **Purpose**: Prepare training data from annotated papyrus images
@@ -16,7 +16,7 @@ This directory contains comprehensive Jupyter notebooks that walk through the co
 - **Duration**: ~10-15 minutes
 - **Prerequisites**: Original annotated image data
 
-### 🎯 [02_Training.ipynb](02_Training.ipynb)  
+### [02_Training.ipynb](02_Training.ipynb)  
 **Model Training Pipeline**
 
 - **Purpose**: Train hieroglyph detection models using Detectron2
@@ -28,7 +28,7 @@ This directory contains comprehensive Jupyter notebooks that walk through the co
 - **Duration**: ~2-4 hours (depending on hardware)
 - **Prerequisites**: Prepared dataset from notebook 01
 
-### 📊 [03_Evaluation.ipynb](03_Evaluation.ipynb)
+### [03_Evaluation.ipynb](03_Evaluation.ipynb)
 **Model Performance Analysis**
 
 - **Purpose**: Comprehensive evaluation of trained models
@@ -40,7 +40,7 @@ This directory contains comprehensive Jupyter notebooks that walk through the co
 - **Duration**: ~5-10 minutes
 - **Prerequisites**: Trained model from notebook 02
 
-### 🔍 [04_Inference.ipynb](04_Inference.ipynb)
+### [04_Inference.ipynb](04_Inference.ipynb)
 **Real-time Hieroglyph Detection**
 
 - **Purpose**: Run inference on new papyrus images
@@ -53,7 +53,7 @@ This directory contains comprehensive Jupyter notebooks that walk through the co
 - **Duration**: ~2-5 minutes per image
 - **Prerequisites**: Trained model from notebook 02
 
-### 🚀 [05_Improved_Training.ipynb](05_Improved_Training.ipynb)
+### [05_Improved_Training.ipynb](05_Improved_Training.ipynb)
 **Advanced Training with Focal Loss**
 
 - **Purpose**: Demonstrate improved training techniques
@@ -66,7 +66,7 @@ This directory contains comprehensive Jupyter notebooks that walk through the co
 - **Duration**: ~3-5 hours (full training)
 - **Prerequisites**: Understanding of baseline training from notebook 02
 
-## 🎯 Quick Start Guide
+## Quick Start Guide
 
 ### For New Users
 1. **Start Here**: [01_Data_Preparation.ipynb](01_Data_Preparation.ipynb)
@@ -84,7 +84,7 @@ This directory contains comprehensive Jupyter notebooks that walk through the co
 - Combine with [03_Evaluation.ipynb](03_Evaluation.ipynb) for comprehensive analysis
 - Reference [01_Data_Preparation.ipynb](01_Data_Preparation.ipynb) for data handling best practices
 
-## 🛠️ Running the Notebooks
+## Running the Notebooks
 
 ### Prerequisites
 ```bash
@@ -109,8 +109,8 @@ sys.path.append('..')  # Add project root to path
 # Verify installation
 import torch
 import detectron2
-print(f"✅ PyTorch: {torch.__version__}")
-print(f"✅ Detectron2: {detectron2.__version__}")
+print(f"PyTorch: {torch.__version__}")
+print(f"Detectron2: {detectron2.__version__}")
 ```
 
 ### Google Colab Usage
@@ -121,17 +121,17 @@ All notebooks are designed to work with Google Colab:
 3. Mount Google Drive when prompted
 4. Install dependencies using the provided cells
 
-## 📈 Performance Expectations
+## Performance Expectations
 
-| Notebook | Expected Runtime | Memory Usage | GPU Required |
-|----------|------------------|--------------|--------------|
-| 01_Data_Preparation | 10-15 min | 2-4 GB | No |
-| 02_Training | 2-4 hours | 6-8 GB | Yes (recommended) |
-| 03_Evaluation | 5-10 min | 2-4 GB | No |
-| 04_Inference | 2-5 min | 2-3 GB | Recommended |
-| 05_Improved_Training | 3-5 hours | 8-12 GB | Yes |
+ Notebook  Expected Runtime  Memory Usage  GPU Required 
+--------------------------------------------------------
+ 01_Data_Preparation  10-15 min  2-4 GB  No 
+ 02_Training  2-4 hours  6-8 GB  Yes (recommended) 
+ 03_Evaluation  5-10 min  2-4 GB  No 
+ 04_Inference  2-5 min  2-3 GB  Recommended 
+ 05_Improved_Training  3-5 hours  8-12 GB  Yes 
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -164,14 +164,14 @@ model_path = "./output/model_final.pth"
 assert os.path.exists(model_path), f"Model not found at {model_path}"
 ```
 
-## 📚 Additional Resources
+## Additional Resources
 
 - **Project Documentation**: `../docs/`
 - **Utility Scripts**: `../scripts/`
 - **Training Script**: `../train_hieroglyph_detection_robust.py`
 - **Dataset Validation**: `../utils/verify_dataset_consistency.py`
 
-## 🎯 Learning Path
+## Learning Path
 
 ### Beginner Track
 1. Read the project README
@@ -191,7 +191,7 @@ assert os.path.exists(model_path), f"Model not found at {model_path}"
 3. Implement custom improvements
 4. Contribute to the project
 
-## 💡 Tips for Success
+## Tips for Success
 
 1. **Always validate your data** before training
 2. **Start with small experiments** before full training
@@ -202,6 +202,6 @@ assert os.path.exists(model_path), f"Model not found at {model_path}"
 
 ---
 
-**Happy learning! 🏺✨**
+**Happy learning!**
 
 For questions or issues, refer to the main project documentation or create an issue in the project repository.

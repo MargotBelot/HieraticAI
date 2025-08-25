@@ -1,12 +1,9 @@
-# 🔬 HieraticAI Technical Guide
+# HieraticAI Technical Guide
 
-**Final Assignment Technical Documentation - Ancient Languages and Palaeography (2025)**
+Technical documentation for HieraticAI system architecture, methodologies, and fixes.
 
-Deep technical documentation for HieraticAI system architecture, methodologies, and critical fixes.
 
-*This document details the computational approaches used to bridge traditional palaeographic analysis with modern computer vision techniques for automated ancient script recognition.*
-
-## 🏛️ System Architecture
+## System Architecture
 
 ### Overview
 The system uses **Faster R-CNN with ResNet-101** backbone for object detection, trained on 634 hieratic character categories using Detectron2 framework.
@@ -39,10 +36,20 @@ ROI Pooling & Classification
 - **ROI Pooling**: 7x7 feature maps per proposal
 - **Classification Head**: 634 + 1 (background) classes
 - **Box Regression**: Precise bounding box refinement
+## Training Methodology
 
-## 🧠 Training Methodology
+### Training Infrastructure
+
+**Google Colab A100 GPU Configuration:**
+- **Hardware**: NVIDIA A100 40GB GPU
+- **Platform**: Google Colab Pro+
+- **Training Duration**: ~3-4 hours for full model training
+- **Memory Usage**: ~28-32GB GPU memory during peak training
+- **Notebook Environment**: Jupyter notebook with CUDA 11.8 support
 
 ### Dataset Preparation
+
+**Data Split Strategy:**
 ```python
 # Spatial splitting to prevent data leakage
 def spatial_split(image_patches):
@@ -50,11 +57,27 @@ def spatial_split(image_patches):
     grouped_patches = group_by_spatial_proximity(patches)
     train_groups, val_groups, test_groups = split_groups(grouped_patches)
     return train_groups, val_groups, test_groups
+
+# Final split percentages
+split_percentages = {
+    "train": 70,    # 70% for training
+    "val": 20,      # 20% for validation 
+    "test": 10      # 10% for final testing
+}
 ```
+
+**Split Distribution:**
+ Split  Percentage  Images  Annotations  Purpose 
+-------------------------------------------------
+ **Training**  70%  ~1,200  ~8,500  Model learning 
+ **Validation**  20%  ~350  ~2,400  Hyperparameter tuning 
+ **Testing**  10%  ~175  ~1,200  Final evaluation 
 
 **Key Features:**
 - **Spatial Grouping**: Prevents data leakage between splits
-- **Heavy Augmentation**: 6x data augmentation per image
+- **Heavy Augmentation**: 6x data augmentation per image (applied only to training set)
+- **COCO Format**: Standard annotation format for compatibility
+- **Balanced Distribution**: Ensures all hieratic character classes represented across splits
 - **COCO Format**: Standard annotation format for compatibility
 
 ### Training Configuration
@@ -102,7 +125,7 @@ class FocalLoss(nn.Module):
 - **Class Imbalance**: Addresses rare vs common hieratic character categories
 - **Training Stability**: Improved convergence for complex categories
 
-## 🔧 Critical Category Mapping Fix
+## Critical Category Mapping Fix
 
 ### The Problem
 **Root Cause**: Off-by-one error between COCO dataset (1-based) and Detectron2 (0-based) category indexing.
@@ -119,16 +142,16 @@ model_receives = 0       # Properly mapped to 0-based
 ```
 
 ### Impact Analysis
-| Issue | Before Fix | After Fix |
-|-------|------------|----------|
-| **Detection Rate** | 9% | 62.1% |
-| **Category Accuracy** | 10% | 95% |
-| **mAP Performance** | 9.2% | 31.2% |
-| **Training Stability** | Poor | Excellent |
+ Issue  Before Fix  After Fix 
+-----------------------------
+ **Detection Rate**  9%  62.1% 
+ **Category Accuracy**  10%  95% 
+ **mAP Performance**  9.2%  31.2% 
+ **Training Stability**  Poor  Excellent 
 
 #### **Performance Metric Interpretation**
 
-> **⚠️ Important Context:** The mAP metrics above reflect **detection consistency** against our COCO-format training annotations, not direct **Egyptological accuracy** against scholarly ground truth. However, visual inspection of model predictions demonstrates **qualitatively accurate hieratic character recognition** suitable for digital palaeography applications.
+> **Important Context:** The mAP (mean Average Precision) metrics above reflect **detection consistency** against our COCO-format training annotations, not direct **Egyptological accuracy** against scholarly ground truth. However, visual inspection of model predictions demonstrates **qualitatively accurate hieratic character recognition** suitable for digital palaeography applications.
 > 
 > The significant improvement from 9.2% to 31.2% mAP indicates that our category mapping fix resolved a critical technical issue, allowing the model to properly learn and predict hieratic character categories.
 
@@ -170,7 +193,7 @@ def validate_category_mapping(dataset_path):
     return issues
 ```
 
-## 📊 Performance Analysis
+## Performance Analysis
 
 ### Evaluation Metrics
 
@@ -217,14 +240,14 @@ validation_map = {
 }
 ```
 
-## 📜 Source Material: Westcar Papyrus
+## Source Material: Westcar Papyrus
 
 ### Historical Context
 The training dataset is based on the **Westcar Papyrus VIII 5-24**, a Middle Kingdom Egyptian literary papyrus containing magical tales written in hieratic script. This papyrus provides authentic hieratic text for training the detection system.
 
 **Papyrus Details:**
 - **Name:** Westcar Papyrus (Berlin P. 3033)
-- **Period:** Middle Kingdom (c. 1700 BCE)
+- **Period:** Middle Kingdom (17th Dynasty, Second Intermediate Period)
 - **Content:** Collection of magical tales set in the Old Kingdom
 - **Section Used:** Columns VIII, lines 5-24
 - **Language:** Middle Egyptian hieratic script
@@ -238,17 +261,15 @@ The training dataset is based on the **Westcar Papyrus VIII 5-24**, a Middle Kin
 *Detailed annotation of hieratic characters using CVAT with precise bounding boxes*
 
 **Annotation Process:**
-1. **Image Preparation:** High-resolution papyrus scans preprocessed
+1. **Image Preparation:** High-resolution papyrus facsimile scans preprocessed
 2. **CVAT Setup:** Categories configured for 634 hieratic character classes
-3. **Expert Annotation:** Egyptologists provided precise bounding boxes
-4. **Quality Control:** Multi-pass validation and consistency checks
-5. **COCO Export:** Standardized format conversion for training
+3. **Annotation:** Precise polygon bounding boxes
+4. **COCO Export:** Standardized format conversion for training
 
 **Annotation Quality Standards:**
 - **Precision:** Tight bounding boxes around hieroglyph boundaries
-- **Consistency:** Standardized category mappings across annotators
+- **Consistency:** Standardized category mappings
 - **Coverage:** Complete annotation of visible hieratic characters
-- **Validation:** Expert review and inter-annotator agreement
 
 **Challenges Addressed:**
 - **Overlapping Characters:** Complex spatial relationships in cursive hieratic
@@ -256,7 +277,7 @@ The training dataset is based on the **Westcar Papyrus VIII 5-24**, a Middle Kin
 - **Scale Variation:** Different character sizes within hieratic text
 - **Category Ambiguity:** Variant forms and contextual interpretation
 
-## 🔍 Dataset Statistics & Analysis
+## Dataset Statistics & Analysis
 
 ### Category Distribution
 ```python
@@ -296,7 +317,7 @@ aspect_ratios = {
 }
 ```
 
-## 🛠️ Advanced Configuration
+## Advanced Configuration
 
 ### Custom Training Configuration
 ```python
@@ -305,8 +326,8 @@ def get_enhanced_config():
     cfg = get_cfg()
     
     # Model enhancements
-    cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.3  # Lower threshold
-    cfg.MODEL.ROI_HEADS.NMS_THRESH_TEST = 0.5    # Tighter NMS
+    cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.3   # Lower threshold
+    cfg.MODEL.ROI_HEADS.NMS_THRESH_TEST = 0.5     # Tighter NMS
     cfg.MODEL.ROI_BOX_HEAD.POOLER_RESOLUTION = 14 # Higher resolution
     
     # Training improvements
@@ -382,7 +403,7 @@ class OptimizedHieroglyphDetector:
         return final_outputs
 ```
 
-## 🧪 Validation & Testing Framework
+## Validation & Testing Framework
 
 ### Comprehensive Validation Pipeline
 ```python
@@ -458,7 +479,7 @@ def test_model_inference_pipeline():
     assert all(r['score'] > 0.1 for r in results)
 ```
 
-## 📈 Performance Optimization
+## Performance Optimization
 
 ### Memory Optimization
 ```python
@@ -493,7 +514,7 @@ def get_speed_optimized_config():
     return cfg
 ```
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 ### Planned Improvements
 1. **Multi-scale Training**: Enhanced scale invariance
@@ -511,5 +532,3 @@ def get_speed_optimized_config():
 - **Palaeographic Analysis**: Integration with traditional manuscript studies
 
 ---
-
-**🏺 Technical documentation complete. System ready for production deployment and further research.**
