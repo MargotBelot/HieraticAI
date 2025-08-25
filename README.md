@@ -114,18 +114,24 @@ graph LR
 
 **Perfect for anyone - no technical experience required!**
 
+**Prerequisites**: You need Python 3.8+ installed on your system. If you don't have it:
+- **Windows/Mac**: Download from [python.org](https://www.python.org/downloads/) 
+- **Linux**: Install with `sudo apt install python3 python3-pip` (Ubuntu) or equivalent
+
 1. **Download**: Go to [github.com/MargotBelot/HieraticAI](https://github.com/MargotBelot/HieraticAI) and click "Download ZIP"
 2. **Extract**: Unzip the file to your Desktop
-3. **Install**: Double-click `install.py` (Windows) or run `python install.py` or `python3 install.py` (Mac/Linux)
+3. **Install**: Double-click `install.py` (Windows) or run `python3 install.py` (Mac/Linux)
 4. **Launch**: Use the created launcher script when installation completes
 5. **Validate**: Your browser opens automatically to start validating!
 
 ### Manual Installation (For Experienced Users)
 
+**Requires Python 3.8+**
+
 ```bash
 git clone https://github.com/MargotBelot/HieraticAI.git
 cd HieraticAI
-python -m venv hieratic_env
+python3 -m venv hieratic_env
 # Activate: hieratic_env\Scripts\activate (Win) or source hieratic_env/bin/activate (Mac/Linux)
 pip install -r requirements.txt
 streamlit run tools/validation/prediction_validator.py

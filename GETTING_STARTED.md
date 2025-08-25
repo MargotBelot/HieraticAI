@@ -15,11 +15,16 @@ This guide will walk you through the **complete setup process from scratch**. We
 4. Extract the ZIP file to your Desktop (or anywhere you like)
 
 ### Step 2: Run the Automatic Installer
+
+**Important**: Make sure you have **Python 3.8 or newer** installed first!
+- **Windows/Mac**: Download from [python.org](https://www.python.org/downloads/)
+- **Linux**: Install with `sudo apt install python3 python3-pip` (Ubuntu/Debian)
+
 1. **Windows Users**: Double-click `install.py` in the HieraticAI folder
-2. **Mac/Linux Users**: Open Terminal, navigate to the folder, and run: `python install.py` or `python3 install.py`
+2. **Mac/Linux Users**: Open Terminal, navigate to the folder, and run: `python3 install.py`
 
 **That's it!** The installer will:
-- Check if you have Python (and help you install it if needed)
+- Check if you have Python 3.8+ (and tell you if you need to install it)
 - Download and install all required software (~2GB)
 - Create a simple launcher for you to use
 - Test everything to make sure it works
@@ -40,7 +45,7 @@ If you prefer to install manually or already have Python/Git:
 ```bash
 git clone https://github.com/MargotBelot/HieraticAI.git
 cd HieraticAI
-python -m venv hieratic_env
+python3 -m venv hieratic_env
 # Windows: hieratic_env\Scripts\activate
 # Mac/Linux: source hieratic_env/bin/activate
 pip install -r requirements.txt
