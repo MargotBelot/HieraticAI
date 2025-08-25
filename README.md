@@ -116,7 +116,7 @@ graph LR
 
 1. **Download**: Go to [github.com/MargotBelot/HieraticAI](https://github.com/MargotBelot/HieraticAI) and click "Download ZIP"
 2. **Extract**: Unzip the file to your Desktop
-3. **Install**: Double-click `install.py` (Windows) or run `python install.py` (Mac/Linux)
+3. **Install**: Double-click `install.py` (Windows) or run `python install.py` or `python3 install.py` (Mac/Linux)
 4. **Launch**: Use the created launcher script when installation completes
 5. **Validate**: Your browser opens automatically to start validating!
 

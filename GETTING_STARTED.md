@@ -16,7 +16,7 @@ This guide will walk you through the **complete setup process from scratch**. We
 
 ### Step 2: Run the Automatic Installer
 1. **Windows Users**: Double-click `install.py` in the HieraticAI folder
-2. **Mac/Linux Users**: Open Terminal, navigate to the folder, and run: `python install.py`
+2. **Mac/Linux Users**: Open Terminal, navigate to the folder, and run: `python install.py` or `python3 install.py`
 
 **That's it!** The installer will:
 - Check if you have Python (and help you install it if needed)
