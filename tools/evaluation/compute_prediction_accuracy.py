@@ -4,10 +4,6 @@ Compute prediction accuracy metrics by comparing model predictions against groun
 
 This script provides complementary metrics to mAP by computing direct prediction accuracy,
 which is more interpretable from an Egyptological perspective.
-
-Authors: Margot Belot <margotbelot@icloud.com>
-         Domino Colyer <dominic23@zedat.fu-berlin.de>
-Date: August 2025
 """
 
 import json
@@ -22,7 +18,7 @@ try:
     MATPLOTLIB_AVAILABLE = True
 except ImportError:
     MATPLOTLIB_AVAILABLE = False
-    print("  Matplotlib not available, visualizations will be skipped")
+    print(" Matplotlib not available, visualizations will be skipped")
 
 
 class PredictionAccuracyAnalyzer:
@@ -46,13 +42,13 @@ class PredictionAccuracyAnalyzer:
         self.predictions = self._load_predictions()
         self.category_map = self._load_category_mapping()
         
-        print(f" Loaded {len(self.test_annotations)} ground truth annotations")
-        print(f" Loaded {len(self.predictions)} predictions")
-        print(f" Using IoU threshold: {self.iou_threshold}")
+        print(f"Loaded {len(self.test_annotations)} ground truth annotations")
+        print(f"Loaded {len(self.predictions)} predictions")
+        print(f"Using IoU threshold: {self.iou_threshold}")
     
     def _load_test_annotations(self) -> List[Dict]:
         """Load ground truth annotations from test set."""
-        test_ann_file = self.dataset_path / "test" / "annotations.json"
+        test_ann_file = self.dataset_path / "test"/ "annotations.json"
         
         if not test_ann_file.exists():
             raise FileNotFoundError(f"Test annotations not found: {test_ann_file}")
@@ -74,7 +70,7 @@ class PredictionAccuracyAnalyzer:
     
     def _load_category_mapping(self) -> Dict[int, str]:
         """Load category ID to name mapping."""
-        test_ann_file = self.dataset_path / "test" / "annotations.json"
+        test_ann_file = self.dataset_path / "test"/ "annotations.json"
         
         with open(test_ann_file, 'r') as f:
             data = json.load(f)
@@ -115,7 +111,7 @@ class PredictionAccuracyAnalyzer:
         Returns:
             Dictionary containing various accuracy metrics
         """
-        print(" Computing accuracy metrics...")
+        print("Computing accuracy metrics...")
         # Group annotations and predictions by image
         gt_by_image = defaultdict(list)
         pred_by_image = defaultdict(list)
@@ -254,31 +250,31 @@ class PredictionAccuracyAnalyzer:
         """Print a comprehensive accuracy report."""
         metrics = results['overall_metrics']
         
-        print("\n" + "="*80)
-        print(" HIERATIC CHARACTER PREDICTION ACCURACY REPORT")
+        print("\n"+ "="*80)
+        print("HIERATIC CHARACTER PREDICTION ACCURACY REPORT")
         print("="*80)
         
         print(f"\n OVERALL DETECTION PERFORMANCE")
-        print(f"   Total Ground Truth Annotations: {metrics['total_ground_truth']:,}")
-        print(f"   Total Model Predictions: {metrics['total_predictions']:,}")
-        print(f"   Correct Detections (IoU≥{self.iou_threshold}): {metrics['correct_detections']:,}")
-        print(f"   Correct Classifications: {metrics['correct_classifications']:,}")
+        print(f"Total Ground Truth Annotations: {metrics['total_ground_truth']:,}")
+        print(f"Total Model Predictions: {metrics['total_predictions']:,}")
+        print(f"Correct Detections (IoU≥{self.iou_threshold}): {metrics['correct_detections']:,}")
+        print(f"Correct Classifications: {metrics['correct_classifications']:,}")
         
         print(f"\n ACCURACY METRICS")
-        print(f"   Detection Recall: {metrics['detection_recall']:.3f} ({metrics['detection_recall']*100:.1f}%)")
-        print(f"   Detection Precision: {metrics['detection_precision']:.3f} ({metrics['detection_precision']*100:.1f}%)")
-        print(f"   Detection F1-Score: {metrics['detection_f1']:.3f}")
-        print(f"   Classification Accuracy*: {metrics['classification_accuracy']:.3f} ({metrics['classification_accuracy']*100:.1f}%)")
-        print(f"   Overall Accuracy**: {metrics['overall_accuracy']:.3f} ({metrics['overall_accuracy']*100:.1f}%)")
+        print(f"Detection Recall: {metrics['detection_recall']:.3f} ({metrics['detection_recall']*100:.1f}%)")
+        print(f"Detection Precision: {metrics['detection_precision']:.3f} ({metrics['detection_precision']*100:.1f}%)")
+        print(f"Detection F1-Score: {metrics['detection_f1']:.3f}")
+        print(f"Classification Accuracy*: {metrics['classification_accuracy']:.3f} ({metrics['classification_accuracy']*100:.1f}%)")
+        print(f"Overall Accuracy**: {metrics['overall_accuracy']:.3f} ({metrics['overall_accuracy']*100:.1f}%)")
         
         print(f"\n CONFIDENCE ANALYSIS")
-        print(f"   Average Prediction Confidence: {metrics['average_confidence']:.3f}")
-        print(f"   Average Confidence (Correct): {metrics['average_correct_confidence']:.3f}")
+        print(f"Average Prediction Confidence: {metrics['average_confidence']:.3f}")
+        print(f"Average Confidence (Correct): {metrics['average_correct_confidence']:.3f}")
         
         print(f"\n METRIC DEFINITIONS")
-        print(f"   * Classification Accuracy: Correct categories among detected hieroglyphs")
-        print(f"   ** Overall Accuracy: Correct detections+classifications among all ground truth")
-        print(f"   Detection uses IoU threshold ≥ {self.iou_threshold} for matching")
+        print(f"* Classification Accuracy: Correct categories among detected hieroglyphs")
+        print(f"** Overall Accuracy: Correct detections+classifications among all ground truth")
+        print(f"Detection uses IoU threshold ≥ {self.iou_threshold} for matching")
         
         # Top performing categories
         per_cat = results['per_category_metrics']
@@ -293,14 +289,14 @@ class PredictionAccuracyAnalyzer:
         
         print(f"\n TOP 10 BEST PERFORMING CATEGORIES (≥5 samples)")
         for i, (cat_name, accuracy, count) in enumerate(category_accuracies[:10], 1):
-            print(f"   {i:2d}. {cat_name:8s}: {accuracy:.3f} ({accuracy*100:.1f}%) - {count} samples")
+            print(f"{i:2d}. {cat_name:8s}: {accuracy:.3f} ({accuracy*100:.1f}%) - {count} samples")
         
-        print(f"\n  BOTTOM 10 CATEGORIES (≥5 samples)")
+        print(f"\n BOTTOM 10 CATEGORIES (≥5 samples)")
         for i, (cat_name, accuracy, count) in enumerate(category_accuracies[-10:], 1):
-            print(f"   {i:2d}. {cat_name:8s}: {accuracy:.3f} ({accuracy*100:.1f}%) - {count} samples")
+            print(f"{i:2d}. {cat_name:8s}: {accuracy:.3f} ({accuracy*100:.1f}%) - {count} samples")
         
-        print("\n" + "="*80)
-        print(" Report complete! Metrics saved to accuracy_analysis_report.json")
+        print("\n"+ "="*80)
+        print("Report complete! Metrics saved to accuracy_analysis_report.json")
         print("="*80)
     
     def save_detailed_report(self, results: Dict, output_file: str = "accuracy_analysis_report.json") -> None:
@@ -326,13 +322,13 @@ class PredictionAccuracyAnalyzer:
         with open(output_file, 'w') as f:
             json.dump(serializable_results, f, indent=2)
         
-        print(f" Detailed results saved to: {output_file}")
+        print(f"Detailed results saved to: {output_file}")
     
     def create_visualization(self, results: Dict, output_file: str = "accuracy_analysis_plots.png") -> None:
         """Create visualization of accuracy metrics."""
         
         if not MATPLOTLIB_AVAILABLE:
-            print("  Cannot create visualizations: matplotlib not available")
+            print(" Cannot create visualizations: matplotlib not available")
             return None
             
         fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 12))
@@ -428,7 +424,7 @@ class PredictionAccuracyAnalyzer:
         
         plt.tight_layout()
         plt.savefig(output_file, dpi=300, bbox_inches='tight')
-        print(f" Visualizations saved to: {output_file}")
+        print(f"Visualizations saved to: {output_file}")
         
         return fig
 
@@ -462,17 +458,17 @@ def main():
         if MATPLOTLIB_AVAILABLE:
             analyzer.create_visualization(results)
         else:
-            print("  Skipping visualizations (matplotlib not available)")
+            print(" Skipping visualizations (matplotlib not available)")
         
         print(f"\n Key Finding:")
         overall_acc = results['overall_metrics']['overall_accuracy']
         classification_acc = results['overall_metrics']['classification_accuracy']
-        print(f"   • Overall accuracy: {overall_acc:.1%} (correct detections + classifications)")
-        print(f"   • Classification accuracy: {classification_acc:.1%} (correct categories among detections)")
-        print(f"   • This provides interpretable accuracy metrics complementary to mAP scores")
+        print(f"• Overall accuracy: {overall_acc:.1%} (correct detections + classifications)")
+        print(f"• Classification accuracy: {classification_acc:.1%} (correct categories among detections)")
+        print(f"• This provides interpretable accuracy metrics complementary to mAP scores")
         
     except Exception as e:
-        print(f" Error during analysis: {e}")
+        print(f"Error during analysis: {e}")
         import traceback
         traceback.print_exc()
         sys.exit(1)

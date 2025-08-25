@@ -7,13 +7,13 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.25+-red.svg)](https://streamlit.io/)
 [![Prototype](https://img.shields.io/badge/Status-Prototype-orange.svg)](https://github.com/MargotBelot/HieraticAI)
 
-> **Academic Project Notice**: This is a prototype developed for the "Ancient Language Processing" seminar at Freie Universität Berlin (Winter 2025). The project serves as a methodological exploration rather than a production-ready system.
+> **Academic Project Notice**: This is a prototype developed for the "Ancient Language Processing" seminar at Freie Universität Berlin (Summer 2025). The project serves as a methodological exploration rather than a production-ready system.
 > 
 > **Course Information**: [Ancient Language Processing 2025](https://digitalpasts.github.io/alp-course-2025/) - Hybrid seminar focusing on computational approaches to ancient datasets and digital philology methods.
 
 ## Project Overview
 
-HieraticAI revolutionizes the study of ancient Egyptian manuscripts by combining cutting-edge computer vision with deep Egyptological expertise. This system automatically detects, classifies, and validates hieratic characters in papyrus images, with specialized focus on the Middle Kingdom **Westcar Papyrus**.
+HieraticAI focuses on the study of ancient Egyptian manuscripts by combining computer vision with Egyptological expertise. This system automatically detects, classifies, and validates hieratic characters in papyrus images, with specialized focus on the **Westcar Papyrus**.
 
 **What makes HieraticAI unique:**
 - **AI-First Approach**: Advanced YOLO-based detection with 84 Gardiner code classes
@@ -24,8 +24,7 @@ HieraticAI revolutionizes the study of ancient Egyptian manuscripts by combining
 ### The Problem We Solve
 
 Traditional hieratic manuscript analysis is:
-- **Time-consuming**: Manual character identification takes weeks for a single manuscript
-- **Error-prone**: Human fatigue leads to inconsistent classifications
+- **Time-consuming**: Manual character identification takes a long time for a single manuscript
 - **Limited scale**: Impossible to analyze large corpora without automation
 - **Subjective**: Difficult to maintain consistency across different scholars
 
@@ -33,8 +32,8 @@ Traditional hieratic manuscript analysis is:
 
 HieraticAI provides:
 - **Automated Detection**: AI identifies and classifies characters in seconds
-- **High Accuracy**: Trained specifically on Middle Kingdom hieratic forms
-- **Expert Oversight**: Validation interface ensures scholarly rigor
+- **High Accuracy**: Trained specifically on the Westcar papyrus hieratic forms
+- **Expert Oversight**: Validation interface ensures rigor
 - **Rich Context**: Integrated linguistic and paleographic resources
 
 ## How HieraticAI Works: Step-by-Step Process
@@ -52,10 +51,10 @@ graph LR
     style E fill:#e74c3c
 ```
 
-### Step 2: Interactive Validation & Expert Review
+### Step 2: Interactive Validation & Review
 ```mermaid
 graph LR
-    A[AI Predictions] --> B[Expert Review]
+    A[AI Predictions] --> B[Review]
     B --> C[Accept]
     B --> D[Correct]
     B --> E[Flag Uncertain]
@@ -111,7 +110,7 @@ graph LR
 
 ## Quick Start
 
-### 🎯 One-Click Installation (Recommended)
+### One-Click Installation (Recommended)
 
 **Perfect for anyone - no technical experience required!**
 
@@ -121,7 +120,7 @@ graph LR
 4. **Launch**: Use the created launcher script when installation completes
 5. **Validate**: Your browser opens automatically to start validating!
 
-### 🚀 Manual Installation (For Experienced Users)
+### Manual Installation (For Experienced Users)
 
 ```bash
 git clone https://github.com/MargotBelot/HieraticAI.git
@@ -138,12 +137,12 @@ streamlit run tools/validation/prediction_validator.py
 
 ### Real-Time Validation Workflow
 
-The HieraticAI interface provides a seamless experience for expert validation:
+The HieraticAI interface provides a validation panel:
 
 #### **Main Interface Layout**
 
 **Manuscript Viewer (Left Panel)**
-- **Westcar Papyrus Display**: Full manuscript view with detected signs
+- **Westcar Papyrus Display**: Testing area view with detected signs of the Westcar papyrus facsimile.
 - **Color-coded Predictions**:
   - 🔵 ① A1 (85%) - Pending validation
   - 🟢 ② G17 (92%) - High confidence, likely correct
@@ -297,7 +296,7 @@ graph LR
 | **Categories** | 84 Gardiner code classes |
 | **TLA Coverage** | 100% (with fallback strategies) |
 | **AKU Integration** | Reference signs from Westcar corpus |
-| **Validation Interface** | Real-time expert review |
+| **Validation Interface** | Real-time review |
 
 ## Academic Applications
 
@@ -323,7 +322,7 @@ graph TB
     subgraph "Validation Interface"
         D --> E[Streamlit App]
         E --> F[Interactive Review]
-        F --> G[Expert Validation]
+        F --> G[Validation]
     end
     
     subgraph "Database Layer"
@@ -353,12 +352,11 @@ graph TB
 ## Acknowledgments
 
 ### Academic Context
-This prototype was developed as part of the **"Ancient Language Processing" seminar** at **Freie Universität Berlin** (Winter 2025). The course focuses on computational approaches to ancient datasets, digital philology methods, and emerging research questions in ancient Near Eastern studies.
+This prototype was developed as part of the **"Ancient Language Processing" seminar** at **Freie Universität Berlin** (Summer 2025). The course focuses on computational approaches to ancient datasets, digital philology methods, and emerging research questions in ancient Near Eastern studies.
 
 **Course Details:**
 - **Institution**: Freie Universität Berlin
 - **Course**: Ancient Language Processing 2025
-- **Format**: Hybrid seminar (Zoom + in-person)
 - **Objective**: Methodological exploration of ancient language processing technologies
 - **Course Website**: https://digitalpasts.github.io/alp-course-2025/
 

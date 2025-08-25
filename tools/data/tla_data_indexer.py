@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """
-TLA Data Indexer
-================
-
-Parse and index TLA (Thesaurus Linguae Aegyptiae) lemma data to enrich 
+Parse and index TLA lemma data to enrich 
 hieroglyph predictions with linguistic information.
 
 This script extracts lemma information including:
@@ -12,10 +9,6 @@ This script extracts lemma information including:
 - English translation/meaning
 - Frequency in corpus
 - Lemma ID
-
-Authors: Margot Belot <margotbelot@icloud.com>
-         Domino Colyer <dominic23@zedat.fu-berlin.de>
-Date: August 2025
 """
 
 import json
@@ -38,14 +31,14 @@ class TLADataIndexer:
         self.gardiner_to_lemmas = defaultdict(list)
         self.hieroglyph_to_lemmas = defaultdict(list)
         
-        print(f" Initializing TLA indexer for: {self.tla_file_path}")
+        print(f"Initializing TLA indexer for: {self.tla_file_path}")
     
     def parse_tla_data(self):
         """Parse the TLA scraping file and extract lemma information."""
-        print(" Parsing TLA lemma data...")
+        print("Parsing TLA lemma data...")
         
         if not self.tla_file_path.exists():
-            print(f" TLA file not found: {self.tla_file_path}")
+            print(f"TLA file not found: {self.tla_file_path}")
             return
         
         with open(self.tla_file_path, 'r', encoding='utf-8') as f:
@@ -103,12 +96,12 @@ class TLADataIndexer:
                 
             except Exception as e:
                 errors += 1
-                print(f"     Error processing lemma entry: {e}")
+                print(f"Error processing lemma entry: {e}")
                 continue
         
-        print(f" Processed {processed} lemma entries ({errors} errors)")
-        print(f" Indexed {len(self.lemma_data)} lemmas")
-        print(f" Found {len(self.hieroglyph_to_lemmas)} unique hieroglyphic signs")
+        print(f"Processed {processed} lemma entries ({errors} errors)")
+        print(f"Indexed {len(self.lemma_data)} lemmas")
+        print(f"Found {len(self.hieroglyph_to_lemmas)} unique hieroglyphic signs")
     
     def extract_individual_signs(self, hieroglyphs: str) -> List[str]:
         """Extract individual hieroglyphic signs from a lemma's hieroglyphic writing."""
@@ -174,24 +167,24 @@ class TLADataIndexer:
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(index, f, indent=2, ensure_ascii=False)
         
-        print(f" Exported TLA index to: {output_path}")
+        print(f"Exported TLA index to: {output_path}")
     
     def create_summary_report(self) -> str:
         """Create a summary report of the TLA data."""
         stats = self.create_lemma_lookup_index()['statistics']
         
         report = []
-        report.append(" TLA (Thesaurus Linguae Aegyptiae) Summary")
-        report.append("=" * 50)
-        report.append(f" Total lemmas: {stats['total_lemmas']}")
-        report.append(f" Lemmas with hieroglyphs: {stats['lemmas_with_hieroglyphs']}")
-        report.append(f" Unique hieroglyphic signs: {stats['unique_hieroglyphic_signs']}")
+        report.append("TLA (Thesaurus Linguae Aegyptiae) Summary")
+        report.append("="* 50)
+        report.append(f"Total lemmas: {stats['total_lemmas']}")
+        report.append(f"Lemmas with hieroglyphs: {stats['lemmas_with_hieroglyphs']}")
+        report.append(f"Unique hieroglyphic signs: {stats['unique_hieroglyphic_signs']}")
         report.append("")
         
-        report.append(" Top 15 Most Frequent Lemmas:")
-        report.append("-" * 60)
+        report.append("Top 15 Most Frequent Lemmas:")
+        report.append("-"* 60)
         report.append(f"{'Rank':<4} {'Freq':<6} {'Transliteration':<15} {'Translation'[:30]}")
-        report.append("-" * 60)
+        report.append("-"* 60)
         
         for i, lemma in enumerate(stats['most_frequent_lemmas'][:15], 1):
             trans = lemma['transliteration'][:14]
@@ -199,7 +192,7 @@ class TLADataIndexer:
             report.append(f"{i:<4} {lemma['frequency']:<6} {trans:<15} {meaning}")
         
         report.append("")
-        report.append(" Coverage by Hieroglyphic Signs:")
+        report.append("Coverage by Hieroglyphic Signs:")
         
         # Show most referenced hieroglyphic signs
         sign_counts = {sign: len(lemmas) for sign, lemmas in self.hieroglyph_to_lemmas.items()}
@@ -207,7 +200,7 @@ class TLADataIndexer:
         
         for sign, count in top_signs:
             unicode_name = unicodedata.name(sign, f"U+{ord(sign):04X}")
-            report.append(f"   {sign} ({unicode_name}): {count} lemmas")
+            report.append(f"{sign} ({unicode_name}): {count} lemmas")
         
         return "\n".join(report)
 
@@ -216,7 +209,7 @@ def main():
     tla_file = "./external_data/TLA_Data/TLA_Scraping.txt"
     
     if not Path(tla_file).exists():
-        print(f" TLA file not found: {tla_file}")
+        print(f"TLA file not found: {tla_file}")
         return
     
     # Create indexer
@@ -232,7 +225,7 @@ def main():
     
     # Create and save summary report
     report = indexer.create_summary_report()
-    print("\n" + report)
+    print("\n"+ report)
     
     with open("data/tla_lemma_summary.txt", "w", encoding='utf-8') as f:
         f.write(report)
@@ -245,9 +238,9 @@ def main():
         sample_signs = list(indexer.hieroglyph_to_lemmas.keys())[:5]
         for sign in sample_signs:
             lemmas = indexer.get_lemmas_for_hieroglyph(sign, max_results=2)
-            print(f"   {sign}: {len(lemmas)} lemma(s) found")
+            print(f"{sign}: {len(lemmas)} lemma(s) found")
             for lemma in lemmas[:1]:  # Show first match
-                print(f"     → {lemma['transliteration']}: {lemma['translation']} (freq: {lemma['frequency']})")
+                print(f"→ {lemma['transliteration']}: {lemma['translation']} (freq: {lemma['frequency']})")
 
 if __name__ == "__main__":
     main()

@@ -1,10 +1,10 @@
 # Getting Started with HieraticAI
 
-> **Academic Prototype Notice**: This is a methodological prototype developed for the "Ancient Language Processing" seminar at Freie Universität Berlin (Winter 2025). The project demonstrates computational approaches to ancient Egyptian paleographic analysis.
+> **Academic Prototype Notice**: This is a methodological prototype developed for the "Ancient Language Processing" seminar at Freie Universität Berlin (Summer 2025). The project demonstrates computational approaches to ancient Egyptian paleographic analysis.
 
-Welcome to HieraticAI! This guide will walk you through the **complete setup process from scratch**. We have multiple installation options depending on your comfort level with technology.
+This guide will walk you through the **complete setup process from scratch**. We have multiple installation options depending on your comfort level with this method.
 
-## 🎯 One-Click Installation (Recommended for Everyone!)
+## One-Click Installation (Recommended)
 
 **The easiest way to install HieraticAI - no technical knowledge required!**
 
@@ -19,10 +19,10 @@ Welcome to HieraticAI! This guide will walk you through the **complete setup pro
 2. **Mac/Linux Users**: Open Terminal, navigate to the folder, and run: `python install.py`
 
 **That's it!** The installer will:
-- ✅ Check if you have Python (and help you install it if needed)
-- ✅ Download and install all required software (~2GB)
-- ✅ Create a simple launcher for you to use
-- ✅ Test everything to make sure it works
+- Check if you have Python (and help you install it if needed)
+- Download and install all required software (~2GB)
+- Create a simple launcher for you to use
+- Test everything to make sure it works
 
 ### Step 3: Launch HieraticAI
 After installation completes:
@@ -33,7 +33,7 @@ Your web browser will open automatically with the HieraticAI interface!
 
 ---
 
-## 🚀 Manual Installation (For Experienced Users)
+## Manual Installation (For Experienced Users)
 
 If you prefer to install manually or already have Python/Git:
 
@@ -47,7 +47,7 @@ pip install -r requirements.txt
 streamlit run tools/validation/prediction_validator.py
 ```
 
-## 📋 System Requirements
+## System Requirements
 
 **Before we start, make sure your computer meets these requirements:**
 
@@ -59,16 +59,11 @@ streamlit run tools/validation/prediction_validator.py
 - **Storage**: 5GB free disk space
 - **Internet**: Stable internet connection (we'll download ~2GB of software)
 
-> ⏰ **Time needed**: First-time setup takes 15-30 minutes depending on your internet speed.
+> **Time needed**: First-time setup takes 15-30 minutes depending on your internet speed.
 
-## 🛠️ Step 1: Install Required Software
+## Step 1: Install Required Software
 
-### Option A: Automatic Installation (Recommended for Beginners)
-
-#### For Windows Users:
-1. **Download the HieraticAI Installer** (coming soon)
-   - This will automatically install Python, Git, and all dependencies
-   - Just run the `.exe` file and follow the prompts
+### Option A: Using the Python Installer (Recommended for Beginners)
 
 #### For macOS Users:
 1. **Install Homebrew** (if you don't have it):
@@ -161,7 +156,7 @@ pip3 --version
 - If commands don't work, you may need to restart your terminal/computer
 - On Windows, if Python isn't found, make sure you checked "Add Python to PATH" during installation
 
-## 📥 Step 2: Download HieraticAI
+## Step 2: Download HieraticAI
 
 ### Method 1: Download as ZIP (Easy for Beginners)
 
@@ -233,7 +228,7 @@ conda activate hieratic-ai
 Run this command to test if installation worked:
 
 ```bash
-python -c "import streamlit, torch, cv2; print('✅ All dependencies installed successfully!')"
+python -c "import streamlit, torch, cv2; print('All dependencies installed successfully!')"
 ```
 
 **If you see errors:**
@@ -273,11 +268,11 @@ python -c "import streamlit, torch, cv2; print('✅ All dependencies installed s
 ### What to Expect
 
 **First Launch Checklist:**
-- ✅ Browser opens to HieraticAI interface
-- ✅ You see "HieraticAI Validator" at the top
-- ✅ Left panel shows manuscript image
-- ✅ Right panel shows validation controls
-- ✅ No error messages in red
+- Browser opens to HieraticAI interface
+- You see "HieraticAI Validator" at the top
+- Left panel shows manuscript image
+- Right panel shows validation controls
+- No error messages in red
 
 **If something goes wrong:**
 - Check the terminal for error messages
@@ -446,7 +441,7 @@ When the interface loads, you'll see a clean, intuitive layout:
   - TLA linguistic data (transliteration, translation, frequency)
   - AKU reference signs for comparison
 - **Validation Actions**
-  - **Correct** ✅ - Mark prediction as accurate
+  - **Correct** - Mark prediction as accurate
   - **Incorrect** ❌ - Mark prediction as wrong
   - **Uncertain** ❓ - Mark for further review
 

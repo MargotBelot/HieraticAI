@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 """
-HieraticAI Prediction Validator
-==============================
-
 Interactive web interface for validating HieraticAI model predictions.
 Allows users to manually verify predictions, view Gardiner codes, and track validation statistics.
 Enriched with AKU Westcar database integration for contextual hieroglyph comparison.
@@ -50,16 +47,16 @@ st.set_page_config(
 class PredictionValidator:
     def __init__(self):
         self.project_root = Path(".")
-        self.predictions_file = self.project_root / "output" / "improved_training_20250822_200344" / "coco_instances_results_FIXED.json"
-        self.validation_file = self.project_root / "output" / "validation_results.json"
+        self.predictions_file = self.project_root / "output"/ "improved_training_20250822_200344"/ "coco_instances_results_FIXED.json"
+        self.validation_file = self.project_root / "output"/ "validation_results.json"
         self.images_dir = self.project_root / "hieroglyphs_dataset"
         
         # AKU database paths
-        self.aku_index_path = self.project_root / "data" / "aku_gardiner_index.json"
+        self.aku_index_path = self.project_root / "data"/ "aku_gardiner_index.json"
         self.aku_data_path = Path("./external_data/AKU Westcar Scraping")
         
         # TLA lemma database paths
-        self.tla_index_path = self.project_root / "data" / "tla_lemma_index.json"
+        self.tla_index_path = self.project_root / "data"/ "tla_lemma_index.json"
         
         # Load AKU and TLA indices on initialization
         self.aku_index = self.load_aku_index()
@@ -372,7 +369,7 @@ class PredictionValidator:
                                 quality_indicators.append("Clear ink")
                             
                             if quality_indicators:
-                                st.write("  ".join(quality_indicators))
+                                st.write("".join(quality_indicators))
                             
                             # Show additional metadata in expander
                             with st.expander(f"Full metadata #{i+1}"):
@@ -398,7 +395,7 @@ class PredictionValidator:
                 if self.aku_index:
                     available_codes = list(self.aku_index.get('gardiner_index', {}).keys())[:10]
                     if available_codes:
-                        st.write("Available codes (sample): " + ", ".join(available_codes))
+                        st.write("Available codes (sample): "+ ", ".join(available_codes))
     
     def display_tla_lemma_info(self, gardiner_code: str, container):
         """Display TLA lemma information for a given Gardiner code."""
@@ -674,7 +671,7 @@ def main():
     
     # Load image ID to filename mapping from annotations and find the image
     image_path = None
-    patch_name = f"patch_{selected_image-1:04d}.png"  # Default fallback
+    patch_name = f"patch_{selected_image-1:04d}.png"# Default fallback
     
     # Try each split to find both the mapping and the actual image file
     # Prioritize test split as it has the most comprehensive annotations
@@ -731,9 +728,9 @@ def main():
         Gardiner classification, and linguistic context from TLA and AKU databases before making your decision.
         
         The bounding box colors indicate:
-        -  **Blue**: Pending validation
+        - 🔵 **Blue**: Pending validation
         - 🟢 **Green**: Validated as correct
-        -  **Red**: Validated as incorrect  
+        - 🔴 **Red**: Validated as incorrect  
         - 🟠 **Orange**: Validated as uncertain
         """)
         
@@ -750,7 +747,7 @@ def main():
             for i, pred_info in enumerate(prediction_data):
                 status_display = {
                     'pending': 'PENDING',
-                    'correct': 'CORRECT', 
+                    'correct': 'CORRECT',
                     'incorrect': 'INCORRECT',
                     'uncertain': 'UNCERTAIN'
                 }.get(pred_info['validation_status'], 'PENDING')

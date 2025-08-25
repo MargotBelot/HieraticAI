@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Compute prediction accuracy using the FIXED category mappings.
+Compute prediction accuracy using the fixed category mappings.
 
 This script uses the corrected predictions file where category IDs have been 
 properly mapped to match the ground truth annotations.
@@ -50,12 +50,12 @@ def load_data():
     with open(gt_file, 'r') as f:
         gt_data = json.load(f)
     
-    # Load FIXED predictions (with correct category mappings)
+    # Load fixed predictions (with correct category mappings)
     pred_file = "output/improved_training_20250822_200344/coco_instances_results_FIXED.json"
     
     if not Path(pred_file).exists():
-        print(f" Fixed predictions file not found: {pred_file}")
-        print("   Run the category mapping fix first!")
+        print(f"Fixed predictions file not found: {pred_file}")
+        print("Run the category mapping fix first!")
         return None, None, None
     
     with open(pred_file, 'r') as f:
@@ -64,17 +64,17 @@ def load_data():
     # Create category mapping
     category_map = {cat['id']: cat['name'] for cat in gt_data['categories']}
     
-    print(f" Loaded {len(gt_data['annotations'])} ground truth annotations")
-    print(f" Loaded {len(predictions)} FIXED predictions")
-    print(f" Loaded {len(category_map)} categories")
+    print(f"Loaded {len(gt_data['annotations'])} ground truth annotations")
+    print(f"Loaded {len(predictions)} fixed predictions")
+    print(f"Loaded {len(category_map)} categories")
     
     return gt_data['annotations'], predictions, category_map
 
 def compute_accuracy_with_fixed_mappings(iou_threshold=0.5):
     """Compute accuracy using the fixed category mappings."""
     
-    print(f" Computing accuracy with FIXED category mappings...")
-    print(f" Using IoU threshold: {iou_threshold}")
+    print(f"Computing accuracy with fixed category mappings...")
+    print(f"Using IoU threshold: {iou_threshold}")
     print("="*60)
     
     # Load data
@@ -214,32 +214,32 @@ def print_results_summary(results):
     
     print("\n ACCURACY ANALYSIS RESULTS (FIXED MAPPINGS)")
     print("="*60)
-    print(f" Dataset: {metrics['total_ground_truth']} ground truth, {metrics['total_predictions']} predictions")
-    print(f" IoU Threshold: {results['analysis_parameters']['iou_threshold']}")
+    print(f"Dataset: {metrics['total_ground_truth']} ground truth, {metrics['total_predictions']} predictions")
+    print(f"IoU Threshold: {results['analysis_parameters']['iou_threshold']}")
     print()
     
-    print(" DETECTION PERFORMANCE:")
-    print(f"   Recall:    {metrics['detection_recall']:.1%}  ({metrics['correct_detections']}/{metrics['total_ground_truth']} hieroglyphs found)")
-    print(f"   Precision: {metrics['detection_precision']:.1%}  ({metrics['correct_detections']}/{metrics['total_predictions']} predictions correct)")
-    print(f"   F1-Score:  {metrics['detection_f1']:.1%}  (balanced detection performance)")
+    print("DETECTION PERFORMANCE:")
+    print(f"Recall:    {metrics['detection_recall']:.1%}  ({metrics['correct_detections']}/{metrics['total_ground_truth']} hieroglyphs found)")
+    print(f"Precision: {metrics['detection_precision']:.1%}  ({metrics['correct_detections']}/{metrics['total_predictions']} predictions correct)")
+    print(f"F1-Score:  {metrics['detection_f1']:.1%}  (balanced detection performance)")
     print()
     
-    print("  CLASSIFICATION PERFORMANCE:")
-    print(f"   Accuracy:  {metrics['classification_accuracy']:.1%}  ({metrics['correct_classifications']}/{metrics['correct_detections']} detections classified correctly)")
+    print(" CLASSIFICATION PERFORMANCE:")
+    print(f"Accuracy:  {metrics['classification_accuracy']:.1%}  ({metrics['correct_classifications']}/{metrics['correct_detections']} detections classified correctly)")
     print()
     
-    print(" OVERALL PERFORMANCE:")
-    print(f"   Accuracy:  {metrics['overall_accuracy']:.1%}  ({metrics['correct_classifications']}/{metrics['total_ground_truth']} hieroglyphs both found AND classified correctly)")
+    print("OVERALL PERFORMANCE:")
+    print(f"Accuracy:  {metrics['overall_accuracy']:.1%}  ({metrics['correct_classifications']}/{metrics['total_ground_truth']} hieroglyphs both found AND classified correctly)")
     print()
     
-    print(" CONFIDENCE SCORES:")
-    print(f"   Average confidence: {metrics['average_confidence']:.3f}")
-    print(f"   Correct predictions: {metrics['average_correct_confidence']:.3f}")
+    print("CONFIDENCE SCORES:")
+    print(f"Average confidence: {metrics['average_confidence']:.3f}")
+    print(f"Correct predictions: {metrics['average_correct_confidence']:.3f}")
     
     # Show improvement vs original analysis
     print("\n IMPROVEMENT VS ORIGINAL ANALYSIS:")
-    print(f"   Classification accuracy: 0% → {metrics['classification_accuracy']:.1%} (+{metrics['classification_accuracy']:.1%})")
-    print(f"   Overall accuracy: 0% → {metrics['overall_accuracy']:.1%} (+{metrics['overall_accuracy']:.1%})")
+    print(f"Classification accuracy: 0% → {metrics['classification_accuracy']:.1%} (+{metrics['classification_accuracy']:.1%})")
+    print(f"Overall accuracy: 0% → {metrics['overall_accuracy']:.1%} (+{metrics['overall_accuracy']:.1%})")
     
     return metrics
 
@@ -373,15 +373,15 @@ def create_performance_visualization(results, category_map):
 def main():
     """Main execution function."""
     
-    print(" HIEROGLYPH DETECTION ACCURACY ANALYSIS")
-    print("Using FIXED Category Mappings")
+    print("HIEROGLYPH DETECTION ACCURACY ANALYSIS")
+    print("Using fixed Category Mappings")
     print("="*60)
     
     # Compute accuracy with fixed mappings
     results, category_map = compute_accuracy_with_fixed_mappings()
     
     if results is None:
-        print(" Failed to compute accuracy - check if fixed predictions exist")
+        print("Failed to compute accuracy - check if fixed predictions exist")
         return
     
     # Print results summary
@@ -401,19 +401,19 @@ def main():
     print(f"\n Saved detailed results: {output_file}")
     
     # Success summary
-    print("\n" + "="*60)
-    print(" ANALYSIS COMPLETE - CATEGORY MAPPING FIX SUCCESSFUL!")
+    print("\n"+ "="*60)
+    print("ANALYSIS COMPLETE - CATEGORY MAPPING FIX SUCCESSFUL!")
     print("="*60)
-    print(f" Overall accuracy improved: 0% → {metrics['overall_accuracy']:.1%}")
-    print(f"  Classification accuracy: 0% → {metrics['classification_accuracy']:.1%}") 
-    print(f" Detection performance maintained: {metrics['detection_recall']:.1%} recall, {metrics['detection_precision']:.1%} precision")
+    print(f"Overall accuracy improved: 0% → {metrics['overall_accuracy']:.1%}")
+    print(f" Classification accuracy: 0% → {metrics['classification_accuracy']:.1%}") 
+    print(f"Detection performance maintained: {metrics['detection_recall']:.1%} recall, {metrics['detection_precision']:.1%} precision")
     print()
-    print(" Generated files:")
-    print("   - accuracy_analysis_FIXED_report.json")
-    print("   - accuracy_analysis_FIXED_plots.png")
+    print("Generated files:")
+    print("- accuracy_analysis_FIXED_report.json")
+    print("- accuracy_analysis_FIXED_plots.png")
     print()
-    print(" The category mapping fix was successful!")
-    print("   Model performance is now properly measured and significantly better.")
+    print("The category mapping fix was successful!")
+    print("Model performance is now properly measured and significantly better.")
 
 if __name__ == "__main__":
     main()

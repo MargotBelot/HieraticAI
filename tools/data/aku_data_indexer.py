@@ -1,14 +1,7 @@
 #!/usr/bin/env python3
 """
-AKU Database Indexer
-====================
-
 Index AKU Westcar database signs by Gardiner codes to enrich prediction validation.
 Creates a searchable index linking SVGs and metadata for similar hieroglyphs.
-
-Authors: Margot Belot <margotbelot@icloud.com>
-         Domino Colyer <dominic23@zedat.fu-berlin.de>
-Date: August 2025
 """
 
 import json
@@ -29,21 +22,21 @@ class AKUDataIndexer:
         """
         self.aku_data_path = Path(aku_data_path)
         self.json_path = self.aku_data_path / "json"
-        self.svg_path = self.aku_data_path / "svg" 
+        self.svg_path = self.aku_data_path / "svg"
         self.txt_path = self.aku_data_path / "txt"
         
         # Index by Gardiner code
         self.gardiner_index = defaultdict(list)
         self.aku_records = {}
         
-        print(f" Initializing AKU indexer for: {self.aku_data_path}")
+        print(f"Initializing AKU indexer for: {self.aku_data_path}")
         
     def load_all_records(self):
         """Load all JSON records and create indices."""
-        print(" Loading AKU database records...")
+        print("Loading AKU database records...")
         
         json_files = list(self.json_path.glob("*.json"))
-        print(f"   Found {len(json_files)} JSON files")
+        print(f"Found {len(json_files)} JSON files")
         
         processed = 0
         errors = 0
@@ -85,11 +78,11 @@ class AKUDataIndexer:
                 
             except Exception as e:
                 errors += 1
-                print(f"     Error processing {json_file}: {e}")
+                print(f"  Error processing {json_file}: {e}")
                 continue
         
-        print(f" Processed {processed} records ({errors} errors)")
-        print(f" Indexed {len(self.gardiner_index)} unique Gardiner codes")
+        print(f"Processed {processed} records ({errors} errors)")
+        print(f"Indexed {len(self.gardiner_index)} unique Gardiner codes")
         
     def find_svg_file(self, record_id: str, aku_nr: str) -> Optional[Path]:
         """Find corresponding SVG file for a record."""
@@ -176,26 +169,26 @@ class AKUDataIndexer:
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(export_data, f, indent=2, ensure_ascii=False)
         
-        print(f" Exported index to: {output_path}")
+        print(f"Exported index to: {output_path}")
     
     def create_summary_report(self) -> str:
         """Create a summary report of the AKU database."""
         stats = self.get_gardiner_statistics()
         
         report = []
-        report.append(" AKU Westcar Database Summary")
-        report.append("=" * 50)
-        report.append(f" Total records: {len(self.aku_records)}")
-        report.append(f" Unique Gardiner codes: {len(self.gardiner_index)}")
+        report.append("AKU Westcar Database Summary")
+        report.append("="* 50)
+        report.append(f"Total records: {len(self.aku_records)}")
+        report.append(f"Unique Gardiner codes: {len(self.gardiner_index)}")
         report.append("")
         
         # Top categories by frequency
         sorted_codes = sorted(stats.items(), key=lambda x: x[1]['total'], reverse=True)
         
-        report.append(" Top 20 Most Common Gardiner Codes:")
-        report.append("-" * 50)
+        report.append("Top 20 Most Common Gardiner Codes:")
+        report.append("-"* 50)
         report.append(f"{'Code':<8} {'Total':<6} {'SVG':<5} {'Read':<5} {'Comp':<5} {'Description'}")
-        report.append("-" * 50)
+        report.append("-"* 50)
         
         for code, data in sorted_codes[:20]:
             desc = data['sample_metadata'].get('Beschreibung', '')[:30]
@@ -203,10 +196,10 @@ class AKUDataIndexer:
                          f"{data['readable']:<5} {data['complete']:<5} {desc}")
         
         report.append("")
-        report.append(" Coverage Statistics:")
-        report.append(f"   Records with SVG: {sum(s['with_svg'] for s in stats.values())}")
-        report.append(f"   Records readable: {sum(s['readable'] for s in stats.values())}")
-        report.append(f"   Records complete: {sum(s['complete'] for s in stats.values())}")
+        report.append("Coverage Statistics:")
+        report.append(f"Records with SVG: {sum(s['with_svg'] for s in stats.values())}")
+        report.append(f"Records readable: {sum(s['readable'] for s in stats.values())}")
+        report.append(f"Records complete: {sum(s['complete'] for s in stats.values())}")
         
         return "\n".join(report)
 
@@ -215,7 +208,7 @@ def main():
     aku_path = "./external_data/AKU Westcar Scraping"
     
     if not os.path.exists(aku_path):
-        print(f" AKU data path not found: {aku_path}")
+        print(f"AKU data path not found: {aku_path}")
         return
     
     # Create indexer
@@ -231,7 +224,7 @@ def main():
     
     # Create and save summary report
     report = indexer.create_summary_report()
-    print("\n" + report)
+    print("\n"+ report)
     
     with open("data/aku_database_summary.txt", "w", encoding='utf-8') as f:
         f.write(report)
@@ -244,13 +237,13 @@ def main():
     
     for code in test_codes:
         similar = indexer.get_similar_signs(code, max_results=3)
-        print(f"   {code}: {len(similar)} similar signs found")
+        print(f"{code}: {len(similar)} similar signs found")
         
         if similar:
             for i, sign in enumerate(similar[:2]):
                 desc = sign['metadata'].get('Beschreibung', 'No description')
-                svg_status = " SVG" if sign['svg_path'] else " No SVG"
-                print(f"     {i+1}. {desc[:40]} ({svg_status})")
+                svg_status = "SVG"if sign['svg_path'] else "No SVG"
+                print(f"  {i+1}. {desc[:40]} ({svg_status})")
 
 if __name__ == "__main__":
     main()

@@ -259,8 +259,7 @@ The training dataset is based on the **Westcar Papyrus VIII 5-24**, a Middle Kin
 
 **CVAT (Computer Vision Annotation Tool) Workflow:**
 
-![CVAT Annotation Process](docs/annotations_CVAT.png)
-*Detailed annotation of hieratic characters using CVAT with precise bounding boxes*
+The annotation process uses CVAT (Computer Vision Annotation Tool) for precise bounding box annotation of hieratic characters. The workflow includes detailed markup of individual hieroglyphic signs with their corresponding Gardiner classifications.
 
 **Annotation Process:**
 1. **Image Preparation:** High-resolution papyrus facsimile scans preprocessed
@@ -280,6 +279,11 @@ The training dataset is based on the **Westcar Papyrus VIII 5-24**, a Middle Kin
 - **Category Ambiguity:** Variant forms and contextual interpretation
 
 ## Dataset Statistics & Analysis
+
+### Training/Validation Split Visualization
+
+![Dataset Visualization](docs/dataset_visualization.png)
+*Training and validation dataset distribution showing spatial organization and category balance*
 
 ### Category Distribution
 ```python

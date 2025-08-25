@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Robust Hieroglyph Detection Training Script
-Production-ready training with category mapping safeguards and comprehensive validation.
+Hieroglyph Detection Training Script
+Training with category mapping safeguards and validation.
 
 Key Features:
 - Automatic category ID remapping (1-based -> 0-based for Detectron2)  
@@ -24,7 +24,8 @@ from typing import Dict, Optional, Tuple
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Import validation
-from src.hieratic_ai.utils.dataset_validator import DatasetValidator
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+from utils.dataset_validator import DatasetValidator
 
 # Detectron2 imports
 try:
@@ -40,7 +41,7 @@ try:
     from detectron2.data import transforms as T
     from detectron2.data import DatasetMapper
 except ImportError as e:
-    print(f" Failed to import Detectron2: {e}")
+    print(f"Failed to import Detectron2: {e}")
     print("Please install Detectron2: https://detectron2.readthedocs.io/en/latest/tutorials/install.html")
     sys.exit(1)
 
@@ -80,13 +81,13 @@ class HieroglyphTrainingConfig:
         
     def validate_and_setup(self) -> bool:
         """Validate dataset and setup category mappings"""
-        logger.info(" Validating dataset and setting up configuration...")
+        logger.info("Validating dataset and setting up configuration...")
         
         # Step 1: Run comprehensive dataset validation
         validator = DatasetValidator(self.dataset_path)
         
         if not validator.validate_all():
-            logger.error(" Dataset validation failed!")
+            logger.error("Dataset validation failed!")
             return False
         
         # Step 2: Extract category information
@@ -101,22 +102,22 @@ class HieroglyphTrainingConfig:
         min_cat_id = min(self.categories.keys())
         
         if min_cat_id == 1:
-            logger.warning("  Dataset uses 1-based category IDs")
-            logger.warning("   Will remap to 0-based for Detectron2 compatibility")
+            logger.warning(" Dataset uses 1-based category IDs")
+            logger.warning("Will remap to 0-based for Detectron2 compatibility")
             self.category_id_offset = -1  # Subtract 1 from all category IDs
         elif min_cat_id == 0:
-            logger.info(" Dataset already uses 0-based category IDs")
+            logger.info("Dataset already uses 0-based category IDs")
             self.category_id_offset = 0
         else:
-            logger.error(f" Unusual category ID start: {min_cat_id}")
+            logger.error(f"Unusual category ID start: {min_cat_id}")
             return False
         
-        logger.info(f" Configuration summary:")
-        logger.info(f"   Dataset: {self.dataset_path}")
-        logger.info(f"   Categories: {self.num_classes}")
-        logger.info(f"   Category ID offset: {self.category_id_offset}")
-        logger.info(f"   Output directory: {self.output_dir}")
-        logger.info(f"   Run ID: {self.run_id}")
+        logger.info(f"Configuration summary:")
+        logger.info(f"Dataset: {self.dataset_path}")
+        logger.info(f"Categories: {self.num_classes}")
+        logger.info(f"Category ID offset: {self.category_id_offset}")
+        logger.info(f"Output directory: {self.output_dir}")
+        logger.info(f"Run ID: {self.run_id}")
         
         return True
 
@@ -128,19 +129,19 @@ class CategoryRemappingDatasetMapper(DatasetMapper):
         self.category_offset = category_offset
         
         if category_offset != 0:
-            logger.info(f" DatasetMapper will apply category offset: {category_offset}")
+            logger.info(f"DatasetMapper will apply category offset: {category_offset}")
     
     def __call__(self, dataset_dict):
         """Apply category ID remapping to annotations"""
         dataset_dict = super().__call__(dataset_dict)
         
-        if self.category_offset != 0 and "annotations" in dataset_dict:
+        if self.category_offset != 0 and "annotations"in dataset_dict:
             for ann in dataset_dict["annotations"]:
                 ann["category_id"] += self.category_offset
                 
                 # Ensure category IDs are valid
                 if ann["category_id"] < 0:
-                    logger.error(f" Invalid category ID after remapping: {ann['category_id']}")
+                    logger.error(f"Invalid category ID after remapping: {ann['category_id']}")
                     raise ValueError(f"Category ID remapping resulted in negative ID: {ann['category_id']}")
         
         return dataset_dict
@@ -169,18 +170,18 @@ class RobustHieroglyphTrainer(DefaultTrainer):
     
     def train(self):
         """Enhanced training with error handling"""
-        logger.info(" Starting robust training...")
+        logger.info("Starting robust training...")
         
         try:
             super().train()
-            logger.info(" Training completed successfully!")
+            logger.info("Training completed successfully!")
             
         except KeyboardInterrupt:
-            logger.warning("  Training interrupted by user")
+            logger.warning(" Training interrupted by user")
             self._save_checkpoint_on_interrupt()
             
         except Exception as e:
-            logger.error(f" Training failed with error: {e}")
+            logger.error(f"Training failed with error: {e}")
             logger.error(f"Traceback: {traceback.format_exc()}")
             self._save_checkpoint_on_interrupt()
             raise
@@ -193,13 +194,13 @@ class RobustHieroglyphTrainer(DefaultTrainer):
                 f"model_interrupted_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pth"
             )
             self.checkpointer.save(checkpoint_path)
-            logger.info(f" Saved interruption checkpoint: {checkpoint_path}")
+            logger.info(f"Saved interruption checkpoint: {checkpoint_path}")
         except Exception as e:
             logger.error(f"Failed to save interruption checkpoint: {e}")
 
 def register_hieroglyph_datasets(config: HieroglyphTrainingConfig):
     """Register datasets with Detectron2 with proper metadata"""
-    logger.info(" Registering datasets...")
+    logger.info("Registering datasets...")
     
     splits = ["train", "val", "test"]
     
@@ -231,13 +232,13 @@ def register_hieroglyph_datasets(config: HieroglyphTrainingConfig):
                 category_names = [config.categories[cat_id] for cat_id in sorted(config.categories.keys())]
                 MetadataCatalog.get(dataset_name).thing_classes = category_names
             
-            logger.info(f"    Registered {dataset_name}: {len(MetadataCatalog.get(dataset_name).thing_classes)} classes")
+            logger.info(f" Registered {dataset_name}: {len(MetadataCatalog.get(dataset_name).thing_classes)} classes")
     
-    logger.info(" Dataset registration complete")
+    logger.info("Dataset registration complete")
 
 def setup_config(config: HieroglyphTrainingConfig) -> object:
     """Setup Detectron2 configuration"""
-    logger.info("  Setting up Detectron2 configuration...")
+    logger.info(" Setting up Detectron2 configuration...")
     
     cfg = get_cfg()
     
@@ -255,9 +256,9 @@ def setup_config(config: HieroglyphTrainingConfig) -> object:
     
     # Critical: Set correct number of classes
     if config.category_id_offset != 0:
-        logger.info(f" Configuring for {config.num_classes} classes with ID remapping")
+        logger.info(f"Configuring for {config.num_classes} classes with ID remapping")
     else:
-        logger.info(f" Configuring for {config.num_classes} classes (no remapping)")
+        logger.info(f"Configuring for {config.num_classes} classes (no remapping)")
     
     # Training configuration
     cfg.DATASETS.TRAIN = ("hieroglyphs_train",)
@@ -295,9 +296,9 @@ def setup_config(config: HieroglyphTrainingConfig) -> object:
     # Advanced settings
     cfg.MODEL.RPN.BATCH_SIZE_PER_IMAGE = 256
     cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 512
-    cfg.MODEL.DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+    cfg.MODEL.DEVICE = "cuda"if torch.cuda.is_available() else "cpu"
     
-    logger.info(f" Configuration complete. Device: {cfg.MODEL.DEVICE}")
+    logger.info(f"Configuration complete. Device: {cfg.MODEL.DEVICE}")
     
     return cfg
 
@@ -332,20 +333,20 @@ def save_training_metadata(config: HieroglyphTrainingConfig, cfg):
     with open(metadata_file, 'w') as f:
         json.dump(metadata, f, indent=2, default=str)
     
-    logger.info(f" Training metadata saved: {metadata_file}")
+    logger.info(f"Training metadata saved: {metadata_file}")
 
 def main(args):
     """Main training function with comprehensive error handling"""
     
-    logger.info(" Robust Hieroglyph Detection Training")
-    logger.info("=" * 60)
+    logger.info("Robust Hieroglyph Detection Training")
+    logger.info("="* 60)
     
     try:
         # Step 1: Initialize and validate configuration
         config = HieroglyphTrainingConfig(args)
         
         if not config.validate_and_setup():
-            logger.error(" Configuration validation failed!")
+            logger.error("Configuration validation failed!")
             return False
         
         # Step 2: Register datasets
@@ -364,14 +365,14 @@ def main(args):
         trainer.resume_or_load(resume=args.resume)
         
         # Step 7: Start training
-        logger.info(" Launching training...")
+        logger.info("Launching training...")
         trainer.train()
         
-        logger.info(" Training completed successfully!")
+        logger.info("Training completed successfully!")
         return True
         
     except Exception as e:
-        logger.error(f" Training failed: {e}")
+        logger.error(f"Training failed: {e}")
         logger.error(f"Traceback: {traceback.format_exc()}")
         return False
 

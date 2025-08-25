@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """
-Category Mapping Issue Analysis and Visualization
-================================================
-
-This script creates comprehensive visualizations that document the category mapping
+This script creates visualizations that document the category mapping
 issue discovery and fix process for the hieroglyph detection project.
 
 The visualizations show:
@@ -228,7 +225,7 @@ def create_category_mapping_analysis():
     output_path = Path("docs/category_mapping_analysis.png")
     output_path.parent.mkdir(exist_ok=True)
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
-    print(f" Saved category mapping analysis: {output_path}")
+    print(f"Saved category mapping analysis: {output_path}")
     
     return fig
 
@@ -303,7 +300,7 @@ def create_training_improvements_chart():
     # Save the visualization
     output_path = Path("docs/training_improvements.png")
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
-    print(f" Saved training improvements chart: {output_path}")
+    print(f"Saved training improvements chart: {output_path}")
     
     return fig
 
@@ -390,14 +387,14 @@ def create_dataset_statistics_visualization():
     # Save the visualization
     output_path = Path("docs/dataset_statistics.png")
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
-    print(f" Saved dataset statistics: {output_path}")
+    print(f"Saved dataset statistics: {output_path}")
     
     return fig
 
 def main():
     """Generate all visualizations."""
-    print(" Creating comprehensive visualizations...")
-    print("=" * 60)
+    print("Creating comprehensive visualizations...")
+    print("="* 60)
     
     try:
         # Create output directory
@@ -421,7 +418,7 @@ def main():
             pass  # In case we're running in a non-interactive environment
             
     except Exception as e:
-        print(f" Error creating visualizations: {e}")
+        print(f"Error creating visualizations: {e}")
         return False
     
     return True

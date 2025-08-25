@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Automated Tests for Dataset Validation and Training Pipeline
-Comprehensive test suite to prevent category mapping issues and ensure system reliability.
+Test to prevent category mapping issues and ensure system reliability.
 """
 
 import os
@@ -40,10 +40,10 @@ class TestDatasetValidator(unittest.TestCase):
             split_dir = os.path.join(self.test_dataset_dir, split)
             images_dir = os.path.join(split_dir, 'images')
             
-            if f"{split}/images" not in missing_files:
+            if f"{split}/images"not in missing_files:
                 os.makedirs(images_dir, exist_ok=True)
             
-            if f"{split}/annotations.json" not in missing_files:
+            if f"{split}/annotations.json"not in missing_files:
                 # Create mock annotation file
                 annotations = {
                     "images": [
@@ -73,7 +73,7 @@ class TestDatasetValidator(unittest.TestCase):
                     json.dump(annotations, f)
                 
                 # Create mock image file
-                if f"{split}/images" not in missing_files:
+                if f"{split}/images"not in missing_files:
                     img_file = os.path.join(images_dir, 'test_image.png')
                     # Create a simple white 1x1 PNG
                     from PIL import Image
@@ -239,7 +239,6 @@ class TestTrainingConfiguration(unittest.TestCase):
             eval_period = 500
         
         # This would need to be tested with actual training pipeline
-        # For now, just test that the config class can be instantiated
         try:
             from train_hieroglyph_detection_robust import HieroglyphTrainingConfig
             config = HieroglyphTrainingConfig(MockArgs())
@@ -395,33 +394,33 @@ def run_tests():
     return result
 
 if __name__ == "__main__":
-    print(" Running Automated Tests for Dataset Validation and Training Pipeline")
-    print("=" * 80)
+    print("Running Automated Tests for Dataset Validation and Training Pipeline")
+    print("="* 80)
     
     result = run_tests()
     
-    print("\n" + "=" * 80)
-    print(" TEST SUMMARY")
-    print("=" * 80)
+    print("\n"+ "="* 80)
+    print("TEST SUMMARY")
+    print("="* 80)
     
     if result.wasSuccessful():
-        print(" All tests passed!")
-        print("   Dataset validation and training pipeline are working correctly")
-        print("   Category mapping issues are prevented")
+        print("All tests passed!")
+        print("Dataset validation and training pipeline are working correctly")
+        print("Category mapping issues are prevented")
     else:
-        print(" Some tests failed!")
-        print(f"   Failures: {len(result.failures)}")
-        print(f"   Errors: {len(result.errors)}")
+        print("Some tests failed!")
+        print(f"Failures: {len(result.failures)}")
+        print(f"Errors: {len(result.errors)}")
         
         if result.failures:
             print("\n Failures:")
             for test, traceback in result.failures:
-                print(f"   - {test}: {traceback}")
+                print(f"- {test}: {traceback}")
         
         if result.errors:
             print("\n Errors:")
             for test, traceback in result.errors:
-                print(f"   - {test}: {traceback}")
+                print(f"- {test}: {traceback}")
     
     print(f"\nTests run: {result.testsRun}")
     print(f"Success rate: {((result.testsRun - len(result.failures) - len(result.errors)) / result.testsRun * 100):.1f}%")
