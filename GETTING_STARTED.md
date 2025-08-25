@@ -207,7 +207,7 @@ Now we need to install the specific software that HieraticAI needs to work.
 
    **What this does:** Downloads and installs all the libraries HieraticAI needs (PyTorch, Streamlit, OpenCV, etc.)
 
-4. **Wait patiently** ⏳
+4. **Wait patiently**
    - This downloads ~1-2GB of software
    - Takes 5-15 minutes depending on internet speed
    - You'll see lots of text scrolling - this is normal!
@@ -279,7 +279,7 @@ python -c "import streamlit, torch, cv2; print('All dependencies installed succe
 - Make sure you're in the right folder
 - Check our [Troubleshooting](#troubleshooting) section below
 
-### 🎯 Success! You're Ready to Use HieraticAI
+### You're Ready to Use HieraticAI
 
 Once you see the interface, you can:
 1. **Select signs** by clicking on colored boxes in the manuscript
@@ -592,7 +592,7 @@ If you encounter issues:
 
 ## Next Steps
 
-Congratulations! You now have HieraticAI running. Next, explore:
+Next, explore:
 
 - **[Technical Guide](TECHNICAL_GUIDE.md)**: Advanced features and customization
 - **Validation Best Practices**: Develop systematic validation workflows

@@ -282,7 +282,7 @@ The annotation process uses CVAT (Computer Vision Annotation Tool) for precise b
 
 ### Training/Validation Split Visualization
 
-![Dataset Visualization](docs/dataset_visualization.png)
+![Dataset Visualization](docs/dataset_statistics.png)
 *Training and validation dataset distribution showing spatial organization and category balance*
 
 ### Category Distribution
