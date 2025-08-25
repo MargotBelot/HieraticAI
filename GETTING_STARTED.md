@@ -1,31 +1,300 @@
 # Getting Started with HieraticAI
 
-Welcome to HieraticAI! This guide will walk you through the complete setup process, from installation to your first validation session.
+> **Academic Prototype Notice**: This is a methodological prototype developed for the "Ancient Language Processing" seminar at Freie Universität Berlin (Winter 2025). The project demonstrates computational approaches to ancient Egyptian paleographic analysis.
 
-## Prerequisites
+Welcome to HieraticAI! This guide will walk you through the **complete setup process from scratch**. We have multiple installation options depending on your comfort level with technology.
 
-Before starting, ensure you have:
+## 🎯 One-Click Installation (Recommended for Everyone!)
 
-### System Requirements
-- **Operating System**: Windows 10+, macOS 10.15+, or Linux Ubuntu 18.04+
-- **Python**: Version 3.8 or higher
-- **Memory**: 8GB RAM minimum (16GB recommended)
-- **Storage**: 5GB free space
-- **Internet**: Required for downloading dependencies and databases
+**The easiest way to install HieraticAI - no technical knowledge required!**
 
-### Software Prerequisites
+### Step 1: Download HieraticAI
+1. Go to [github.com/MargotBelot/HieraticAI](https://github.com/MargotBelot/HieraticAI)
+2. Click the green **"Code"** button
+3. Click **"Download ZIP"**
+4. Extract the ZIP file to your Desktop (or anywhere you like)
+
+### Step 2: Run the Automatic Installer
+1. **Windows Users**: Double-click `install.py` in the HieraticAI folder
+2. **Mac/Linux Users**: Open Terminal, navigate to the folder, and run: `python install.py`
+
+**That's it!** The installer will:
+- ✅ Check if you have Python (and help you install it if needed)
+- ✅ Download and install all required software (~2GB)
+- ✅ Create a simple launcher for you to use
+- ✅ Test everything to make sure it works
+
+### Step 3: Launch HieraticAI
+After installation completes:
+- **Windows**: Double-click `start_hieratic_ai.bat`
+- **Mac/Linux**: Run `./start_hieratic_ai.sh`
+
+Your web browser will open automatically with the HieraticAI interface!
+
+---
+
+## 🚀 Manual Installation (For Experienced Users)
+
+If you prefer to install manually or already have Python/Git:
+
 ```bash
-# Check Python version
-python --version  # Should be 3.8+
-
-# Check if conda is available (recommended)
-conda --version
-
-# Or use pip if conda not available
-pip --version
+git clone https://github.com/MargotBelot/HieraticAI.git
+cd HieraticAI
+python -m venv hieratic_env
+# Windows: hieratic_env\Scripts\activate
+# Mac/Linux: source hieratic_env/bin/activate
+pip install -r requirements.txt
+streamlit run tools/validation/prediction_validator.py
 ```
 
-## Installation
+## 📋 System Requirements
+
+**Before we start, make sure your computer meets these requirements:**
+
+- **Operating System**: 
+  - Windows 10 or newer
+  - macOS 10.15 (Catalina) or newer  
+  - Linux Ubuntu 18.04 or newer
+- **Memory**: 8GB RAM minimum (16GB recommended for better performance)
+- **Storage**: 5GB free disk space
+- **Internet**: Stable internet connection (we'll download ~2GB of software)
+
+> ⏰ **Time needed**: First-time setup takes 15-30 minutes depending on your internet speed.
+
+## 🛠️ Step 1: Install Required Software
+
+### Option A: Automatic Installation (Recommended for Beginners)
+
+#### For Windows Users:
+1. **Download the HieraticAI Installer** (coming soon)
+   - This will automatically install Python, Git, and all dependencies
+   - Just run the `.exe` file and follow the prompts
+
+#### For macOS Users:
+1. **Install Homebrew** (if you don't have it):
+   - Open **Terminal** (press `Cmd + Space`, type "Terminal", press Enter)
+   - Copy and paste this command:
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+   - Press Enter and follow the prompts
+
+2. **Install Python and Git**:
+   ```bash
+   brew install python git
+   ```
+
+#### For Linux Users:
+```bash
+# Ubuntu/Debian
+sudo apt update
+sudo apt install python3 python3-pip git
+
+# CentOS/RHEL/Fedora
+sudo yum install python3 python3-pip git
+# or for newer versions:
+sudo dnf install python3 python3-pip git
+```
+
+### Option B: Manual Installation
+
+#### Step 1.1: Install Python
+
+**Windows:**
+1. Go to [python.org/downloads](https://www.python.org/downloads/)
+2. Click "Download Python 3.11" (or latest version)
+3. Run the downloaded file
+4. **IMPORTANT**: Check "Add Python to PATH" during installation
+5. Click "Install Now"
+
+**macOS:**
+1. Go to [python.org/downloads](https://www.python.org/downloads/)
+2. Download the macOS installer
+3. Run the `.pkg` file and follow instructions
+
+**Linux:**
+- Most Linux distributions come with Python pre-installed
+- If not, use your package manager (see Linux commands above)
+
+#### Step 1.2: Install Git
+
+**Windows:**
+1. Go to [git-scm.com](https://git-scm.com/download/win)
+2. Download and run the installer
+3. Use default settings (just keep clicking "Next")
+
+**macOS:**
+1. Go to [git-scm.com](https://git-scm.com/download/mac)
+2. Download and install
+3. Or install via Homebrew: `brew install git`
+
+**Linux:**
+```bash
+# Ubuntu/Debian
+sudo apt install git
+
+# CentOS/RHEL/Fedora  
+sudo yum install git
+# or: sudo dnf install git
+```
+
+#### Step 1.3: Verify Installation
+
+Open your **terminal/command prompt** and run these commands:
+
+```bash
+# Check Python (should show version 3.8 or higher)
+python --version
+# If that doesn't work, try:
+python3 --version
+
+# Check Git
+git --version
+
+# Check pip (Python package installer)
+pip --version
+# If that doesn't work, try:
+pip3 --version
+```
+
+**Troubleshooting:**
+- If commands don't work, you may need to restart your terminal/computer
+- On Windows, if Python isn't found, make sure you checked "Add Python to PATH" during installation
+
+## 📥 Step 2: Download HieraticAI
+
+### Method 1: Download as ZIP (Easy for Beginners)
+
+1. **Go to the project page**: [github.com/MargotBelot/HieraticAI](https://github.com/MargotBelot/HieraticAI)
+2. **Click the green "Code" button**
+3. **Click "Download ZIP"**
+4. **Extract the ZIP file** to a folder like:
+   - Windows: `C:\Users\YourName\HieraticAI`
+   - macOS: `/Users/YourName/HieraticAI`  
+   - Linux: `/home/yourname/HieraticAI`
+
+### Method 2: Using Git (Recommended)
+
+Open your terminal/command prompt and run:
+
+```bash
+# Navigate to where you want to install (optional)
+cd Desktop  # This will install on your Desktop
+
+# Download HieraticAI
+git clone https://github.com/MargotBelot/HieraticAI.git
+
+# Enter the project folder
+cd HieraticAI
+```
+
+**What this does:**
+- `git clone` downloads all the project files
+- `cd HieraticAI` enters the project folder
+
+## 🔧 Step 3: Install HieraticAI Dependencies
+
+Now we need to install the specific software that HieraticAI needs to work.
+
+### For Most Users (Simple Method)
+
+1. **Open your terminal/command prompt**
+2. **Navigate to the HieraticAI folder**:
+   ```bash
+   cd path/to/HieraticAI
+   # Example: cd Desktop/HieraticAI
+   ```
+
+3. **Install everything at once**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+   **What this does:** Downloads and installs all the libraries HieraticAI needs (PyTorch, Streamlit, OpenCV, etc.)
+
+4. **Wait patiently** ⏳
+   - This downloads ~1-2GB of software
+   - Takes 5-15 minutes depending on internet speed
+   - You'll see lots of text scrolling - this is normal!
+
+### For Advanced Users (Using Conda)
+
+If you prefer conda (which manages dependencies better):
+
+```bash
+# Install Miniconda first: https://docs.conda.io/en/latest/miniconda.html
+# Then:
+conda env create -f environment.yml
+conda activate hieratic-ai
+```
+
+### Verify Everything Worked
+
+Run this command to test if installation worked:
+
+```bash
+python -c "import streamlit, torch, cv2; print('✅ All dependencies installed successfully!')"
+```
+
+**If you see errors:**
+- Check that you're in the right folder (`cd HieraticAI`)
+- Try: `python3` instead of `python`
+- Try: `pip3` instead of `pip`
+- Restart your terminal and try again
+
+## 🚀 Step 4: Launch HieraticAI
+
+### Easy Launch Method
+
+1. **Make sure you're in the HieraticAI folder**:
+   ```bash
+   cd HieraticAI  # if not already there
+   ```
+
+2. **Start the application**:
+   ```bash
+   streamlit run tools/validation/prediction_validator.py
+   ```
+
+3. **Wait for it to start** (10-30 seconds)
+   - You should see messages like:
+   ```
+   Collecting usage statistics...
+   You can now view your Streamlit app in your browser.
+   
+   Local URL: http://localhost:8501
+   Network URL: http://192.168.1.xxx:8501
+   ```
+
+4. **Open your web browser**:
+   - The application should open automatically
+   - If not, go to: `http://localhost:8501`
+
+### What to Expect
+
+**First Launch Checklist:**
+- ✅ Browser opens to HieraticAI interface
+- ✅ You see "HieraticAI Validator" at the top
+- ✅ Left panel shows manuscript image
+- ✅ Right panel shows validation controls
+- ✅ No error messages in red
+
+**If something goes wrong:**
+- Check the terminal for error messages
+- Make sure you're in the right folder
+- Check our [Troubleshooting](#troubleshooting) section below
+
+### 🎯 Success! You're Ready to Use HieraticAI
+
+Once you see the interface, you can:
+1. **Select signs** by clicking on colored boxes in the manuscript
+2. **Review predictions** in the right panel
+3. **Mark them as correct/incorrect** using the buttons
+4. **Export results** when finished
+
+---
+
+## 📚 Using HieraticAI (Detailed Guide)
 
 ### Method 1: Using Conda (Recommended)
 
@@ -96,7 +365,10 @@ HieraticAI integrates with two key databases for linguistic and paleographic con
 # The TLA integration is built into the validator
 # No separate setup required - fallback strategies ensure 100% coverage
 python -c "
-from scripts.prediction_validator import PredictionValidator
+from pathlib import Path
+import sys
+sys.path.append(str(Path('./tools/validation')))
+from prediction_validator import PredictionValidator
 validator = PredictionValidator()
 print('TLA integration ready')
 "
@@ -147,34 +419,41 @@ hieratic-validate
 
 When the interface loads, you'll see a clean, intuitive layout:
 
-```
-╭─────────────────────── HieraticAI Validator ───────────────────────╮
-│                                                                    │
-│  INTERFACE OVERVIEW                              🟢 Status: Ready │
-│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
-│                                                                    │
-│  ┌─── CONTROL PANEL ───┐    ┌──── VALIDATION WORKSPACE ────┐ │
-│  │                        │    │                                  │ │
-│  │  Database Status     │    │  Papyrus Image Display       │ │
-│  │   TLA: Active        │    │   • Westcar manuscript          │ │
-│  │   AKU: Connected     │    │   • Colored bounding boxes      │ │
-│  │                        │    │   • Click to select signs       │ │
-│  │  Settings            │    │                                  │ │
-│  │   Confidence: [▓▓▓▒▒▒]  │    │  Sign Review Panel          │ │
-│  │   Threshold: 0.30       │    │   • Cropped sign image          │ │
-│  │                        │    │   • Gardiner code info          │ │
-│  │  Navigation          │    │   • TLA linguistic data         │ │
-│  │   Prev  Next       │    │   • AKU reference signs         │ │
-│  │   Refresh           │    │                                  │ │
-│  │                        │    │  Validation Actions           │ │
-│  │  Progress            │    │   Correct  Wrong  Unsure │ │
-│  │   ████▓▓▓▓ 67%         │    │                                  │ │
-│  └────────────────────────┘    └──────────────────────────────────┘ │
-│                                                                    │
-│  LIVE STATISTICS                                                 │
-│  • Reviewed: 45/67 predictions  • Accuracy: 89%  • Session: 23min  │
-╰────────────────────────────────────────────────────────────────────╯
-```
+**🟢 HieraticAI Validator - Status: Ready**
+
+**Left Panel: Control Center**
+- **Database Status**
+  - TLA: Active ✅
+  - AKU: Connected ✅
+- **Settings**
+  - Confidence Threshold: 0.30 (adjustable slider)
+  - Filter options for prediction confidence
+- **Navigation**
+  - Previous/Next buttons for sign navigation
+  - Refresh button to reload predictions
+- **Progress Tracking**
+  - Visual progress bar: ████▓▓▓▓ 67%
+  - Real-time completion statistics
+
+**Right Panel: Validation Workspace**
+- **Papyrus Image Display**
+  - Full Westcar manuscript view
+  - Colored bounding boxes around detected signs
+  - Click-to-select functionality for individual signs
+- **Sign Review Panel**
+  - Cropped image of selected sign
+  - Gardiner code information and Unicode display
+  - TLA linguistic data (transliteration, translation, frequency)
+  - AKU reference signs for comparison
+- **Validation Actions**
+  - **Correct** ✅ - Mark prediction as accurate
+  - **Incorrect** ❌ - Mark prediction as wrong
+  - **Uncertain** ❓ - Mark for further review
+
+**Bottom Panel: Live Statistics**
+- Reviewed: 45/67 predictions
+- Current accuracy: 89%
+- Session duration: 23 minutes
 
 ## Your First Validation Session
 

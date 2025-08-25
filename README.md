@@ -5,6 +5,11 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.25+-red.svg)](https://streamlit.io/)
+[![Prototype](https://img.shields.io/badge/Status-Prototype-orange.svg)](https://github.com/MargotBelot/HieraticAI)
+
+> **Academic Project Notice**: This is a prototype developed for the "Ancient Language Processing" seminar at Freie Universität Berlin (Winter 2025). The project serves as a methodological exploration rather than a production-ready system.
+> 
+> **Course Information**: [Ancient Language Processing 2025](https://digitalpasts.github.io/alp-course-2025/) - Hybrid seminar focusing on computational approaches to ancient datasets and digital philology methods.
 
 ## Project Overview
 
@@ -106,26 +111,28 @@ graph LR
 
 ## Quick Start
 
-### 1. Installation
+### 🎯 One-Click Installation (Recommended)
+
+**Perfect for anyone - no technical experience required!**
+
+1. **Download**: Go to [github.com/MargotBelot/HieraticAI](https://github.com/MargotBelot/HieraticAI) and click "Download ZIP"
+2. **Extract**: Unzip the file to your Desktop
+3. **Install**: Double-click `install.py` (Windows) or run `python install.py` (Mac/Linux)
+4. **Launch**: Use the created launcher script when installation completes
+5. **Validate**: Your browser opens automatically to start validating!
+
+### 🚀 Manual Installation (For Experienced Users)
+
 ```bash
 git clone https://github.com/MargotBelot/HieraticAI.git
 cd HieraticAI
-conda env create -f environment.yml
-conda activate hieratic-ai
-```
-
-### 2. Launch Validation Interface
-```bash
-# Using the reorganized structure
+python -m venv hieratic_env
+# Activate: hieratic_env\Scripts\activate (Win) or source hieratic_env/bin/activate (Mac/Linux)
+pip install -r requirements.txt
 streamlit run tools/validation/prediction_validator.py
-
-# Or install the package and use the command-line tool
-pip install -e .
-hieratic-validate
 ```
 
-### 3. Open in Browser
-Navigate to `http://localhost:8501` and start validating!
+**Then navigate to `http://localhost:8501` in your browser!**
 
 ## Interactive Validation Interface
 
@@ -133,35 +140,40 @@ Navigate to `http://localhost:8501` and start validating!
 
 The HieraticAI interface provides a seamless experience for expert validation:
 
-```
-╭─────────────── MAIN INTERFACE ───────────────╮
-│                                               │
-│  MANUSCRIPT VIEWER          VALIDATION PANEL │
-│  ┌─────────────────────────┐   ┌─────────────────┐ │
-│  │   [Westcar Papyrus]     │   │ CURRENT SIGN  │ │
-│  │                         │   │                 │ │
-│  │  🔵①A1(85%) ──────────────►│ │ [Cropped]    │ │
-│  │  🟢②G17(92%)─────────────►│ │ Gardiner: A1  │ │
-│  │  🔴③M17(76%)─────────────►│ │ Unicode: 𓀀   │ │
-│  │  🟠④D21(68%)─────────────►│ │                 │ │
-│  │  🔵⑤N35(54%)─────────────►│ │ TLA DATA     │ │
-│  │                         │   │ • Transliteration│ │
-│  │  Status: 2/5 reviewed   │   │ • Lemma info    │ │
-│  └─────────────────────────┘   │ • Related forms │ │
-│                                │                 │ │
-│  CONTROLS                  │ AKU REFS    │ │
-│  Prev  Next  Refresh    │ • Similar signs │ │
-│  Progress: ████▒▒▒ 67%      │ • Quality score │ │
-│                                │ • SVG display  │ │
-│                                │                 │ │
-│                                │ ACTIONS      │ │
-│                                │ CORRECT      │ │
-│                                │ INCORRECT    │ │
-│                                │ UNCERTAIN    │ │
-│                                │ EDIT CODE    │ │
-│                                └─────────────────┘ │
-╰───────────────────────────────────────────────────╯
-```
+#### **Main Interface Layout**
+
+**Manuscript Viewer (Left Panel)**
+- **Westcar Papyrus Display**: Full manuscript view with detected signs
+- **Color-coded Predictions**:
+  - 🔵 ① A1 (85%) - Pending validation
+  - 🟢 ② G17 (92%) - High confidence, likely correct
+  - 🔴 ③ M17 (76%) - Flagged for review
+  - 🟠 ④ D21 (68%) - Medium confidence
+  - 🔵 ⑤ N35 (54%) - Low confidence, needs attention
+- **Status Tracking**: "2/5 reviewed" with progress indicator
+
+**Validation Panel (Right Panel)**
+- **Current Sign Review**:
+  - Cropped image of selected sign
+  - Gardiner code: A1
+  - Unicode display: 𓀀
+- **TLA Linguistic Data**:
+  - Transliteration information
+  - Lemma details and meanings
+  - Related sign forms
+- **AKU Reference Signs**:
+  - Similar signs from database
+  - Quality assessment scores
+  - SVG vector displays
+- **Validation Actions**:
+  - ✅ **CORRECT** - Confirm AI prediction
+  - ❌ **INCORRECT** - Mark as wrong
+  - ❓ **UNCERTAIN** - Flag for further review
+  - ✏️ **EDIT CODE** - Manual correction
+
+**Control Panel (Bottom)**
+- Navigation: Previous/Next/Refresh buttons
+- Progress: ████▒▒▒ 67% completion
 
 ### Enhanced Status System
 
@@ -238,12 +250,12 @@ HieraticAI integrates with two major academic databases to provide comprehensive
 ```mermaid
 graph LR
     A[Gardiner Code] --> B{TLA Direct Match?}
-    B -->Yes C[Lemma Data]
-    B -->No D{Similar Sign?}
-    D -->Yes E[Fallback Mapping]
-    D -->No F{Manual Entry?}
-    F -->Yes G[Curated Data]
-    F -->No H[Gardiner Classification]
+    B -->|Yes| C[Lemma Data]
+    B -->|No| D{Similar Sign?}
+    D -->|Yes| E[Fallback Mapping]
+    D -->|No| F{Manual Entry?}
+    F -->|Yes| G[Curated Data]
+    F -->|No| H[Gardiner Classification]
     
     C --> I[100% Coverage]
     E --> I
@@ -279,13 +291,13 @@ graph LR
 
 ## Model Performance
 
- Metric  Value 
----------------
- **Detection Model**  YOLO-based object detection 
- **Categories**  84 Gardiner code classes 
- **TLA Coverage**  100% (with fallback strategies) 
- **AKU Integration**  Reference signs from Westcar corpus 
- **Validation Interface**  Real-time expert review 
+| Metric | Value |
+|--------|-------|
+| **Detection Model** | YOLO-based object detection |
+| **Categories** | 84 Gardiner code classes |
+| **TLA Coverage** | 100% (with fallback strategies) |
+| **AKU Integration** | Reference signs from Westcar corpus |
+| **Validation Interface** | Real-time expert review |
 
 ## Academic Applications
 
@@ -338,9 +350,29 @@ graph TB
 - **[Getting Started](GETTING_STARTED.md)**: Step-by-step installation and first use
 - **[Technical Guide](TECHNICAL_GUIDE.md)**: Advanced usage, customization, and development
 
+## Acknowledgments
+
+### Academic Context
+This prototype was developed as part of the **"Ancient Language Processing" seminar** at **Freie Universität Berlin** (Winter 2025). The course focuses on computational approaches to ancient datasets, digital philology methods, and emerging research questions in ancient Near Eastern studies.
+
+**Course Details:**
+- **Institution**: Freie Universität Berlin
+- **Course**: Ancient Language Processing 2025
+- **Format**: Hybrid seminar (Zoom + in-person)
+- **Objective**: Methodological exploration of ancient language processing technologies
+- **Course Website**: https://digitalpasts.github.io/alp-course-2025/
+
+### Instructors
+- **Shai Gordin** (Ariel University/Open University of Israel) - shaigo@ariel.ac.il
+- **Eliese-Sophia Lincke** (Freie Universität Berlin) - e.lincke@fu-berlin.de  
+- **Hubert Mara** (Freie Universität Berlin) - hubert.mara@fu-berlin.de
+
+### Project Status
+**Important Note**: This is a **methodological prototype** created for educational and research exploration purposes. It is not intended as a production system but rather as a proof-of-concept for applying modern AI techniques to ancient Egyptian paleographic analysis.
+
 ## Contributing
 
-We welcome contributions from Egyptologists, computer vision researchers, and digital humanities scholars. 
+We welcome contributions from Egyptologists, computer vision researchers, and digital humanities scholars, particularly those interested in computational approaches to ancient manuscripts.
 
 ## License
 
