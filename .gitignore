@@ -213,6 +213,10 @@ logs/
 # Streamlit cache
 .streamlit/
 
+# Local virtualenv and helper scripts
+hieratic_env/
+start_hieratic_ai.sh
+
 # AKU Westcar Scraping folder - now included
 # AKU Westcar Scraping/  # Now included in repository
 
