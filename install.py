@@ -239,6 +239,7 @@ class HieraticAIInstaller:
             self.create_unix_launcher()
         
         print("Launch scripts created!")
+        return True
 
     def create_windows_launcher(self):
         """Create Windows batch file launcher."""
