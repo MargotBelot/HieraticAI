@@ -134,43 +134,43 @@ Navigate to `http://localhost:8501` and start validating!
 The HieraticAI interface provides a seamless experience for expert validation:
 
 ```
- MAIN INTERFACE 
-                                               
-  MANUSCRIPT VIEWER          VALIDATION PANEL 
-      
-     [Westcar Papyrus]         CURRENT SIGN   
-                                                
-    ①A1(85%)   [Cropped]     
-    🟢②G17(92%)  Gardiner: A1   
-    ③M17(76%)  Unicode:     
-    🟠④D21(68%)                   
-    ⑤N35(54%)  TLA DATA      
-                               • Transliteration 
-    Status: 2/5 reviewed       • Lemma info     
-      • Related forms  
-                                                  
-  CONTROLS                   AKU REFS     
-  Prev  Next  Refresh     • Similar signs  
-  Progress:  67%       • Quality score  
-                                 • SVG display   
-                                                  
-                                 ACTIONS       
-                                 CORRECT       
-                                 INCORRECT     
-                                 UNCERTAIN     
-                                 EDIT CODE     
-                                 
-
+╭─────────────── MAIN INTERFACE ───────────────╮
+│                                               │
+│  MANUSCRIPT VIEWER          VALIDATION PANEL │
+│  ┌─────────────────────────┐   ┌─────────────────┐ │
+│  │   [Westcar Papyrus]     │   │ CURRENT SIGN  │ │
+│  │                         │   │                 │ │
+│  │  🔵①A1(85%) ──────────────►│ │ [Cropped]    │ │
+│  │  🟢②G17(92%)─────────────►│ │ Gardiner: A1  │ │
+│  │  🔴③M17(76%)─────────────►│ │ Unicode: 𓀀   │ │
+│  │  🟠④D21(68%)─────────────►│ │                 │ │
+│  │  🔵⑤N35(54%)─────────────►│ │ TLA DATA     │ │
+│  │                         │   │ • Transliteration│ │
+│  │  Status: 2/5 reviewed   │   │ • Lemma info    │ │
+│  └─────────────────────────┘   │ • Related forms │ │
+│                                │                 │ │
+│  CONTROLS                  │ AKU REFS    │ │
+│  Prev  Next  Refresh    │ • Similar signs │ │
+│  Progress: ████▒▒▒ 67%      │ • Quality score │ │
+│                                │ • SVG display  │ │
+│                                │                 │ │
+│                                │ ACTIONS      │ │
+│                                │ CORRECT      │ │
+│                                │ INCORRECT    │ │
+│                                │ UNCERTAIN    │ │
+│                                │ EDIT CODE    │ │
+│                                └─────────────────┘ │
+╰───────────────────────────────────────────────────╯
 ```
 
 ### Enhanced Status System
 
- Symbol  Status  Confidence  Action Required 
---------------------------------------------
-   **Pending**  Any  Needs review 
- 🟢  **Validated**  High (>80%)  Expert confirmed 
-   **Incorrect**  Any  AI prediction wrong 
- 🟠  **Uncertain**  Medium  Expert unsure 
+| Symbol | Status | Confidence | Action Required |
+|--------|--------|------------|----------------|
+| 🔵 | **Pending** | Any | Needs review |
+| 🟢 | **Validated** | High (>80%) | Expert confirmed |
+| 🔴 | **Incorrect** | Any | AI prediction wrong |
+| 🟠 | **Uncertain** | Medium | Expert unsure |
 
 ### Advanced Validation Features
 
@@ -191,12 +191,12 @@ The HieraticAI interface provides a seamless experience for expert validation:
 
 ### Color-Coded Status System
 
- Color  Status  Meaning 
-------------------------
-  **Blue**  Pending  Awaiting validation 
- 🟢 **Green**  Correct  AI prediction is accurate 
-  **Red**  Incorrect  AI prediction needs correction 
- 🟠 **Orange**  Uncertain  Requires expert judgment 
+| Color | Status | Meaning |
+|-------|--------|---------|
+| 🔵 **Blue** | Pending | Awaiting validation |
+| 🟢 **Green** | Correct | AI prediction is accurate |
+| 🔴 **Red** | Incorrect | AI prediction needs correction |
+| 🟠 **Orange** | Uncertain | Requires expert judgment |
 
 ## Database Integration
 

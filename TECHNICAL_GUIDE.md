@@ -36,6 +36,7 @@ ROI Pooling & Classification
 - **ROI Pooling**: 7x7 feature maps per proposal
 - **Classification Head**: 634 + 1 (background) classes
 - **Box Regression**: Precise bounding box refinement
+
 ## Training Methodology
 
 ### Training Infrastructure
@@ -67,18 +68,18 @@ split_percentages = {
 ```
 
 **Split Distribution:**
- Split  Percentage  Images  Annotations  Purpose 
--------------------------------------------------
- **Training**  70%  ~1,200  ~8,500  Model learning 
- **Validation**  20%  ~350  ~2,400  Hyperparameter tuning 
- **Testing**  10%  ~175  ~1,200  Final evaluation 
+
+| Split | Percentage | Images | Annotations | Purpose |
+|---|---|---|---|---|
+| **Training** | 70% | ~1,200 | ~8,500 | Model learning |
+| **Validation** | 20% | ~350 | ~2,400 | Hyperparameter tuning |
+| **Testing** | 10% | ~175 | ~1,200 | Final evaluation |
 
 **Key Features:**
 - **Spatial Grouping**: Prevents data leakage between splits
 - **Heavy Augmentation**: 6x data augmentation per image (applied only to training set)
 - **COCO Format**: Standard annotation format for compatibility
 - **Balanced Distribution**: Ensures all hieratic character classes represented across splits
-- **COCO Format**: Standard annotation format for compatibility
 
 ### Training Configuration
 ```yaml
@@ -142,12 +143,13 @@ model_receives = 0       # Properly mapped to 0-based
 ```
 
 ### Impact Analysis
- Issue  Before Fix  After Fix 
------------------------------
- **Detection Rate**  9%  62.1% 
- **Category Accuracy**  10%  95% 
- **mAP Performance**  9.2%  31.2% 
- **Training Stability**  Poor  Excellent 
+
+| Issue | Before Fix | After Fix |
+|---|---|---|
+| **Detection Rate** | 9% | 62.1% |
+| **Category Accuracy** | 10% | 95% |
+| **mAP Performance** | 9.2% | 31.2% |
+| **Training Stability** | Poor | Excellent |
 
 #### **Performance Metric Interpretation**
 

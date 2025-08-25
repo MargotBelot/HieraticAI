@@ -148,32 +148,32 @@ hieratic-validate
 When the interface loads, you'll see a clean, intuitive layout:
 
 ```
- HieraticAI Validator 
-                                                                    
-  INTERFACE OVERVIEW                              🟢 Status: Ready 
-    
-                                                                    
-   CONTROL PANEL      VALIDATION WORKSPACE  
-                                                                 
-    Database Status           Papyrus Image Display        
-     TLA: Active               • Westcar manuscript           
-     AKU: Connected            • Colored bounding boxes       
-                                 • Click to select signs        
-    Settings                                                   
-     Confidence: []        Sign Review Panel           
-     Threshold: 0.30              • Cropped sign image           
-                                 • Gardiner code info           
-    Navigation                 • TLA linguistic data          
-     Prev  Next              • AKU reference signs          
-     Refresh                                                  
-                                Validation Actions            
-    Progress                   Correct  Wrong  Unsure  
-      67%                                                
-       
-                                                                    
-  LIVE STATISTICS                                                 
-  • Reviewed: 45/67 predictions  • Accuracy: 89%  • Session: 23min  
-
+╭─────────────────────── HieraticAI Validator ───────────────────────╮
+│                                                                    │
+│  INTERFACE OVERVIEW                              🟢 Status: Ready │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│                                                                    │
+│  ┌─── CONTROL PANEL ───┐    ┌──── VALIDATION WORKSPACE ────┐ │
+│  │                        │    │                                  │ │
+│  │  Database Status     │    │  Papyrus Image Display       │ │
+│  │   TLA: Active        │    │   • Westcar manuscript          │ │
+│  │   AKU: Connected     │    │   • Colored bounding boxes      │ │
+│  │                        │    │   • Click to select signs       │ │
+│  │  Settings            │    │                                  │ │
+│  │   Confidence: [▓▓▓▒▒▒]  │    │  Sign Review Panel          │ │
+│  │   Threshold: 0.30       │    │   • Cropped sign image          │ │
+│  │                        │    │   • Gardiner code info          │ │
+│  │  Navigation          │    │   • TLA linguistic data         │ │
+│  │   Prev  Next       │    │   • AKU reference signs         │ │
+│  │   Refresh           │    │                                  │ │
+│  │                        │    │  Validation Actions           │ │
+│  │  Progress            │    │   Correct  Wrong  Unsure │ │
+│  │   ████▓▓▓▓ 67%         │    │                                  │ │
+│  └────────────────────────┘    └──────────────────────────────────┘ │
+│                                                                    │
+│  LIVE STATISTICS                                                 │
+│  • Reviewed: 45/67 predictions  • Accuracy: 89%  • Session: 23min  │
+╰────────────────────────────────────────────────────────────────────╯
 ```
 
 ## Your First Validation Session
@@ -231,9 +231,9 @@ graph TD
     C --> D[Review TLA Linguistic Context]
     D --> E[Compare AKU References]
     E --> F{Expert Assessment}
-    F -->Match G[Mark Correct]
-    F -->Wrong H[Mark Incorrect]  
-    F -->Unclear I[Mark Uncertain]
+    F -->|Match| G[Mark Correct]
+    F -->|Wrong| H[Mark Incorrect]  
+    F -->|Unclear| I[Mark Uncertain]
     G --> J[Move to Next Sign]
     H --> J
     I --> J
@@ -276,8 +276,8 @@ graph TD
 #### Interface Won't Load
 ```bash
 # Check if all dependencies installed
-pip list  grep streamlit
-pip list  grep torch
+pip list | grep streamlit
+pip list | grep torch
 
 # Try clearing Streamlit cache
 streamlit cache clear
