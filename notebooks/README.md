@@ -1,6 +1,6 @@
 # Hieroglyph Detection Notebooks
 
-This directory contains comprehensive Jupyter notebooks that walk through the complete hieroglyph detection pipeline. Each notebook focuses on a specific aspect of the project and can be run independently.
+This directory contains Jupyter notebooks that walk through the complete hieroglyph detection pipeline. Each notebook focuses on a specific aspect of the project and can be run independently.
 
 ## Notebook Overview
 
@@ -13,7 +13,6 @@ This directory contains comprehensive Jupyter notebooks that walk through the co
   - Spatial grouping to prevent data leakage
   - Heavy data augmentation
   - Train/validation/test split creation
-- **Duration**: ~10-15 minutes
 - **Prerequisites**: Original annotated image data
 
 ### [02_Training.ipynb](02_Training.ipynb)  
@@ -25,19 +24,17 @@ This directory contains comprehensive Jupyter notebooks that walk through the co
   - Custom dataset registration
   - Training loop with validation
   - Checkpoint management
-- **Duration**: ~2-4 hours (depending on hardware)
 - **Prerequisites**: Prepared dataset from notebook 01
 
 ### [03_Evaluation.ipynb](03_Evaluation.ipynb)
 **Model Performance Analysis**
 
-- **Purpose**: Comprehensive evaluation of trained models
+- **Purpose**: Evaluation of trained models
 - **Key Features**:
   - COCO evaluation metrics (mAP, mAP@0.5, etc.)
   - Per-category performance analysis
   - Confusion matrix generation
   - Error analysis and visualization
-- **Duration**: ~5-10 minutes
 - **Prerequisites**: Trained model from notebook 02
 
 ### [04_Inference.ipynb](04_Inference.ipynb)
@@ -50,7 +47,6 @@ This directory contains comprehensive Jupyter notebooks that walk through the co
   - Test-time augmentation
   - Confidence threshold tuning
   - Result visualization and export
-- **Duration**: ~2-5 minutes per image
 - **Prerequisites**: Trained model from notebook 02
 
 ### [05_Improved_Training.ipynb](05_Improved_Training.ipynb)
@@ -63,7 +59,6 @@ This directory contains comprehensive Jupyter notebooks that walk through the co
   - Learning rate scheduling
   - Early stopping with validation monitoring
   - Performance comparison with baseline
-- **Duration**: ~3-5 hours (full training)
 - **Prerequisites**: Understanding of baseline training from notebook 02
 
 ## Quick Start Guide
@@ -201,7 +196,5 @@ assert os.path.exists(model_path), f"Model not found at {model_path}"
 6. **Compare different approaches** using consistent evaluation
 
 ---
-
-**Happy learning!**
 
 For questions or issues, refer to the main project documentation or create an issue in the project repository.

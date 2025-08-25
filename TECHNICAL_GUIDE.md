@@ -520,21 +520,4 @@ def get_speed_optimized_config():
     return cfg
 ```
 
-## Future Enhancements
-
-### Planned Improvements
-1. **Multi-scale Training**: Enhanced scale invariance
-2. **Attention Mechanisms**: Focus on relevant hieroglyph features
-3. **Few-shot Learning**: Better rare category detection
-4. **Synthetic Data**: Augmentation with generated hieroglyphs
-5. **Active Learning**: Iterative data annotation
-
-### Research Directions
-- **Transformer-based Detection**: Vision Transformer backbones for sequence modeling
-- **Contextual Understanding**: Sequence-aware character detection in ancient texts
-- **Weak Supervision**: Learning from partial annotations in palaeographic datasets
-- **Domain Adaptation**: Generalization across different papyrus styles and periods
-- **Cross-script Transfer**: Applying methods to other ancient writing systems
-- **Palaeographic Analysis**: Integration with traditional manuscript studies
-
 ---

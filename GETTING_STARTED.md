@@ -187,7 +187,7 @@ cd HieraticAI
 - `git clone` downloads all the project files
 - `cd HieraticAI` enters the project folder
 
-## 🔧 Step 3: Install HieraticAI Dependencies
+## Step 3: Install HieraticAI Dependencies
 
 Now we need to install the specific software that HieraticAI needs to work.
 
@@ -237,7 +237,7 @@ python -c "import streamlit, torch, cv2; print('All dependencies installed succe
 - Try: `pip3` instead of `pip`
 - Restart your terminal and try again
 
-## 🚀 Step 4: Launch HieraticAI
+## Step 4: Launch HieraticAI
 
 ### Easy Launch Method
 
@@ -289,7 +289,7 @@ Once you see the interface, you can:
 
 ---
 
-## 📚 Using HieraticAI (Detailed Guide)
+## Using HieraticAI (Detailed Guide)
 
 ### Method 1: Using Conda (Recommended)
 
@@ -414,12 +414,12 @@ hieratic-validate
 
 When the interface loads, you'll see a clean, intuitive layout:
 
-**🟢 HieraticAI Validator - Status: Ready**
+**HieraticAI Validator - Status: Ready**
 
 **Left Panel: Control Center**
 - **Database Status**
-  - TLA: Active ✅
-  - AKU: Connected ✅
+  - TLA: Active
+  - AKU: Connected
 - **Settings**
   - Confidence Threshold: 0.30 (adjustable slider)
   - Filter options for prediction confidence
@@ -442,8 +442,8 @@ When the interface loads, you'll see a clean, intuitive layout:
   - AKU reference signs for comparison
 - **Validation Actions**
   - **Correct** - Mark prediction as accurate
-  - **Incorrect** ❌ - Mark prediction as wrong
-  - **Uncertain** ❓ - Mark for further review
+  - **Incorrect** - Mark prediction as wrong
+  - **Uncertain** - Mark for further review
 
 **Bottom Panel: Live Statistics**
 - Reviewed: 45/67 predictions
