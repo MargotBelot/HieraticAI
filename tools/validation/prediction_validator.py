@@ -312,8 +312,17 @@ class PredictionValidator:
     def get_svg_as_html(self, svg_path: str, width: int = 80) -> str:
         """Convert SVG to HTML for display."""
         try:
+            # Handle both absolute paths from index and relative paths
             if not Path(svg_path).exists():
-                return '<div style="color: red;">SVG file not found</div>'
+                # Try to construct the path relative to our project
+                # Extract filename from the original path
+                filename = Path(svg_path).name
+                local_svg_path = self.aku_data_path / "svg" / filename
+                
+                if local_svg_path.exists():
+                    svg_path = str(local_svg_path)
+                else:
+                    return f'<div style="color: red;">SVG file not found: {filename}</div>'
             
             with open(svg_path, 'r', encoding='utf-8') as f:
                 svg_content = f.read()
