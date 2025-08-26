@@ -589,6 +589,110 @@ class PredictionValidator:
         plt.tight_layout()
         
         return fig, prediction_data
+    
+    def visualize_predictions_enhanced(self, image_path, predictions, image_id, validated_results, 
+                                     show_predictions=True, show_labels=True, show_confidence=True, 
+                                     show_grid=False, show_measurements=False):
+        """Enhanced visualization with additional display options."""
+        # Load image
+        img = cv2.imread(str(image_path))
+        if img is None:
+            st.error(f"Could not load image: {image_path}")
+            return None, []
+        
+        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        height, width = img_rgb.shape[:2]
+        
+        # Create matplotlib figure
+        fig, ax = plt.subplots(1, 1, figsize=(15, 10))
+        ax.imshow(img_rgb)
+        ax.set_title(f"HieraticAI Predictions on Westcar Papyrus VIII 5-24 ({image_path.name})", fontsize=14, fontweight='bold')
+        
+        # Add reference grid if requested
+        if show_grid:
+            # Add grid lines every 100 pixels
+            for x in range(0, width, 100):
+                ax.axvline(x=x, color='gray', linestyle='--', alpha=0.3, linewidth=0.5)
+            for y in range(0, height, 100):
+                ax.axhline(y=y, color='gray', linestyle='--', alpha=0.3, linewidth=0.5)
+        
+        prediction_data = []
+        
+        if show_predictions:
+            for i, pred in enumerate(predictions):
+                bbox = pred['bbox']  # [x, y, width, height]
+                confidence = pred['score']
+                category_id = pred['category_id']
+                
+                # Get Gardiner code
+                gardiner_code, gardiner_info = self.get_gardiner_info(category_id)
+                
+                # Check if already validated
+                pred_key = f"{image_id}_{i}"
+                validation_status = validated_results.get(pred_key, "pending")
+                
+                # Choose color based on validation status
+                if validation_status == "correct":
+                    color = 'lime'  # Bright green for correct
+                    alpha = 0.9
+                elif validation_status == "incorrect":
+                    color = 'red'  # Red for incorrect
+                    alpha = 0.9
+                elif validation_status == "uncertain":
+                    color = 'orange'  # Orange for uncertain
+                    alpha = 0.9
+                else:
+                    color = 'blue'  # Blue for pending validation
+                    alpha = 0.7
+                
+                # Draw bounding box
+                rect = patches.Rectangle(
+                    (bbox[0], bbox[1]), bbox[2], bbox[3],
+                    linewidth=2, edgecolor=color, facecolor='none', alpha=alpha
+                )
+                ax.add_patch(rect)
+                
+                # Add measurements if requested
+                if show_measurements:
+                    # Add dimension labels
+                    ax.text(bbox[0] + bbox[2]/2, bbox[1] - 25, f"{bbox[2]:.0f}px", 
+                           fontsize=8, ha='center', va='top', color='red', fontweight='bold',
+                           bbox=dict(boxstyle="round,pad=0.2", facecolor='white', alpha=0.8))
+                    ax.text(bbox[0] - 5, bbox[1] + bbox[3]/2, f"{bbox[3]:.0f}px", 
+                           fontsize=8, ha='right', va='center', color='red', fontweight='bold', rotation=90,
+                           bbox=dict(boxstyle="round,pad=0.2", facecolor='white', alpha=0.8))
+                
+                # Add labels if requested
+                if show_labels:
+                    prediction_number = i + 1
+                    label_parts = [f"#{prediction_number}", gardiner_code]
+                    
+                    if show_confidence:
+                        label_parts.append(f"{confidence:.2f}")
+                    
+                    label_text = "\n".join(label_parts)
+                    
+                    ax.text(bbox[0], bbox[1]-15, label_text, 
+                           fontsize=9, fontweight='bold',
+                           bbox=dict(boxstyle="round,pad=0.3", facecolor=color, alpha=0.8),
+                           color='white', ha='left', va='top')
+                
+                # Store prediction data
+                prediction_data.append({
+                    'index': i,
+                    'gardiner_code': gardiner_code,
+                    'gardiner_name': gardiner_info['name'],
+                    'category': gardiner_info['category'],
+                    'confidence': confidence,
+                    'bbox': bbox,
+                    'validation_status': validation_status,
+                    'pred_key': pred_key
+                })
+        
+        ax.axis('off')
+        plt.tight_layout()
+        
+        return fig, prediction_data
 
 def main():
     st.title("HieraticAI Prediction Validator")
@@ -617,6 +721,11 @@ def main():
         - **Complete Coverage**: Every Gardiner code has associated linguistic data
         - **Fallback System**: Missing signs use similar signs or manual entries
         - **Data Sources**: Clearly marked whether data comes from TLA, similar signs, or fallback
+        
+        ### Data Persistence
+        - **Auto-Save**: All validations, notes, and corrections are automatically saved
+        - **Session Recovery**: You can safely leave and return - your progress is preserved
+        - **Export Available**: Download your complete validation results as CSV at any time
         """)
     
     validator = PredictionValidator()
@@ -668,11 +777,124 @@ def main():
         min_value=0.0, max_value=1.0, value=0.3, step=0.05
     )
     
-    # Filter predictions for selected image
-    image_predictions = [
-        pred for pred in predictions_data 
-        if pred.get('image_id') == selected_image and pred.get('score', 0) >= min_confidence
-    ]
+    # Quick Jump filters
+    st.sidebar.markdown("### Quick Jump")
+    if st.sidebar.button("Jump to Low Confidence (<0.5)", use_container_width=True):
+        st.session_state.filter_mode = "low_confidence"
+        st.session_state.confidence_threshold = 0.5
+        st.rerun()
+    
+    if st.sidebar.button("Jump to Uncertain Predictions", use_container_width=True):
+        st.session_state.filter_mode = "uncertain"
+        st.rerun()
+    
+    if st.sidebar.button("Jump to Pending Validation", use_container_width=True):
+        st.session_state.filter_mode = "pending"
+        st.rerun()
+    
+    if st.sidebar.button("Show All Predictions", use_container_width=True):
+        st.session_state.filter_mode = "all"
+        st.rerun()
+    
+    # Bulk Actions
+    st.sidebar.markdown("### Bulk Actions")
+    
+    # Get unique Gardiner codes from current predictions
+    unique_codes = set()
+    for pred in predictions_data:
+        if pred.get('image_id') == selected_image and pred.get('score', 0) >= min_confidence:
+            category_id = pred.get('category_id', 0)
+            gardiner_code, _ = validator.get_gardiner_info(category_id)
+            unique_codes.add(gardiner_code)
+    
+    if unique_codes:
+        selected_code_for_bulk = st.sidebar.selectbox(
+            "Select Gardiner code for bulk action:",
+            options=["Select code..."] + sorted(list(unique_codes)),
+            key="bulk_code_selector"
+        )
+        
+        if selected_code_for_bulk != "Select code...":
+            # Count how many instances of this code exist
+            code_instances = []
+            for i, pred in enumerate(predictions_data):
+                if pred.get('image_id') == selected_image and pred.get('score', 0) >= min_confidence:
+                    category_id = pred.get('category_id', 0)
+                    gardiner_code, _ = validator.get_gardiner_info(category_id)
+                    if gardiner_code == selected_code_for_bulk:
+                        pred_key = f"{selected_image}_{i}"
+                        code_instances.append((i, pred_key, validated_predictions.get(pred_key, "pending")))
+            
+            st.sidebar.write(f"Found {len(code_instances)} instances of `{selected_code_for_bulk}`")
+            
+            # Show status breakdown
+            status_counts = {"pending": 0, "correct": 0, "incorrect": 0, "uncertain": 0}
+            for _, _, status in code_instances:
+                status_counts[status] = status_counts.get(status, 0) + 1
+            
+            for status, count in status_counts.items():
+                if count > 0:
+                    st.sidebar.write(f"- {status.title()}: {count}")
+            
+            # Bulk action buttons
+            col_bulk1, col_bulk2 = st.sidebar.columns(2)
+            with col_bulk1:
+                if st.button(f"Mark All {selected_code_for_bulk} as Correct", key="bulk_correct", use_container_width=True):
+                    for _, pred_key, _ in code_instances:
+                        validated_predictions[pred_key] = "correct"
+                    validation_results["validated_predictions"] = validated_predictions
+                    validator.save_validation_results(validation_results)
+                    st.sidebar.success(f"Marked {len(code_instances)} instances as correct!")
+                    st.rerun()
+            
+            with col_bulk2:
+                if st.button(f"Mark All {selected_code_for_bulk} as Incorrect", key="bulk_incorrect", use_container_width=True):
+                    for _, pred_key, _ in code_instances:
+                        validated_predictions[pred_key] = "incorrect"
+                    validation_results["validated_predictions"] = validated_predictions
+                    validator.save_validation_results(validation_results)
+                    st.sidebar.success(f"Marked {len(code_instances)} instances as incorrect!")
+                    st.rerun()
+            
+            if st.sidebar.button(f"Mark All {selected_code_for_bulk} as Uncertain", key="bulk_uncertain", use_container_width=True):
+                for _, pred_key, _ in code_instances:
+                    validated_predictions[pred_key] = "uncertain"
+                validation_results["validated_predictions"] = validated_predictions
+                validator.save_validation_results(validation_results)
+                st.sidebar.success(f"Marked {len(code_instances)} instances as uncertain!")
+                st.rerun()
+    
+    # Apply Quick Jump filters
+    filter_mode = st.session_state.get('filter_mode', 'all')
+    
+    # Filter predictions for selected image with Quick Jump filters
+    image_predictions = []
+    for i, pred in enumerate(predictions_data):
+        if pred.get('image_id') == selected_image and pred.get('score', 0) >= min_confidence:
+            pred_key = f"{selected_image}_{i}"
+            validation_status = validated_predictions.get(pred_key, "pending")
+            
+            # Apply filter based on mode
+            if filter_mode == "low_confidence":
+                if pred.get('score', 0) < 0.5:
+                    image_predictions.append(pred)
+            elif filter_mode == "uncertain":
+                if validation_status == "uncertain":
+                    image_predictions.append(pred)
+            elif filter_mode == "pending":
+                if validation_status == "pending":
+                    image_predictions.append(pred)
+            else:  # "all" or default
+                image_predictions.append(pred)
+    
+    # Show current filter status
+    if filter_mode != "all":
+        filter_labels = {
+            "low_confidence": "Low Confidence (<0.5)",
+            "uncertain": "Uncertain Predictions", 
+            "pending": "Pending Validation"
+        }
+        st.info(f"🔍 **Filter Active:** Showing {filter_labels.get(filter_mode, filter_mode)} - Found {len(image_predictions)} predictions")
     
     if not image_predictions:
         st.warning(f"No predictions found for image {selected_image} with confidence >= {min_confidence}")
@@ -712,8 +934,31 @@ def main():
     
     with col1:
         st.subheader("Prediction Visualization")
-        fig, prediction_data = validator.visualize_predictions(
-            image_path, image_predictions, selected_image, validated_predictions
+        
+        # Display options
+        with st.expander("🔧 Display Options", expanded=False):
+            col_opt1, col_opt2, col_opt3 = st.columns(3)
+            
+            with col_opt1:
+                show_predictions = st.checkbox("Show AI Predictions", value=True, key="show_predictions")
+                show_labels = st.checkbox("Show Labels", value=True, key="show_labels")
+            
+            with col_opt2:
+                show_confidence = st.checkbox("Show Confidence Values", value=True, key="show_confidence")
+                show_grid = st.checkbox("Show Reference Grid", value=False, key="show_grid")
+            
+            with col_opt3:
+                show_measurements = st.checkbox("Show Pixel Measurements", value=False, key="show_measurements")
+                crop_padding = st.slider("Crop Padding (px)", 5, 50, 10, key="crop_padding")
+        
+        # Enhanced visualization with display options
+        fig, prediction_data = validator.visualize_predictions_enhanced(
+            image_path, image_predictions, selected_image, validated_predictions,
+            show_predictions=show_predictions,
+            show_labels=show_labels, 
+            show_confidence=show_confidence,
+            show_grid=show_grid,
+            show_measurements=show_measurements
         )
         
         if fig:
@@ -803,6 +1048,87 @@ def main():
                 except Exception as e:
                     st.write(f"Could not display cropped image: {e}")
                 
+                # Expert Tools Section
+                with st.expander("🔧 Expert Tools", expanded=False):
+                    st.markdown("#### Manual Correction")
+                    
+                    # Manual Gardiner code editing
+                    available_codes = list(validator.gardiner_codes.keys())
+                    current_code_idx = available_codes.index(pred_info['gardiner_code']) if pred_info['gardiner_code'] in available_codes else 0
+                    
+                    corrected_code = st.selectbox(
+                        "Override Gardiner Code:",
+                        options=available_codes,
+                        index=current_code_idx,
+                        key=f"manual_code_{pred_info['pred_key']}"
+                    )
+                    
+                    if corrected_code != pred_info['gardiner_code']:
+                        if st.button(f"Apply Correction: {pred_info['gardiner_code']} → {corrected_code}", key=f"apply_correction_{pred_info['pred_key']}"):
+                            # Save manual correction
+                            if "manual_corrections" not in validation_results:
+                                validation_results["manual_corrections"] = {}
+                            validation_results["manual_corrections"][pred_info['pred_key']] = {
+                                "original_code": pred_info['gardiner_code'],
+                                "corrected_code": corrected_code,
+                                "timestamp": datetime.now().isoformat()
+                            }
+                            validator.save_validation_results(validation_results)
+                            st.success(f"Applied manual correction: {corrected_code}")
+                            st.rerun()
+                    
+                    # Notes system
+                    st.markdown("#### Scholarly Notes")
+                    
+                    # Load existing note
+                    existing_notes = validation_results.get("notes", {})
+                    current_note = existing_notes.get(pred_info['pred_key'], "")
+                    
+                    note_text = st.text_area(
+                        "Add scholarly observations:",
+                        value=current_note,
+                        height=100,
+                        key=f"note_{pred_info['pred_key']}",
+                        placeholder="Add comments about palaeographic details, context, alternative readings..."
+                    )
+                    
+                    if st.button("Save Note", key=f"save_note_{pred_info['pred_key']}"):
+                        if "notes" not in validation_results:
+                            validation_results["notes"] = {}
+                        validation_results["notes"][pred_info['pred_key']] = note_text
+                        validator.save_validation_results(validation_results)
+                        st.success("Note saved!")
+                    
+                    # Cross-references
+                    st.markdown("#### Cross-References")
+                    
+                    # Find similar signs in the current dataset
+                    similar_predictions = []
+                    for other_pred in prediction_data:
+                        if other_pred['gardiner_code'] == pred_info['gardiner_code'] and other_pred['pred_key'] != pred_info['pred_key']:
+                            similar_predictions.append(other_pred)
+                    
+                    if similar_predictions:
+                        st.write(f"Found {len(similar_predictions)} other instances of `{pred_info['gardiner_code']}` in this image:")
+                        for sim_pred in similar_predictions:
+                            status_emoji = {
+                                'correct': '✅',
+                                'incorrect': '❌', 
+                                'uncertain': '⚠️',
+                                'pending': '⏳'
+                            }.get(sim_pred['validation_status'], '⏳')
+                            st.write(f"  {status_emoji} Sign #{sim_pred['index']+1} (conf: {sim_pred['confidence']:.2f})")
+                    else:
+                        st.write(f"No other instances of `{pred_info['gardiner_code']}` found in this image")
+                    
+                    # Link to external references
+                    st.markdown("#### External References")
+                    gardiner_code = pred_info['gardiner_code']
+                    st.markdown(f"- [Gardiner Sign List](https://en.wikipedia.org/wiki/Gardiner%27s_sign_list#{gardiner_code[0]})")
+                    st.markdown(f"- [Thesaurus Linguae Aegyptiae](https://aaew.bbaw.de/tla/servlet/GetWcnDetails?u=guest&f=0&l=0&wn=-{gardiner_code})")
+                    if validator.aku_index:
+                        st.markdown("- AKU Westcar database (see reference signs below)")
+                
                 # Display Gardiner code with Unicode
                 unicode_point = validator.gardiner_codes.get(pred_info['gardiner_code'], {}).get('unicode', 'N/A')
                 if unicode_point != 'N/A' and unicode_point.startswith('U+'):
@@ -814,10 +1140,22 @@ def main():
                 else:
                     st.markdown(f"**Gardiner Code:** `{pred_info['gardiner_code']}`")
                 
+                # Check for manual corrections
+                manual_corrections = validation_results.get("manual_corrections", {})
+                if pred_info['pred_key'] in manual_corrections:
+                    correction = manual_corrections[pred_info['pred_key']]
+                    st.warning(f"**Manual Correction Applied:** {correction['original_code']} → {correction['corrected_code']}")
+                
                 st.write(f"**Name:** {pred_info['gardiner_name']}")
                 st.write(f"**Category:** {pred_info['category']}")
                 st.write(f"**Confidence:** {pred_info['confidence']:.3f}")
                 st.write(f"**Bounding Box:** [{pred_info['bbox'][0]:.1f}, {pred_info['bbox'][1]:.1f}, {pred_info['bbox'][2]:.1f}, {pred_info['bbox'][3]:.1f}]")
+                
+                # Show notes if any exist
+                notes = validation_results.get("notes", {})
+                if pred_info['pred_key'] in notes and notes[pred_info['pred_key']].strip():
+                    st.markdown("**Scholar Notes:**")
+                    st.info(notes[pred_info['pred_key']])
                 
                 # Current validation status
                 current_status = pred_info['validation_status']

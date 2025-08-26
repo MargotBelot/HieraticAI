@@ -366,11 +366,6 @@ This prototype was developed as part of the **"Ancient Language Processing" semi
 - **Objective**: Methodological exploration of ancient language processing technologies
 - **Course Website**: https://digitalpasts.github.io/alp-course-2025/
 
-### Instructors
-- **Shai Gordin** (Ariel University/Open University of Israel) - shaigo@ariel.ac.il
-- **Eliese-Sophia Lincke** (Freie Universität Berlin) - e.lincke@fu-berlin.de  
-- **Hubert Mara** (Freie Universität Berlin) - hubert.mara@fu-berlin.de
-
 ### Project Status
 **Important Note**: This is a **methodological prototype** created for educational and research exploration purposes. It is not intended as a production system but rather as a proof-of-concept for applying modern AI techniques to ancient Egyptian paleographic analysis.
 
