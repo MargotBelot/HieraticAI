@@ -2,6 +2,32 @@
 
 This directory contains Jupyter notebooks that walk through the complete hieroglyph detection pipeline. Each notebook focuses on a specific aspect of the project and can be run independently.
 
+## Table of Contents
+
+- [Notebook Overview](#notebook-overview)
+  - [01_Data_Preparation.ipynb](#01_data_preparationipynb)
+  - [02_Training.ipynb](#02_trainingipynb)
+  - [03_Evaluation.ipynb](#03_evaluationipynb)
+  - [04_Inference.ipynb](#04_inferenceipynb)
+  - [05_Improved_Training.ipynb](#05_improved_trainingipynb)
+- [Quick Start Guide](#quick-start-guide)
+  - [For New Users](#for-new-users)
+  - [For Advanced Users](#for-advanced-users)
+  - [For Researchers](#for-researchers)
+- [Running the Notebooks](#running-the-notebooks)
+  - [Prerequisites](#prerequisites)
+  - [Environment Setup](#environment-setup)
+  - [Google Colab Usage](#google-colab-usage)
+- [Performance Expectations](#performance-expectations)
+- [Troubleshooting](#troubleshooting)
+  - [Common Issues](#common-issues)
+- [Additional Resources](#additional-resources)
+- [Learning Path](#learning-path)
+  - [Beginner Track](#beginner-track)
+  - [Intermediate Track](#intermediate-track)
+  - [Advanced Track](#advanced-track)
+- [Tips for Success](#tips-for-success)
+
 ## Notebook Overview
 
 ### [01_Data_Preparation.ipynb](01_Data_Preparation.ipynb)

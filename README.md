@@ -11,6 +11,42 @@
 > 
 > **Course Information**: [Ancient Language Processing 2025](https://digitalpasts.github.io/alp-course-2025/) - Hybrid seminar focusing on computational approaches to ancient datasets and digital philology methods.
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+  - [The Problem We Solve](#the-problem-we-solve)
+  - [Our Solution](#our-solution)
+- [How HieraticAI Works: Step-by-Step Process](#how-hieraticai-works-step-by-step-process)
+  - [Step 1: Image Processing & AI Detection](#step-1-image-processing--ai-detection)
+  - [Step 2: Interactive Validation & Review](#step-2-interactive-validation--review)
+  - [Step 3: Database Integration & Context](#step-3-database-integration--context)
+- [Manuscript Focus: The Westcar Papyrus](#manuscript-focus-the-westcar-papyrus)
+  - [Introduction to the Westcar Papyrus](#introduction-to-the-westcar-papyrus)
+- [Quick Start](#quick-start)
+  - [One-Click Installation (Recommended)](#one-click-installation-recommended)
+  - [Manual Installation (For Experienced Users)](#manual-installation-for-experienced-users)
+- [Interactive Validation Interface](#interactive-validation-interface)
+  - [Real-Time Validation Workflow](#real-time-validation-workflow)
+  - [Enhanced Status System](#enhanced-status-system)
+  - [Advanced Validation Features](#advanced-validation-features)
+  - [Color-Coded Status System](#color-coded-status-system)
+- [Database Integration](#database-integration)
+  - [AKU-PAL (Altägyptische Kursivschriften)](#aku-pal-altägyptische-kursivschriften)
+  - [TLA (Thesaurus Linguae Aegyptiae) Integration](#tla-thesaurus-linguae-aegyptiae-integration)
+  - [Database Synchronization](#database-synchronization)
+- [Model Performance](#model-performance)
+- [Academic Applications](#academic-applications)
+  - [Research Use Cases](#research-use-cases)
+  - [Integration Possibilities](#integration-possibilities)
+- [Technical Architecture](#technical-architecture)
+- [Documentation](#documentation)
+- [Acknowledgments](#acknowledgments)
+  - [Academic Context](#academic-context)
+  - [Project Status](#project-status)
+- [Contributing](#contributing)
+- [License](#license)
+- [Citation](#citation)
+
 ## Project Overview
 
 HieraticAI focuses on the study of ancient Egyptian manuscripts by combining computer vision with Egyptological expertise. This system automatically detects, classifies, and validates hieratic characters in papyrus images, with specialized focus on the **Westcar Papyrus**.
