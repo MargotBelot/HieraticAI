@@ -193,7 +193,6 @@ The HieraticAI interface provides a validation panel:
 
 #### **Smart Navigation**
 - **Quick Jump**: Go directly to uncertain or low-confidence predictions
-- **Bulk Actions**: Apply corrections to similar signs across the manuscript
 - **Progress Tracking**: Visual progress bar with completion statistics
 
 #### **Context-Rich Display**
