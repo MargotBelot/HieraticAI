@@ -28,6 +28,11 @@ from pathlib import Path
 class HieraticAIInstaller:
     def __init__(self):
         self.system = platform.system().lower()
+        
+        # Prevent macOS from creating metadata files
+        if self.system == "darwin":
+            self.setup_macos_environment()
+        
         self.python_cmd = self.find_python_command()
         self.pip_cmd = self.find_pip_command()
         self.project_dir = Path(__file__).parent
@@ -35,7 +40,13 @@ class HieraticAIInstaller:
         
     def find_python_command(self):
         """Find the correct Python command on this system."""
-        for cmd in ['python', 'python3', 'py']:
+        # On Windows, try 'py' first as it's the Python Launcher
+        if self.system == "windows":
+            cmd_order = ['py', 'python', 'python3']
+        else:
+            cmd_order = ['python3', 'python', 'py']
+            
+        for cmd in cmd_order:
             try:
                 result = subprocess.run([cmd, '--version'], capture_output=True, text=True)
                 if result.returncode == 0 and 'Python 3.' in result.stdout:
@@ -54,24 +65,160 @@ class HieraticAIInstaller:
             except FileNotFoundError:
                 continue
         return None
+    
+    def get_python_version(self):
+        """Get the Python version for path construction."""
+        return f"{sys.version_info.major}.{sys.version_info.minor}"
+    
+    def setup_macos_environment(self):
+        """Set up environment variables to prevent macOS metadata file creation."""
+        # Prevent .DS_Store files
+        os.environ['COPYFILE_DISABLE'] = '1'
+        # Prevent AppleDouble files (._*)
+        os.environ['APPLEFILE'] = '0'
+        # Additional prevention for tar operations
+        os.environ['TAR_OPTIONS'] = '--exclude="._*" --exclude=".DS_Store"'
+        # Prevent extended attributes
+        os.environ['NOEXTATTR'] = '1'
+        # Prevent resource forks
+        os.environ['_COPYFILE_DISABLE'] = '1'
+        
+        print("Configured environment to prevent macOS metadata files")
+    
+    def prevent_metadata_creation(self):
+        """Additional steps to prevent metadata file creation during operations."""
+        if self.system == "darwin":
+            # Create .noindex file to prevent Spotlight indexing
+            noindex_file = self.venv_dir / ".noindex"
+            try:
+                noindex_file.touch(exist_ok=True)
+                print("Created .noindex file to prevent Spotlight indexing")
+            except Exception as e:
+                print(f"Warning: Could not create .noindex file: {e}")
+            
+            # Create .fseventsd directory to prevent filesystem event logging
+            try:
+                fseventsd_dir = self.venv_dir / ".fseventsd"
+                fseventsd_dir.mkdir(exist_ok=True)
+                (fseventsd_dir / "no_log").touch(exist_ok=True)
+                print("Created filesystem event prevention")
+            except Exception as e:
+                print(f"Warning: Could not create fseventsd prevention: {e}")
+    
+    def create_venv_no_metadata(self):
+        """Create virtual environment with macOS metadata prevention."""
+        print("Running: Creating virtual environment (macOS optimized)...")
+        
+        # Set up environment to prevent metadata creation
+        env = os.environ.copy()
+        env.update({
+            'COPYFILE_DISABLE': '1',
+            'APPLEFILE': '0',
+            '_COPYFILE_DISABLE': '1',  # Additional prevention
+            'NOEXTATTR': '1'  # Prevent extended attributes
+        })
+        
+        try:
+            result = subprocess.run(
+                [self.python_cmd, '-m', 'venv', str(self.venv_dir)],
+                capture_output=True, text=True, env=env
+            )
+            
+            if result.returncode == 0:
+                print("Success!")
+                return True
+            else:
+                print(f"Error: {result.stderr.strip()}")
+                return False
+                
+        except Exception as e:
+            print(f"Error creating virtual environment: {e}")
+            return False
+    
+    def clean_macos_metadata(self):
+        """Remove macOS metadata files that can cause Unicode issues in virtual environments."""
+        if self.system != "darwin":
+            return  # Only run on macOS
+            
+        try:
+            # Remove ._ files that macOS creates on external drives
+            subprocess.run(
+                ['find', str(self.venv_dir), '-name', '._*', '-delete'],
+                capture_output=True, text=True
+            )
+            
+            # Also remove .DS_Store files
+            subprocess.run(
+                ['find', str(self.venv_dir), '-name', '.DS_Store', '-delete'],
+                capture_output=True, text=True
+            )
+            
+            # Clean up any corrupted .pth files that might contain binary data
+            subprocess.run(
+                ['find', str(self.venv_dir), '-name', '*.pth', '-exec', 'file', '{}', ';'],
+                capture_output=True, text=True
+            )
+            
+            print("Cleaned up macOS metadata files")
+        except Exception as e:
+            print(f"Warning: Could not clean metadata files: {e}")
+    
+    def safe_remove_directory(self, directory):
+        """Safely remove a directory, handling platform-specific issues."""
+        import shutil
+        try:
+            # First, try to remove macOS metadata files (macOS only)
+            if self.system == "darwin":
+                try:
+                    subprocess.run(['find', str(directory), '-name', '._*', '-delete'], 
+                                 capture_output=True)
+                    subprocess.run(['find', str(directory), '-name', '.DS_Store', '-delete'], 
+                                 capture_output=True)
+                except:
+                    pass  # Ignore errors here
+            
+            # Then remove the directory
+            shutil.rmtree(directory)
+        except Exception as e:
+            print(f"Warning: Error removing directory {directory}: {e}")
+            # Force removal if standard removal fails
+            if self.system == "windows":
+                try:
+                    subprocess.run(['rmdir', '/s', '/q', str(directory)], check=True, shell=True)
+                except subprocess.CalledProcessError:
+                    print(f"Could not remove {directory}. Please remove manually.")
+            elif self.system == "darwin":
+                try:
+                    subprocess.run(['rm', '-rf', str(directory)], check=True)
+                except subprocess.CalledProcessError:
+                    print(f"Could not remove {directory}. Please remove manually.")
 
     def print_step(self, step, description):
         """Print installation step with formatting."""
-        print(f"\n🔧 Step {step}: {description}")
+        print(f"\nStep {step}: {description}")
         print("="* 50)
 
     def run_command(self, command, description="", check=True):
         """Run a command with error handling."""
         if description:
-            print(f"⏳ {description}...")
+            print(f"Running: {description}...")
         
         try:
+            # Ensure environment variables are passed to subprocesses
+            env = os.environ.copy()
+            if self.system == "darwin":
+                env.update({
+                    'COPYFILE_DISABLE': '1',
+                    'APPLEFILE': '0',
+                    'TAR_OPTIONS': '--exclude="._*" --exclude=".DS_Store"'
+                })
+            
             if isinstance(command, str):
                 result = subprocess.run(command, shell=True, check=check, 
-                                      capture_output=True, text=True)
+                                      capture_output=True, text=True, env=env)
             else:
                 result = subprocess.run(command, check=check, 
-                                      capture_output=True, text=True)
+                                      capture_output=True, text=True, env=env)
             
             if result.returncode == 0:
                 print(f"Success!")
@@ -83,8 +230,15 @@ class HieraticAIInstaller:
             return result.returncode == 0
             
         except subprocess.CalledProcessError as e:
-            print(f"Error: {e}")
-            print(f"Command output: {e.stderr}")
+            print(f"Error: Command '{' '.join(e.cmd) if hasattr(e, 'cmd') else 'unknown'}' returned non-zero exit status {e.returncode}.")
+            if hasattr(e, 'stderr') and e.stderr:
+                print(f"Command output: {e.stderr}")
+            elif hasattr(e, 'output') and e.output:
+                print(f"Command output: {e.output}")
+            return False
+        except UnicodeDecodeError as e:
+            print(f"Unicode error (common on external drives): {e}")
+            print("This usually indicates corrupted Python environment files.")
             return False
         except Exception as e:
             print(f"Unexpected error: {e}")
@@ -96,8 +250,18 @@ class HieraticAIInstaller:
         
         # Check Python
         if not self.python_cmd:
-            print("Python 3.8+ not found!")
-            print("Please install Python from: https://python.org/downloads/")
+            print("ERROR: Python 3.8+ not found!")
+            if self.system == "windows":
+                print("Please install Python from: https://python.org/downloads/")
+                print("Make sure to check 'Add Python to PATH' during installation.")
+            elif self.system == "darwin":
+                print("Please install Python from: https://python.org/downloads/")
+                print("Or use Homebrew: brew install python3")
+            else:  # Linux
+                print("Please install Python using your system package manager:")
+                print("  Ubuntu/Debian: sudo apt install python3 python3-pip python3-venv")
+                print("  CentOS/RHEL: sudo yum install python3 python3-pip")
+                print("  Arch: sudo pacman -S python python-pip")
             return False
         
         # Check Python version
@@ -133,11 +297,9 @@ class HieraticAIInstaller:
     def get_free_space(self):
         """Get free disk space in GB."""
         try:
-            if self.system == "windows":
-                free_bytes = os.statvfs('.').f_frsize * os.statvfs('.').f_bavail
-            else:
-                statvfs = os.statvfs('.')
-                free_bytes = statvfs.f_frsize * statvfs.f_bavail
+            import shutil
+            # Use shutil.disk_usage for cross-platform compatibility
+            _, _, free_bytes = shutil.disk_usage('.')
             return free_bytes / (1024**3)  # Convert to GB
         except:
             return float('inf')  # Unknown, assume sufficient
@@ -147,28 +309,36 @@ class HieraticAIInstaller:
         self.print_step(2, "Creating Virtual Environment")
         
         if self.venv_dir.exists():
-            print("📁 Virtual environment already exists. Removing old one...")
-            import shutil
-            shutil.rmtree(self.venv_dir)
+            print("Virtual environment already exists. Removing old one...")
+            self.safe_remove_directory(self.venv_dir)
         
-        success = self.run_command(
-            [self.python_cmd, '-m', 'venv', str(self.venv_dir)],
-            "Creating virtual environment"
-        )
+        # Create virtual environment with metadata prevention
+        if self.system == "darwin":
+            success = self.create_venv_no_metadata()
+        else:
+            success = self.run_command(
+                [self.python_cmd, '-m', 'venv', str(self.venv_dir)],
+                "Creating virtual environment"
+            )
         
         if not success:
             print("Failed to create virtual environment!")
             return False
         
-        # Get activation command
+        # Prevent and clean up macOS metadata files that can cause Unicode issues
+        if self.system == "darwin":
+            self.prevent_metadata_creation()
+            self.clean_macos_metadata()
+        
+        # Get activation command and executables
         if self.system == "windows":
-            self.activate_cmd = str(self.venv_dir / "Scripts"/ "activate.bat")
-            self.venv_python = str(self.venv_dir / "Scripts"/ "python.exe")
-            self.venv_pip = str(self.venv_dir / "Scripts"/ "pip.exe")
+            self.activate_cmd = str(self.venv_dir / "Scripts" / "activate.bat")
+            self.venv_python = str(self.venv_dir / "Scripts" / "python.exe")
+            self.venv_pip = str(self.venv_dir / "Scripts" / "pip.exe")
         else:
             self.activate_cmd = f"source {self.venv_dir / 'bin' / 'activate'}"
-            self.venv_python = str(self.venv_dir / "bin"/ "python")
-            self.venv_pip = str(self.venv_dir / "bin"/ "pip")
+            self.venv_python = str(self.venv_dir / "bin" / "python")
+            self.venv_pip = str(self.venv_dir / "bin" / "pip")
         
         return True
 
@@ -181,8 +351,31 @@ class HieraticAIInstaller:
             print("requirements.txt not found!")
             return False
         
-        print("📦 This may take 10-15 minutes depending on internet speed...")
-        print("☕ Perfect time for a coffee break!")
+        print("This may take 10-15 minutes depending on internet speed...")
+        
+        # Clean metadata files before pip operations (macOS fix)
+        if self.system == "darwin":
+            self.clean_macos_metadata()
+        
+        # Test the virtual environment python first
+        test_success = self.run_command(
+            [self.venv_python, '-c', 'print("Environment test successful")'],
+            "Testing virtual environment",
+            check=False
+        )
+        
+        if not test_success:
+            print("Virtual environment appears corrupted. Recreating...")
+            self.safe_remove_directory(self.venv_dir)
+            
+            # Recreate environment
+            self.run_command(
+                [self.python_cmd, '-m', 'venv', str(self.venv_dir)],
+                "Recreating virtual environment"
+            )
+            
+            if self.system == "darwin":
+                self.clean_macos_metadata()
         
         # Upgrade pip first
         success = self.run_command(
@@ -205,6 +398,10 @@ class HieraticAIInstaller:
         """Verify that all key dependencies are installed."""
         self.print_step(4, "Verifying Installation")
         
+        # Clean up any metadata files that might have been created during installation
+        if self.system == "darwin":
+            self.clean_macos_metadata()
+        
         # Key packages to check
         packages = ['streamlit', 'torch', 'cv2', 'numpy', 'pandas']
         
@@ -216,11 +413,26 @@ class HieraticAIInstaller:
                 import_name = package
                 package_name = package
             
+            # Try alternative import method if standard method fails
+            python_version = f"{sys.version_info.major}.{sys.version_info.minor}"
+            if self.system == "windows":
+                site_packages_path = f"hieratic_env/Lib/site-packages"
+            else:
+                site_packages_path = f"hieratic_env/lib/python{python_version}/site-packages"
+            
             success = self.run_command(
-                [self.venv_python, '-c', f'import {import_name}; print(f"{package_name}: OK")'],
+                [self.venv_python, '-S', '-c', f'import sys; sys.path.insert(0, "{site_packages_path}"); import {import_name}; print("{package_name}: OK")'],
                 f"Checking {package_name}",
                 check=False
             )
+            
+            # Fallback to standard method if -S method fails
+            if not success:
+                success = self.run_command(
+                    [self.venv_python, '-c', f'import {import_name}; print(f"{package_name}: OK")'],
+                    f"Checking {package_name} (fallback)",
+                    check=False
+                )
             
             if not success:
                 print(f"{package_name} not properly installed!")
@@ -256,7 +468,7 @@ pause
             f.write(launcher_content)
         
         print(f"Created launcher: {launcher_path}")
-        print("💡 Double-click 'start_hieratic_ai.bat' to run HieraticAI")
+        print("Double-click 'start_hieratic_ai.bat' to run HieraticAI")
 
     def create_unix_launcher(self):
         """Create Unix shell script launcher."""
@@ -275,13 +487,17 @@ streamlit run tools/validation/prediction_validator.py
         os.chmod(launcher_path, 0o755)
         
         print(f"Created launcher: {launcher_path}")
-        print(f"💡 Run './start_hieratic_ai.sh' to start HieraticAI")
+        print(f"Run './start_hieratic_ai.sh' to start HieraticAI")
 
     def install(self):
         """Run the complete installation process."""
-        print("🚀 HieraticAI Installation Starting...")
-        print(f"🖥️  System: {platform.system()} {platform.machine()}")
-        print(f"📁 Installation directory: {self.project_dir}")
+        print("HieraticAI Installation Starting...")
+        print(f"System: {platform.system()} {platform.machine()}")
+        print(f"Installation directory: {self.project_dir}")
+        
+        # Apply macOS metadata prevention globally for this process
+        if self.system == "darwin":
+            print("Applying macOS metadata file prevention...")
         
         steps = [
             self.check_requirements,

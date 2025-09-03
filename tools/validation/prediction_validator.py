@@ -368,17 +368,6 @@ class PredictionValidator:
                             else:
                                 st.write(f"**Description:** {description}")
                             
-                            # Quality indicators
-                            quality_indicators = []
-                            if metadata.get('Lesbarkeit') == 'ja':
-                                quality_indicators.append("Readable")
-                            if metadata.get('Zustand') == 'vollständig':
-                                quality_indicators.append("Complete")
-                            if metadata.get('Farbe') == 'schwarz':
-                                quality_indicators.append("Clear ink")
-                            
-                            if quality_indicators:
-                                st.write("".join(quality_indicators))
                             
                             # Show additional metadata in expander
                             with st.expander(f"Full metadata #{i+1}"):
@@ -592,7 +581,7 @@ class PredictionValidator:
     
     def visualize_predictions_enhanced(self, image_path, predictions, image_id, validated_results, 
                                      show_predictions=True, show_labels=True, show_confidence=True, 
-                                     show_grid=False, show_measurements=False):
+                                     show_measurements=False):
         """Enhanced visualization with additional display options."""
         # Load image
         img = cv2.imread(str(image_path))
@@ -608,13 +597,6 @@ class PredictionValidator:
         ax.imshow(img_rgb)
         ax.set_title(f"HieraticAI Predictions on Westcar Papyrus VIII 5-24 ({image_path.name})", fontsize=14, fontweight='bold')
         
-        # Add reference grid if requested
-        if show_grid:
-            # Add grid lines every 100 pixels
-            for x in range(0, width, 100):
-                ax.axvline(x=x, color='gray', linestyle='--', alpha=0.3, linewidth=0.5)
-            for y in range(0, height, 100):
-                ax.axhline(y=y, color='gray', linestyle='--', alpha=0.3, linewidth=0.5)
         
         prediction_data = []
         
@@ -702,7 +684,7 @@ def main():
     with st.expander("How to use this interface", expanded=False):
         st.markdown("""
         ### Getting Started
-        1. **View Predictions**: The left panel shows your HieraticAI model's predictions overlaid on the Westcar Papyrus (VIII 5-24)
+        1. **View Predictions**: The left panel shows the HieraticAI model's predictions overlaid on the Westcar Papyrus (VIII 5-24)
         2. **Select Signs**: Use the dropdown in the right panel to select individual predictions for validation
         3. **Review Context**: Each prediction shows:
            - Cropped image of the detected sign
@@ -777,6 +759,19 @@ def main():
         min_value=0.0, max_value=1.0, value=0.3, step=0.05
     )
     
+    # Confidence level explanation
+    st.sidebar.markdown("### Confidence Levels")
+    st.sidebar.markdown("""
+    **Understanding AI Confidence:**
+    
+    - **High (0.8-1.0)**: Reliable predictions with clear visual features
+    - **Medium (0.5-0.8)**: Good predictions that may need verification
+    - **Low (0.3-0.5)**: Uncertain predictions requiring careful review
+    - **Very Low (<0.3)**: Highly uncertain, likely incorrect predictions
+    
+    **Recommendation:** Start validation with high confidence predictions to establish baseline accuracy, then work through medium and low confidence detections.
+    """)
+    
     # Quick Jump filters
     st.sidebar.markdown("### Quick Jump")
     if st.sidebar.button("Jump to Low Confidence (<0.5)", use_container_width=True):
@@ -827,7 +822,7 @@ def main():
             "uncertain": "Uncertain Predictions", 
             "pending": "Pending Validation"
         }
-        st.info(f"🔍 **Filter Active:** Showing {filter_labels.get(filter_mode, filter_mode)} - Found {len(image_predictions)} predictions")
+        st.info(f"**Filter Active:** Showing {filter_labels.get(filter_mode, filter_mode)} - Found {len(image_predictions)} predictions")
     
     if not image_predictions:
         st.warning(f"No predictions found for image {selected_image} with confidence >= {min_confidence}")
@@ -869,7 +864,7 @@ def main():
         st.subheader("Prediction Visualization")
         
         # Display options
-        with st.expander("🔧 Display Options", expanded=False):
+        with st.expander("Display Options", expanded=False):
             col_opt1, col_opt2, col_opt3 = st.columns(3)
             
             with col_opt1:
@@ -878,11 +873,9 @@ def main():
             
             with col_opt2:
                 show_confidence = st.checkbox("Show Confidence Values", value=True, key="show_confidence")
-                show_grid = st.checkbox("Show Reference Grid", value=False, key="show_grid")
             
             with col_opt3:
                 show_measurements = st.checkbox("Show Pixel Measurements", value=False, key="show_measurements")
-                crop_padding = st.slider("Crop Padding (px)", 5, 50, 10, key="crop_padding")
         
         # Enhanced visualization with display options
         fig, prediction_data = validator.visualize_predictions_enhanced(
@@ -890,7 +883,6 @@ def main():
             show_predictions=show_predictions,
             show_labels=show_labels, 
             show_confidence=show_confidence,
-            show_grid=show_grid,
             show_measurements=show_measurements
         )
         
@@ -982,7 +974,7 @@ def main():
                     st.write(f"Could not display cropped image: {e}")
                 
                 # Expert Tools Section
-                with st.expander("🔧 Expert Tools", expanded=False):
+                with st.expander("Expert Tools", expanded=False):
                     st.markdown("#### Manual Correction")
                     
                     # Manual Gardiner code editing
@@ -1058,9 +1050,9 @@ def main():
                     st.markdown("#### External References")
                     gardiner_code = pred_info['gardiner_code']
                     st.markdown(f"- [Gardiner Sign List](https://en.wikipedia.org/wiki/Gardiner%27s_sign_list#{gardiner_code[0]})")
-                    st.markdown(f"- [Thesaurus Linguae Aegyptiae](https://aaew.bbaw.de/tla/servlet/GetWcnDetails?u=guest&f=0&l=0&wn=-{gardiner_code})")
+                    st.markdown(f"- [Thesaurus Linguae Aegyptiae](https://thesaurus-linguae-aegyptiae.de/search{gardiner_code[0]})")
                     if validator.aku_index:
-                        st.markdown("- AKU Westcar database (see reference signs below)")
+                        st.markdown(f"- [AKU Westcar database (see reference signs below)](https://aku-pal.uni-mainz.de/{gardiner_code[0]})")
                 
                 # Display Gardiner code with Unicode
                 unicode_point = validator.gardiner_codes.get(pred_info['gardiner_code'], {}).get('unicode', 'N/A')

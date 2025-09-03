@@ -13,39 +13,49 @@
 
 ## Table of Contents
 
-- [Project Overview](#project-overview)
-  - [The Problem We Solve](#the-problem-we-solve)
-  - [Our Solution](#our-solution)
-- [How HieraticAI Works: Step-by-Step Process](#how-hieraticai-works-step-by-step-process)
-  - [Step 1: Image Processing & AI Detection](#step-1-image-processing--ai-detection)
-  - [Step 2: Interactive Validation & Review](#step-2-interactive-validation--review)
-  - [Step 3: Database Integration & Context](#step-3-database-integration--context)
-- [Manuscript Focus: The Westcar Papyrus](#manuscript-focus-the-westcar-papyrus)
-  - [Introduction to the Westcar Papyrus](#introduction-to-the-westcar-papyrus)
-- [Quick Start](#quick-start)
-  - [One-Click Installation (Recommended)](#one-click-installation-recommended)
-  - [Manual Installation (For Experienced Users)](#manual-installation-for-experienced-users)
-- [Interactive Validation Interface](#interactive-validation-interface)
-  - [Real-Time Validation Workflow](#real-time-validation-workflow)
-  - [Enhanced Status System](#enhanced-status-system)
-  - [Advanced Validation Features](#advanced-validation-features)
-  - [Color-Coded Status System](#color-coded-status-system)
-- [Database Integration](#database-integration)
-  - [AKU-PAL (Altägyptische Kursivschriften)](#aku-pal-altägyptische-kursivschriften)
-  - [TLA (Thesaurus Linguae Aegyptiae) Integration](#tla-thesaurus-linguae-aegyptiae-integration)
-  - [Database Synchronization](#database-synchronization)
-- [Model Performance](#model-performance)
-- [Academic Applications](#academic-applications)
-  - [Research Use Cases](#research-use-cases)
-  - [Integration Possibilities](#integration-possibilities)
-- [Technical Architecture](#technical-architecture)
-- [Documentation](#documentation)
-- [Acknowledgments](#acknowledgments)
-  - [Academic Context](#academic-context)
-  - [Project Status](#project-status)
-- [Contributing](#contributing)
-- [License](#license)
-- [Citation](#citation)
+- [HieraticAI](#hieraticai)
+  - [Table of Contents](#table-of-contents)
+  - [Project Overview](#project-overview)
+    - [The Problem We Solve](#the-problem-we-solve)
+    - [Our Solution](#our-solution)
+  - [How HieraticAI Works: Step-by-Step Process](#how-hieraticai-works-step-by-step-process)
+    - [Step 1: Image Processing \& AI Detection](#step-1-image-processing--ai-detection)
+    - [Step 2: Interactive Validation \& Review](#step-2-interactive-validation--review)
+    - [Step 3: Database Integration \& Context](#step-3-database-integration--context)
+  - [Manuscript Focus: The Westcar Papyrus](#manuscript-focus-the-westcar-papyrus)
+    - [Introduction to the Westcar Papyrus](#introduction-to-the-westcar-papyrus)
+  - [Quick Start](#quick-start)
+    - [One-Click Installation (Recommended)](#one-click-installation-recommended)
+    - [Manual Installation (For Experienced Users)](#manual-installation-for-experienced-users)
+  - [Interactive Validation Interface](#interactive-validation-interface)
+    - [Real-Time Validation Workflow](#real-time-validation-workflow)
+      - [**Main Interface Layout**](#main-interface-layout)
+    - [Enhanced Status System](#enhanced-status-system)
+    - [Advanced Validation Features](#advanced-validation-features)
+      - [**Smart Navigation**](#smart-navigation)
+      - [**Context-Rich Display**](#context-rich-display)
+      - [**Expert Tools**](#expert-tools)
+    - [Color-Coded Status System](#color-coded-status-system)
+  - [Database Integration](#database-integration)
+    - [AKU-PAL (Altägyptische Kursivschriften)](#aku-pal-altägyptische-kursivschriften)
+      - [About AKU-PAL](#about-aku-pal)
+      - [Integration Features](#integration-features)
+    - [TLA (Thesaurus Linguae Aegyptiae) Integration](#tla-thesaurus-linguae-aegyptiae-integration)
+      - [About TLA](#about-tla)
+      - [Integration Architecture](#integration-architecture)
+    - [Database Synchronization](#database-synchronization)
+  - [Model Performance](#model-performance)
+  - [Academic Applications](#academic-applications)
+    - [Research Use Cases](#research-use-cases)
+    - [Integration Possibilities](#integration-possibilities)
+  - [Technical Architecture](#technical-architecture)
+  - [Documentation](#documentation)
+  - [Acknowledgments](#acknowledgments)
+    - [Academic Context](#academic-context)
+    - [Project Status](#project-status)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Citation](#citation)
 
 ## Project Overview
 
@@ -207,10 +217,10 @@ The HieraticAI interface provides a validation panel:
   - Quality assessment scores
   - SVG vector displays
 - **Validation Actions**:
-  - ✅ **CORRECT** - Confirm AI prediction
-  - ❌ **INCORRECT** - Mark as wrong
-  - ❓ **UNCERTAIN** - Flag for further review
-  - ✏️ **EDIT CODE** - Manual correction
+  - **CORRECT** - Confirm AI prediction
+  - **INCORRECT** - Mark as wrong
+  - **UNCERTAIN** - Flag for further review
+  - **EDIT CODE** - Manual correction
 
 **Control Panel (Bottom)**
 - Navigation: Previous/Next/Refresh buttons
@@ -419,7 +429,7 @@ If you use HieraticAI in your research, please cite:
 ```bibtex
 @software{belotcolyer2025hieraticai,
   title={HieraticAI: AI-powered hieratic character recognition for ancient Egyptian manuscripts},
-  author={Belot, Margot and Colyer, Domino},
+  author={Belot, Margot and Colyer, Dominique},
   year={2025},
   url={https://github.com/MargotBelot/HieraticAI}
 }
