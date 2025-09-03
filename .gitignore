@@ -229,6 +229,8 @@ start_hieratic_ai.sh
 .DS_Store
 .AppleDouble
 .LSOverride
+# macOS resource fork files
+._*
 
 # IDE cache and settings
 .vscode/settings.json
