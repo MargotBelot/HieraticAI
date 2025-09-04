@@ -50,7 +50,7 @@ visualization:
 accuracy:
   # Category mapping fixes
   apply_category_offset: true
-  category_offset: 1  # Add 1 to predicted categories
+  category_offset: -1  # Convert from 1-based to 0-based (matches training)
   
   # Filtering
   confidence_threshold: 0.3

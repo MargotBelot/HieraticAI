@@ -62,7 +62,7 @@
 HieraticAI focuses on the study of ancient Egyptian manuscripts by combining computer vision with Egyptological expertise. This system automatically detects, classifies, and validates hieratic characters in papyrus images, with specialized focus on the **Westcar Papyrus**.
 
 **What makes HieraticAI unique:**
-- **AI-First Approach**: Advanced YOLO-based detection with 84 Gardiner code classes
+- **AI-First Approach**: Faster R-CNN detection with ResNet-50 backbone across 634 Gardiner code classes
 - **Expert Validation**: Interactive interface for Egyptologists to review and correct AI predictions
 - **Comprehensive Integration**: Direct links to TLA (Thesaurus Linguae Aegyptiae) and AKU databases
 - **Research-Ready**: Exports validated data for paleographic and linguistic research
@@ -343,8 +343,10 @@ graph LR
 
 | Metric | Value |
 |--------|-------|
-| **Detection Model** | YOLO-based object detection |
-| **Categories** | 84 Gardiner code classes |
+| **Detection Model** | Faster R-CNN with ResNet-50 backbone |
+| **Categories** | 634 Gardiner code classes |
+| **mAP Performance** | 31.2% (IoU=0.50:0.95) |
+| **Detection Accuracy** | 95% (post category-mapping fix) |
 | **TLA Coverage** | 100% (with fallback strategies) |
 | **AKU Integration** | Reference signs from Westcar corpus |
 | **Validation Interface** | Real-time review |
@@ -365,7 +367,7 @@ graph LR
 ```mermaid
 graph TB
     subgraph "AI Pipeline"
-        A[Image Input] --> B[YOLO Detection]
+        A[Image Input] --> B[Faster R-CNN Detection]
         B --> C[Gardiner Classification]
         C --> D[Confidence Scoring]
     end

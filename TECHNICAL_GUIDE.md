@@ -44,12 +44,12 @@ Technical documentation for HieraticAI system architecture, methodologies, and f
 ## System Architecture
 
 ### Overview
-The system uses **Faster R-CNN with ResNet-101** backbone for object detection, trained on 634 hieratic character categories using Detectron2 framework.
+The system uses **Faster R-CNN with ResNet-50** backbone for object detection, trained on 634 hieratic character categories using Detectron2 framework.
 
 ```
 Input Papyrus Image
          ↓
-Feature Extraction (ResNet-101)
+Feature Extraction (ResNet-50)
          ↓
 Region Proposal Network (RPN)
          ↓
@@ -61,7 +61,7 @@ ROI Pooling & Classification
 ### Model Architecture Details
 
 **Backbone Network:**
-- **ResNet-101**: Deep residual network with 101 layers
+- **ResNet-50**: Deep residual network with 50 layers
 - **Pre-trained**: ImageNet weights for transfer learning
 - **Feature Maps**: Multi-scale feature extraction (C2, C3, C4, C5)
 
@@ -127,7 +127,7 @@ MODEL:
     NAME: "build_resnet_backbone"
     FREEZE_AT: 2
   RESNETS:
-    DEPTH: 101
+    DEPTH: 50
     OUT_FEATURES: ["res2", "res3", "res4", "res5"]
   ROI_HEADS:
     NUM_CLASSES: 634
@@ -135,8 +135,8 @@ MODEL:
     POSITIVE_FRACTION: 0.25
 
 SOLVER:
-  IMS_PER_BATCH: 4
-  BASE_LR: 0.001
+  IMS_PER_BATCH: 2
+  BASE_LR: 0.00025
   STEPS: [8000, 12000]
   MAX_ITER: 15000
   WARMUP_ITERS: 1000
