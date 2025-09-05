@@ -176,12 +176,12 @@ The HieraticAI interface provides a validation panel:
 
 ### Validation Status System
 
-|| Color | Status | Meaning |
+| Color | Status | Meaning |
 |-------|--------|---------|
-|| 🔵 **Blue** | Pending | Awaiting validation |
-|| 🟢 **Green** | Correct | AI prediction is accurate |
-|| 🔴 **Red** | Incorrect | AI prediction needs correction |
-|| 🟠 **Orange** | Uncertain | Requires expert judgment |
+| 🔵 **Blue** | Pending | Awaiting validation |
+| 🟢 **Green** | Correct | AI prediction is accurate |
+| 🔴 **Red** | Incorrect | AI prediction needs correction |
+| 🟠 **Orange** | Uncertain | Requires expert judgment |
 
 ## Database Integration
 
