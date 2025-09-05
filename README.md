@@ -234,10 +234,10 @@ HieraticAI/
 ```
 
 ### Path Portability
-- ✅ **All code uses relative paths** - works on Windows, macOS, Linux
-- ✅ **No hardcoded usernames** - works for any user
-- ✅ **Auto-detection of training outputs** - finds most recent results
-- ✅ **Helpful error messages** - guides users to missing files
+-  **All code uses relative paths** - works on Windows, macOS, Linux
+-  **No hardcoded usernames** - works for any user
+-  **Auto-detection of training outputs** - finds most recent results
+-  **Helpful error messages** - guides users to missing files
 
 ### Fixing Path Issues
 If you encounter path-related errors:
