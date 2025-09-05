@@ -13,9 +13,9 @@
 # ===================================================================
 # Core Deep Learning Framework
 # ===================================================================
-torch>=2.0.0,<2.1.0
-torchvision>=0.15.0,<0.16.0
-torchaudio>=2.0.0,<2.1.0
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
 
 # Detectron2 (install separately after PyTorch)
 # Note: Install with specific command after torch installation

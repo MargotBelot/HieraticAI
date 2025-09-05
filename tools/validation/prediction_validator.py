@@ -5,7 +5,7 @@ Allows users to manually verify predictions, view Gardiner codes, and track vali
 Enriched with AKU Westcar database integration for contextual hieroglyph comparison.
 
 Usage:
-    streamlit run scripts/prediction_validator.py
+    streamlit run tools/validation/prediction_validator.py
 
 Features:
 - Visual prediction display with bounding boxes
@@ -46,17 +46,33 @@ st.set_page_config(
 
 class PredictionValidator:
     def __init__(self):
-        self.project_root = Path(".")
-        self.predictions_file = self.project_root / "output"/ "improved_training_20250822_200344"/ "coco_instances_results_FIXED.json"
-        self.validation_file = self.project_root / "output"/ "validation_results.json"
+        self.project_root = Path(".").resolve()
+        
+        # Find the most recent training output directory or use default
+        output_dir = self.project_root / "output"
+        if output_dir.exists():
+            # Look for the most recent training output
+            training_dirs = [d for d in output_dir.iterdir() if d.is_dir() and "training" in d.name]
+            if training_dirs:
+                latest_dir = max(training_dirs, key=lambda x: x.stat().st_mtime)
+                self.predictions_file = latest_dir / "coco_instances_results_FIXED.json"
+            else:
+                self.predictions_file = output_dir / "improved_training_20250822_200344" / "coco_instances_results_FIXED.json"
+        else:
+            self.predictions_file = self.project_root / "output" / "improved_training_20250822_200344" / "coco_instances_results_FIXED.json"
+            
+        self.validation_file = self.project_root / "output" / "validation_results.json"
         self.images_dir = self.project_root / "hieroglyphs_dataset"
         
-        # AKU database paths
-        self.aku_index_path = self.project_root / "data"/ "aku_gardiner_index.json"
-        self.aku_data_path = Path("./external_data/AKU Westcar Scraping")
+        # AKU database paths - use relative paths
+        self.aku_index_path = self.project_root / "data" / "aku_gardiner_index.json"
+        self.aku_data_path = self.project_root / "external_data" / "AKU Westcar Scraping"
         
         # TLA lemma database paths
-        self.tla_index_path = self.project_root / "data"/ "tla_lemma_index.json"
+        self.tla_index_path = self.project_root / "data" / "tla_lemma_index.json"
+        
+        # Validate critical paths
+        self._validate_paths()
         
         # Load AKU and TLA indices on initialization
         self.aku_index = self.load_aku_index()
@@ -154,6 +170,39 @@ class PredictionValidator:
             "Aa1": {"name": "placenta", "category": "Unclassified", "unicode": "U+1340D"},
             "Aa15": {"name": "part of human body", "category": "Unclassified", "unicode": "U+1341D"}
         }
+    
+    def _validate_paths(self):
+        """Validate that required paths exist and provide helpful error messages."""
+        missing_paths = []
+        
+        # Check predictions file
+        if not self.predictions_file.exists():
+            missing_paths.append(f"Predictions file: {self.predictions_file}")
+            
+        # Check images directory
+        if not self.images_dir.exists():
+            missing_paths.append(f"Images directory: {self.images_dir}")
+            
+        # Warn about optional paths (don't fail for these)
+        if not self.aku_data_path.exists():
+            st.warning(f"⚠️ AKU database not found at: {self.aku_data_path}")
+            st.info("💡 AKU database features will be disabled. To enable, ensure the 'external_data/AKU Westcar Scraping' directory exists.")
+            
+        if not self.aku_index_path.exists():
+            st.warning(f"⚠️ AKU index not found at: {self.aku_index_path}")
+            st.info("💡 Run the AKU indexer to generate the index: `python tools/data/aku_data_indexer.py`")
+            
+        if not self.tla_index_path.exists():
+            st.warning(f"⚠️ TLA index not found at: {self.tla_index_path}")
+            st.info("💡 Run the TLA indexer to generate the index: `python tools/data/tla_data_indexer.py`")
+            
+        # Fail only for critical missing paths
+        if missing_paths:
+            st.error("❌ Critical files missing:")
+            for path in missing_paths:
+                st.error(f"  • {path}")
+            st.error("Please ensure you've completed training and have the correct directory structure.")
+            st.stop()
 
     def load_predictions(self):
         """Load model predictions from file."""

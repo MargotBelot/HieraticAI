@@ -216,6 +216,7 @@ logs/
 # Local virtualenv and helper scripts
 hieratic_env/
 start_hieratic_ai.sh
+start_hieratic_ai.bat
 
 # AKU Westcar Scraping folder - now included
 # AKU Westcar Scraping/  # Now included in repository
@@ -225,10 +226,11 @@ start_hieratic_ai.sh
 *.orig
 *.rej
 
-# Mac specific
+# macOS metadata files
 .DS_Store
 .AppleDouble
 .LSOverride
+__MACOSX/
 # macOS resource fork files
 ._*
 

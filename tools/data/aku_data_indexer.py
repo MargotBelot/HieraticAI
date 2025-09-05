@@ -54,13 +54,16 @@ class AKUDataIndexer:
                 # Find corresponding SVG file
                 svg_file = self.find_svg_file(record_id, aku_nr)
                 
-                # Create enriched record
+                # Create enriched record with relative paths
+                json_relative = json_file.relative_to(Path.cwd()) if json_file.is_absolute() else json_file
+                svg_relative = svg_file.relative_to(Path.cwd()) if (svg_file and svg_file.is_absolute()) else svg_file
+                
                 enriched_record = {
                     "id": record_id,
                     "aku_nr": aku_nr,
                     "gardiner_code": mdc_code,
-                    "json_path": str(json_file),
-                    "svg_path": str(svg_file) if svg_file else None,
+                    "json_path": str(json_relative),
+                    "svg_path": str(svg_relative) if svg_relative else None,
                     "metadata": data
                 }
                 

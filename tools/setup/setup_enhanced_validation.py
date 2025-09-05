@@ -7,7 +7,7 @@ Script to prepare data and run the enhanced validation app with AKU database int
 
 Authors: Margot Belot <margotbelot@icloud.com>
          Dominique Colyer <dominic23@zedat.fu-berlin.de>
-Date: August 2025
+Date: Summer 2025
 """
 
 import os

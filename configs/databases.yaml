@@ -32,8 +32,8 @@ tla:
     
 # Gardiner Code Mapping
 gardiner:
-  unicode_mapping_file: "./data/gardiner_unicode_map.json"
-  category_definitions: "./data/gardiner_categories.json"
+  # unicode_mapping_file: "./data/gardiner_unicode_map.json"  # Optional - not currently used
+  # category_definitions: "./data/gardiner_categories.json"   # Optional - not currently used
   
   # Mapping settings
   mapping:

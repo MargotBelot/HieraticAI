@@ -65,18 +65,18 @@ docs = [
 "Documentation"= "https://github.com/MargotBelot/HieraticAI/blob/main/README.md"
 
 [project.scripts]
-hieratic-train = "hieratic_ai.core.train:main"
+# hieratic-train = "hieratic_ai.core.train:main"  # Module not currently implemented
 hieratic-validate = "tools.validation.prediction_validator:main"
 hieratic-index-aku = "tools.data.aku_data_indexer:main"
 hieratic-index-tla = "tools.data.tla_data_indexer:main"
 hieratic-evaluate = "tools.evaluation.compute_prediction_accuracy:main"
 
 [tool.setuptools.packages.find]
-where = ["src"]
-include = ["hieratic_ai*"]
+where = ["."]
+include = ["tools*", "hieratic_ai*"]
 
 [tool.setuptools.package-dir]
-""= "src"
+""= "."
 
 [tool.setuptools.package-data]
 "*"= ["*.json", "*.yaml", "*.yml"]

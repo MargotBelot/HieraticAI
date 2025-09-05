@@ -13,49 +13,11 @@
 
 ## Table of Contents
 
-- [HieraticAI](#hieraticai)
-  - [Table of Contents](#table-of-contents)
-  - [Project Overview](#project-overview)
-    - [The Problem We Solve](#the-problem-we-solve)
-    - [Our Solution](#our-solution)
-  - [How HieraticAI Works: Step-by-Step Process](#how-hieraticai-works-step-by-step-process)
-    - [Step 1: Image Processing \& AI Detection](#step-1-image-processing--ai-detection)
-    - [Step 2: Interactive Validation \& Review](#step-2-interactive-validation--review)
-    - [Step 3: Database Integration \& Context](#step-3-database-integration--context)
-  - [Manuscript Focus: The Westcar Papyrus](#manuscript-focus-the-westcar-papyrus)
-    - [Introduction to the Westcar Papyrus](#introduction-to-the-westcar-papyrus)
-  - [Quick Start](#quick-start)
-    - [One-Click Installation (Recommended)](#one-click-installation-recommended)
-    - [Manual Installation (For Experienced Users)](#manual-installation-for-experienced-users)
-  - [Interactive Validation Interface](#interactive-validation-interface)
-    - [Real-Time Validation Workflow](#real-time-validation-workflow)
-      - [**Main Interface Layout**](#main-interface-layout)
-    - [Enhanced Status System](#enhanced-status-system)
-    - [Advanced Validation Features](#advanced-validation-features)
-      - [**Smart Navigation**](#smart-navigation)
-      - [**Context-Rich Display**](#context-rich-display)
-      - [**Expert Tools**](#expert-tools)
-    - [Color-Coded Status System](#color-coded-status-system)
-  - [Database Integration](#database-integration)
-    - [AKU-PAL (Altägyptische Kursivschriften)](#aku-pal-altägyptische-kursivschriften)
-      - [About AKU-PAL](#about-aku-pal)
-      - [Integration Features](#integration-features)
-    - [TLA (Thesaurus Linguae Aegyptiae) Integration](#tla-thesaurus-linguae-aegyptiae-integration)
-      - [About TLA](#about-tla)
-      - [Integration Architecture](#integration-architecture)
-    - [Database Synchronization](#database-synchronization)
-  - [Model Performance](#model-performance)
-  - [Academic Applications](#academic-applications)
-    - [Research Use Cases](#research-use-cases)
-    - [Integration Possibilities](#integration-possibilities)
-  - [Technical Architecture](#technical-architecture)
-  - [Documentation](#documentation)
-  - [Acknowledgments](#acknowledgments)
-    - [Academic Context](#academic-context)
-    - [Project Status](#project-status)
-  - [Contributing](#contributing)
-  - [License](#license)
-  - [Citation](#citation)
+- [Quick Start](#quick-start)
+- [Project Overview](#project-overview)
+- [Interactive Interface](#interactive-validation-interface)
+- [Technical Details](#technical-architecture)
+- [Documentation](#documentation)
 
 ## Project Overview
 
@@ -131,28 +93,14 @@ graph LR
 
 ## Manuscript Focus: The Westcar Papyrus
 
-### Introduction to the Westcar Papyrus
+**Westcar Papyrus (pBerlin P 3033)** is a significant Middle Kingdom hieratic manuscript containing tales about magicians at the court of King Khufu.
 
-**Westcar Papyrus (pBerlin P 3033)** is one of the most significant Middle Kingdom hieratic manuscripts, containing a collection of tales about magicians at the court of King Khufu.
-
-**Manuscript Details:**
-- **Current Location**: Ägyptisches Museum und Papyrussammlung, Berlin
-- **Inventory Number**: P 3033
-- **Date**: 17th Dynasty, Second Intermediate Period (recounting events from the 4th Dynasty)
-- **Script**: Hieratic
-- **Language**: Middle Egyptian
-- **Text Category**: Narrative literature
-
-**Historical Context:**
-- **Setting**: 4th Dynasty (Old Kingdom) under the rule of King Khufu
-- **Structure**: 5 stories, each narrated by one of Khufu's sons to their father
-- **Physical Structure**: 12 columns across 3 papyrus fragments
-- **Literary Significance**: Provides insights into Old Kingdom royal ideology and Middle Kingdom narrative techniques
-
-**Research Focus:**
-- **Section Analyzed**: Recto VIII, lines 5-24
-- **Paleographic Importance**: Key text for understanding Middle Kingdom hieratic character evolution
-- **AI Training Dataset**: Primary source for hieratic character recognition model training
+**Key Details:**
+- **Location**: Ägyptisches Museum, Berlin
+- **Script**: Hieratic (Middle Egyptian)
+- **Content**: 5 stories across 12 columns
+- **Training Focus**: Recto VIII, lines 5-24
+- **Significance**: Primary source for AI model training and hieratic character evolution research
 
 ## Quick Start
 
@@ -226,118 +174,28 @@ The HieraticAI interface provides a validation panel:
 - Navigation: Previous/Next/Refresh buttons
 - Progress: ████▒▒▒ 67% completion
 
-### Enhanced Status System
+### Validation Status System
 
-| Symbol | Status | Confidence | Action Required |
-|--------|--------|------------|----------------|
-| 🔵 | **Pending** | Any | Needs review |
-| 🟢 | **Validated** | High (>80%) | Expert confirmed |
-| 🔴 | **Incorrect** | Any | AI prediction wrong |
-| 🟠 | **Uncertain** | Medium | Expert unsure |
-
-### Advanced Validation Features
-
-#### **Smart Navigation**
-- **Quick Jump**: Go directly to uncertain or low-confidence predictions
-- **Progress Tracking**: Visual progress bar with completion statistics
-
-#### **Context-Rich Display**
-- **Zoom & Pan**: Detailed examination of character details
-- **Measurements**: Pixel-level dimensions and positioning
-- **Overlay Options**: Toggle AI predictions, ground truth, reference grids
-
-#### **Expert Tools**
-- **Manual Correction**: Edit Gardiner codes directly
-- **Notes System**: Add scholarly comments and observations
-- **Cross-References**: Link to related signs in other manuscripts
-
-### Color-Coded Status System
-
-| Color | Status | Meaning |
+|| Color | Status | Meaning |
 |-------|--------|---------|
-| 🔵 **Blue** | Pending | Awaiting validation |
-| 🟢 **Green** | Correct | AI prediction is accurate |
-| 🔴 **Red** | Incorrect | AI prediction needs correction |
-| 🟠 **Orange** | Uncertain | Requires expert judgment |
+|| 🔵 **Blue** | Pending | Awaiting validation |
+|| 🟢 **Green** | Correct | AI prediction is accurate |
+|| 🔴 **Red** | Incorrect | AI prediction needs correction |
+|| 🟠 **Orange** | Uncertain | Requires expert judgment |
 
 ## Database Integration
 
-HieraticAI integrates with two major academic databases to provide comprehensive linguistic and paleographic context for hieratic character validation.
+HieraticAI integrates with two major academic databases to provide context for hieratic character validation:
 
-### AKU-PAL (Altägyptische Kursivschriften)
+**AKU-PAL (Altägyptische Kursivschriften)**
+- Digital paleography platform from Academy of Sciences, Mainz
+- Provides authenticated Westcar Papyrus signs for comparison
+- Link: https://aku-pal.uni-mainz.de/
 
-#### About AKU-PAL
-**Full Name**: Dynamische Paläographie des Hieratischen und der Kursivhieroglyphen  
-**Link**: https://aku-pal.uni-mainz.de/  
-**Institution**: Academy of Sciences and Literature, Mainz  
-**Purpose**: Online platform featuring digital paleography of hieratic and cursive hieroglyphs
-
-#### Integration Features
-**Westcar Papyrus Filtering:**
-- **Date Filter**: "Second Intermediate Period, 17th Dynasty"
-- **Source Filter**: "Berlin, Egyptian Museum and Papyrus Collection, P. 3033"
-- **Sorting Options**: Manuel de Codage (MdC), Moller No., AKU No., Date
-
-**Metadata Extraction:**
-- **Dating**: Precise chronological placement for paleographic comparison
-- **Manuscript Title**: Ensures signs are sourced from the Westcar Papyrus corpus
-- **Quality Assessment**: Readability, completeness, and ink clarity ratings
-- **Visual Resources**: High-quality facsimiles and photographic snippets
-
-**Research Applications:**
-- **Paleographic Comparison**: Compare AI predictions with authenticated Westcar signs
-- **Diachronic Analysis**: Track character evolution within the manuscript tradition
-- **Quality Validation**: Cross-reference with expert-curated paleographic data
-
-### TLA (Thesaurus Linguae Aegyptiae) Integration
-
-#### About TLA
-**Purpose**: Comprehensive lexicographical database of ancient Egyptian language  
-**Content**: Scraped metadata including transliterations, translations, and frequency data  
-**Coverage**: Extensive lemma database with hierarchical sign relationships
-
-#### Integration Architecture
-```mermaid
-graph LR
-    A[Gardiner Code] --> B{TLA Direct Match?}
-    B -->|Yes| C[Lemma Data]
-    B -->|No| D{Similar Sign?}
-    D -->|Yes| E[Fallback Mapping]
-    D -->|No| F{Manual Entry?}
-    F -->|Yes| G[Curated Data]
-    F -->|No| H[Gardiner Classification]
-    
-    C --> I[100% Coverage]
-    E --> I
-    G --> I
-    H --> I
-    
-    style I fill:#27ae60
-```
-
-**Coverage Strategy:**
-1. **Direct TLA Match**: Authentic lemma data with transliteration and translation
-2. **Fallback Mapping**: Similar sign substitution (e.g., A23A → A23)
-3. **Manual Entries**: Expert-curated data for missing signs
-4. **Gardiner Fallback**: Basic classification as last resort
-
-**Scraped Metadata Include:**
-- **Transliteration**: Conventional romanization of hieratic signs
-- **Translation**: English meanings and semantic ranges
-- **Frequency Data**: Usage statistics across the Egyptian corpus
-- **Lemma Relationships**: Connections to related lexical entries
-
-### Database Synchronization
-
-**Automated Indexing:**
-- AKU-PAL signs filtered by Westcar Papyrus provenance
-- TLA lemma data indexed by Gardiner code classification
-- Cross-referencing between paleographic and linguistic data
-
-**Real-time Integration:**
-- Live database queries during validation sessions
-- Cached results for performance optimization
-- Fallback mechanisms ensure 100% coverage
+**TLA (Thesaurus Linguae Aegyptiae)**
+- Comprehensive lexicographical database of ancient Egyptian
+- Provides transliterations, translations, and frequency data
+- Ensures 100% coverage through fallback mapping strategies
 
 ## Model Performance
 
@@ -351,16 +209,47 @@ graph LR
 | **AKU Integration** | Reference signs from Westcar corpus |
 | **Validation Interface** | Real-time review |
 
-## Academic Applications
 
-### Research Use Cases
-- **Digital Paleography**: Character evolution and regional variations
-- **Corpus Analysis**: Large-scale analysis of hieratic manuscripts
+## Project Structure & File Paths
 
-### Integration Possibilities
-- **Museum Collections**: Digitization and cataloging assistance
-- **Digital Humanities**: Integration with manuscript databases
-- **Egyptology Workflows**: Support for epigraphic documentation
+HieraticAI uses **relative paths** throughout to ensure portability across different systems and users. All paths are resolved relative to the project root directory.
+
+### Required Directory Structure
+```
+HieraticAI/
+├── data/                           # Generated indices and datasets
+│   ├── aku_gardiner_index.json     # AKU database index (auto-generated)
+│   └── tla_lemma_index.json        # TLA database index (auto-generated)
+├── external_data/                  # External database files
+│   └── AKU Westcar Scraping/       # AKU Westcar papyrus data
+│       ├── json/                   # Metadata files
+│       └── svg/                    # Sign vector graphics
+├── hieroglyphs_dataset/            # Training dataset
+│   ├── train/
+│   ├── val/
+│   └── test/
+├── output/                         # Training outputs and results
+│   └── [training_timestamp]/       # Auto-generated training directories
+└── tools/                          # Scripts and utilities
+```
+
+### Path Portability
+- ✅ **All code uses relative paths** - works on Windows, macOS, Linux
+- ✅ **No hardcoded usernames** - works for any user
+- ✅ **Auto-detection of training outputs** - finds most recent results
+- ✅ **Helpful error messages** - guides users to missing files
+
+### Fixing Path Issues
+If you encounter path-related errors:
+
+1. **Regenerate AKU index** (fixes absolute path issues):
+   ```bash
+   python regenerate_aku_index.py
+   ```
+
+2. **Verify project structure** matches the layout above
+
+3. **Run from project root** - always execute commands from the HieraticAI directory
 
 ## Technical Architecture
 
@@ -431,7 +320,7 @@ If you use HieraticAI in your research, please cite:
 ```bibtex
 @software{belotcolyer2025hieraticai,
   title={HieraticAI: AI-powered hieratic character recognition for ancient Egyptian manuscripts},
-  author={Belot, Margot and Colyer, Dominique},
+  author={Belot, Margot and Colyer, Domino},
   year={2025},
   url={https://github.com/MargotBelot/HieraticAI}
 }
