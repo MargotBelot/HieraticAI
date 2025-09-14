@@ -197,6 +197,7 @@ HieraticAI integrates with two major academic databases to provide context for h
 - Comprehensive lexicographical database of ancient Egyptian
 - Provides transliterations, translations, and frequency data
 - Ensures 100% coverage through fallback mapping strategies
+- Link: https://thesaurus-linguae-aegyptiae.de/home 
 
 ## Data Collection Tools
 
