@@ -258,3 +258,14 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
+
+# Data collection toolkit outputs
+tools/data-collection/sign_numbers.json
+tools/data-collection/sign_numbers.txt
+tools/data-collection/all_metadata.json
+tools/data-collection/all_metadata.txt
+tools/data-collection/svg/
+tools/data-collection/svg_analysis_results.json
+tools/data-collection/hieroglyph_output/
+tools/data-collection/*.log
+tools/data-collection/scraped_data/

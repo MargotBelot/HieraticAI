@@ -16,6 +16,7 @@
 - [Quick Start](#quick-start)
 - [Project Overview](#project-overview)
 - [Interactive Interface](#interactive-validation-interface)
+- [Data Collection Tools](#data-collection-tools)
 - [Technical Details](#technical-architecture)
 - [Documentation](#documentation)
 
@@ -197,6 +198,74 @@ HieraticAI integrates with two major academic databases to provide context for h
 - Provides transliterations, translations, and frequency data
 - Ensures 100% coverage through fallback mapping strategies
 
+## Data Collection Tools
+
+**Included: Hieroglyph Scraping Toolkit**
+
+HieraticAI includes a comprehensive data collection toolkit for downloading hieroglyphic data from academic databases. This toolkit automates the process of gathering training data and reference materials.
+
+**Location**: `tools/data-collection/`
+
+**What it does:**
+- Downloads hieroglyphic signs from AKU-PAL database
+- Collects detailed metadata for each sign
+- Downloads high-quality SVG images
+- Generates statistics and analysis reports
+- Creates organized datasets for training and research
+
+**Quick Start with Data Collection:**
+1. **Set up configuration**:
+   ```bash
+   cd tools/data-collection
+   python3 list_signs_modular.py --create-config
+   ```
+
+2. **Collect hieroglyph list**:
+   ```bash
+   python3 list_signs_modular.py --config hieroglyph_config.json
+   ```
+
+3. **Download data and images**:
+   ```bash
+   python3 metadata_scraper_modular.py --signs-file sign_numbers.txt --config hieroglyph_config.json --download-svg
+   ```
+
+**Output files:**
+- `sign_numbers.json/txt` - Lists of available hieroglyphs
+- `all_metadata.json/txt` - Detailed information about each sign
+- `svg/` folder - Vector graphics of all hieroglyphs
+- `svg_analysis_results.json` - Image statistics and analysis
+
+**Requirements**: Python 3.8+, Chrome browser, see `tools/data-collection/README.md` for detailed setup instructions.
+
+This toolkit is perfect for:
+- Expanding training datasets
+- Collecting reference materials
+- Building custom hieroglyphic corpora
+- Research data gathering
+
+**Integration with HieraticAI Workflow:**
+
+The data collection tools complement the main HieraticAI system by providing fresh training data:
+
+```mermaid
+graph LR
+    A[Data Collection Tools] --> B[Download AKU Signs]
+    B --> C[Generate Training Data]
+    C --> D[Train AI Model]
+    D --> E[Validation Interface]
+    E --> F[Research Output]
+    
+    style A fill:#f39c12
+    style D fill:#3498db
+    style E fill:#e74c3c
+```
+
+1. **Collect Data**: Use the scraping toolkit to gather hieroglyphic signs
+2. **Process Dataset**: Convert downloaded data to training format
+3. **Train Model**: Use collected data to improve AI accuracy
+4. **Validate Results**: Use the main HieraticAI interface for validation
+
 ## Model Performance
 
 | Metric | Value |
@@ -231,6 +300,13 @@ HieraticAI/
 ├── output/                         # Training outputs and results
 │   └── [training_timestamp]/       # Auto-generated training directories
 └── tools/                          # Scripts and utilities
+    ├── data-collection/            # Hieroglyph scraping toolkit
+    │   ├── README.md              # Data collection setup guide
+    │   ├── list_signs_modular.py   # Sign list scraper
+    │   ├── metadata_scraper_modular.py # Metadata downloader
+    │   ├── svg_analyzer_modular.py # Image analysis tool
+    │   └── hieroglyph_scraping_toolkit/ # Supporting modules
+    └── validation/                 # Validation interface
 ```
 
 ### Path Portability
