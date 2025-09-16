@@ -4,9 +4,6 @@ Gardiner Expression Parser Module
 This module provides advanced parsing functionality for Gardiner expressions,
 converting hierarchical text representations into structured node trees for
 hieroglyphic text reconstruction.
-
-Author: Margot
-Date: September 2024
 """
 
 import re

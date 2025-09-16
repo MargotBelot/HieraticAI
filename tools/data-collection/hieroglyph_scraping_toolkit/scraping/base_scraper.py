@@ -3,9 +3,6 @@ Base Web Scraper Module
 
 This module provides the base web scraper class with common functionality
 for all web scraping operations in the hieroglyph toolkit.
-
-Author: Margot
-Date: September 2024
 """
 
 import time

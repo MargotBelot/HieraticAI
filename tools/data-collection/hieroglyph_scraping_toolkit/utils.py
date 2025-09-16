@@ -3,9 +3,6 @@ Utilities Module
 
 This module provides common utility functions for the hieroglyph toolkit,
 including file operations, logging setup, and error handling utilities.
-
-Author: Margot
-Date: September 2024
 """
 
 import os

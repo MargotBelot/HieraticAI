@@ -3,9 +3,6 @@ AKU-PAL Metadata Scraper Module
 
 This module provides specialized scraping functionality for the AKU-PAL website,
 including sign collection, metadata extraction, and SVG downloading.
-
-Author: Margot
-Date: September 2024
 """
 
 import requests

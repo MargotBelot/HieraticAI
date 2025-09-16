@@ -3,9 +3,6 @@ Configuration Management Module
 
 This module provides configuration management for the hieroglyph toolkit,
 handling paths, settings, and environment-specific configurations.
-
-Author: Margot
-Date: September 2024
 """
 
 import os
@@ -138,7 +135,7 @@ class ConfigManager:
         Save current configuration to JSON file.
         
         Args:
-            config_file: Optional path to save configuration to
+            config_file: Optional path to save configuration to 
         """
         file_path = Path(config_file) if config_file else self.config_file
         if not file_path:

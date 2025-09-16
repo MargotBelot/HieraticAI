@@ -8,9 +8,6 @@ modular architecture.
 
 Usage:
     python list_signs_modular.py [--config CONFIG_FILE] [--output OUTPUT_DIR]
-
-Author: Margot
-Date: September 2024
 """
 
 import argparse
@@ -114,19 +111,19 @@ def main():
                 logger.info("Sign numbers saved successfully")
                 
                 # Print summary
-                print(f"\n✅ Sign Collection Complete!")
-                print(f"📊 Collected {len(sign_numbers)} unique sign numbers")
-                print(f"💾 Results saved to: {output_dir}")
-                print(f"📄 Files created:")
-                print(f"   - sign_numbers.json")
-                print(f"   - sign_numbers.txt")
-                print(f"📋 Log file: {log_file}")
+                print(f"\nSign Collection Complete!")
+                print(f"Collected {len(sign_numbers)} unique sign numbers")
+                print(f"Results saved to: {output_dir}")
+                print(f"Files created:")
+                print(f"- sign_numbers.json")
+                print(f"- sign_numbers.txt")
+                print(f"Log file: {log_file}")
                 
                 # Get and display scraping statistics
                 stats = scraper.get_scraping_statistics()
-                print(f"\n📈 Statistics:")
-                print(f"   - Success rate: {stats['success_rate']:.1f}%")
-                print(f"   - Failed signs: {stats['failed_signs_count']}")
+                print(f"\nStatistics:")
+                print(f"- Success rate: {stats['success_rate']:.1f}%")
+                print(f"- Failed signs: {stats['failed_signs_count']}")
                 
                 return 0
             else:
@@ -134,10 +131,10 @@ def main():
                 return 1
                 
     except KeyboardInterrupt:
-        print("\n⚠️  Operation cancelled by user")
+        print("\nOperation cancelled by user")
         return 1
     except Exception as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\nError: {e}")
         if args.verbose:
             import traceback
             traceback.print_exc()

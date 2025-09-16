@@ -8,9 +8,6 @@ hieroglyph_toolkit modular architecture.
 
 Usage:
     python svg_analyzer_modular.py [--config CONFIG_FILE] [--svg-dir SVG_DIR] [--output OUTPUT_DIR]
-
-Author: Margot
-Date: September 2024
 """
 
 import argparse
@@ -92,11 +89,11 @@ def main():
         elif path_config.svg_directory:
             svg_directory = path_config.svg_directory
         else:
-            print("❌ No SVG directory specified. Use --svg-dir or set svg_directory in config.")
+            print(f"No SVG directory specified. Use --svg-dir or set svg_directory in config.")
             return 1
         
         if not svg_directory.exists():
-            print(f"❌ SVG directory not found: {svg_directory}")
+            print(f"SVG directory not found: {svg_directory}")
             return 1
         
         # Determine output directory
@@ -121,7 +118,7 @@ def main():
         # Find SVG files
         svg_files = list(svg_directory.glob(args.pattern))
         if not svg_files:
-            print(f"❌ No SVG files found in {svg_directory} matching pattern '{args.pattern}'")
+            print(f"No SVG files found in {svg_directory} matching pattern '{args.pattern}'")
             return 1
         
         print(f"Found {len(svg_files)} SVG files to analyze")
@@ -134,7 +131,7 @@ def main():
         all_analyses = []
         filenames = [f.name for f in svg_files]
         
-        print(f"\n🔄 Analyzing {len(svg_files)} SVG files...")
+        print(f"\nAnalyzing {len(svg_files)} SVG files...")
         
         for i, svg_file in enumerate(svg_files):
             try:
@@ -161,30 +158,30 @@ def main():
                     all_analyses.append(analysis)
                     
                     if args.verbose:
-                        print(f"✅ Analyzed {svg_file.name} ({i+1}/{len(svg_files)})")
-                        print(f"   Dimensions: {metrics['viewbox']['width']:.1f}x{metrics['viewbox']['height']:.1f}")
-                        print(f"   Elements: {metrics['complexity']['total_elements']}")
-                        print(f"   Complexity: {metrics['complexity']['complexity_score']:.2f}")
+                        print(f"Analyzed {svg_file.name} ({i+1}/{len(svg_files)})")
+                        print(f"Dimensions: {metrics['viewbox']['width']:.1f}x{metrics['viewbox']['height']:.1f}")
+                        print(f"Elements: {metrics['complexity']['total_elements']}")
+                        print(f"Complexity: {metrics['complexity']['complexity_score']:.2f}")
                 else:
                     logger.warning(f"Failed to load SVG file: {svg_file.name}")
                     if args.verbose:
-                        print(f"⚠️  Failed to load {svg_file.name}")
+                        print(f"Failed to load {svg_file.name}")
                 
             except Exception as e:
                 logger.error(f"Error analyzing {svg_file.name}: {e}")
                 if args.verbose:
-                    print(f"❌ Error analyzing {svg_file.name}: {e}")
+                    print(f"Error analyzing {svg_file.name}: {e}")
                 continue
         
         if not args.verbose:
             print()  # New line after progress bar
         
         if not all_analyses:
-            print("❌ No SVG files were successfully analyzed")
+            print("No SVG files were successfully analyzed")
             return 1
         
         # Calculate aggregate statistics
-        print(f"\n📊 Calculating statistics...")
+        print(f"\nCalculating statistics...")
         
         # Basic statistics
         total_files = len(all_analyses)
@@ -252,29 +249,29 @@ def main():
             logger.info("Analysis results saved successfully")
             
             # Print summary
-            print(f"✅ SVG Analysis Complete!")
-            print(f"📊 Analyzed {total_files}/{len(svg_files)} files successfully")
-            print(f"💾 Results saved to: {results_file}")
+            print(f"SVG Analysis Complete!")
+            print(f"Analyzed {total_files}/{len(svg_files)} files successfully")
+            print(f"Results saved to: {results_file}")
             
-            print(f"\n📏 Dimension Statistics:")
-            print(f"   Average size: {dimension_stats['average_width']:.1f} × {dimension_stats['average_height']:.1f}")
-            print(f"   Size range: {dimension_stats['min_width']:.1f}-{dimension_stats['max_width']:.1f} × {dimension_stats['min_height']:.1f}-{dimension_stats['max_height']:.1f}")
+            print(f"\nDimension Statistics:")
+            print(f"Average size: {dimension_stats['average_width']:.1f} × {dimension_stats['average_height']:.1f}")
+            print(f"Size range: {dimension_stats['min_width']:.1f}-{dimension_stats['max_width']:.1f} × {dimension_stats['min_height']:.1f}-{dimension_stats['max_height']:.1f}")
             
-            print(f"\n🧩 Element Statistics:")
+            print(f"\nElement Statistics:")
             for elem_type, stats in element_stats.items():
                 if stats['total'] > 0:
-                    print(f"   {elem_type}: {stats['total']} total, avg {stats['average']:.1f} per file")
+                    print(f"{elem_type}: {stats['total']} total, avg {stats['average']:.1f} per file")
             
-            print(f"\n🎯 Complexity:")
-            print(f"   Average complexity score: {final_stats['complexity']['average_complexity']:.2f}")
-            print(f"   Complexity range: {final_stats['complexity']['min_complexity']:.2f} - {final_stats['complexity']['max_complexity']:.2f}")
+            print(f"\nComplexity:")
+            print(f"Average complexity score: {final_stats['complexity']['average_complexity']:.2f}")
+            print(f"Complexity range: {final_stats['complexity']['min_complexity']:.2f} - {final_stats['complexity']['max_complexity']:.2f}")
             
-            print(f"\n📋 Log file: {log_file}")
+            print(f"\nLog file: {log_file}")
             
             # Show cache statistics
             cache_stats = processor.get_cache_statistics()
-            print(f"\n💾 Cache Statistics:")
-            print(f"   SVG cache size: {cache_stats['svg_cache_size']}")
+            print(f"\nCache Statistics:")
+            print(f"SVG cache size: {cache_stats['svg_cache_size']}")
             
             return 0
         else:
@@ -282,10 +279,10 @@ def main():
             return 1
             
     except KeyboardInterrupt:
-        print("\n⚠️  Operation cancelled by user")
+        print("\nOperation cancelled by user")
         return 1
     except Exception as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\nError: {e}")
         if args.verbose:
             import traceback
             traceback.print_exc()

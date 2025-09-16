@@ -3,9 +3,6 @@ SVG Processor Module
 
 This module provides comprehensive SVG processing functionality including
 parsing, analysis, manipulation, and conversion for hieroglyphic content.
-
-Author: Margot
-Date: September 2024
 """
 
 import re

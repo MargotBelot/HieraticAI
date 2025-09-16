@@ -8,9 +8,6 @@ modular architecture.
 
 Usage:
     python metadata_scraper_modular.py [--config CONFIG_FILE] [--signs-file SIGNS_FILE] [--output OUTPUT_DIR]
-
-Author: Margot
-Date: September 2024
 """
 
 import argparse
@@ -174,7 +171,7 @@ def main():
             all_metadata = []
             processed_count = 0
             
-            print(f"\n🔄 Processing {len(sign_numbers)} signs...")
+            print(f"\nProcessing {len(sign_numbers)} signs...")
             
             for i, sign_id in enumerate(sign_numbers):
                 try:
@@ -192,17 +189,17 @@ def main():
                         processed_count += 1
                         
                         if args.verbose:
-                            print(f"✅ Processed sign {sign_id} ({i+1}/{len(sign_numbers)})")
+                            print(f"Processed sign {sign_id} ({i+1}/{len(sign_numbers)})")
                     else:
                         logger.warning(f"Failed to scrape metadata for sign {sign_id}")
                         if args.verbose:
-                            print(f"⚠️  Failed sign {sign_id} ({i+1}/{len(sign_numbers)})")
+                            print(f"Failed sign {sign_id} ({i+1}/{len(sign_numbers)})")
                     
                     # Download SVG if requested
                     if args.download_svg and metadata:
                         svg_success = scraper.download_sign_svg(sign_id, str(output_dir / "svg"))
                         if svg_success and args.verbose:
-                            print(f"📄 Downloaded SVG for {sign_id}")
+                            print(f"Downloaded SVG for {sign_id}")
                     
                     # Save intermediate results
                     if len(all_metadata) % args.batch_size == 0 and len(all_metadata) > 0:
@@ -210,12 +207,12 @@ def main():
                         scraper.save_metadata_batch(all_metadata, str(output_dir))
                 
                 except KeyboardInterrupt:
-                    print("\n⚠️  Operation cancelled by user")
+                    print("\nOperation cancelled by user")
                     break
                 except Exception as e:
                     logger.error(f"Error processing sign {sign_id}: {e}")
                     if args.verbose:
-                        print(f"❌ Error with sign {sign_id}: {e}")
+                        print(f"Error with sign {sign_id}: {e}")
                     continue
             
             if not args.verbose:
@@ -230,36 +227,36 @@ def main():
                     logger.info("Metadata saved successfully")
                     
                     # Print summary
-                    print(f"\n✅ Metadata Scraping Complete!")
-                    print(f"📊 Processed {processed_count}/{len(sign_numbers)} signs successfully")
-                    print(f"💾 Results saved to: {output_dir}")
-                    print(f"📄 Files created:")
-                    print(f"   - all_metadata.json ({len(all_metadata)} records)")
-                    print(f"   - all_metadata.txt")
+                    print(f"\nMetadata Scraping Complete!")
+                    print(f"Processed {processed_count}/{len(sign_numbers)} signs successfully")
+                    print(f"Results saved to: {output_dir}")
+                    print(f"Files created:")
+                    print(f"- all_metadata.json ({len(all_metadata)} records)")
+                    print(f"- all_metadata.txt")
                     if args.download_svg:
-                        print(f"   - svg/ (directory with SVG files)")
-                    print(f"📋 Log file: {log_file}")
+                        print(f"- svg/ (directory with SVG files)")
+                    print(f"Log file: {log_file}")
                     
                     # Get and display scraping statistics
                     stats = scraper.get_scraping_statistics()
-                    print(f"\n📈 Statistics:")
-                    print(f"   - Success rate: {stats['success_rate']:.1f}%")
-                    print(f"   - Failed signs: {stats['failed_signs_count']}")
-                    print(f"   - Cache hits: {stats.get('metadata_cache_size', 0)}")
+                    print(f"\nStatistics:")
+                    print(f"- Success rate: {stats['success_rate']:.1f}%")
+                    print(f"- Failed signs: {stats['failed_signs_count']}")
+                    print(f"- Cache hits: {stats.get('metadata_cache_size', 0)}")
                     
                     return 0
                 else:
                     logger.error("Failed to save results")
                     return 1
             else:
-                print("\n❌ No metadata was successfully collected")
+                print("\nNo metadata was successfully collected")
                 return 1
                 
     except KeyboardInterrupt:
-        print("\n⚠️  Operation cancelled by user")
+        print("\nOperation cancelled by user")
         return 1
     except Exception as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\nError: {e}")
         if args.verbose:
             import traceback
             traceback.print_exc()
