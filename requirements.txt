@@ -17,8 +17,8 @@ torch>=2.0.0
 torchvision>=0.15.0
 torchaudio>=2.0.0
 
-# Detectron2 (install with PyTorch)
-detectron2 @ git+https://github.com/facebookresearch/detectron2.git
+# Detectron2 (install separately after PyTorch)
+# detectron2 @ git+https://github.com/facebookresearch/detectron2.git
 
 # ===================================================================
 # Computer Vision and Image Processing  
