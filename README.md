@@ -129,6 +129,7 @@ cd HieraticAI
 python3 -m venv hieratic_env
 # Activate: hieratic_env\Scripts\activate (Win) or source hieratic_env/bin/activate (Mac/Linux)
 pip install -r requirements.txt
+# Note: Detectron2 will be automatically installed from the requirements.txt
 streamlit run tools/validation/prediction_validator.py
 ```
 
