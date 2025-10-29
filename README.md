@@ -45,51 +45,75 @@ HieraticAI provides:
 - **Expert Oversight**: Validation interface ensures rigor
 - **Rich Context**: Integrated linguistic and paleographic resources
 
-## How HieraticAI Works: Step-by-Step Process
+## Complete Pipeline Overview
 
-### Step 1: Image Processing & AI Detection
 ```mermaid
 graph LR
-    A[Upload Papyrus Image] --> B[AI Analysis]
-    B --> C[Character Detection]
-    C --> D[Gardiner Classification]
-    D --> E[Confidence Scoring]
+    %% INPUT
+    Start[<b>INPUT</b><br/>Papyrus Westcar<br/>Facsimile Image<br/>Recto VIII, lines 5-24]
     
-    style A fill:#f39c12
-    style B fill:#3498db
-    style E fill:#e74c3c
-```
-
-### Step 2: Interactive Validation & Review
-```mermaid
-graph LR
-    A[AI Predictions] --> B[Review]
-    B --> C[Accept]
-    B --> D[Correct]
-    B --> E[Flag Uncertain]
-    C --> F[Validated Dataset]
-    D --> F
-    E --> F
+    %% DATA COLLECTION
+    AKU[<b>AKU-PAL Database</b><br/>309 hieroglyphs<br/>781 variants<br/>17th Dynasty<br/>SVG vectors]
+    TLA[<b>TLA Database</b><br/>587 lemmas<br/>Transliterations<br/>Translations<br/>92.8% coverage<br/>Fallback strategies]
     
-    style A fill:#95a5a6
-    style B fill:#27ae60
-    style F fill:#2ecc71
-```
-
-### Step 3: Database Integration & Context
-```mermaid
-graph LR
-    A[Validated Signs] --> B[TLA Lookup]
-    A --> C[AKU References]
-    B --> D[Transliteration]
-    C --> E[Comparison Images]
-    D --> F[Research Export]
-    E --> F
+    %% BRANCHING: Two parallel paths from START
+    Start --> Path1[<b>PATH A</b><br/>Vector<br/>Reconstruction]
+    Start --> Path2[<b>PATH B</b><br/>AI<br/>Recognition]
     
-    style A fill:#2ecc71
-    style B fill:#3498db
-    style C fill:#f39c12
-    style F fill:#9b59b6
+    %% PATH B starts with manual annotation
+    Path2 --> CVAT[<b>MANUAL ANNOTATION</b><br/>CVAT Tool<br/>605 signs<br/>Polygonal bounding boxes<br/>Gardiner codes + Unicode]
+    
+    %% PATH A: VECTOR RECOMPOSITOR
+    Path1 --> VR1[<b>Spatial Encoding</b><br/><b>Parser</b><br/>Gardiner expressions<br/>Ligature handling]
+    AKU --> VR1
+    VR1 --> VR2[<b>Hieratogram</b><br/><b>Matching</b><br/>Period-specific<br/>variants]
+    VR2 --> VR3[<b>SVG Line</b><br/><b>Reconstruction</b><br/>Modular<br/>composition<br/>Metadata<br/>embedding]
+    VR3 --> OutputA[<b>OUTPUT A</b><br/>Digital Edition<br/>SVG format<br/>20 lines<br/>605 signs]
+    
+    %% PATH B: AI RECOGNITION (continues from CVAT)
+    CVAT --> Patch[<b>Patching</b><br/>Multiple crop views<br/>605 signs to<br/>1,269 instances]
+    Patch --> AI1[<b>Spatial Data</b><br/><b>Splitting</b><br/>10 regions<br/>70/20/10 split<br/>Prevents leakage<br/>803 training instances]
+    AI1 --> AI2[<b>Data</b><br/><b>Augmentation</b><br/>803 to 4,726<br/>5.9x expansion<br/>Rotation, scaling]
+    AI2 --> AI3[<b>Model Training</b><br/>Google Colab A100<br/>Faster R-CNN<br/>ResNet-50<br/>634 categories<br/>15,000 iterations]
+    AI3 --> AI5[<b>Trained Model</b><br/>mAP: 31.2%<br/>High-freq: 45-75%<br/>Low-freq: 5-25%]
+    
+    %% VALIDATION INTERFACE
+    AI5 --> Val[<b>VALIDATION</b><br/><b>INTERFACE</b><br/>Streamlit UI<br/>Human-in-the-Loop]
+    
+    %% Add database context to validation
+    AKU -.-> Val
+    TLA -.-> Val
+    
+    Val --> Val2[<b>Expert Review</b><br/>TLA linguistic data<br/>AKU-PAL references<br/>Accept/Reject/Modify<br/>100 signs in<br/>12-15 minutes]
+    Val2 --> OutputB[<b>OUTPUT B</b><br/>Validated Dataset<br/>CSV format<br/>Egyptological<br/>validation]
+    
+    %% FINAL APPLICATIONS
+    OutputA --> Apps[<b>RESEARCH</b><br/><b>APPLICATIONS</b>]
+    OutputB --> Apps
+    Apps --> App1[Digital<br/>Editions]
+    Apps --> App2[Paleographic<br/>Analysis]
+    Apps --> App3[Large-scale<br/>Corpus Studies]
+    
+    %% STYLING
+    classDef input fill:#95a5a6,stroke:#7f8c8d,stroke-width:3px,color:#fff
+    classDef annotation fill:#9b59b6,stroke:#8e44ad,stroke-width:3px,color:#fff
+    classDef database fill:#34495e,stroke:#2c3e50,stroke-width:2px,color:#fff
+    classDef pathLabel fill:#95a5a6,stroke:#7f8c8d,stroke-width:2px,color:#fff
+    classDef vectorComp fill:#3498db,stroke:#2c3e50,stroke-width:2px,color:#fff
+    classDef aiComp fill:#2ecc71,stroke:#27ae60,stroke-width:2px,color:#fff
+    classDef validation fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+    classDef output fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    classDef apps fill:#16a085,stroke:#138d75,stroke-width:2px,color:#fff
+    
+    class Start input
+    class CVAT annotation
+    class AKU,TLA database
+    class Path1,Path2 pathLabel
+    class VR1,VR2,VR3 vectorComp
+    class Patch,AI1,AI2,AI3,AI5 aiComp
+    class Val,Val2 validation
+    class OutputA,OutputB output
+    class Apps,App1,App2,App3 apps
 ```
 
 ## Manuscript Focus: The Westcar Papyrus
