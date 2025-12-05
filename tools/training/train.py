@@ -31,6 +31,7 @@ if project_root not in sys.path:
 from utils.dataset_validator import DatasetValidator
 
 # Detectron2 imports
+DETECTRON2_AVAILABLE = False
 try:
     import torch
     from detectron2 import model_zoo
@@ -52,12 +53,16 @@ try:
     from detectron2.evaluation import COCOEvaluator
     from detectron2.solver import get_default_optimizer_params
     from detectron2.utils.logger import setup_logger
+    
+    DETECTRON2_AVAILABLE = True
 except ImportError as e:
-    print(f"Failed to import Detectron2: {e}")
-    print(
-        "Please install Detectron2: https://detectron2.readthedocs.io/en/latest/tutorials/install.html"
-    )
-    sys.exit(1)
+    # Only exit if running as main script, not when imported by tests
+    if __name__ == "__main__":
+        print(f"Failed to import Detectron2: {e}")
+        print(
+            "Please install Detectron2: https://detectron2.readthedocs.io/en/latest/tutorials/install.html"
+        )
+        sys.exit(1)
 
 # Configure logging
 logging.basicConfig(
