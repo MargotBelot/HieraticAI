@@ -139,88 +139,92 @@ class HieroglyphTrainingConfig:
         return True
 
 
-class CategoryRemappingDatasetMapper(DatasetMapper):
-    """Custom dataset mapper that handles category ID remapping"""
+# Only define Detectron2-dependent classes if Detectron2 is available
+if DETECTRON2_AVAILABLE:
 
-    def __init__(self, cfg, is_train: bool = True, category_offset: int = 0):
-        super().__init__(cfg, is_train)
-        self.category_offset = category_offset
+    class CategoryRemappingDatasetMapper(DatasetMapper):
+        """Custom dataset mapper that handles category ID remapping"""
 
-        if category_offset != 0:
-            logger.info(f"DatasetMapper will apply category offset: {category_offset}")
+        def __init__(self, cfg, is_train: bool = True, category_offset: int = 0):
+            super().__init__(cfg, is_train)
+            self.category_offset = category_offset
 
-    def __call__(self, dataset_dict):
-        """Apply category ID remapping to annotations"""
-        dataset_dict = super().__call__(dataset_dict)
+            if category_offset != 0:
+                logger.info(
+                    f"DatasetMapper will apply category offset: {category_offset}"
+                )
 
-        if self.category_offset != 0 and "annotations" in dataset_dict:
-            for ann in dataset_dict["annotations"]:
-                ann["category_id"] += self.category_offset
+        def __call__(self, dataset_dict):
+            """Apply category ID remapping to annotations"""
+            dataset_dict = super().__call__(dataset_dict)
 
-                # Ensure category IDs are valid
-                if ann["category_id"] < 0:
-                    logger.error(
-                        f"Invalid category ID after remapping: {ann['category_id']}"
-                    )
-                    raise ValueError(
-                        f"Category ID remapping resulted in negative ID: {ann['category_id']}"
-                    )
+            if self.category_offset != 0 and "annotations" in dataset_dict:
+                for ann in dataset_dict["annotations"]:
+                    ann["category_id"] += self.category_offset
 
-        return dataset_dict
+                    # Ensure category IDs are valid
+                    if ann["category_id"] < 0:
+                        logger.error(
+                            f"Invalid category ID after remapping: {ann['category_id']}"
+                        )
+                        raise ValueError(
+                            f"Category ID remapping resulted in negative ID: {ann['category_id']}"
+                        )
 
+            return dataset_dict
 
-class RobustHieroglyphTrainer(DefaultTrainer):
-    """Enhanced trainer with error handling and validation"""
+    class RobustHieroglyphTrainer(DefaultTrainer):
+        """Enhanced trainer with error handling and validation"""
 
-    def __init__(self, cfg, training_config: HieroglyphTrainingConfig):
-        self.training_config = training_config
-        super().__init__(cfg)
+        def __init__(self, cfg, training_config: HieroglyphTrainingConfig):
+            self.training_config = training_config
+            super().__init__(cfg)
 
-    @classmethod
-    def build_train_loader(cls, cfg):
-        """Build training data loader with category remapping"""
-        # Get training config from cfg object where we'll store it
-        category_offset = getattr(cfg, "_CATEGORY_OFFSET", 0)
+        @classmethod
+        def build_train_loader(cls, cfg):
+            """Build training data loader with category remapping"""
+            # Get training config from cfg object where we'll store it
+            category_offset = getattr(cfg, "_CATEGORY_OFFSET", 0)
 
-        mapper = CategoryRemappingDatasetMapper(
-            cfg, is_train=True, category_offset=category_offset
-        )
-        return build_detection_train_loader(cfg, mapper=mapper)
-
-    @classmethod
-    def build_evaluator(cls, cfg, dataset_name):
-        """Build evaluator for validation"""
-        return COCOEvaluator(dataset_name, output_dir=cfg.OUTPUT_DIR)
-
-    def train(self):
-        """Enhanced training with error handling"""
-        logger.info("Starting robust training...")
-
-        try:
-            super().train()
-            logger.info("Training completed successfully!")
-
-        except KeyboardInterrupt:
-            logger.warning(" Training interrupted by user")
-            self._save_checkpoint_on_interrupt()
-
-        except Exception as e:
-            logger.error(f"Training failed with error: {e}")
-            logger.error(f"Traceback: {traceback.format_exc()}")
-            self._save_checkpoint_on_interrupt()
-            raise
-
-    def _save_checkpoint_on_interrupt(self):
-        """Save checkpoint when training is interrupted"""
-        try:
-            checkpoint_path = os.path.join(
-                self.cfg.OUTPUT_DIR,
-                f"model_interrupted_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pth",
+            mapper = CategoryRemappingDatasetMapper(
+                cfg, is_train=True, category_offset=category_offset
             )
-            self.checkpointer.save(checkpoint_path)
-            logger.info(f"Saved interruption checkpoint: {checkpoint_path}")
-        except Exception as e:
-            logger.error(f"Failed to save interruption checkpoint: {e}")
+            return build_detection_train_loader(cfg, mapper=mapper)
+
+        @classmethod
+        def build_evaluator(cls, cfg, dataset_name):
+            """Build evaluator for validation"""
+            return COCOEvaluator(dataset_name, output_dir=cfg.OUTPUT_DIR)
+
+        def train(self):
+            """Enhanced training with error handling"""
+            logger.info("Starting robust training...")
+
+            try:
+                super().train()
+                logger.info("Training completed successfully!")
+
+            except KeyboardInterrupt:
+                logger.warning(" Training interrupted by user")
+                self._save_checkpoint_on_interrupt()
+
+            except Exception as e:
+                logger.error(f"Training failed with error: {e}")
+                logger.error(f"Traceback: {traceback.format_exc()}")
+                self._save_checkpoint_on_interrupt()
+                raise
+
+        def _save_checkpoint_on_interrupt(self):
+            """Save checkpoint when training is interrupted"""
+            try:
+                checkpoint_path = os.path.join(
+                    self.cfg.OUTPUT_DIR,
+                    f"model_interrupted_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pth",
+                )
+                self.checkpointer.save(checkpoint_path)
+                logger.info(f"Saved interruption checkpoint: {checkpoint_path}")
+            except Exception as e:
+                logger.error(f"Failed to save interruption checkpoint: {e}")
 
 
 def register_hieroglyph_datasets(config: HieroglyphTrainingConfig):
