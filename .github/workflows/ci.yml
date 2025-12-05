@@ -1,0 +1,235 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    
+    - name: Cache pip packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install linting tools
+      run: |
+        pip install --upgrade pip
+        pip install flake8 black isort
+    
+    - name: Run Black formatter check
+      run: |
+        black --check --diff utils/ tools/ tests/
+    
+    - name: Run isort import check
+      run: |
+        isort --check-only --diff utils/ tools/ tests/
+    
+    - name: Run Flake8 linter
+      run: |
+        # Stop the build if there are Python syntax errors or undefined names
+        flake8 utils/ tools/ tests/ --count --select=E9,F63,F7,F82 --show-source --statistics
+        # Exit-zero treats all errors as warnings
+        flake8 utils/ tools/ tests/ --count --exit-zero --max-complexity=10 --max-line-length=88 --statistics
+
+  test:
+    name: Run Tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python-version: ['3.8', '3.9', '3.10', '3.11']
+        exclude:
+          # Reduce matrix for faster CI
+          - os: macos-latest
+            python-version: '3.8'
+          - os: macos-latest
+            python-version: '3.9'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Cache pip packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-py${{ matrix.python-version }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-py${{ matrix.python-version }}-pip-
+    
+    - name: Install system dependencies (Ubuntu)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgl1-mesa-glx libglib2.0-0
+    
+    - name: Install Python dependencies
+      run: |
+        pip install --upgrade pip setuptools wheel
+        pip install -r requirements.txt
+        pip install pytest pytest-cov pytest-timeout pytest-xdist
+    
+    - name: Install Detectron2 (CPU only for CI)
+      run: |
+        pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+        pip install 'git+https://github.com/facebookresearch/detectron2.git'
+      continue-on-error: true
+    
+    - name: Run unit tests
+      run: |
+        pytest tests/ -v --cov=utils --cov=tools --cov-report=xml --cov-report=term -m "not gpu"
+      env:
+        PYTHONPATH: ${{ github.workspace }}
+    
+    - name: Upload coverage to Codecov
+      if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.10'
+      uses: codecov/codecov-action@v4
+      with:
+        files: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+
+  verify:
+    name: Pipeline Verification
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+      continue-on-error: true
+    
+    - name: Run verification script
+      run: |
+        bash scripts/verify_fixes.sh
+      continue-on-error: true
+    
+    - name: Check file structure
+      run: |
+        echo "[BLUE] Checking project structure..."
+        test -d utils || exit 1
+        test -d tools || exit 1
+        test -d tests || exit 1
+        test -f utils/dataset_validator.py || exit 1
+        test -f tools/training/train.py || exit 1
+        echo "[GREEN] File structure OK"
+
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    
+    - name: Install security tools
+      run: |
+        pip install --upgrade pip
+        pip install bandit safety
+    
+    - name: Run Bandit security scan
+      run: |
+        bandit -r utils/ tools/ -f json -o bandit-report.json
+      continue-on-error: true
+    
+    - name: Run Safety dependency check
+      run: |
+        safety check --json
+      continue-on-error: true
+    
+    - name: Upload security reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: security-reports
+        path: |
+          bandit-report.json
+
+  build:
+    name: Build Package
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    
+    - name: Install build tools
+      run: |
+        pip install --upgrade pip build twine
+    
+    - name: Build distribution packages
+      run: |
+        python -m build
+    
+    - name: Check distribution packages
+      run: |
+        twine check dist/*
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist-packages
+        path: dist/
+
+  summary:
+    name: CI Summary
+    runs-on: ubuntu-latest
+    needs: [lint, test, verify, security, build]
+    if: always()
+    
+    steps:
+    - name: Check results
+      run: |
+        echo "Pipeline Status Summary"
+        echo "======================="
+        echo "Lint: ${{ needs.lint.result }}"
+        echo "Test: ${{ needs.test.result }}"
+        echo "Verify: ${{ needs.verify.result }}"
+        echo "Security: ${{ needs.security.result }}"
+        echo "Build: ${{ needs.build.result }}"
