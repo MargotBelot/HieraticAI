@@ -21,10 +21,11 @@ from datetime import datetime
 from typing import Dict, Optional, Tuple
 
 # Add project root to path
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
 # Import validation
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 from utils.dataset_validator import DatasetValidator
 
 # Detectron2 imports
@@ -135,7 +136,7 @@ class CategoryRemappingDatasetMapper(DatasetMapper):
         """Apply category ID remapping to annotations"""
         dataset_dict = super().__call__(dataset_dict)
         
-        if self.category_offset != 0 and "annotations"in dataset_dict:
+        if self.category_offset != 0 and "annotations" in dataset_dict:
             for ann in dataset_dict["annotations"]:
                 ann["category_id"] += self.category_offset
                 
@@ -154,12 +155,15 @@ class RobustHieroglyphTrainer(DefaultTrainer):
         super().__init__(cfg)
         
     @classmethod
-    def build_train_loader(cls, cfg, training_config):
+    def build_train_loader(cls, cfg):
         """Build training data loader with category remapping"""
+        # Get training config from cfg object where we'll store it
+        category_offset = getattr(cfg, '_CATEGORY_OFFSET', 0)
+        
         mapper = CategoryRemappingDatasetMapper(
             cfg, 
             is_train=True, 
-            category_offset=training_config.category_id_offset
+            category_offset=category_offset
         )
         return build_detection_train_loader(cfg, mapper=mapper)
     
@@ -296,7 +300,10 @@ def setup_config(config: HieroglyphTrainingConfig) -> object:
     # Advanced settings
     cfg.MODEL.RPN.BATCH_SIZE_PER_IMAGE = 256
     cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 512
-    cfg.MODEL.DEVICE = "cuda"if torch.cuda.is_available() else "cpu"
+    cfg.MODEL.DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+    
+    # Store category offset for trainer access
+    cfg._CATEGORY_OFFSET = config.category_id_offset
     
     logger.info(f"Configuration complete. Device: {cfg.MODEL.DEVICE}")
     
