@@ -1,10 +1,10 @@
 {
   "paths": {
-    "project_root": "/Users/margot/Library/Mobile Documents/com~apple~CloudDocs/FU/ALP/Project",
-    "svg_directory": "/Users/margot/Library/Mobile Documents/com~apple~CloudDocs/FU/ALP/Project/aku_scraping/svg",
-    "gardiner_mapping_file": "/Users/margot/Library/Mobile Documents/com~apple~CloudDocs/FU/ALP/Project/Outputs/gardiner_to_svgs.json",
-    "input_document": "/Users/margot/Library/Mobile Documents/com~apple~CloudDocs/FU/ALP/Project/Lines.docx",
-    "output_directory": "/Users/margot/Desktop/hieroglyph_output"
+    "project_root": ".",
+    "svg_directory": "output/svg",
+    "gardiner_mapping_file": "output/gardiner_to_svgs.json",
+    "input_document": "input/Lines.docx",
+    "output_directory": "output"
   },
   "layout": {
     "base_horizontal_spacing": 2.5,

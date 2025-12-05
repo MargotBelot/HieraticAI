@@ -170,11 +170,11 @@ The HieraticAI interface provides a validation panel:
 **Manuscript Viewer (Left Panel)**
 - **Westcar Papyrus Display**: Testing area view with detected signs of the Westcar papyrus facsimile.
 - **Color-coded Predictions**:
-  - 🔵 ① A1 (85%) - Pending validation
-  - 🟢 ② G17 (92%) - High confidence, likely correct
-  - 🔴 ③ M17 (76%) - Flagged for review
-  - 🟠 ④ D21 (68%) - Medium confidence
-  - 🔵 ⑤ N35 (54%) - Low confidence, needs attention
+  - 🔵 #1 A1 (85%) - Pending validation
+  - 🟢 #2 G17 (92%) - High confidence, likely correct
+  - 🔴 #3 M17 (76%) - Flagged for review
+  - 🟠 #4 D21 (68%) - Medium confidence
+  - 🔵 #5 N35 (54%) - Low confidence, needs attention
 - **Status Tracking**: "2/5 reviewed" with progress indicator
 
 **Validation Panel (Right Panel)**
@@ -204,10 +204,10 @@ The HieraticAI interface provides a validation panel:
 
 | Color | Status | Meaning |
 |-------|--------|---------|
-| 🔵 **Blue** | Pending | Awaiting validation |
-| 🟢 **Green** | Correct | AI prediction is accurate |
-| 🔴 **Red** | Incorrect | AI prediction needs correction |
-| 🟠 **Orange** | Uncertain | Requires expert judgment |
+| 🔵 Blue | Pending | Awaiting validation |
+| 🟢 Green | Correct | AI prediction is accurate |
+| 🔴 Red | Incorrect | AI prediction needs correction |
+| 🟠 Orange | Uncertain | Requires expert judgment |
 
 ## Database Integration
 
@@ -388,10 +388,48 @@ graph TB
     style I fill:#f39c12
 ```
 
-## Documentation
+## Testing & Quality Assurance
 
-- **[Getting Started](GETTING_STARTED.md)**: Step-by-step installation and first use
-- **[Technical Guide](TECHNICAL_GUIDE.md)**: Advanced usage, customization, and development
+HieraticAI includes comprehensive testing and automated CI/CD to ensure reliability.
+
+### Running Tests
+
+**Quick start**:
+```bash
+# Run all tests
+bash scripts/run_tests.sh
+
+# Run with pytest (if installed)
+pytest tests/ -v
+
+# Run specific test file
+python3 tests/test_dataset_validation.py
+python3 tests/test_training.py
+```
+
+**Test Coverage**:
+- Dataset validation tests
+- Category remapping tests (prevents off-by-one errors)
+- Training configuration tests
+- Integration tests for complete pipeline
+- Regression prevention tests
+
+### CI/CD Pipeline
+
+Automated testing runs on every commit:
+- **Code Quality**: Black, isort, Flake8 linting
+- **Multi-Platform Tests**: Ubuntu & macOS, Python 3.8-3.11
+- **Security Scanning**: Bandit, Safety vulnerability checks
+- **Coverage Reporting**: Minimum 70% code coverage enforced
+- **Build Validation**: Package building and verification
+
+See `.github/workflows/ci.yml` for full pipeline configuration.
+
+### Documentation
+
+- **[Getting Started](docs/GETTING_STARTED.md)**: Step-by-step installation and first use
+- **[Technical Guide](docs/TECHNICAL_GUIDE.md)**: Advanced usage, customization, and development
+- **[Testing Guide](docs/TESTING.md)**: Comprehensive testing documentation
 
 ## Acknowledgments
 

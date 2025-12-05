@@ -197,8 +197,8 @@ After running the toolkit, you'll have several files with your hieroglyph data:
 - Add `--verbose` to see what's happening: `python3 list_signs_modular.py --verbose`
 
 **"I can't find my files"**
-- Look for a folder called `hieroglyph_output` in your home directory
-- On Mac: `/Users/yourusername/hieroglyph_output`
-- On Windows: `C:\Users\yourusername\hieroglyph_output`
+- By default, files are saved to the `output/` directory in your project folder
+- You can check the `hieroglyph_config.json` file to see where files are being saved
+- Look for the `output_directory` setting in the config file
 
 
