@@ -20,31 +20,18 @@ Version: 1.0.0
 __version__ = "1.0.0"
 __author__ = "Margot"
 __email__ = ""
-__description__ = "Comprehensive toolkit for hieroglyphic text processing and reconstruction"
+__description__ = (
+    "Comprehensive toolkit for hieroglyphic text processing and reconstruction"
+)
 
 # Core modules
-from .config import (
-    ConfigManager,
-    PathConfig,
-    LayoutConfiguration,
-    WebScrapingConfig,
-    get_config_manager,
-    create_default_config_file
-)
-
-from .utils import (
-    setup_logging,
-    ensure_directory,
-    safe_file_read,
-    safe_file_write,
-    safe_json_load,
-    safe_json_save,
-    timing_decorator,
-    retry_on_exception,
-    performance_tracker,
-    PerformanceTracker,
-    progress_bar
-)
+from .config import (ConfigManager, LayoutConfiguration, PathConfig,
+                     WebScrapingConfig, create_default_config_file,
+                     get_config_manager)
+from .utils import (PerformanceTracker, ensure_directory, performance_tracker,
+                    progress_bar, retry_on_exception, safe_file_read,
+                    safe_file_write, safe_json_load, safe_json_save,
+                    setup_logging, timing_decorator)
 
 # Sub-packages are available but not automatically imported
 # Import them explicitly when needed:
@@ -54,28 +41,26 @@ from .utils import (
 
 __all__ = [
     # Version info
-    '__version__',
-    '__author__',
-    '__description__',
-    
+    "__version__",
+    "__author__",
+    "__description__",
     # Configuration
-    'ConfigManager',
-    'PathConfig', 
-    'LayoutConfiguration',
-    'WebScrapingConfig',
-    'get_config_manager',
-    'create_default_config_file',
-    
+    "ConfigManager",
+    "PathConfig",
+    "LayoutConfiguration",
+    "WebScrapingConfig",
+    "get_config_manager",
+    "create_default_config_file",
     # Utilities
-    'setup_logging',
-    'ensure_directory',
-    'safe_file_read',
-    'safe_file_write',
-    'safe_json_load',
-    'safe_json_save',
-    'timing_decorator',
-    'retry_on_exception',
-    'performance_tracker',
-    'PerformanceTracker',
-    'progress_bar',
+    "setup_logging",
+    "ensure_directory",
+    "safe_file_read",
+    "safe_file_write",
+    "safe_json_load",
+    "safe_json_save",
+    "timing_decorator",
+    "retry_on_exception",
+    "performance_tracker",
+    "PerformanceTracker",
+    "progress_bar",
 ]

@@ -7,4 +7,4 @@ data processing, and other supporting functionality.
 
 from .dataset_validator import DatasetValidator
 
-__all__ = ['DatasetValidator']
+__all__ = ["DatasetValidator"]

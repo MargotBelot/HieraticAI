@@ -16,17 +16,17 @@ Date: September 2024
 # from .base_scraper import BaseScraper
 # from .aku_scraper import AKUPALScraper
 
-__all__ = [
-    'BaseScraper',
-    'AKUPALScraper'
-]
+__all__ = ["BaseScraper", "AKUPALScraper"]
+
 
 # Lazy import to avoid selenium dependency issues
 def __getattr__(name):
-    if name == 'BaseScraper':
+    if name == "BaseScraper":
         from .base_scraper import BaseScraper
+
         return BaseScraper
-    elif name == 'AKUPALScraper':
+    elif name == "AKUPALScraper":
         from .aku_scraper import AKUPALScraper
+
         return AKUPALScraper
     raise AttributeError(f"module '{__name__}' has no attribute '{name}'")

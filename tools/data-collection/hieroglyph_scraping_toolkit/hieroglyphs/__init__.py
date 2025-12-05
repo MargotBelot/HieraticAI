@@ -14,17 +14,17 @@ Date: September 2024
 # Import classes explicitly when needed:
 # from .parser import GardinerExpressionParser, ParsedNode
 
-__all__ = [
-    'GardinerExpressionParser',
-    'ParsedNode'
-]
+__all__ = ["GardinerExpressionParser", "ParsedNode"]
+
 
 # Lazy import
 def __getattr__(name):
-    if name == 'GardinerExpressionParser':
+    if name == "GardinerExpressionParser":
         from .parser import GardinerExpressionParser
+
         return GardinerExpressionParser
-    elif name == 'ParsedNode':
+    elif name == "ParsedNode":
         from .parser import ParsedNode
+
         return ParsedNode
     raise AttributeError(f"module '{__name__}' has no attribute '{name}'")

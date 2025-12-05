@@ -17,11 +17,8 @@ from pathlib import Path
 # Add the toolkit to Python path
 sys.path.append(str(Path(__file__).parent / "hieroglyph_scraping_toolkit"))
 
-from hieroglyph_scraping_toolkit import (
-    get_config_manager, 
-    setup_logging,
-    create_default_config_file
-)
+from hieroglyph_scraping_toolkit import (create_default_config_file,
+                                         get_config_manager, setup_logging)
 
 
 def main():
@@ -32,84 +29,79 @@ def main():
     parser = argparse.ArgumentParser(
         description="Collect sign numbers from AKU-PAL website"
     )
+    parser.add_argument("--config", type=str, help="Path to configuration file")
+    parser.add_argument("--output", type=str, help="Output directory for results")
     parser.add_argument(
-        "--config", 
-        type=str, 
-        help="Path to configuration file"
-    )
-    parser.add_argument(
-        "--output", 
-        type=str, 
-        help="Output directory for results"
-    )
-    parser.add_argument(
-        "--create-config", 
+        "--create-config",
         action="store_true",
-        help="Create a default configuration file and exit"
+        help="Create a default configuration file and exit",
     )
     parser.add_argument(
-        "--verbose", 
-        "-v", 
-        action="store_true",
-        help="Enable verbose logging"
+        "--verbose", "-v", action="store_true", help="Enable verbose logging"
     )
-    
+
     args = parser.parse_args()
-    
+
     # Create default config if requested
     if args.create_config:
         config_file = args.config or "hieroglyph_config.json"
         create_default_config_file(config_file)
         print(f"Default configuration created at: {config_file}")
-        print("Edit the configuration file to set your paths, then run the script again.")
+        print(
+            "Edit the configuration file to set your paths, then run the script again."
+        )
         return 0
-    
+
     try:
         # Load configuration
         config_manager = get_config_manager(args.config)
         web_config = config_manager.get_web_scraping_config()
         path_config = config_manager.get_path_config()
-        
+
         # Override output directory if specified
         if args.output:
             output_dir = Path(args.output)
             output_dir.mkdir(parents=True, exist_ok=True)
         else:
             output_dir = path_config.output_directory
-        
+
         # Setup logging
         log_level = "DEBUG" if args.verbose else "INFO"
         log_file = output_dir / "sign_collection.log"
         logger = setup_logging(
-            log_file=str(log_file),
-            log_level=getattr(__import__('logging'), log_level)
+            log_file=str(log_file), log_level=getattr(__import__("logging"), log_level)
         )
-        
+
         logger.info("Starting sign number collection process")
         logger.info(f"Output directory: {output_dir}")
-        
+
         # Initialize scraper (import here to avoid dependency issues)
         from hieroglyph_scraping_toolkit.scraping import AKUPALScraper
+
         with AKUPALScraper(web_config, str(log_file)) as scraper:
             logger.info("Initialized AKU-PAL scraper")
-            
+
             # Collect sign numbers
             logger.info("Collecting sign numbers from AKU-PAL...")
             sign_numbers = scraper.collect_all_sign_numbers()
-            
+
             if not sign_numbers:
-                logger.error("No sign numbers collected. Check your internet connection and try again.")
+                logger.error(
+                    "No sign numbers collected. Check your internet connection and try again."
+                )
                 return 1
-            
-            logger.info(f"Successfully collected {len(sign_numbers)} unique sign numbers")
-            
+
+            logger.info(
+                f"Successfully collected {len(sign_numbers)} unique sign numbers"
+            )
+
             # Save results
             logger.info("Saving results...")
             success = scraper.save_sign_numbers(sign_numbers, str(output_dir))
-            
+
             if success:
                 logger.info("Sign numbers saved successfully")
-                
+
                 # Print summary
                 print(f"\nSign Collection Complete!")
                 print(f"Collected {len(sign_numbers)} unique sign numbers")
@@ -118,18 +110,18 @@ def main():
                 print(f"- sign_numbers.json")
                 print(f"- sign_numbers.txt")
                 print(f"Log file: {log_file}")
-                
+
                 # Get and display scraping statistics
                 stats = scraper.get_scraping_statistics()
                 print(f"\nStatistics:")
                 print(f"- Success rate: {stats['success_rate']:.1f}%")
                 print(f"- Failed signs: {stats['failed_signs_count']}")
-                
+
                 return 0
             else:
                 logger.error("Failed to save results")
                 return 1
-                
+
     except KeyboardInterrupt:
         print("\nOperation cancelled by user")
         return 1
@@ -137,6 +129,7 @@ def main():
         print(f"\nError: {e}")
         if args.verbose:
             import traceback
+
             traceback.print_exc()
         return 1
 
