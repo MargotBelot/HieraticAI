@@ -124,6 +124,7 @@ class TestDatasetValidator(unittest.TestCase):
         self.create_mock_dataset(category_start_id=1)
         validator = DatasetValidator(self.test_dataset_dir)
         validator._validate_file_structure()
+        validator._validate_category_consistency()  # Must run this first to populate category_data
 
         result = validator._validate_category_ids()
 
@@ -139,6 +140,7 @@ class TestDatasetValidator(unittest.TestCase):
         self.create_mock_dataset(category_start_id=0)
         validator = DatasetValidator(self.test_dataset_dir)
         validator._validate_file_structure()
+        validator._validate_category_consistency()  # Must run this first to populate category_data
 
         result = validator._validate_category_ids()
 
@@ -156,6 +158,7 @@ class TestDatasetValidator(unittest.TestCase):
         self.create_mock_dataset(category_start_id=1)
         validator = DatasetValidator(self.test_dataset_dir)
         validator._validate_file_structure()
+        validator._validate_category_consistency()  # Must run this first to populate category_data
         validator._validate_category_ids()
 
         result = validator._validate_detectron2_compatibility()
