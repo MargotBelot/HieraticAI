@@ -53,7 +53,7 @@ try:
     from detectron2.evaluation import COCOEvaluator
     from detectron2.solver import get_default_optimizer_params
     from detectron2.utils.logger import setup_logger
-    
+
     DETECTRON2_AVAILABLE = True
 except ImportError as e:
     # Only exit if running as main script, not when imported by tests
