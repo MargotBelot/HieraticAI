@@ -35,12 +35,20 @@ try:
     import torch
     from detectron2 import model_zoo
     from detectron2.config import get_cfg
-    from detectron2.data import (DatasetCatalog, DatasetMapper,
-                                 MetadataCatalog, build_detection_train_loader)
+    from detectron2.data import (
+        DatasetCatalog,
+        DatasetMapper,
+        MetadataCatalog,
+        build_detection_train_loader,
+    )
     from detectron2.data import transforms as T
     from detectron2.data.datasets import register_coco_instances
-    from detectron2.engine import (DefaultTrainer, default_argument_parser,
-                                   default_setup, launch)
+    from detectron2.engine import (
+        DefaultTrainer,
+        default_argument_parser,
+        default_setup,
+        launch,
+    )
     from detectron2.evaluation import COCOEvaluator
     from detectron2.solver import get_default_optimizer_params
     from detectron2.utils.logger import setup_logger

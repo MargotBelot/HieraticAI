@@ -13,8 +13,7 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 
 from ..config import WebScrapingConfig
-from ..utils import (clean_filename, safe_file_write, safe_json_save,
-                     timing_decorator)
+from ..utils import clean_filename, safe_file_write, safe_json_save, timing_decorator
 from .base_scraper import BaseScraper
 
 

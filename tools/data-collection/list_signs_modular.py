@@ -17,8 +17,11 @@ from pathlib import Path
 # Add the toolkit to Python path
 sys.path.append(str(Path(__file__).parent / "hieroglyph_scraping_toolkit"))
 
-from hieroglyph_scraping_toolkit import (create_default_config_file,
-                                         get_config_manager, setup_logging)
+from hieroglyph_scraping_toolkit import (
+    create_default_config_file,
+    get_config_manager,
+    setup_logging,
+)
 
 
 def main():

@@ -13,8 +13,13 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 import cairosvg
 
-from ..utils import (extract_svg_dimensions, safe_file_read, safe_file_write,
-                     timing_decorator, validate_svg_content)
+from ..utils import (
+    extract_svg_dimensions,
+    safe_file_read,
+    safe_file_write,
+    timing_decorator,
+    validate_svg_content,
+)
 
 
 class SVGProcessor:

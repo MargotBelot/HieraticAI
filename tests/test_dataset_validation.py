@@ -265,8 +265,7 @@ class TestTrainingConfiguration(unittest.TestCase):
 
         # This would need to be tested with actual training pipeline
         try:
-            from train_hieroglyph_detection_robust import \
-                HieroglyphTrainingConfig
+            from train_hieroglyph_detection_robust import HieroglyphTrainingConfig
 
             config = HieroglyphTrainingConfig(MockArgs())
             self.assertIsNotNone(config.run_id)

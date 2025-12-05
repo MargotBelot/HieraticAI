@@ -18,10 +18,14 @@ from typing import List
 # Add the toolkit to Python path
 sys.path.append(str(Path(__file__).parent / "hieroglyph_scraping_toolkit"))
 
-from hieroglyph_scraping_toolkit import (create_default_config_file,
-                                         get_config_manager, progress_bar,
-                                         safe_file_read, safe_json_load,
-                                         setup_logging)
+from hieroglyph_scraping_toolkit import (
+    create_default_config_file,
+    get_config_manager,
+    progress_bar,
+    safe_file_read,
+    safe_json_load,
+    setup_logging,
+)
 
 
 def load_sign_numbers(signs_file: str) -> List[str]:

@@ -20,8 +20,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
 from ..config import WebScrapingConfig
-from ..utils import (ensure_directory, retry_on_exception, setup_logging,
-                     timing_decorator)
+from ..utils import (
+    ensure_directory,
+    retry_on_exception,
+    setup_logging,
+    timing_decorator,
+)
 
 
 class BaseScraper:

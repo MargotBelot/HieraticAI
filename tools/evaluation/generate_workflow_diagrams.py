@@ -10,8 +10,7 @@ import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
-from matplotlib.patches import (Arrow, Circle, ConnectionPatch, FancyBboxPatch,
-                                Rectangle)
+from matplotlib.patches import Arrow, Circle, ConnectionPatch, FancyBboxPatch, Rectangle
 
 # Set style for professional plots
 plt.rcParams["font.family"] = "DejaVu Sans"
