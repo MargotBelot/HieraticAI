@@ -85,7 +85,7 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         sudo apt-get update
-        sudo apt-get install -y libgl1-mesa-glx libglib2.0-0
+        sudo apt-get install -y libgl1 libglib2.0-0
     
     - name: Install Python dependencies
       run: |
@@ -101,9 +101,10 @@ jobs:
     
     - name: Run unit tests
       run: |
-        pytest tests/ -v --cov=utils --cov=tools --cov-report=xml --cov-report=term -m "not gpu"
+        pytest tests/ -v --cov=utils --cov=tools --cov-report=xml --cov-report=term --cov-fail-under=50 -m "not gpu"
       env:
         PYTHONPATH: ${{ github.workspace }}
+      continue-on-error: false
     
     - name: Upload coverage to Codecov
       if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.10'
