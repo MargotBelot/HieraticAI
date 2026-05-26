@@ -4,6 +4,16 @@ Helper scripts for maintenance and verification.
 
 ## Available Scripts
 
+### `run_tests.sh`
+Run the full test suite with pytest (or unittest fallback).
+
+**Usage:**
+```bash
+./scripts/run_tests.sh
+```
+
+---
+
 ### `verify_fixes.sh`
 Quick verification that all critical fixes are in place.
 

@@ -27,8 +27,7 @@ This guide will walk you through the **complete setup process from scratch**. We
 - **Windows/Mac**: Download from [python.org](https://www.python.org/downloads/)
 - **Linux**: Install with `sudo apt install python3 python3-pip` (Ubuntu/Debian)
 
-1. **Windows Users**: Double-click `install.py` in the HieraticAI folder
-2. **Mac/Linux Users**: Open Terminal, navigate to the folder, and run: `python3 install.py`
+Open Terminal, navigate to the folder, and run: `python3 install.py`
 
 **That's it!** The installer will:
 - Check if you have Python 3.8+ (and tell you if you need to install it)
@@ -38,7 +37,6 @@ This guide will walk you through the **complete setup process from scratch**. We
 
 ### Step 3: Launch HieraticAI
 After installation completes:
-- **Windows**: Double-click `start_hieratic_ai.bat`
 - **Mac/Linux**: Run `./start_hieratic_ai.sh`
 
 Your web browser will open automatically with the HieraticAI interface!
@@ -66,8 +64,8 @@ streamlit run tools/validation/prediction_validator.py
 ### Step 1: Understand the Interface
 
 The interface displays:
-- **Left Panel**: Westcar Papyrus image with colored bounding boxes
-- **Right Panel**: Validation controls and detailed sign information
+- **Top**: Westcar Papyrus facsimile with colored bounding boxes
+- **Below**: Validation controls (left) and sign details (right)
 - **Bottom**: Progress statistics and export options
 
 ### Step 2: Adjust Confidence Threshold
@@ -80,7 +78,7 @@ Start with the default threshold (0.3) to see all predictions:
 ### Step 3: Select Your First Prediction
 
 1. Look at the manuscript image - you'll see numbered bounding boxes
-2. In the right panel, use the dropdown: `Select a prediction...`
+2. Use the prediction dropdown below the image: `Select a prediction...`
 3. Choose: `[PENDING] 1. A1 (conf: 0.85)` (example)
 
 ### Step 4: Review the Sign Context
@@ -111,7 +109,6 @@ Watch the statistics update in real-time:
 1. **Start with high confidence predictions** - validate obvious correct ones first
 2. **Review TLA and AKU data** before making decisions
 3. **Export regularly** to save your progress
-4. **Take breaks** to maintain concentration
 
 **Export Results:** Click "Export Validation Results" button in the interface to download a CSV with your validation data.
 

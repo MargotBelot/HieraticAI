@@ -4,7 +4,7 @@
 
 This notebook implements the complete HieraticAI training and evaluation pipeline using a **clean Y-band spatial split** with 30px buffer zones guaranteeing zero pixel leakage between splits.
 
-### Key design decisions (May 2026)
+### Design
 - **95 active categories** — only classes present in pWestcar, not all 634 Gardiner codes
 - **Non-overlapping Y-band split** with buffer gaps — verified zero cross-split pixel overlap
 - **FREEZE_AT=2** — freeze res1/res2, let res3+ fine-tune on papyrus textures

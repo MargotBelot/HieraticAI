@@ -278,30 +278,29 @@ def create_category_mapping_analysis():
     ax9.axis("off")
 
     summary_text = """
-    CATEGORY MAPPING FIX SUMMARY
+    CLEAN-SPLIT RETRAIN SUMMARY
     
     Problem Identified:
-    • Off-by-one error in category IDs
-    • Detectron2 uses 0-based indexing
-    • COCO dataset uses 1-based indexing
-    • 90%+ categories were missed
+    • 33% data leakage in original split
+    • Category ID offset (1-based vs 0-based)
+    • Non-spatial random splitting
     
     Solution Implemented:
-    • Fixed category ID offset in dataset
-    • Updated training pipeline
-    • Validated category mappings
-    • Added comprehensive testing
+    • Y-band spatial split (30px buffer)
+    • Fixed category ID remapping
+    • RepeatFactorTrainingSampler (0.3)
+    • Custom anchors [16,32,64,128,256]
     
     Results Achieved:
-    • mAP improved: 9.2% → 31.2%
-    • Detection rate: 9% → 62%
-    • Category coverage: 10% → 95%
-    • Training stability improved
+    • mAP: 30.9% standard, 36.4% TTA
+    • AP50: 59.7%
+    • 95 Gardiner categories
+    • 455 train / 67 val / 58 test
     
     Impact:
-    • Model now correctly detects hieroglyphs
-    • Previously missed categories recovered
-    • Production-ready performance
+    • Leak-free evaluation
+    • Honest performance metrics
+    • Reproducible research pipeline
     • Comprehensive validation added
     """
 

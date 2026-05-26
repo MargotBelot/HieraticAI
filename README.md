@@ -167,38 +167,28 @@ The HieraticAI interface provides a validation panel:
 
 #### **Main Interface Layout**
 
-**Manuscript Viewer (Left Panel)**
-- **Westcar Papyrus Display**: Testing area view with detected signs of the Westcar papyrus facsimile.
-- **Color-coded Predictions**:
-  - 🔵 #1 A1 (85%) - Pending validation
-  - 🟢 #2 G17 (92%) - High confidence, likely correct
-  - 🔴 #3 M17 (76%) - Flagged for review
-  - 🟠 #4 D21 (68%) - Medium confidence
-  - 🔵 #5 N35 (54%) - Low confidence, needs attention
-- **Status Tracking**: "2/5 reviewed" with progress indicator
+**Facsimile Viewer (Full-Width Top)**
+- **Westcar Papyrus Display**: Auto-cropped test patch with detected signs overlaid
+- **Color-coded Bounding Boxes**:
+  - 🔵 Blue - Pending validation
+  - 🟢 Green - Validated as correct
+  - 🔴 Red - Validated as incorrect
+  - 🟠 Orange - Marked as uncertain
+- **Display Options**: Toggle predictions, labels, confidence values, pixel measurements
 
-**Validation Panel (Right Panel)**
-- **Current Sign Review**:
-  - Cropped image of selected sign
-  - Gardiner code: A1
-  - Unicode display: 𓀀
-- **TLA Linguistic Data**:
-  - Transliteration information
-  - Lemma details and meanings
-  - Related sign forms
-- **AKU Reference Signs**:
-  - Similar signs from database
-  - Quality assessment scores
-  - SVG vector displays
-- **Validation Actions**:
-  - **CORRECT** - Confirm AI prediction
-  - **INCORRECT** - Mark as wrong
-  - **UNCERTAIN** - Flag for further review
-  - **EDIT CODE** - Manual correction
+**Sign Details (Left Column)**
+- Cropped image of selected sign
+- Gardiner code with Unicode character
+- TLA linguistic data (transliteration, translation, frequency)
+- AKU reference signs from Westcar database
 
-**Control Panel (Bottom)**
-- Navigation: Previous/Next/Refresh buttons
-- Progress: ████▒▒▒ 67% completion
+**Validation Controls (Right Column)**
+- **CORRECT** / **INCORRECT** / **UNCERTAIN** buttons
+- Expert tools: manual code correction, scholarly notes, cross-references
+
+**Statistics (Bottom)**
+- Validation progress and accuracy metrics
+- Distribution charts and export options
 
 ### Validation Status System
 
@@ -352,7 +342,7 @@ If you encounter path-related errors:
 
 1. **Regenerate AKU index** (fixes absolute path issues):
    ```bash
-   python regenerate_aku_index.py
+   python tools/data/aku_data_indexer.py
    ```
 
 2. **Verify project structure** matches the layout above

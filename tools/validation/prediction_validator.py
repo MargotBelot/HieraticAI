@@ -1086,14 +1086,26 @@ class PredictionValidator:
             return None, []
 
         img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        height, width = img_rgb.shape[:2]
 
-        # Create matplotlib figure
-        fig, ax = plt.subplots(1, 1, figsize=(15, 10))
+        # Auto-crop black padding: find last row with meaningful content
+        row_means = img_rgb.mean(axis=(1, 2))
+        non_black_rows = np.where(row_means > 10)[0]
+        if len(non_black_rows) > 0:
+            content_height = min(non_black_rows[-1] + 5, height)
+            img_rgb = img_rgb[:content_height, :, :]
+            height = content_height
+
+        # Proportional figure size based on actual content
+        fig_width = 15
+        fig_height = max(3, fig_width * height / width)
+        fig, ax = plt.subplots(1, 1, figsize=(fig_width, fig_height))
         ax.imshow(img_rgb)
         ax.set_title(
-            f"HieraticAI Predictions on Westcar Papyrus VIII 5-24 ({image_path.name})",
+            f"HieraticAI Predictions — {image_path.name}",
             fontsize=14,
             fontweight="bold",
+            pad=10,
         )
 
         prediction_data = []
@@ -1137,19 +1149,25 @@ class PredictionValidator:
             )
             ax.add_patch(rect)
 
-            # Add label with prediction number, Gardiner code, and confidence
+            # Add label — place below box if sign is near the top edge
             prediction_number = i + 1
             label_text = f"#{prediction_number}\n{gardiner_code}\n{confidence:.2f}"
+            if bbox[1] < 30:
+                label_y = bbox[1] + bbox[3] + 5
+                label_va = "top"
+            else:
+                label_y = bbox[1] - 5
+                label_va = "bottom"
             ax.text(
                 bbox[0],
-                bbox[1] - 15,
+                label_y,
                 label_text,
                 fontsize=9,
                 fontweight="bold",
                 bbox=dict(boxstyle="round,pad=0.3", facecolor=color, alpha=0.8),
                 color="white",
                 ha="left",
-                va="top",
+                va=label_va,
             )
 
             # Store prediction data
@@ -1192,13 +1210,24 @@ class PredictionValidator:
         img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         height, width = img_rgb.shape[:2]
 
-        # Create matplotlib figure
-        fig, ax = plt.subplots(1, 1, figsize=(15, 10))
+        # Auto-crop black padding: find last row with meaningful content
+        row_means = img_rgb.mean(axis=(1, 2))
+        non_black_rows = np.where(row_means > 10)[0]
+        if len(non_black_rows) > 0:
+            content_height = min(non_black_rows[-1] + 5, height)
+            img_rgb = img_rgb[:content_height, :, :]
+            height = content_height
+
+        # Proportional figure size based on actual content
+        fig_width = 15
+        fig_height = max(3, fig_width * height / width)
+        fig, ax = plt.subplots(1, 1, figsize=(fig_width, fig_height))
         ax.imshow(img_rgb)
         ax.set_title(
-            f"HieraticAI Predictions on Westcar Papyrus VIII 5-24 ({image_path.name})",
+            f"HieraticAI Predictions — {image_path.name}",
             fontsize=14,
             fontweight="bold",
+            pad=10,
         )
 
         prediction_data = []
@@ -1283,16 +1312,23 @@ class PredictionValidator:
 
                     label_text = "\n".join(label_parts)
 
+                    # Place below box if sign is near the top edge
+                    if bbox[1] < 30:
+                        label_y = bbox[1] + bbox[3] + 5
+                        label_va = "top"
+                    else:
+                        label_y = bbox[1] - 5
+                        label_va = "bottom"
                     ax.text(
                         bbox[0],
-                        bbox[1] - 15,
+                        label_y,
                         label_text,
                         fontsize=9,
                         fontweight="bold",
                         bbox=dict(boxstyle="round,pad=0.3", facecolor=color, alpha=0.8),
                         color="white",
                         ha="left",
-                        va="top",
+                        va=label_va,
                     )
 
                 # Store prediction data
@@ -1519,371 +1555,316 @@ def main():
         st.error(f"Image file not found for {selected_image}")
         return
 
-    # Display image with predictions
-    col1, col2 = st.columns([2, 1])
+    # Display visualization full-width, then validation panel below in columns
+    st.subheader("Prediction Visualization")
 
-    with col1:
-        st.subheader("Prediction Visualization")
+    # Display options
+    with st.expander("Display Options", expanded=False):
+        col_opt1, col_opt2, col_opt3 = st.columns(3)
 
-        # Display options
-        with st.expander("Display Options", expanded=False):
-            col_opt1, col_opt2, col_opt3 = st.columns(3)
+        with col_opt1:
+            show_predictions = st.checkbox(
+                "Show AI Predictions", value=True, key="show_predictions"
+            )
+            show_labels = st.checkbox("Show Labels", value=True, key="show_labels")
 
-            with col_opt1:
-                show_predictions = st.checkbox(
-                    "Show AI Predictions", value=True, key="show_predictions"
-                )
-                show_labels = st.checkbox("Show Labels", value=True, key="show_labels")
-
-            with col_opt2:
-                show_confidence = st.checkbox(
-                    "Show Confidence Values", value=True, key="show_confidence"
-                )
-
-            with col_opt3:
-                show_measurements = st.checkbox(
-                    "Show Pixel Measurements", value=False, key="show_measurements"
-                )
-
-        # Enhanced visualization with display options
-        fig, prediction_data = validator.visualize_predictions_enhanced(
-            image_path,
-            image_predictions,
-            selected_image,
-            validated_predictions,
-            show_predictions=show_predictions,
-            show_labels=show_labels,
-            show_confidence=show_confidence,
-            show_measurements=show_measurements,
-        )
-
-        if fig:
-            st.pyplot(fig)
-            plt.close()  # Clean up memory
-
-    with col2:
-        st.subheader("Validation Panel")
-
-        # Show validation summary
-        total_preds = len(prediction_data)
-        validated_preds = len(
-            [p for p in prediction_data if p["validation_status"] != "pending"]
-        )
-
-        st.info(f"**{validated_preds}/{total_preds}** predictions validated")
-
-        # Instructions
-        st.markdown(
-            """
-        **Validation Instructions:**
-
-        Select a prediction from the dropdown below to validate it. Review the cropped sign image,
-        Gardiner classification, and linguistic context from TLA and AKU databases before making your decision.
-
-        The bounding box colors indicate:
-        - 🔵 **Blue**: Pending validation
-        - 🟢 **Green**: Validated as correct
-        - 🔴 **Red**: Validated as incorrect
-        - 🟠 **Orange**: Validated as uncertain
-        """
-        )
-
-        # Selected prediction for validation
-        if "selected_prediction" not in st.session_state:
-            st.session_state.selected_prediction = None
-
-        # Selection dropdown for better UX
-        if prediction_data:
-            st.markdown("### Select Prediction to Validate")
-
-            # Create options for dropdown
-            options = []
-            for i, pred_info in enumerate(prediction_data):
-                status_display = {
-                    "pending": "PENDING",
-                    "correct": "CORRECT",
-                    "incorrect": "INCORRECT",
-                    "uncertain": "UNCERTAIN",
-                }.get(pred_info["validation_status"], "PENDING")
-
-                options.append(
-                    f"[{status_display}] {i+1}. {pred_info['gardiner_code']} (conf: {pred_info['confidence']:.2f})"
-                )
-
-            selected_option = st.selectbox(
-                "Choose a prediction:",
-                options=["Select a prediction..."] + options,
-                key="prediction_selector",
+        with col_opt2:
+            show_confidence = st.checkbox(
+                "Show Confidence Values", value=True, key="show_confidence"
             )
 
-            if selected_option != "Select a prediction...":
-                # Extract the prediction index
-                pred_index = int(selected_option.split(".")[0].split()[-1]) - 1
-                pred_info = prediction_data[pred_index]
+        with col_opt3:
+            show_measurements = st.checkbox(
+                "Show Pixel Measurements", value=False, key="show_measurements"
+            )
 
-                st.markdown("---")
-                st.markdown(f"### Validating Prediction #{pred_index + 1}")
+    # Enhanced visualization with display options
+    fig, prediction_data = validator.visualize_predictions_enhanced(
+        image_path,
+        image_predictions,
+        selected_image,
+        validated_predictions,
+        show_predictions=show_predictions,
+        show_labels=show_labels,
+        show_confidence=show_confidence,
+        show_measurements=show_measurements,
+    )
 
-                # Display cropped image of the selected sign
-                try:
-                    # Load the original image
-                    img = cv2.imread(str(image_path))
-                    if img is not None:
-                        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    if fig:
+        st.pyplot(fig, use_container_width=True)
+        plt.close()  # Clean up memory
 
-                        # Get bounding box coordinates
-                        bbox = pred_info["bbox"]
-                        x, y, w, h = (
-                            int(bbox[0]),
-                            int(bbox[1]),
-                            int(bbox[2]),
-                            int(bbox[3]),
-                        )
+    # Prediction selector (full-width), then details left + validation right
+    st.subheader("Validation Panel")
 
-                        # Add some padding around the crop
-                        padding = 10
-                        x_start = max(0, x - padding)
-                        y_start = max(0, y - padding)
-                        x_end = min(img_rgb.shape[1], x + w + padding)
-                        y_end = min(img_rgb.shape[0], y + h + padding)
+    # Show validation summary
+    total_preds = len(prediction_data)
+    validated_preds = len(
+        [p for p in prediction_data if p["validation_status"] != "pending"]
+    )
 
-                        # Crop the image
-                        cropped_sign = img_rgb[y_start:y_end, x_start:x_end]
+    st.info(f"**{validated_preds}/{total_preds}** predictions validated")
 
-                        if cropped_sign.size > 0:
-                            st.image(
-                                cropped_sign,
-                                caption=f"Sign #{pred_index + 1}: {pred_info['gardiner_code']}",
-                                width=150,
-                            )
-                except Exception as e:
-                    st.write(f"Could not display cropped image: {e}")
+    # Selection dropdown (full-width for readability)
+    selected_option = "Select a prediction..."
+    pred_info = None
+    if prediction_data:
+        options = []
+        for i, pi in enumerate(prediction_data):
+            status_display = {
+                "pending": "PENDING",
+                "correct": "CORRECT",
+                "incorrect": "INCORRECT",
+                "uncertain": "UNCERTAIN",
+            }.get(pi["validation_status"], "PENDING")
+            options.append(
+                f"[{status_display}] {i+1}. {pi['gardiner_code']} (conf: {pi['confidence']:.2f})"
+            )
 
-                # Expert Tools Section
-                with st.expander("Expert Tools", expanded=False):
-                    st.markdown("#### Manual Correction")
+        selected_option = st.selectbox(
+            "Choose a prediction:",
+            options=["Select a prediction..."] + options,
+            key="prediction_selector",
+        )
 
-                    # Manual Gardiner code editing
-                    available_codes = list(validator.gardiner_codes.keys())
-                    current_code_idx = (
-                        available_codes.index(pred_info["gardiner_code"])
-                        if pred_info["gardiner_code"] in available_codes
-                        else 0
-                    )
+        if selected_option != "Select a prediction...":
+            pred_index = int(selected_option.split(".")[0].split()[-1]) - 1
+            pred_info = prediction_data[pred_index]
 
-                    corrected_code = st.selectbox(
-                        "Override Gardiner Code:",
-                        options=available_codes,
-                        index=current_code_idx,
-                        key=f"manual_code_{pred_info['pred_key']}",
-                    )
-
-                    if corrected_code != pred_info["gardiner_code"]:
-                        if st.button(
-                            f"Apply Correction: {pred_info['gardiner_code']} -> {corrected_code}",
-                            key=f"apply_correction_{pred_info['pred_key']}",
-                        ):
-                            # Save manual correction
-                            if "manual_corrections" not in validation_results:
-                                validation_results["manual_corrections"] = {}
-                            validation_results["manual_corrections"][
-                                pred_info["pred_key"]
-                            ] = {
-                                "original_code": pred_info["gardiner_code"],
-                                "corrected_code": corrected_code,
-                                "timestamp": datetime.now().isoformat(),
-                            }
-                            validator.save_validation_results(validation_results)
-                            st.success(f"Applied manual correction: {corrected_code}")
-                            st.rerun()
-
-                    # Notes system
-                    st.markdown("#### Scholarly Notes")
-
-                    # Load existing note
-                    existing_notes = validation_results.get("notes", {})
-                    current_note = existing_notes.get(pred_info["pred_key"], "")
-
-                    note_text = st.text_area(
-                        "Add scholarly observations:",
-                        value=current_note,
-                        height=100,
-                        key=f"note_{pred_info['pred_key']}",
-                        placeholder="Add comments about palaeographic details, context, alternative readings...",
-                    )
-
-                    if st.button("Save Note", key=f"save_note_{pred_info['pred_key']}"):
-                        if "notes" not in validation_results:
-                            validation_results["notes"] = {}
-                        validation_results["notes"][pred_info["pred_key"]] = note_text
-                        validator.save_validation_results(validation_results)
-                        st.success("Note saved!")
-
-                    # Cross-references
-                    st.markdown("#### Cross-References")
-
-                    # Find similar signs in the current dataset
-                    similar_predictions = []
-                    for other_pred in prediction_data:
-                        if (
-                            other_pred["gardiner_code"] == pred_info["gardiner_code"]
-                            and other_pred["pred_key"] != pred_info["pred_key"]
-                        ):
-                            similar_predictions.append(other_pred)
-
-                    if similar_predictions:
-                        st.write(
-                            f"Found {len(similar_predictions)} other instances of `{pred_info['gardiner_code']}` in this image:"
-                        )
-                        for sim_pred in similar_predictions:
-                            status_emoji = {
-                                "correct": "[OK]",
-                                "incorrect": "[FAIL]",
-                                "uncertain": "[WARNING]",
-                                "pending": "",
-                            }.get(sim_pred["validation_status"], "")
-                            st.write(
-                                f"  {status_emoji} Sign #{sim_pred['index']+1} (conf: {sim_pred['confidence']:.2f})"
-                            )
-                    else:
-                        st.write(
-                            f"No other instances of `{pred_info['gardiner_code']}` found in this image"
-                        )
-
-                    # Link to external references
-                    st.markdown("#### External References")
-                    gardiner_code = pred_info["gardiner_code"]
-                    st.markdown(
-                        f"- [Gardiner Sign List](https://en.wikipedia.org/wiki/Gardiner%27s_sign_list#{gardiner_code[0]})"
-                    )
-                    st.markdown(
-                        f"- [Thesaurus Linguae Aegyptiae](https://thesaurus-linguae-aegyptiae.de/search{gardiner_code[0]})"
-                    )
-                    if validator.aku_index:
-                        st.markdown(
-                            f"- [AKU Westcar database (see reference signs below)](https://aku-pal.uni-mainz.de/{gardiner_code[0]})"
-                        )
-
-                # Display Gardiner code with Unicode
-                unicode_point = validator.gardiner_codes.get(
-                    pred_info["gardiner_code"], {}
-                ).get("unicode", "N/A")
-                if unicode_point != "N/A" and unicode_point.startswith("U+"):
-                    try:
-                        unicode_char = chr(int(unicode_point[2:], 16))
-                        st.markdown(
-                            f"**Gardiner Code:** `{pred_info['gardiner_code']}` -> **{unicode_char}** ({unicode_point})"
-                        )
-                    except:
-                        st.markdown(
-                            f"**Gardiner Code:** `{pred_info['gardiner_code']}` ({unicode_point})"
-                        )
-                else:
-                    st.markdown(f"**Gardiner Code:** `{pred_info['gardiner_code']}`")
-
-                # Check for manual corrections
-                manual_corrections = validation_results.get("manual_corrections", {})
-                if pred_info["pred_key"] in manual_corrections:
-                    correction = manual_corrections[pred_info["pred_key"]]
-                    st.warning(
-                        f"**Manual Correction Applied:** {correction['original_code']} -> {correction['corrected_code']}"
-                    )
-
-                st.write(f"**Name:** {pred_info['gardiner_name']}")
-                st.write(f"**Category:** {pred_info['category']}")
-                st.write(f"**Confidence:** {pred_info['confidence']:.3f}")
-                st.write(
-                    f"**Bounding Box:** [{pred_info['bbox'][0]:.1f}, {pred_info['bbox'][1]:.1f}, {pred_info['bbox'][2]:.1f}, {pred_info['bbox'][3]:.1f}]"
-                )
-
-                # Show notes if any exist
-                notes = validation_results.get("notes", {})
-                if (
-                    pred_info["pred_key"] in notes
-                    and notes[pred_info["pred_key"]].strip()
-                ):
-                    st.markdown("**Scholar Notes:**")
-                    st.info(notes[pred_info["pred_key"]])
-
-                # Current validation status
-                current_status = pred_info["validation_status"]
-                if current_status != "pending":
-                    status_display = {
-                        "correct": "Correct",
-                        "incorrect": "Incorrect",
-                        "uncertain": "Uncertain",
-                    }.get(current_status, current_status)
-                    st.write(f"**Current Status:** {status_display}")
-                else:
-                    st.write(f"**Current Status:** Pending validation")
-
-                # Display TLA lemma information
-                st.markdown("---")
-                tla_container = st.container()
-                validator.display_tla_lemma_info(
-                    pred_info["gardiner_code"], tla_container
-                )
-
-                # Display AKU reference signs
-                st.markdown("---")
-                aku_container = st.container()
-                validator.display_aku_reference_signs(
-                    pred_info["gardiner_code"], aku_container
-                )
-
-                st.markdown("---")
-                st.markdown("### Validate this prediction:")
-
-                # Validation buttons
-                col_a, col_b, col_c = st.columns([1, 1, 1])
-
-                with col_a:
-                    if st.button(
-                        "Correct",
-                        key=f"correct_{pred_info['pred_key']}",
-                        use_container_width=True,
-                        type="primary",
-                    ):
-                        validated_predictions[pred_info["pred_key"]] = "correct"
-                        validation_results["validated_predictions"] = (
-                            validated_predictions
-                        )
-                        validator.save_validation_results(validation_results)
-                        st.success(f"Marked {pred_info['gardiner_code']} as correct!")
-                        st.rerun()
-
-                with col_b:
-                    if st.button(
-                        "Incorrect",
-                        key=f"incorrect_{pred_info['pred_key']}",
-                        use_container_width=True,
-                    ):
-                        validated_predictions[pred_info["pred_key"]] = "incorrect"
-                        validation_results["validated_predictions"] = (
-                            validated_predictions
-                        )
-                        validator.save_validation_results(validation_results)
-                        st.error(f"Marked {pred_info['gardiner_code']} as incorrect!")
-                        st.rerun()
-
-                with col_c:
-                    if st.button(
-                        "Uncertain",
-                        key=f"uncertain_{pred_info['pred_key']}",
-                        use_container_width=True,
-                    ):
-                        validated_predictions[pred_info["pred_key"]] = "uncertain"
-                        validation_results["validated_predictions"] = (
-                            validated_predictions
-                        )
-                        validator.save_validation_results(validation_results)
-                        st.warning(f"Marked {pred_info['gardiner_code']} as uncertain!")
-                        st.rerun()
-
-        else:
+    if pred_info is None:
+        if not prediction_data:
             st.warning(
                 "No predictions to validate at the current confidence threshold."
             )
+    else:
+        # Two-column layout: sign details (left) + validation panel (right)
+        col1, col2 = st.columns([3, 2])
+
+        with col1:
+            st.markdown(f"### Prediction #{pred_index + 1}")
+
+            # Display cropped image of the selected sign
+            try:
+                img = cv2.imread(str(image_path))
+                if img is not None:
+                    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+                    bbox = pred_info["bbox"]
+                    x, y, w, h = int(bbox[0]), int(bbox[1]), int(bbox[2]), int(bbox[3])
+                    padding = 10
+                    x_start = max(0, x - padding)
+                    y_start = max(0, y - padding)
+                    x_end = min(img_rgb.shape[1], x + w + padding)
+                    y_end = min(img_rgb.shape[0], y + h + padding)
+                    cropped_sign = img_rgb[y_start:y_end, x_start:x_end]
+                    if cropped_sign.size > 0:
+                        st.image(
+                            cropped_sign,
+                            caption=f"Sign #{pred_index + 1}: {pred_info['gardiner_code']}",
+                            width=150,
+                        )
+            except Exception as e:
+                st.write(f"Could not display cropped image: {e}")
+
+            # Gardiner code with Unicode
+            unicode_point = validator.gardiner_codes.get(
+                pred_info["gardiner_code"], {}
+            ).get("unicode", "N/A")
+            if unicode_point != "N/A" and unicode_point.startswith("U+"):
+                try:
+                    unicode_char = chr(int(unicode_point[2:], 16))
+                    st.markdown(
+                        f"**Gardiner Code:** `{pred_info['gardiner_code']}` -> **{unicode_char}** ({unicode_point})"
+                    )
+                except Exception:
+                    st.markdown(
+                        f"**Gardiner Code:** `{pred_info['gardiner_code']}` ({unicode_point})"
+                    )
+            else:
+                st.markdown(f"**Gardiner Code:** `{pred_info['gardiner_code']}`")
+
+            # Check for manual corrections
+            manual_corrections = validation_results.get("manual_corrections", {})
+            if pred_info["pred_key"] in manual_corrections:
+                correction = manual_corrections[pred_info["pred_key"]]
+                st.warning(
+                    f"**Manual Correction Applied:** {correction['original_code']} -> {correction['corrected_code']}"
+                )
+
+            st.write(f"**Name:** {pred_info['gardiner_name']}")
+            st.write(f"**Category:** {pred_info['category']}")
+            st.write(f"**Confidence:** {pred_info['confidence']:.3f}")
+
+            # Current validation status
+            current_status = pred_info["validation_status"]
+            if current_status != "pending":
+                status_display = {
+                    "correct": "Correct",
+                    "incorrect": "Incorrect",
+                    "uncertain": "Uncertain",
+                }.get(current_status, current_status)
+                st.write(f"**Current Status:** {status_display}")
+            else:
+                st.write(f"**Current Status:** Pending validation")
+
+            # Show notes if any exist
+            notes = validation_results.get("notes", {})
+            if (
+                pred_info["pred_key"] in notes
+                and notes[pred_info["pred_key"]].strip()
+            ):
+                st.markdown("**Scholar Notes:**")
+                st.info(notes[pred_info["pred_key"]])
+
+            # TLA lemma information
+            st.markdown("---")
+            tla_container = st.container()
+            validator.display_tla_lemma_info(
+                pred_info["gardiner_code"], tla_container
+            )
+
+            # AKU reference signs
+            st.markdown("---")
+            aku_container = st.container()
+            validator.display_aku_reference_signs(
+                pred_info["gardiner_code"], aku_container
+            )
+
+        with col2:
+            st.markdown("### Validate")
+
+            # Validation buttons
+            if st.button(
+                "Correct",
+                key=f"correct_{pred_info['pred_key']}",
+                use_container_width=True,
+                type="primary",
+            ):
+                validated_predictions[pred_info["pred_key"]] = "correct"
+                validation_results["validated_predictions"] = validated_predictions
+                validator.save_validation_results(validation_results)
+                st.success(f"Marked {pred_info['gardiner_code']} as correct!")
+                st.rerun()
+
+            if st.button(
+                "Incorrect",
+                key=f"incorrect_{pred_info['pred_key']}",
+                use_container_width=True,
+            ):
+                validated_predictions[pred_info["pred_key"]] = "incorrect"
+                validation_results["validated_predictions"] = validated_predictions
+                validator.save_validation_results(validation_results)
+                st.error(f"Marked {pred_info['gardiner_code']} as incorrect!")
+                st.rerun()
+
+            if st.button(
+                "Uncertain",
+                key=f"uncertain_{pred_info['pred_key']}",
+                use_container_width=True,
+            ):
+                validated_predictions[pred_info["pred_key"]] = "uncertain"
+                validation_results["validated_predictions"] = validated_predictions
+                validator.save_validation_results(validation_results)
+                st.warning(f"Marked {pred_info['gardiner_code']} as uncertain!")
+                st.rerun()
+
+            st.markdown("---")
+
+            # Expert Tools Section
+            with st.expander("Expert Tools", expanded=False):
+                st.markdown("#### Manual Correction")
+
+                available_codes = list(validator.gardiner_codes.keys())
+                current_code_idx = (
+                    available_codes.index(pred_info["gardiner_code"])
+                    if pred_info["gardiner_code"] in available_codes
+                    else 0
+                )
+
+                corrected_code = st.selectbox(
+                    "Override Gardiner Code:",
+                    options=available_codes,
+                    index=current_code_idx,
+                    key=f"manual_code_{pred_info['pred_key']}",
+                )
+
+                if corrected_code != pred_info["gardiner_code"]:
+                    if st.button(
+                        f"Apply Correction: {pred_info['gardiner_code']} -> {corrected_code}",
+                        key=f"apply_correction_{pred_info['pred_key']}",
+                    ):
+                        if "manual_corrections" not in validation_results:
+                            validation_results["manual_corrections"] = {}
+                        validation_results["manual_corrections"][
+                            pred_info["pred_key"]
+                        ] = {
+                            "original_code": pred_info["gardiner_code"],
+                            "corrected_code": corrected_code,
+                            "timestamp": datetime.now().isoformat(),
+                        }
+                        validator.save_validation_results(validation_results)
+                        st.success(f"Applied manual correction: {corrected_code}")
+                        st.rerun()
+
+                st.markdown("#### Scholarly Notes")
+
+                existing_notes = validation_results.get("notes", {})
+                current_note = existing_notes.get(pred_info["pred_key"], "")
+
+                note_text = st.text_area(
+                    "Add scholarly observations:",
+                    value=current_note,
+                    height=100,
+                    key=f"note_{pred_info['pred_key']}",
+                    placeholder="Add comments about palaeographic details, context, alternative readings...",
+                )
+
+                if st.button("Save Note", key=f"save_note_{pred_info['pred_key']}"):
+                    if "notes" not in validation_results:
+                        validation_results["notes"] = {}
+                    validation_results["notes"][pred_info["pred_key"]] = note_text
+                    validator.save_validation_results(validation_results)
+                    st.success("Note saved!")
+
+                st.markdown("#### Cross-References")
+
+                similar_predictions = [
+                    other_pred
+                    for other_pred in prediction_data
+                    if other_pred["gardiner_code"] == pred_info["gardiner_code"]
+                    and other_pred["pred_key"] != pred_info["pred_key"]
+                ]
+
+                if similar_predictions:
+                    st.write(
+                        f"Found {len(similar_predictions)} other instances of `{pred_info['gardiner_code']}`:"
+                    )
+                    for sim_pred in similar_predictions:
+                        status_emoji = {
+                            "correct": "[OK]",
+                            "incorrect": "[FAIL]",
+                            "uncertain": "[WARNING]",
+                            "pending": "",
+                        }.get(sim_pred["validation_status"], "")
+                        st.write(
+                            f"  {status_emoji} Sign #{sim_pred['index']+1} (conf: {sim_pred['confidence']:.2f})"
+                        )
+                else:
+                    st.write(
+                        f"No other instances of `{pred_info['gardiner_code']}` found"
+                    )
+
+                st.markdown("#### External References")
+                gardiner_code = pred_info["gardiner_code"]
+                st.markdown(
+                    f"- [Gardiner Sign List](https://en.wikipedia.org/wiki/Gardiner%27s_sign_list#{gardiner_code[0]})"
+                )
+                st.markdown(
+                    f"- [Thesaurus Linguae Aegyptiae](https://thesaurus-linguae-aegyptiae.de/search{gardiner_code[0]})"
+                )
+                if validator.aku_index:
+                    st.markdown(
+                        f"- [AKU Westcar database](https://aku-pal.uni-mainz.de/{gardiner_code[0]})"
+                    )
 
     # Statistics section
     st.markdown("---")

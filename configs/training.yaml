@@ -1,11 +1,4 @@
 # HieraticAI Training Configuration
-# Updated for clean Y-band spatial split (May 2026)
-#
-# Key changes from v1:
-#   - 95 active categories (not 634) — only classes present in the manuscript
-#   - Clean spatial split with 30px buffer (zero pixel leakage between splits)
-#   - Cosine LR schedule, 30K iterations
-#   - Category IDs remapped to contiguous 0-based range in the notebook
 
 # Model Configuration
 model:

@@ -94,7 +94,7 @@ def create_system_architecture_diagram():
     ax.text(
         7.6,
         11.9,
-        "ResNet-101\nBackbone",
+        "ResNet-50\nBackbone",
         fontsize=9,
         ha="center",
         va="center",
@@ -122,7 +122,7 @@ def create_system_architecture_diagram():
     ax.text(
         12.6,
         11.9,
-        "634 Category\nClassifier",
+        "95 Category\nClassifier",
         fontsize=9,
         ha="center",
         va="center",
@@ -348,7 +348,7 @@ def create_system_architecture_diagram():
     ax.text(
         3.5,
         2,
-        "• mAP: 31.2%\n• Detection Rate: 62.1%\n• 634 Gardiner Categories\n• 100% TLA Coverage",
+        "• mAP: 36.4% (TTA)\n• AP50: 59.7%\n• 95 Gardiner Categories\n• 100% TLA Coverage",
         fontsize=9,
         ha="center",
         va="center",
@@ -912,7 +912,7 @@ def create_research_methodology_diagram():
             "size": (4, 1.8),
             "title": "PHASE 2: MODEL TRAINING",
             "color": "#e74c3c",
-            "content": "• Faster R-CNN architecture\n• ResNet-101 backbone\n• Category mapping fix\n• Performance optimization",
+            "content": "• Faster R-CNN architecture\n• ResNet-50 backbone\n• Spatial Y-band split\n• Performance optimization",
         },
         {
             "pos": (15, 10),
@@ -1130,7 +1130,7 @@ def create_research_methodology_diagram():
     ax.text(
         9,
         0.5,
-        "Winter 2025 • Methodological Prototype",
+        "Summer 2025 • Methodological Prototype",
         fontsize=10,
         ha="center",
         style="italic",

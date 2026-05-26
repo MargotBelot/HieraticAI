@@ -428,7 +428,7 @@ def create_performance_visualization(results, category_map):
         "Classification\nAccuracy",
         "Overall\nAccuracy",
     ]
-    before_values = [0.534, 0.622, 0.000, 0.000]  # From original analysis
+    before_values = [0.0, 0.0, 0.0, 0.0]  # Before category mapping fix
     after_values = metric_values
 
     x = np.arange(len(comparison_metrics))
