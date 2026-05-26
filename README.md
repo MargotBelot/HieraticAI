@@ -27,7 +27,7 @@ HieraticAI focuses on the study of ancient Egyptian manuscripts by combining com
 **What makes HieraticAI unique:**
 - **AI-First Approach**: Faster R-CNN detection with ResNet-50 backbone across 95 active Gardiner code classes
 - **Expert Validation**: Interactive interface for Egyptologists to review and correct AI predictions
-- **Comprehensive Integration**: Direct links to TLA (Thesaurus Linguae Aegyptiae) and AKU databases
+- **Comprehensive Integration**: Direct links to TLA (Thesaurus Linguae Aegyptiae) and AKU-PAL databases
 - **Research-Ready**: Exports validated data for paleographic and linguistic research
 
 ### The Problem We Solve
