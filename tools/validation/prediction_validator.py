@@ -1374,7 +1374,7 @@ def main():
     # Add usage instructions
     with st.expander("How to use this interface", expanded=False):
         st.markdown(
-            """
+        """
         ### Getting Started
         1. **View Predictions**: The left panel shows the HieraticAI model's predictions overlaid on the Westcar Papyrus (VIII 5-24)
         2. **Select Signs**: Use the dropdown in the right panel to select individual predictions for validation
