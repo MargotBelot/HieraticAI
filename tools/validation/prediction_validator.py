@@ -487,19 +487,33 @@ class PredictionValidator:
         3. output/*/coco_instances_results*.json (any legacy output)
         """
         # Priority 1: Clean-split test evaluation
-        clean_test = self.project_root / "output_clean_split" / "eval_test" / "coco_instances_results.json"
+        clean_test = (
+            self.project_root
+            / "output_clean_split"
+            / "eval_test"
+            / "coco_instances_results.json"
+        )
         if clean_test.exists():
             return clean_test
 
         # Priority 2: Clean-split TTA evaluation
-        clean_tta = self.project_root / "output_clean_split" / "eval_test_tta" / "coco_instances_results.json"
+        clean_tta = (
+            self.project_root
+            / "output_clean_split"
+            / "eval_test_tta"
+            / "coco_instances_results.json"
+        )
         if clean_tta.exists():
             return clean_tta
 
         # Priority 3: Any output directory with results
         output_dir = self.project_root / "output"
         if output_dir.exists():
-            for results_file in sorted(output_dir.rglob("coco_instances_results*.json"), key=lambda p: p.stat().st_mtime, reverse=True):
+            for results_file in sorted(
+                output_dir.rglob("coco_instances_results*.json"),
+                key=lambda p: p.stat().st_mtime,
+                reverse=True,
+            ):
                 return results_file
 
         # Fallback: return expected path (will fail validation with helpful message)
@@ -1708,19 +1722,14 @@ def main():
 
             # Show notes if any exist
             notes = validation_results.get("notes", {})
-            if (
-                pred_info["pred_key"] in notes
-                and notes[pred_info["pred_key"]].strip()
-            ):
+            if pred_info["pred_key"] in notes and notes[pred_info["pred_key"]].strip():
                 st.markdown("**Scholar Notes:**")
                 st.info(notes[pred_info["pred_key"]])
 
             # TLA lemma information
             st.markdown("---")
             tla_container = st.container()
-            validator.display_tla_lemma_info(
-                pred_info["gardiner_code"], tla_container
-            )
+            validator.display_tla_lemma_info(pred_info["gardiner_code"], tla_container)
 
             # AKU reference signs
             st.markdown("---")
