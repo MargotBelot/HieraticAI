@@ -1464,7 +1464,7 @@ def main():
     # Confidence level explanation
     st.sidebar.markdown("### Confidence Levels")
     st.sidebar.markdown(
-        """
+    """
     **Understanding AI Confidence:**
 
     - **High (0.8-1.0)**: Reliable predictions with clear visual features
