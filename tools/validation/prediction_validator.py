@@ -1473,8 +1473,7 @@ def main():
     - **Very Low (<0.3)**: Highly uncertain, likely incorrect predictions
 
     **Recommendation:** Start validation with high confidence predictions to establish baseline accuracy, then work through medium and low confidence detections.
-    """
-    )
+    """)
 
     # Quick Jump filters
     st.sidebar.markdown("### Quick Jump")
