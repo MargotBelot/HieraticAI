@@ -1039,51 +1039,15 @@ class PredictionValidator:
                     )
 
     def get_gardiner_info(self, category_id):
-        """Get Gardiner code information for a category."""
-        # Mapping from model category IDs to actual Gardiner codes (from actual FIXED predictions)
-        gardiner_map = {
-            1: "A1",
-            14: "A2",
-            55: "B1",
-            76: "D1",
-            87: "D21",
-            102: "D35",
-            109: "D40",
-            114: "D46",
-            159: "E8",
-            209: "G1",
-            211: "G17",
-            258: "I10",
-            274: "I9",
-            292: "M15",
-            294: "M17",
-            295: "M18",
-            305: "M23",
-            353: "N35",
-            371: "O1",
-            416: "P6",
-            422: "Q3",
-            430: "R11",
-            459: "S24",
-            462: "S29",
-            525: "U31",
-            527: "U33",
-            537: "V1",
-            546: "V2",
-            561: "V31",
-            587: "W25",
-            595: "X1",
-            602: "Y1",
-            606: "Y5",
-            615: "Z3A",
-            616: "Z4",
-            621: "Aa1",
-            629: "G7",
-            630: "U28",
-            631: "Aa15",
-        }
+        """Get Gardiner code information for a category.
 
-        code = gardiner_map.get(category_id, f"UNKNOWN_{category_id}")
+        The mapping is loaded dynamically from the dataset annotations
+        so it stays in sync regardless of how categories are remapped.
+        """
+        if not hasattr(self, "_gardiner_map"):
+            self._gardiner_map = self._load_category_map()
+
+        code = self._gardiner_map.get(category_id, f"UNKNOWN_{category_id}")
         info = self.gardiner_codes.get(
             code,
             {
@@ -1093,6 +1057,23 @@ class PredictionValidator:
             },
         )
         return code, info
+
+    def _load_category_map(self) -> dict:
+        """Load category_id -> Gardiner code mapping from dataset annotations.
+
+        Tries each split's annotations until one is found.
+        """
+        for split in ["test", "val", "train"]:
+            ann_file = self.images_dir / split / "annotations.json"
+            if ann_file.exists():
+                try:
+                    with open(ann_file, "r") as f:
+                        data = json.load(f)
+                    return {cat["id"]: cat["name"] for cat in data["categories"]}
+                except Exception:
+                    continue
+        # Fallback: empty map (will show UNKNOWN_N)
+        return {}
 
     def visualize_predictions(
         self, image_path, predictions, image_id, validated_results
