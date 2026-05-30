@@ -37,7 +37,8 @@ Open Terminal, navigate to the folder, and run: `python3 install.py`
 
 ### Step 3: Launch HieraticAI
 After installation completes:
-- **Mac/Linux**: Run `./start_hieratic_ai.sh`
+- **Mac**: Double-click **HieraticAI** on your Desktop (or run `./start_hieratic_ai.sh` from terminal)
+- **Linux**: Run `./start_hieratic_ai.sh` from terminal
 
 Your web browser will open automatically with the HieraticAI interface!
 
