@@ -434,7 +434,7 @@ def setup_args():
     )
     parser.add_argument(
         "--output-dir",
-        default="output_clean_split",
+        default="model",
         help="Output directory for training results",
     )
     parser.add_argument(

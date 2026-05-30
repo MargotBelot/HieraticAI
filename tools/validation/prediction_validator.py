@@ -482,24 +482,24 @@ class PredictionValidator:
         """Auto-discover predictions file from available output directories.
 
         Search order:
-        1. output_clean_split/eval_test/coco_instances_results.json (latest clean-split eval)
-        2. output_clean_split/eval_test_tta/coco_instances_results.json (TTA eval)
+        1. model/eval_test/coco_instances_results.json (latest model eval)
+        2. model/eval_test_tta/coco_instances_results.json (TTA eval)
         3. output/*/coco_instances_results*.json (any legacy output)
         """
-        # Priority 1: Clean-split test evaluation
+        # Priority 1: Model test evaluation
         clean_test = (
             self.project_root
-            / "output_clean_split"
+            / "model"
             / "eval_test"
             / "coco_instances_results.json"
         )
         if clean_test.exists():
             return clean_test
 
-        # Priority 2: Clean-split TTA evaluation
+        # Priority 2: Model TTA evaluation
         clean_tta = (
             self.project_root
-            / "output_clean_split"
+            / "model"
             / "eval_test_tta"
             / "coco_instances_results.json"
         )
@@ -1374,7 +1374,7 @@ def main():
     # Add usage instructions
     with st.expander("How to use this interface", expanded=False):
         st.markdown(
-        """
+            """
         ### Getting Started
         1. **View Predictions**: The left panel shows the HieraticAI model's predictions overlaid on the Westcar Papyrus (VIII 5-24)
         2. **Select Signs**: Use the dropdown in the right panel to select individual predictions for validation
@@ -1464,7 +1464,7 @@ def main():
     # Confidence level explanation
     st.sidebar.markdown("### Confidence Levels")
     st.sidebar.markdown(
-    """
+        """
     **Understanding AI Confidence:**
 
     - **High (0.8-1.0)**: Reliable predictions with clear visual features
@@ -1473,7 +1473,8 @@ def main():
     - **Very Low (<0.3)**: Highly uncertain, likely incorrect predictions
 
     **Recommendation:** Start validation with high confidence predictions to establish baseline accuracy, then work through medium and low confidence detections.
-    """)
+    """
+    )
 
     # Quick Jump filters
     st.sidebar.markdown("### Quick Jump")

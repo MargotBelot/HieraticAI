@@ -136,7 +136,7 @@ ls -la data/
 ls -la "external_data/AKU Westcar Scraping/"
 
 # Verify prediction file exists
-ls -la output_clean_split/eval_test/coco_instances_results.json
+ls -la model/eval_test/coco_instances_results.json
 ```
 
 #### Memory Issues

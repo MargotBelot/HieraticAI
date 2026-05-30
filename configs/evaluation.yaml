@@ -5,7 +5,7 @@
 dataset:
   test_split: "test"
   ground_truth_file: "./dataset_clean/test/annotations.json"
-  predictions_file: "./output_clean_split/eval_test/coco_instances_results.json"
+  predictions_file: "./model/eval_test/coco_instances_results.json"
 
 # Metrics Configuration
 metrics:

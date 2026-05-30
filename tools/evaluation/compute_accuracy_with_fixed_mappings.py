@@ -54,7 +54,7 @@ def load_data():
         gt_data = json.load(f)
 
     # Load predictions from latest evaluation
-    pred_file = "output_clean_split/eval_test/coco_instances_results.json"
+    pred_file = "model/eval_test/coco_instances_results.json"
 
     if not Path(pred_file).exists():
         print(f"Fixed predictions file not found: {pred_file}")
@@ -215,7 +215,7 @@ def compute_accuracy_with_fixed_mappings(iou_threshold=0.5):
         "analysis_parameters": {
             "iou_threshold": iou_threshold,
             "dataset_path": "dataset_clean",
-            "predictions_file": "output_clean_split/eval_test/coco_instances_results.json",
+            "predictions_file": "model/eval_test/coco_instances_results.json",
             "total_categories": len(category_map),
         },
         "summary": {

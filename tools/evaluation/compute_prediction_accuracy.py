@@ -535,7 +535,7 @@ def main():
             "Usage: python compute_prediction_accuracy.py <dataset_path> <predictions_file> [iou_threshold]"
         )
         print(
-            "Example: python compute_prediction_accuracy.py dataset_clean output_clean_split/eval_test/coco_instances_results.json 0.5"
+            "Example: python compute_prediction_accuracy.py dataset_clean model/eval_test/coco_instances_results.json 0.5"
         )
         sys.exit(1)
 
