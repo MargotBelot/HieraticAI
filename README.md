@@ -159,6 +159,29 @@ streamlit run tools/validation/prediction_validator.py
 
 **Then navigate to `http://localhost:8501` in your browser!**
 
+### Download Pre-trained Model (Via Git LFS)
+
+The repository includes a pre-trained Faster R-CNN model trained on the Westcar papyrus dataset. To use it:
+
+**Requirements**: [Git LFS](https://git-lfs.com/) must be installed
+
+```bash
+# If you cloned the repo before model was added, pull it now:
+git lfs pull
+
+# Verify the model is available:
+ls -lh model/model_final.pth  # Should show ~1.2 GB file
+```
+
+**What's included in `model/`:**
+- `model_final.pth` - Trained model weights (1.1 GB)
+- `eval_test/` - Standard evaluation results
+- `eval_test_tta/` - Test-time augmentation evaluation
+- `metrics.json` - Training metrics
+- `last_checkpoint` - Latest checkpoint reference
+
+The model will automatically load when you run the validation interface. No additional setup needed!
+
 ## Interactive Validation Interface
 
 ### Real-Time Validation Workflow
