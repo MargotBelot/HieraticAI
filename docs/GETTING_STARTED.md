@@ -62,118 +62,39 @@ streamlit run tools/validation/prediction_validator.py
 
 ## Your First Validation Session
 
-### Step 1: Understand the Interface
+### Interface Layout
 
-The interface displays:
-- **Top**: Westcar Papyrus facsimile with colored bounding boxes
-- **Below**: Validation controls (left) and sign details (right)
-- **Bottom**: Progress statistics and export options
+- **Top**: Westcar Papyrus with colored bounding boxes
+- **Left**: Sign details (image, Gardiner code, TLA data, AKU references)
+- **Right**: Validation controls (Correct/Incorrect/Uncertain buttons)
+- **Bottom**: Progress statistics and export
 
-### Step 2: Adjust Confidence Threshold
+### Workflow
 
-Start with the default threshold (0.3) to see all predictions:
-- **High confidence (0.8-1.0)**: Likely correct predictions
-- **Medium confidence (0.5-0.8)**: Review carefully  
-- **Low confidence (0.0-0.5)**: Often need correction
+1. **Adjust threshold**: Use sidebar slider to set confidence level (default: 0.3)
+2. **Select a prediction**: Choose from dropdown (shows confidence score)
+3. **Review context**: Check cropped image, Gardiner code, TLA/AKU data
+4. **Validate**: Click Correct / Incorrect / Uncertain
+5. **Export**: Download CSV results when done
 
-### Step 3: Select Your First Prediction
-
-1. Look at the manuscript image - you'll see numbered bounding boxes
-2. Use the prediction dropdown below the image: `Select a prediction...`
-3. Choose: `[PENDING] 1. A1 (conf: 0.85)` (example)
-
-### Step 4: Review the Sign Context
-
-For the selected prediction, examine:
-- **Cropped Image**: Isolated view of the detected sign
-- **Gardiner Info**: Code, Unicode character, description  
-- **TLA Data**: Transliteration, translation, frequency
-- **AKU References**: Similar signs from the database
-
-### Step 5: Make Your First Validation
-
-Based on your expert assessment:
-- Click **Correct** if the AI prediction is accurate
-- Click **Incorrect** if wrong classification or bounding box
-- Click **Uncertain** for ambiguous or damaged signs
-
-### Step 6: Track Your Progress
-
-Watch the statistics update in real-time:
-- **Progress Bar**: Shows validation completion
-- **Accuracy Metrics**: Running accuracy percentage
-- **Distribution Chart**: Breakdown of validation outcomes
-
-## Best Practices for Validation
-
-**Validation Tips:**
-1. **Start with high confidence predictions** - validate obvious correct ones first
-2. **Review TLA and AKU data** before making decisions
-3. **Export regularly** to save your progress
-
-**Export Results:** Click "Export Validation Results" button in the interface to download a CSV with your validation data.
+**Tip**: Start with high-confidence predictions (0.8+) to validate obvious ones first.
 
 ## Troubleshooting
 
-### Common Issues
+**Issues with installation?**
+- Verify Python 3.8+: `python3 --version`
+- Reinstall dependencies: `pip install --upgrade -r requirements.txt`
+- Clear Streamlit cache: `streamlit cache clear`
 
-#### Interface Won't Load
+**Interface won't load?**
 ```bash
-# Check if all dependencies installed
-pip list | grep streamlit
-pip list | grep torch
-
-# Try clearing Streamlit cache
-streamlit cache clear
-
-# Restart with verbose output
 streamlit run tools/validation/prediction_validator.py --logger.level=debug
 ```
 
-#### Database Connection Issues
-```bash
-# Check file paths exist
-ls -la data/
-ls -la "external_data/AKU Westcar Scraping/"
+**Database connection issues?**
+- Check paths exist: `ls data/ model/`
+- Verify prediction file: `ls model/eval_test/coco_instances_results.json`
 
-# Verify prediction file exists
-ls -la model/eval_test/coco_instances_results.json
-```
-
-#### Memory Issues
-```bash
-# For low-memory systems:
-export STREAMLIT_SERVER_MAX_UPLOAD_SIZE=200
-export STREAMLIT_SERVER_MAX_MESSAGE_SIZE=200
-
-# Or use CPU-only mode
-export CUDA_VISIBLE_DEVICES=""
-```
-
-### Getting Help
-
-If you encounter issues:
-
-1. **Check Prerequisites**: Verify Python version and dependencies
-2. **Review Error Messages**: Look for specific error details in terminal
-3. **Check File Permissions**: Ensure read/write access to project directories
-4. **Update Dependencies**: Try `pip install --upgrade -r requirements.txt`
-5. **GitHub Issues**: Report bugs at [GitHub Issues](https://github.com/MargotBelot/HieraticAI/issues)
-
-## Next Steps
-
-Next, explore:
-
-- **[Technical Guide](TECHNICAL_GUIDE.md)**: Advanced features and customization
-- **Validation Best Practices**: Develop systematic validation workflows
-- **Research Applications**: Integrate results into your research
-- **Contributing**: Help improve HieraticAI for the academic community
-
-## Support
-
-Need additional help?
-- **Documentation**: Check the Technical Guide for advanced topics
-- **Bug Reports**: Use GitHub Issues with detailed error information
-- **Feature Requests**: Suggest improvements through GitHub Discussions
+**Need help?** Report issues on [GitHub Issues](https://github.com/MargotBelot/HieraticAI/issues)
   
 ---
