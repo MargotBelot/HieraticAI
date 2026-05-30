@@ -4,8 +4,8 @@
 # Evaluation Dataset
 dataset:
   test_split: "test"
-  ground_truth_file: "./hieroglyphs_dataset/test/annotations.json"
-  predictions_file: "./output/latest/coco_instances_results.json"
+  ground_truth_file: "./dataset_clean/test/annotations.json"
+  predictions_file: "./output_clean_split/eval_test/coco_instances_results.json"
 
 # Metrics Configuration
 metrics:

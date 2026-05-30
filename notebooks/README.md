@@ -1,229 +1,39 @@
-# Hieroglyph Detection Notebooks
+# HieraticAI Notebooks
 
-This directory contains Jupyter notebooks that walk through the complete hieroglyph detection pipeline. Each notebook focuses on a specific aspect of the project and can be run independently.
+## Overview
 
-## Table of Contents
+This notebook implements the complete HieraticAI training and evaluation pipeline using a **clean Y-band spatial split** with 30px buffer zones guaranteeing zero pixel leakage between splits.
 
-- [Hieroglyph Detection Notebooks](#hieroglyph-detection-notebooks)
-  - [Table of Contents](#table-of-contents)
-  - [Notebook Overview](#notebook-overview)
-    - [01\_Data\_Preparation.ipynb](#01_data_preparationipynb)
-    - [02\_Training.ipynb](#02_trainingipynb)
-    - [03\_Evaluation.ipynb](#03_evaluationipynb)
-    - [04\_Inference.ipynb](#04_inferenceipynb)
-    - [05\_Improved\_Training.ipynb](#05_improved_trainingipynb)
-  - [Quick Start Guide](#quick-start-guide)
-    - [For New Users](#for-new-users)
-    - [For Advanced Users](#for-advanced-users)
-    - [For Researchers](#for-researchers)
-  - [Running the Notebooks](#running-the-notebooks)
-    - [Prerequisites](#prerequisites)
-    - [Environment Setup](#environment-setup)
-    - [Google Colab Usage](#google-colab-usage)
-  - [Performance Expectations](#performance-expectations)
-  - [Notebook  Expected Runtime  Memory Usage  GPU Required](#notebook--expected-runtime--memory-usage--gpu-required)
-  - [Troubleshooting](#troubleshooting)
-    - [Common Issues](#common-issues)
-  - [Additional Resources](#additional-resources)
-  - [Learning Path](#learning-path)
-    - [Beginner Track](#beginner-track)
-    - [Intermediate Track](#intermediate-track)
-    - [Advanced Track](#advanced-track)
-  - [Tips for Success](#tips-for-success)
+### Key design decisions (May 2026)
+- **95 active categories** — only classes present in pWestcar, not all 634 Gardiner codes
+- **Non-overlapping Y-band split** with buffer gaps — verified zero cross-split pixel overlap
+- **FREEZE_AT=2** — freeze res1/res2, let res3+ fine-tune on papyrus textures
+- **RepeatFactorTrainingSampler** (threshold 0.3) — oversample rare categories
+- **Custom anchors** `[16, 32, 64, 128, 256]` — tuned for small hieroglyphic signs
+- **Heavy augmentation** (rotation ±15°, flip, brightness 0.6–1.4, contrast, saturation, RandomExtent)
+- **LR 0.0002**, 30K iterations with cosine schedule on Faster R-CNN R50-FPN
+- **Test-time augmentation** (TTA) at evaluation: multi-scale (400, 512, 600) + flip
 
-## Notebook Overview
+## Notebook
 
-### [01_Data_Preparation.ipynb](01_Data_Preparation.ipynb)
-**Data Leakage Prevention & Dataset Creation**
+### 01_Training.ipynb
+Complete training + evaluation pipeline for Google Colab (A100 GPU). Handles data splitting, patch generation, dataset creation, training, standard evaluation, and TTA evaluation in one notebook.
 
-- **Purpose**: Prepare training data from annotated papyrus images
-- **Key Features**:
-  - Patch-based image splitting
-  - Spatial grouping to prevent data leakage
-  - Heavy data augmentation
-  - Train/validation/test split creation
-- **Prerequisites**: Original annotated image data
+## Running on Google Colab
 
-### [02_Training.ipynb](02_Training.ipynb)  
-**Model Training Pipeline**
+1. Upload `annotations.json` and `train_val.png` to your Google Drive under a `HieraticAI/data/` folder
+2. Open `01_Training.ipynb` in Colab
+3. Update the `PROJECT` path variable at the top of the notebook to match your Drive path
+4. Training takes ~1 hour on A100
 
-- **Purpose**: Train hieroglyph detection models using Detectron2
-- **Key Features**:
-  - Detectron2 configuration setup
-  - Custom dataset registration
-  - Training loop with validation
-  - Checkpoint management
-- **Prerequisites**: Prepared dataset from notebook 01
+## Split Details
 
-### [03_Evaluation.ipynb](03_Evaluation.ipynb)
-**Model Performance Analysis**
+- **Train** (Y ≤ 1325): 455 signs, 90 categories
+- **Val** (Y 1355–1480): 67 signs
+- **Test** (Y > 1510): 58 signs, 26 categories (96% overlap with train)
+- **Buffer** (excluded): 25 signs in the 30px gaps between zones
 
-- **Purpose**: Evaluation of trained models
-- **Key Features**:
-  - COCO evaluation metrics (mAP, mAP@0.5, etc.)
-  - Per-category performance analysis
-  - Confusion matrix generation
-  - Error analysis and visualization
-- **Prerequisites**: Trained model from notebook 02
+## Results (May 2026)
 
-### [04_Inference.ipynb](04_Inference.ipynb)
-**Real-time Hieroglyph Detection**
-
-- **Purpose**: Run inference on new papyrus images
-- **Key Features**:
-  - HieroglyphDetector class implementation
-  - Single image and batch processing
-  - Test-time augmentation
-  - Confidence threshold tuning
-  - Result visualization and export
-- **Prerequisites**: Trained model from notebook 02
-
-### [05_Improved_Training.ipynb](05_Improved_Training.ipynb)
-**Advanced Training with Focal Loss**
-
-- **Purpose**: Demonstrate improved training techniques
-- **Key Features**:
-  - Focal Loss implementation for hard examples
-  - Enhanced data augmentation
-  - Learning rate scheduling
-  - Early stopping with validation monitoring
-  - Performance comparison with baseline
-- **Prerequisites**: Understanding of baseline training from notebook 02
-
-## Quick Start Guide
-
-### For New Users
-1. **Start Here**: [01_Data_Preparation.ipynb](01_Data_Preparation.ipynb)
-2. **Then**: [02_Training.ipynb](02_Training.ipynb)  
-3. **Evaluate**: [03_Evaluation.ipynb](03_Evaluation.ipynb)
-4. **Use Model**: [04_Inference.ipynb](04_Inference.ipynb)
-
-### For Advanced Users
-- Skip to [04_Inference.ipynb](04_Inference.ipynb) if you have a pre-trained model
-- Try [05_Improved_Training.ipynb](05_Improved_Training.ipynb) for advanced techniques
-- Use [03_Evaluation.ipynb](03_Evaluation.ipynb) for detailed performance analysis
-
-### For Researchers
-- Focus on [05_Improved_Training.ipynb](05_Improved_Training.ipynb) for the latest improvements
-- Combine with [03_Evaluation.ipynb](03_Evaluation.ipynb) for comprehensive analysis
-- Reference [01_Data_Preparation.ipynb](01_Data_Preparation.ipynb) for data handling best practices
-
-## Running the Notebooks
-
-### Prerequisites
-```bash
-# Install Jupyter if not already installed
-pip install jupyter ipykernel
-
-# Start Jupyter notebook server
-jupyter notebook
-
-# Or use Jupyter Lab
-pip install jupyterlab
-jupyter lab
-```
-
-### Environment Setup
-```python
-# Add this to the beginning of each notebook
-import sys
-import os
-sys.path.append('..')  # Add project root to path
-
-# Verify installation
-import torch
-import detectron2
-print(f"PyTorch: {torch.__version__}")
-print(f"Detectron2: {detectron2.__version__}")
-```
-
-### Google Colab Usage
-All notebooks are designed to work with Google Colab:
-
-1. Upload notebooks to Google Drive
-2. Open with Google Colab
-3. Mount Google Drive when prompted
-4. Install dependencies using the provided cells
-
-## Performance Expectations
-
- Notebook  Expected Runtime  Memory Usage  GPU Required 
---------------------------------------------------------
- - 01_Data_Preparation  10-15 min  2-4 GB  No
- - 02_Training  2-4 hours  6-8 GB  Yes (recommended) 
- - 03_Evaluation  5-10 min  2-4 GB  No 
- - 04_Inference  2-5 min  2-3 GB  Recommended 
- - 05_Improved_Training  3-5 hours  8-12 GB  Yes 
-
-## Troubleshooting
-
-### Common Issues
-
-**1. Import Errors**
-```python
-# Solution: Add project root to Python path
-import sys
-sys.path.append('..')
-```
-
-**2. CUDA Memory Issues**
-```python
-# Solution: Reduce batch size or use CPU
-cfg.SOLVER.IMS_PER_BATCH = 2  # Reduce from 4
-# or
-device = "cpu"  # Force CPU usage
-```
-
-**3. Dataset Not Found**
-```bash
-# Solution: Ensure dataset structure is correct
-ls hieroglyphs_dataset/
-# Should show: train/ val/ test/ directories
-```
-
-**4. Model Loading Issues**
-```python
-# Solution: Check model path and ensure model exists
-model_path = "./output/model_final.pth"
-assert os.path.exists(model_path), f"Model not found at {model_path}"
-```
-
-## Additional Resources
-
-- **Project Documentation**: `../docs/`
-- **Utility Scripts**: `../scripts/`
-- **Training Script**: `../train_hieroglyph_detection_robust.py`
-- **Dataset Validation**: `../utils/verify_dataset_consistency.py`
-
-## Learning Path
-
-### Beginner Track
-1. Read the project README
-2. Run [01_Data_Preparation.ipynb](01_Data_Preparation.ipynb)
-3. Understand the data structure and format
-4. Try [04_Inference.ipynb](04_Inference.ipynb) with pre-trained models
-
-### Intermediate Track  
-1. Complete the Beginner Track
-2. Run [02_Training.ipynb](02_Training.ipynb)
-3. Analyze results with [03_Evaluation.ipynb](03_Evaluation.ipynb)
-4. Experiment with different parameters
-
-### Advanced Track
-1. Complete the Intermediate Track
-2. Study [05_Improved_Training.ipynb](05_Improved_Training.ipynb)
-3. Implement custom improvements
-4. Contribute to the project
-
-## Tips for Success
-
-1. **Always validate your data** before training
-2. **Start with small experiments** before full training
-3. **Monitor GPU memory usage** during training
-4. **Save checkpoints frequently** during long training runs
-5. **Visualize results** to understand model behavior
-6. **Compare different approaches** using consistent evaluation
-
----
-
-For questions or issues, refer to the main project documentation or create an issue in the project repository.
+- **Standard mAP**: 30.9% (AP50: 50.7%)
+- **TTA mAP**: 36.4% (AP50: 59.7%)
