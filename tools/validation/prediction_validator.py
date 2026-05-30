@@ -488,10 +488,7 @@ class PredictionValidator:
         """
         # Priority 1: Model test evaluation
         clean_test = (
-            self.project_root
-            / "model"
-            / "eval_test"
-            / "coco_instances_results.json"
+            self.project_root / "model" / "eval_test" / "coco_instances_results.json"
         )
         if clean_test.exists():
             return clean_test
