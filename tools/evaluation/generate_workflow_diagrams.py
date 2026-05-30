@@ -905,7 +905,7 @@ def create_research_methodology_diagram():
             "size": (4, 1.8),
             "title": "PHASE 1: DATA PREPARATION",
             "color": "#3498db",
-            "content": "• Westcar Papyrus digitization\n• CVAT annotation workflow\n• 634 Gardiner categories\n• Spatial data splitting",
+            "content": "• Westcar Papyrus digitization\n• CVAT annotation workflow\n• 95 Gardiner categories\n• Spatial data splitting",
         },
         {
             "pos": (9, 10),

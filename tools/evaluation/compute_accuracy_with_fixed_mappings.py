@@ -49,14 +49,12 @@ def load_data():
     """Load ground truth and fixed predictions data."""
 
     # Load ground truth
-    gt_file = "hieroglyphs_dataset/test/annotations.json"
+    gt_file = "dataset_clean/test/annotations.json"
     with open(gt_file, "r") as f:
         gt_data = json.load(f)
 
-    # Load fixed predictions (with correct category mappings)
-    pred_file = (
-        "output/improved_training_20250822_200344/coco_instances_results_FIXED.json"
-    )
+    # Load predictions from latest evaluation
+    pred_file = "output_clean_split/eval_test/coco_instances_results.json"
 
     if not Path(pred_file).exists():
         print(f"Fixed predictions file not found: {pred_file}")
@@ -216,8 +214,8 @@ def compute_accuracy_with_fixed_mappings(iou_threshold=0.5):
         "per_category_metrics": dict(per_category_stats),
         "analysis_parameters": {
             "iou_threshold": iou_threshold,
-            "dataset_path": "hieroglyphs_dataset",
-            "predictions_file": "output/improved_training_20250822_200344/coco_instances_results_FIXED.json",
+            "dataset_path": "dataset_clean",
+            "predictions_file": "output_clean_split/eval_test/coco_instances_results.json",
             "total_categories": len(category_map),
         },
         "summary": {

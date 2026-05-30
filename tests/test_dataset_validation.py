@@ -257,7 +257,7 @@ class TestTrainingConfiguration(unittest.TestCase):
 
         # Mock args
         class MockArgs:
-            dataset_path = "hieroglyphs_dataset"
+            dataset_path = "dataset_clean"
             output_dir = "output"
             model_weights = None
             num_workers = 2
@@ -272,7 +272,7 @@ class TestTrainingConfiguration(unittest.TestCase):
 
             config = HieroglyphTrainingConfig(MockArgs())
             self.assertIsNotNone(config.run_id)
-            self.assertEqual(config.dataset_path, "hieroglyphs_dataset")
+            self.assertEqual(config.dataset_path, "dataset_clean")
         except ImportError:
             self.skipTest("Training script not available for testing")
 

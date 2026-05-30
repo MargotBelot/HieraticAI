@@ -89,9 +89,9 @@ python3 -c "import numpy as np; import pandas as pd; print('NumPy and Pandas ins
 
 # Check dataset
 echo "Checking dataset structure..."
-if [ -d "hieroglyphs_dataset"]; then
+if [ -d "dataset_clean"]; then
     echo "Dataset directory found"
-    if [ -f "hieroglyphs_dataset/train/annotations.json"]; then
+    if [ -f "dataset_clean/train/annotations.json"]; then
         echo "Training annotations found"
     else
         echo "Training annotations not found"

@@ -136,10 +136,10 @@ streamlit run tools/validation/prediction_validator.py --logger.level=debug
 ```bash
 # Check file paths exist
 ls -la data/
-ls -la "AKU Westcar Scraping/"
+ls -la "external_data/AKU Westcar Scraping/"
 
 # Verify prediction file exists
-ls -la output/*/coco_instances_results_FIXED.json
+ls -la output_clean_split/eval_test/coco_instances_results.json
 ```
 
 #### Memory Issues

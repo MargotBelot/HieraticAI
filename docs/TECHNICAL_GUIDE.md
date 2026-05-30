@@ -44,18 +44,20 @@ Technical documentation for HieraticAI system architecture, methodologies, and f
 ## System Architecture
 
 ### Overview
-The system uses **Faster R-CNN with ResNet-50** backbone for object detection, trained on 634 hieratic character categories using Detectron2 framework.
+The system uses **Faster R-CNN with ResNet-50-FPN** backbone for object detection, trained on 95 active hieratic character categories (Gardiner codes present in pWestcar) using Detectron2 framework.
 
 ```
 Input Papyrus Image
          ↓
-Feature Extraction (ResNet-50)
+Feature Extraction (ResNet-50, FREEZE_AT=2)
+         ↓
+FPN (Feature Pyramid Network)
          ↓
 Region Proposal Network (RPN)
          ↓
 ROI Pooling & Classification
          ↓
-634 Hieratic Character Categories + Confidence
+95 Hieratic Character Categories + Confidence
 ```
 
 ### Model Architecture Details
@@ -66,13 +68,13 @@ ROI Pooling & Classification
 - **Feature Maps**: Multi-scale feature extraction (C2, C3, C4, C5)
 
 **Region Proposal Network (RPN):**
-- **Anchor Scales**: [32, 64, 128, 256, 512] pixels
+- **Anchor Scales**: [16, 32, 64, 128, 256] pixels (tuned for small hieroglyphic signs)
 - **Anchor Ratios**: [0.5, 1.0, 2.0] aspect ratios
 - **NMS Threshold**: 0.7 for proposal filtering
 
 **ROI Head:**
 - **ROI Pooling**: 7x7 feature maps per proposal
-- **Classification Head**: 634 + 1 (background) classes
+- **Classification Head**: 95 + 1 (background) classes
 - **Box Regression**: Precise bounding box refinement
 
 ## Training Methodology
@@ -88,58 +90,61 @@ ROI Pooling & Classification
 
 ### Dataset Preparation
 
-**Data Split Strategy:**
-```python
-# Spatial splitting to prevent data leakage
-def spatial_split(image_patches):
-    """Prevents nearby patches in train/val/test splits"""
-    grouped_patches = group_by_spatial_proximity(patches)
-    train_groups, val_groups, test_groups = split_groups(grouped_patches)
-    return train_groups, val_groups, test_groups
+**Data Split Strategy (Y-band spatial split):**
 
-# Final split percentages
-split_percentages = {
-    "train": 70,    # 70% for training
-    "val": 20,      # 20% for validation 
-    "test": 10      # 10% for final testing
-}
+The manuscript is split into contiguous horizontal Y-bands with 30px buffer zones between them, guaranteeing zero pixel overlap between splits.
+
+```python
+# Y-band spatial split with buffer zones
+TRAIN_Y_MAX = 1325      # Train: centroid Y ≤ 1325
+VAL_Y_RANGE = (1355, 1480)  # Val: centroid Y in (1355, 1480]
+TEST_Y_MIN = 1510       # Test: centroid Y > 1510
+BUFFER_PX = 30          # Signs in buffer gaps are excluded
 ```
 
 **Split Distribution:**
 
-| Split | Percentage | Images | Annotations | Purpose |
+| Split | Signs | Categories | Patches | Purpose |
 |---|---|---|---|---|
-| **Training** | 70% | ~1,200 | ~8,500 | Model learning |
-| **Validation** | 20% | ~350 | ~2,400 | Hyperparameter tuning |
-| **Testing** | 10% | ~175 | ~1,200 | Final evaluation |
+| **Training** | 455 (75%) | 90 | 25 | Model learning |
+| **Validation** | 67 (11%) | ~35 | 5 | Hyperparameter tuning |
+| **Testing** | 58 (10%) | 26 | 5 | Final evaluation |
+| **Buffer** | 25 (excluded) | — | — | Prevents leakage |
 
 **Key Features:**
-- **Spatial Grouping**: Prevents data leakage between splits
-- **Heavy Augmentation**: 6x data augmentation per image (applied only to training set)
+- **Y-band splitting**: Contiguous horizontal bands with buffer gaps prevent data leakage
+- **96% test category overlap**: 96% of test categories also appear in training
+- **Heavy augmentation**: Rotation ±15°, flip, brightness/contrast/saturation, RandomExtent
+- **RepeatFactorTrainingSampler**: Oversamples rare categories (threshold 0.3)
 - **COCO Format**: Standard annotation format for compatibility
-- **Balanced Distribution**: Ensures all hieratic character classes represented across splits
 
 ### Training Configuration
 ```yaml
-# Detectron2 Configuration
+# Detectron2 Configuration (May 2026)
 MODEL:
   BACKBONE:
-    NAME: "build_resnet_backbone"
-    FREEZE_AT: 2
+    NAME: "build_resnet_fpn_backbone"
+    FREEZE_AT: 2  # Freeze res1/res2; let res3+ fine-tune
   RESNETS:
     DEPTH: 50
-    OUT_FEATURES: ["res2", "res3", "res4", "res5"]
+  ANCHOR_GENERATOR:
+    SIZES: [[16, 32, 64, 128, 256]]  # Tuned for small signs
+    ASPECT_RATIOS: [[0.5, 1.0, 2.0]]
   ROI_HEADS:
-    NUM_CLASSES: 634
-    BATCH_SIZE_PER_IMAGE: 512
-    POSITIVE_FRACTION: 0.25
+    NUM_CLASSES: 95
+    BATCH_SIZE_PER_IMAGE: 256
+
+DATALOADER:
+  SAMPLER_TRAIN: "RepeatFactorTrainingSampler"
+  REPEAT_THRESHOLD: 0.3
 
 SOLVER:
   IMS_PER_BATCH: 2
-  BASE_LR: 0.00025
-  STEPS: [8000, 12000]
-  MAX_ITER: 15000
+  BASE_LR: 0.0002
+  LR_SCHEDULER_NAME: "WarmupCosineLR"
+  MAX_ITER: 30000
   WARMUP_ITERS: 1000
+  WARMUP_FACTOR: 0.001
 ```
 
 ### Advanced Training Techniques
@@ -186,7 +191,7 @@ model_receives = 0       # Properly mapped to 0-based
 |---|---|---|
 | **Detection Rate** | 9% | 62.1% |
 | **Category Accuracy** | 10% | 95% |
-| **mAP Performance** | 9.2% | 31.2% |
+| **mAP Performance** | 9.2% | 36.4% (with TTA) |
 | **Training Stability** | Poor | Excellent |
 
 #### **Performance Metric Interpretation**
@@ -301,7 +306,7 @@ The annotation process uses CVAT (Computer Vision Annotation Tool) for precise b
 
 **Annotation Process:**
 1. **Image Preparation:** High-resolution papyrus facsimile scans preprocessed
-2. **CVAT Setup:** Categories configured for 634 hieratic character classes
+2. **CVAT Setup:** Categories configured for 95 active Gardiner code classes
 3. **Annotation:** Precise polygon bounding boxes
 4. **COCO Export:** Standardized format conversion for training
 
@@ -320,8 +325,8 @@ The annotation process uses CVAT (Computer Vision Annotation Tool) for precise b
 
 ### Training/Validation Split Visualization
 
-![Dataset Visualization](docs/dataset_statistics.png)
-*Training and validation dataset distribution showing spatial organization and category balance*
+![Spatial Split](docs/spatial_split_figure.png)
+*Y-band spatial split showing train/val/test zones with buffer gaps*
 
 ### Category Distribution
 ```python
