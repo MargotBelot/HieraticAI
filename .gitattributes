@@ -1,8 +1,6 @@
 *.pth filter=lfs diff=lfs merge=lfs -text
-
 # Prevent macOS resource fork files
 ._* export-ignore
-
 # Handle line endings properly
 * text=auto
 *.py text eol=lf
@@ -10,8 +8,11 @@
 *.yml text eol=lf
 *.yaml text eol=lf
 *.json text eol=lf
+# Ensure shell scripts are executable
+*.sh export-ignore text eol=lf
+start_hieratic_ai.sh eol=lf
+install.py text eol=lf
 *.txt text eol=lf
-
 # Binary files
 *.png binary
 *.jpg binary

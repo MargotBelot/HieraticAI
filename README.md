@@ -14,6 +14,8 @@
 ## Table of Contents
 
 - [Quick Start](#quick-start)
+- [After Installation: Launching the App](#after-installation-launching-the-app)
+- [Download Pre-trained Model](#download-pre-trained-model-via-git-lfs)
 - [Project Overview](#project-overview)
 - [Interactive Interface](#interactive-validation-interface)
 - [Data Collection Tools](#data-collection-tools)
@@ -158,6 +160,64 @@ streamlit run tools/validation/prediction_validator.py
 ```
 
 **Then navigate to `http://localhost:8501` in your browser!**
+
+## After Installation: Launching the App
+
+After installation, you have multiple ways to launch HieraticAI:
+
+### Method 1: Desktop Shortcut (Easiest - Recommended)
+
+After running the installer, a desktop shortcut should be created automatically:
+
+- **macOS**: Look for "HieraticAI" alias on your Desktop → Double-click to launch
+- **Windows**: Look for "HieraticAI" shortcut on your Desktop → Double-click to launch  
+- **Linux**: Look for "HieraticAI" in your applications menu → Click to launch
+
+### Method 2: Command Line
+
+If you prefer terminal/command line:
+
+**macOS/Linux:**
+```bash
+cd /path/to/HieraticAI
+./start_hieratic_ai.sh
+```
+
+> **Tip**: If you get "permission denied", run `chmod +x start_hieratic_ai.sh` first
+
+**Windows (PowerShell):**
+```powershell
+cd \path\to\HieraticAI
+.\start_hieratic_ai.bat
+```
+
+**Windows (Command Prompt):**
+```cmd
+cd \path\to\HieraticAI
+start_hieratic_ai.bat
+```
+
+### Method 3: Manual Streamlit
+
+If the scripts don't work, launch manually:
+
+```bash
+cd /path/to/HieraticAI
+source hieratic_env/bin/activate  # Mac/Linux
+# OR: hieratic_env\Scripts\activate (Windows)
+streamlit run tools/validation/prediction_validator.py
+```
+
+### First-Time Setup
+
+On your first launch:
+
+1. **Download the model**: The app will prompt you to run `git lfs pull` if needed
+2. **Browser opens automatically**: Should open to http://localhost:8501
+3. **Allow 30-60 seconds**: Model loads on first run
+4. **Terminal stays open**: Keep the terminal/command window open while using
+
+You're all set! Start validating hieratic characters.
 
 ### Download Pre-trained Model (Via Git LFS)
 
