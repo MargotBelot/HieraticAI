@@ -304,6 +304,9 @@ The training dataset is based on the **Westcar Papyrus VIII 5-24**, a Middle Kin
 
 The annotation process uses CVAT (Computer Vision Annotation Tool) for precise bounding box annotation of hieratic characters. The workflow includes detailed markup of individual hieroglyphic signs with their corresponding Gardiner classifications.
 
+![Spatial Split](https://raw.githubusercontent.com/MargotBelot/HieraticAI/0aa5e5f9987325df4b4f2ed2fe94e81bb917b51f/docs/annotations_CVAT.png)
+*CVAT Polygone Annotations: 605 singles signs, 95 Gardiner Categories*
+
 **Annotation Process:**
 1. **Image Preparation:** High-resolution papyrus facsimile scans preprocessed
 2. **CVAT Setup:** Categories configured for 95 active Gardiner code classes
@@ -325,7 +328,7 @@ The annotation process uses CVAT (Computer Vision Annotation Tool) for precise b
 
 ### Training/Validation Split Visualization
 
-![Spatial Split](docs/spatial_split_figure.png)
+![Spatial Split](https://raw.githubusercontent.com/MargotBelot/HieraticAI/4443da4867a8b7b3c9fc3784a601a567305ee3ce/docs/spatial_split_figure.png)
 *Y-band spatial split showing train/val/test zones with buffer gaps*
 
 ### Category Distribution
